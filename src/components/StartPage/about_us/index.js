@@ -1,0 +1,21 @@
+import React from 'react'
+import staticData from '../../../staticData'
+
+
+const About = (props) => (
+  <div className="about-container">
+    <h1 className="about-header">Om Oss</h1>
+    {staticData.map(renderInformationText)}
+
+  </div>
+
+)
+
+const renderInformationText = ({ text, id }) => {
+
+  return (
+    <p className="information-text" key={id}>{text}</p>
+  )
+}
+
+export default About
