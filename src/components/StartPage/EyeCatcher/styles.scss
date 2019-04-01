@@ -1,34 +1,149 @@
 .box-container {
   display: flex;
-  max-height: 35vh;
+  max-height: 100vh;
   justify-content: center;
-  align-content:center;
+  align-content: center;
   text-align: center;
   flex-wrap: wrap;
   align-items: center;
   flex-direction: row;
-  background-color: #FAF8EA;
-  padding-left: 18px;
+  background-color: #fbf7ee;
+  padding: 13px 32px 13px 32px;
+  line-height: 1;
+  position: relative;
+  line-height: 1;
+  font-family: 'Open Sans', sans-serif;
+
+  .box-1 {
+    width: 100%;
+    height: 43vh;
+    color: #4762b7;
+    text-align: left;
+    font-size: 20px;
+    padding-left: 13px;
+    padding-right: 5px;
+    line-height: 1.2;
+    margin-top: 25px;
+
+    .main-heading {
+      margin-top: 30px;
+      font-size: 40px;
+      font-weight: bold;
+      font-family: 'Montserrat', sans-serif;
+    }
+  
+    .link-eye-catcher {
+      margin-top: 10px;
+      position: absolute;
+      background-color: #fbf7ee;
+      color: #4762b7;
+      font-weight: bold;
+      font-size: 20px;
+      border: 1px solid #4762b7;
+      padding: 5px 5px;      
+    }
+  }
+
+  .box-2 {
+    width: 100%;
+    height: 50vh;
+    margin-top: 25px;
+
+    .eye-catcher{
+      max-width: 65vw;
+      border-radius: 120px;
+    }    
+  }
 }
 
-.eye-catcher{
-  max-width: 35vw;
-  border-radius: 70px;
+
+@media screen and (min-width: 1200px) {
+
+  .box-container {
+    height: 50vh;
+    padding-left: 15%;
+    padding-right: 13%;
+    line-height: 1;
+  
+    #eye-catcher-heading {
+      font-size: 50px;
+      font-weight: 800;
+    }
+  
+    .box-1 {
+      width: 50%;
+      height: 100%;
+      font-size: 19px;
+      padding-left: 13px;
+      padding-right: 5px;
+    
+      .link-eye-catcher {
+        margin-top: 10px;
+        font-size: 21px;
+        border: 1.5px solid #4762b7;
+        padding: 8px 10px;
+      }
+    }
+  
+    .box-2 {
+      width: 50%;
+      height: 100%;
+      .eye-catcher{
+        max-width: 40vh;
+        border-radius: 50%;
+      }
+    }
+  }
 }
 
-.link
+@media screen and (min-width: 992px) {
 
-.box-1{
-  width: 50%;
-  height: 100%;
-  color: $primary;
-  text-align: left;
-
-
+  .box-container {
+    height: 50vh;
+    padding-left: 15%;
+    padding-right: 13%;
+    line-height: 1;
+  
+    #eye-catcher-heading {
+      font-size: 50px;
+      font-weight: 800;
+    }
+  
+    .box-1 {
+      width: 50%;
+      height: 100%;
+      font-size: 19px;
+      padding-left:13px;
+      padding-right: 5px;
+    
+      .link-eye-catcher {
+        margin-top: 10px;
+        font-size: 21px;
+        border: 1.5px solid #4762b7;
+        padding: 8px 10px;
+      }
+    }
+  
+    .box-2 {
+      width: 50%;
+      height: 100%;
+      
+      .eye-catcher{
+        max-width: 40vh;
+        border-radius: 50%;
+      }    
+    }
+  }
+  
+  
+  
+  
+  
+  
+  
+  
 }
 
 
-.box-2{
-  width: 50%;
-  height: 100%;
-}
+
+
