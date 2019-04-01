@@ -1,30 +1,55 @@
-.box-container {
+.prodinfo-container {
+  background: url(/images/prodinfobg4.png);
+  background-size: cover;
   display: flex;
-  min-height: 35vh;
-  justify-content: center;
-  align-content: center;
-  text-align: center;
-  flex-wrap: wrap;
-  align-items: center;
   flex-direction: row;
-  background-color: blue;
-  opacity: 0.8;
-  padding-left: 18px;
+  position: relative;
 }
 
-.image {
-  max-width: 35vw;
-  border-radius: 70px;
-  color: black;
+.about-header {
+  text-align: center;
+  margin-top: 55px;
+  z-index: 1;
+  color: #fff;
+  font-size: 50px;
+  font-weight: 800;
+}
+
+.info-text {
+  flex: auto;
+  text-align: center;
+  z-index: 1;
+  color: #fff;
+  padding: 9px;
+}
+
+.prodinfo-overlay {
+  width: 100%;
+  height: 100%;
+  background: rgba(71, 98, 183, 0.85);
+  position: absolute;
+  z-index: 5;
 }
 
 .box-1 {
+  flex: auto;
   width: 50%;
   height: 100%;
+  color: #fdf0d0;
   text-align: left;
+  z-index: 10;
 }
 
 .box-2 {
+  flex: auto;
   width: 50%;
   height: 100%;
+  color: #fdf0d0;
+  text-align: left;
+  z-index: 10;
+}
+
+.fg-image {
+  max-width: 35vw;
+  border-radius: 70px;
 }

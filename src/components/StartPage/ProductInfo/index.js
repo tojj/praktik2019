@@ -2,17 +2,22 @@ import React from "react";
 import "./style.scss";
 
 const ProductInfo = props => (
-  <div className="box-container">
+  <div className="prodinfo-container">
     <div className="box-1">
-      <h2>Bästa presenten</h2>
-      <p>
-        Med Vojj kan till och med Ken får det kalas han förtjänar. Klicka på
-        knappen nedan för att skapa ditt kalas nu!
-      </p>
+      <img className="fg-image" src="/images/prodinfobg.png" alt="fg image" />
     </div>
     <div className="box-2">
-      <img className="image" src="./prodinfobg.png" alt="Eye-catcher image" />
+      <h2 className="about-header">Kvalitet över kvantitet</h2>
+      <p className=".info-text">
+        Barnkalas är jättekul, men varför ge bort flera presenter som ingen vill
+        ha istället för att hålla det till några få riktigt bra presenter?
+      </p>
+      <p className=".info-text">
+        Med Vojj är det nu enkelt att gå ihop och ge barnen något som de
+        faktiskt önskar sig!
+      </p>
     </div>
+    <div className="prodinfo-overlay" />
   </div>
 );
 export default ProductInfo;
