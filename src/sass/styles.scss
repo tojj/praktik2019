@@ -1,21 +1,19 @@
-
 // Import Bootstrap Overrides
-@import './bootstrap-overrides';
+@import "./bootstrap-overrides";
 
 // Import our Basic Styles for the application
-@import './basic-styles';
+@import "./basic-styles";
 
 // Import of Bootstrap
-@import 'node_modules/bootstrap/scss/functions';
-@import 'node_modules/bootstrap/scss/bootstrap';
-
+@import "node_modules/bootstrap/scss/functions";
+@import "node_modules/bootstrap/scss/bootstrap";
 
 //Import all our sass-files
 // HEADER
-@import '../Components/Header/styles';
-@import '../Components/Header/Navbar/styles';
+@import "../Components/Header/styles";
+@import "../Components/Header/Navbar/styles";
 // STARTPAGE
-
+@import "../Components/StartPage/ProductInfo/style";
 // CREATEPARTYPAGE
 
 // PARTYPAGE
