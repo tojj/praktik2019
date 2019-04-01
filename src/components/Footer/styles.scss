@@ -3,12 +3,18 @@
   display: flex;
   justify-content: center;
   text-align: center;
-  
-
+  flex-direction: column;
 }
 
 .footer-headliner {
   font-family: $big-text;
-  font-size: 85px;
+  font-size: 128px;
   color: #fbf7ee;
+}
+
+.footer-email {
+  color: #fbf7ee;
+  font-size: 20px;
+  margin-top: 30px;
+
 }
