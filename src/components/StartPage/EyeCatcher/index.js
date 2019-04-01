@@ -9,7 +9,7 @@ const EyeCatcher = (props) => <div className="box-container" id="eye-catcher">
     <button className="link-eye-catcher">Skapa kalas</button>
   </div>
   <div className="box-2">
-    <img className="eye-catcher" src="/images/eye-catcher-img.png" alt="Birthday card"></img></div>
+    <img className="eye-catcher" id="small-eye-catcher" src="/images/eye-catcher-img.png" alt="Birthday card"></img></div>
 </div>
 
 export default EyeCatcher
