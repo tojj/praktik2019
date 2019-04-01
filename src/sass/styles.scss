@@ -1,11 +1,24 @@
-// Import bootstrap 
-// import.......
-// Import our variables
-@import './custom-variables';
-// Import our basic-styles
+
+// Import Bootstrap Overrides
+@import './bootstrap-overrides';
+
+// Import our Basic Styles for the application
 @import './basic-styles';
 
+// Import of Bootstrap
+@import 'node_modules/bootstrap/scss/functions';
+@import 'node_modules/bootstrap/scss/bootstrap';
+
+
 //Import all our sass-files
-@import '../Components/Header/styles';
+// HEADER
 @import '../Components/Header/styles';
 @import '../Components/StartPage/about_us/styles';
+@import '../Components/Header/Navbar/styles';
+// STARTPAGE
+
+// CREATEPARTYPAGE
+
+// PARTYPAGE
+
+// FOOTER
