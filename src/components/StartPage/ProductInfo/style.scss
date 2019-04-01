@@ -1,0 +1,30 @@
+.box-container {
+  display: flex;
+  min-height: 35vh;
+  justify-content: center;
+  align-content: center;
+  text-align: center;
+  flex-wrap: wrap;
+  align-items: center;
+  flex-direction: row;
+  background-color: blue;
+  opacity: 0.8;
+  padding-left: 18px;
+}
+
+.image {
+  max-width: 35vw;
+  border-radius: 70px;
+  color: black;
+}
+
+.box-1 {
+  width: 50%;
+  height: 100%;
+  text-align: left;
+}
+
+.box-2 {
+  width: 50%;
+  height: 100%;
+}
