@@ -2,14 +2,18 @@ import React from 'react'
 import Navbar from './Navbar/index'
 // import Navbar from './Navbar/index'
 
-const Header = () => (
-  <div className="header-wrapper">
-    
-    <div className="logo-holder">
+const Header = () => {
+  return (
+    <div className="header-wrapper">
       <Navbar />
-      <img src="/images/vojj-logo.png" className="img-fluid" alt="logo" />
+      <div className="logo-holder">
+        <img src="/images/vojj-logo.png" className="img-fluid" alt="logo" />
+      </div>
+      <nav className="nav-big">
+
+      </nav>
     </div>
-  </div>
-)
+  )
+}
 
 export default Header

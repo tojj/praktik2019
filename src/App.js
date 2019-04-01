@@ -11,7 +11,7 @@ const App = (props) => (
         <Route exact path="/" component={StartPage} />
       </Switch>
     </main>
-    <footer>footer</footer>
+    <footer><p id="about-container">TEST</p>footer</footer>
   </Router>
 )
 export default App
