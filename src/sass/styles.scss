@@ -10,8 +10,9 @@
 
 //Import all our sass-files
 // HEADER
-@import "../Components/Header/styles";
-@import "../Components/Header/Navbar/styles";
+@import '../Components/Header/styles';
+@import '../Components/StartPage/about_us/styles';
+@import '../Components/Header/Navbar/styles';
 // STARTPAGE
 @import "../Components/StartPage/ProductInfo/style";
 // CREATEPARTYPAGE
