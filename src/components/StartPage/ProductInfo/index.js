@@ -4,7 +4,7 @@ import "./style.scss";
 const ProductInfo = props => (
   <div className="prodinfo-container">
     <div className="box-1">
-      <img className="fg-image" src="/images/prodinfobg.png" alt="fg image" />
+      <img className="fg-image" src="/images/prodinfobg.png" alt="fg" />
     </div>
     <div className="box-2">
       <h2 className="prodinfo-header">Kvalitet över kvantitet</h2>
