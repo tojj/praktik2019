@@ -1,6 +1,4 @@
 import React from "react"
-import './styles.scss'
-
 
 const EyeCatcher = (props) => <div className="box-container" id="eye-catcher">
   <div className="box-1">
