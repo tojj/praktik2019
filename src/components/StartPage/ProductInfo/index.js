@@ -1,7 +1,7 @@
 import React from "react"
 
 const ProductInfo = props => (
-  <div className="prodinfo-container">
+  <div className="prodinfo-container box-container">
     <div className="prodinfo-box-1">
       <img className="fg-image" src="/images/prodinfobg.png" alt="fg" />
     </div>

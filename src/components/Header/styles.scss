@@ -1,5 +1,5 @@
 .header-wrapper {
-  min-height: 18.5vh;
+  min-height: 20vh;
   width: 100%;
   background: $secondary;
   .logo-holder {
@@ -7,7 +7,7 @@
     width: 70%;
     margin: 0 auto ;
     padding: 100px 0 0;
-    .img {
+    .logo-img {
       width: 100%;
       height: auto;
     }
@@ -17,6 +17,7 @@
     width: 70vw;
     margin: 0 auto;
     .logo-holder {
+      padding: 0;
       position: absolute;
       width: 10vw;
       bottom: 0;
