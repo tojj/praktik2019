@@ -20,12 +20,12 @@ class Navbar extends React.Component {
     return (
       <div>
         <nav>
-          <div className="burger-menu" onClick={this.toggle}>
+          <div className="burger-menu-btn" onClick={this.toggle}>
             <img src="/images/burger-primary.png" alt="open menu" />
           </div>
-          <div className={this.state.burgerOpen ? 'nav-burger-wrapper open' : 'nav-burger-wrapper'}>
+          <div className={this.state.burgerOpen ? 'nav-wrapper open' : 'nav-wrapper'}>
             <div>
-              <img className="burger-menu" onClick={this.toggle} alt="close menu" src="/images/burger-secondary.png" />
+              <img className="burger-menu-btn" onClick={this.toggle} alt="close menu" src="/images/burger-secondary.png" />
             </div>
             <NavLink to="#eye-catcher" className="link-item">Vojj</NavLink>
             <NavLink to="#convincer" className="link-item">Varför?</NavLink>

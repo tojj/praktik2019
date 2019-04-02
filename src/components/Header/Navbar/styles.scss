@@ -1,5 +1,5 @@
 nav {
-  .nav-burger-wrapper {
+  .nav-wrapper {
     display: none;
     &.open {
       width: 100%;
@@ -18,8 +18,9 @@ nav {
         margin: 0 0 1rem;
       }
     }
+
   }
-  .burger-menu {
+  .burger-menu-btn {
     background: rgba(0, 0, 0, 0);
     width: 50px;
     height: 50px;
