@@ -33,6 +33,9 @@
   
 .convincer-info{
   text-align: center;
-}
+  @include media-breakpoint-up(lg){
+    max-width:40vw !important;
+    }
+  }
 }
 
