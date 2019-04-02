@@ -1,3 +1,7 @@
+@import 'node_modules/bootstrap/scss/functions';
+@import 'node_modules/bootstrap/scss/bootstrap';
+@import 'src/sass/bootstrap-overrides';
+
 .box-container {
   display: flex;
   max-height: 100vh;
@@ -7,12 +11,12 @@
   flex-wrap: wrap;
   align-items: center;
   flex-direction: row;
-  background-color: #fbf7ee;
+  background-color: $secondary;
   padding: 13px 32px 13px 32px;
   line-height: 1;
   position: relative;
   line-height: 1;
-  font-family: 'Open Sans', sans-serif;
+  font-family: $small-text;
 
   .box-1 {
     width: 100%;
@@ -30,17 +34,17 @@
       margin-top: 15px;
       font-size: 40px;
       font-weight: bold;
-      font-family: 'Montserrat', sans-serif;
+      font-family: $big-text;
     }
   
     .link-eye-catcher {
       margin-top: 10px;
       position: absolute;
-      background-color: #fbf7ee;
-      color: #4762b7;
+      background-color: $secondary;
+      color: $primary;
       font-weight: bold;
       font-size: 20px;
-      border: 1px solid #4762b7;
+      border: 1px solid $primary;
       padding: 5px 5px;      
     }
   }
@@ -57,7 +61,7 @@
   }
 }
 
-@media screen and (min-width: 1200px) {
+@include media-breakpoint-up(xl) {
 
   .box-container {
     height: 50vh;
@@ -80,7 +84,7 @@
       .link-eye-catcher {
         margin-top: 10px;
         font-size: 21px;
-        border: 1.5px solid #4762b7;
+        border: 1.5px solid $primary;
         padding: 8px 10px;
       }
     }
@@ -88,6 +92,7 @@
     .box-2 {
       width: 50%;
       height: 100%;
+      padding-top: 2%;
 
       .eye-catcher{
         max-width: 40vh;
@@ -97,7 +102,7 @@
   }
 }
  
-@media only screen and (min-width: 771px) {
+@include media-breakpoint-up(md) {
   .box-container {
     height: 50vh;
     padding-left: 8%;
@@ -119,12 +124,13 @@
       .link-eye-catcher {
         margin-top: 10px;
         font-size: 21px;
-        border: 1.5px solid #4762b7;
+        border: 1.5px solid $primary;
         padding: 8px 10px;
       }
     }
   
     .box-2 {
+      padding-top: 1.8%;
       width: 50%;
       height: 100%;
 
@@ -160,7 +166,7 @@
       .link-eye-catcher {
         margin-top: 10px;
         font-size: 19px;
-        border: 1.5px solid #4762b7;
+        border: 1.5px solid $primary;
         padding: 6px 8px;
       }
     }
