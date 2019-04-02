@@ -4,10 +4,6 @@ html {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
-    @include media-breakpoint-up(md) {
-      background-color: red;
-    }
-
     main {
       flex: 1;
     }
