@@ -1,4 +1,4 @@
-export default [
+export const aboutData = [
   {
     text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipisicing elit.Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
     id: 1
@@ -17,3 +17,8 @@ export default [
   },
   
 ]
+
+export default {
+  aboutData,
+  
+}

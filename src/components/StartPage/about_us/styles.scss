@@ -29,3 +29,9 @@
   background: rgba(255, 171, 41, 0.85);
   position: absolute;
 }
+
+@include media-breakpoint-up(lg){  
+  .information-text {
+    padding: 0 200px 0 200px;
+  }
+}
