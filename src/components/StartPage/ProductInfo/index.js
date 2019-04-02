@@ -1,5 +1,5 @@
-import React from "react";
-import "./style.scss";
+import React from "react"
+import "./style.scss"
 
 const ProductInfo = props => (
   <div className="prodinfo-container">
@@ -27,5 +27,5 @@ const ProductInfo = props => (
     </div>
     <div className="prodinfo-overlay" />
   </div>
-);
-export default ProductInfo;
+)
+export default ProductInfo
