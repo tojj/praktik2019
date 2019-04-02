@@ -1,7 +1,5 @@
-
 // Import Bootstrap Overrides
-@import './bootstrap-overrides';
-
+@import "./bootstrap-overrides";
 
 // Import of Bootstrap
 @import 'node_modules/bootstrap/scss/functions';
@@ -13,11 +11,18 @@
 //Import all our sass-files
 // HEADER
 @import '../Components/Header/styles';
+@import '../Components/StartPage/about_us/styles';
 @import '../Components/Header/Navbar/styles';
 // STARTPAGE
+
+@import "../Components/StartPage/ProductInfo/style";
+@import '../components/StartPage/styles';
+@import '../components/StartPage/EyeCatcher/styles';
+
 
 // CREATEPARTYPAGE
 
 // PARTYPAGE
 
 // FOOTER
+@import '../Components/Footer/styles';
