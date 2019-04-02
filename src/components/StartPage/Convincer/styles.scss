@@ -1,0 +1,44 @@
+.convincer-container {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.convincer-box{
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.convincer-image { 
+  width: 40vh;
+  height: auto;
+  border-radius: 50%;
+}
+
+.convincer-image-container{
+  display: block;
+  width: 100%;
+  max-width: 40vh;
+  height: auto; 
+  margin: auto;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.convincer-info{
+  text-align: center;
+}
+.prodinfo-box-1 {
+ 
+  width: 50%;
+  min-height: 100%;
+  color: #fdf0d0;
+  text-align: left;
+  z-index: 10;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  padding-left: 8%;
+}
