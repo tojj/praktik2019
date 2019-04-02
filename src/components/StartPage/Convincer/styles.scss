@@ -5,6 +5,12 @@
   align-items: center;
   justify-content: center;
   width: 100%;
+  @include media-breakpoint-up(lg){
+    flex-direction: row;
+  }
+  @include media-breakpoint-up(xl){
+    flex-direction: row;
+  }
   .convincer-box{
     padding-left: 15px;
     padding-right: 15px;
