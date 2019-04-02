@@ -1,12 +1,12 @@
 // Import Bootstrap Overrides
 @import "./bootstrap-overrides";
 
-// Import our Basic Styles for the application
-@import "./basic-styles";
-
 // Import of Bootstrap
-@import "node_modules/bootstrap/scss/functions";
-@import "node_modules/bootstrap/scss/bootstrap";
+@import 'node_modules/bootstrap/scss/functions';
+@import 'node_modules/bootstrap/scss/bootstrap';
+
+// Import our Basic Styles for the application
+@import './basic-styles';
 
 //Import all our sass-files
 // HEADER
