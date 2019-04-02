@@ -10,16 +10,14 @@
 .prodinfo-header {
   text-align: left;
   z-index: 1;
-  color: #fff;
+  color: $secondary;
   font-size: 50px;
   font-weight: 800;
 }
 
 .info-text {
-  text-align: center;
   z-index: 1;
-  color: #fff;
-  padding: 9px;
+  color: $secondary;
 }
 
 .prodinfo-overlay {
@@ -34,7 +32,6 @@
   flex: auto;
   width: 50%;
   min-height: 100%;
-  color: #fdf0d0;
   text-align: left;
   z-index: 10;
   padding-top: 50px;
@@ -47,7 +44,6 @@
   flex-direction: column;
   width: 50%;
   min-height: 100%;
-  color: #fdf0d0;
   justify-content: center;
   z-index: 10;
   padding-top: 50px;
