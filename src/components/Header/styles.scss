@@ -3,11 +3,30 @@
   width: 100%;
   background: $secondary;
   .logo-holder {
+    position: static;
     width: 80%;
-    margin: 0 auto;
+    margin: 0 auto ;
+    padding: 100px 0 0;
     .img {
       width: 100%;
       height: auto;
+    }
+  }
+  @include media-breakpoint-up(md){
+    position: relative;
+    width: 70vw;
+    margin: 0 auto;
+    .logo-holder {
+      position: absolute;
+      width: 10vw;
+      bottom: 0;
+      left: 0;
+    }
+    .nav-wrapper {
+      // absolute given in navbar/styles
+      width: 60vw;
+      bottom: 0;
+      right: 0;
     }
   }
 }

@@ -1,6 +1,6 @@
 html {
-  background-color: $secondary;
   body {
+    background-color: $secondary !important;
     display: flex;
     min-height: 100vh;
     flex-direction: column;
