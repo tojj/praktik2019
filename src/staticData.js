@@ -16,9 +16,37 @@ export const aboutData = [
     id: 4
   },
   
-]
+];
+
+export const footerData = [
+  {
+    text: "info@vojj.se",
+    id: 1
+  },
+  {
+    text: "Humlegatan 4, 211 27 Malmö",
+    id: 2
+  }
+];
+
+export const footerImages = [
+  {
+    img: "/images/001-facebook.png",
+    id: 1
+  },
+  {
+    img: "/images/002-twitter.png",
+    id: 2
+  },
+  {
+    img: "/images/003-linkedin.png",
+    id: 3
+  }
+];
+
 
 export default {
   aboutData,
-  
+  footerData,
+  footerImages,
 }
