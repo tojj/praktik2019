@@ -13,7 +13,7 @@ const Convincer = (props) => (
     </div>
     <div className="convincer-box">
       <div className="convincer-image-container">
-        <img className="convincer-image" src="/images/convincer2.png" alt="nåt" />
+        <img className="convincer-image" src="/images/convincer5.jpg" alt="nåt" />
       </div>
       <div className="convincer-info">
         <h4>Bidra</h4>
