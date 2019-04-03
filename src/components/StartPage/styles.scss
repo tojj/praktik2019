@@ -15,6 +15,8 @@
     align-items: center;
 
     .box {
+      min-height: 100%;
+      z-index: 10;
       flex: 1;
       padding: 5vw;
       text-align: center;
@@ -23,6 +25,7 @@
       p,
       h2 {
         text-align: left;
+        z-index: 1;
       }
       h2 {
         font-family: $big-text;
