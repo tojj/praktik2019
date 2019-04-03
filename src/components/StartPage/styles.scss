@@ -26,6 +26,9 @@
         width: 100%;
         height: auto;
         border-radius: 50%;
+        @include media-breakpoint-up(xl){
+          width: 75%;
+        }
       }
       h2,
       h4 {
