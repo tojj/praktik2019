@@ -1,11 +1,11 @@
 import React from "react"
 
 const ProductInfo = props => (
-  <div className="prodinfo-container box-container">
-    <div className="prodinfo-box-1">
-      <img className="fg-image" src="/images/prodinfobg.png" alt="fg" />
+  <div className="box-container prodinfo-container box-container">
+    <div className="box prodinfo-box-1">
+      <img className="box-img fg-image" src="/images/prodinfobg.png" alt="fg" />
     </div>
-    <div className="prodinfo-box-2">
+    <div className="box prodinfo-box-2">
       <h2 className="prodinfo-header">Kvalitet över kvantitet</h2>
       <p className="info-text">
         Barnkalas är jättekul, men varför ge bort flera presenter som ingen vill
