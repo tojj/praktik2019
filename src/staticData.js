@@ -65,10 +65,30 @@ export const convincerData = [
   }
 ]
 
+export const productData = [
+  {
+    text: "Barnkalas är jättekul, men varför ge bort flera presenter som ingen vill ha istället för att hålla det till några få riktigt bra presenter?",
+    id: 1
+  },
+  {
+    text: "Med Vojj är det nu enkelt att gå ihop och ge barnen något som de faktiskt önskar sig!",
+    id: 2
+  },
+  {
+    text: "Barnkalas är jättekul, men varför ge bort flera presenter som ingen vill ha istället för att hålla det till några få riktigt bra presenter?",
+    id: 3
+  },
+  {
+    text: "Med Vojj är det nu enkelt att gå ihop och ge barnen något som de faktiskt önskar sig!",
+    id: 4
+  }
+]
+
 
 export default {
   aboutData,
   footerData,
   footerImages,
-  convincerData
+  convincerData,
+  productData
 }
