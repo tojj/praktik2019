@@ -2,7 +2,7 @@
   .box-container {
     display: flex;
     flex-direction: column;
-    flex-wrap: wrap;
+    // flex-wrap: wrap;
     position: relative;
 
     width: 100%;
@@ -17,7 +17,6 @@
       padding: 0 !important;
     }
     .box {
-      min-height: 100%;
       z-index: 10;
       flex: 1;
       padding: 5vw;
@@ -27,11 +26,6 @@
         width: 100%;
         height: auto;
         border-radius: 50%;
-      }
-      p,
-      h2,
-      h4 {
-        z-index: 1;
       }
       h2,
       h4 {
@@ -55,9 +49,6 @@
       .box {
         h2 {
           font-size: 3rem;
-        }
-        p {
-          font-size: 1.5rem;
         }
       }
     }
