@@ -44,9 +44,31 @@ export const footerImages = [
   }
 ];
 
+export const convincerData = [
+  {
+    header: "Present",
+    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris blandit maximus nulla eget viverra. Nam porta id urna eget vestibulum.",
+    img: "/images/convincer4.jpg",
+    id: 1
+  },
+  {
+    header: "Bidra",
+    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris blandit maximus nulla eget viverra. Nam porta id urna eget vestibulum.",
+    img: "/images/convincer5.jpg",
+    id: 2
+  },
+  {
+    header: "Karma",
+    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris blandit maximus nulla eget viverra. Nam porta id urna eget vestibulum.",
+    img: "/images/convincer3.jpg",
+    id: 3
+  }
+]
+
 
 export default {
   aboutData,
   footerData,
   footerImages,
+  convincerData
 }
