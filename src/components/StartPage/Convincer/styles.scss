@@ -8,9 +8,9 @@
   @include media-breakpoint-up(lg){
     flex-direction: row;
   }
-  // @include media-breakpoint-up(xl){
-  //   flex-direction: row;
-  // }
+  @include media-breakpoint-up(xl){
+    flex-direction: row;
+  }
   .convincer-box{
     margin: 5px;
     padding-left: 15px;
@@ -32,7 +32,7 @@
     
   }
   
-.convincer-info{
+.convincer-info-container{
   text-align: center;
   @include media-breakpoint-up(lg){
     max-width:40vw !important;
