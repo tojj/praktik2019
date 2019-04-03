@@ -4,7 +4,7 @@ import staticData from '../../../staticData'
 const ProductInfo = (props) => (
   <div className="box-container prodinfo-container">
     <div className="box prodinfo-box-1">
-      <img className="box-img fg-image" src="/images/prodinfobg.png" alt="fg" />
+      <img className="box-img fg-image" src="/images/eye-catcher-img.png" alt="fg" />
     </div>
     <div className="box prodinfo-box-2">
       <h2 className="prodinfo-header">Kvalitet över kvantitet</h2>
