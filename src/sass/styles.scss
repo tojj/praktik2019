@@ -11,14 +11,14 @@
 //Import all our sass-files
 // HEADER
 @import '../Components/Header/styles';
-@import '../Components/StartPage/about_us/styles';
 @import '../Components/Header/Navbar/styles';
-// STARTPAGE
 
-@import "../Components/StartPage/ProductInfo/style";
+// STARTPAGE
 @import '../components/StartPage/styles';
 @import '../components/StartPage/EyeCatcher/styles';
+@import "../Components/StartPage/ProductInfo/styles";
 @import '../components/StartPage/Convincer/styles';
+@import '../Components/StartPage/about_us/styles';
 
 
 // CREATEPARTYPAGE

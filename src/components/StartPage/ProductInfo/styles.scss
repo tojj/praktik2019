@@ -1,0 +1,15 @@
+.prodinfo-container {
+  background: url(/images/prodinfobg4.png);
+  background-size: cover;
+  background-position: bottom right;
+  color: $secondary;
+
+  .prodinfo-overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: $primary;
+    opacity: .8;
+    z-index: 1;
+  }
+}

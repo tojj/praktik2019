@@ -4,17 +4,17 @@
   justify-content: center;
   text-align: center;
   flex-direction: column;
+  padding: 10vh 0 0;
+  color: $secondary;
 }
 
 .footer-headliner {
   font-family: $big-text;
   font-size: 128px;
-  color: #fbf7ee;
-  font-weight: bold;
+  font-weight: 800;
 }
 
 .footer-information {
-  color: #fbf7ee;
   font-size: 20px;
   
   &:nth-child(2){
