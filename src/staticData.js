@@ -16,7 +16,7 @@ export const aboutData = [
     id: 4
   },
   
-];
+]
 
 export const footerData = [
   {
@@ -27,7 +27,7 @@ export const footerData = [
     text: "Humlegatan 4, 211 27 Malmö",
     id: 2
   }
-];
+]
 
 export const footerImages = [
   {
@@ -42,7 +42,7 @@ export const footerImages = [
     img: "/images/003-linkedin.png",
     id: 3
   }
-];
+]
 
 export const convincerData = [
   {
