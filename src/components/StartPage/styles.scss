@@ -1,12 +1,20 @@
 .startpage-wrapper {
+  @include media-breakpoint-up(lg){
+    & > .eye-catcher {
+      min-height: 0 !important;
+      height: 80vh !important;
+    }
+    .box-container {
+      padding: 0 !important;
+    }
+  }
   .box-container {
     display: flex;
     flex-direction: column;
-    // flex-wrap: wrap;
     position: relative;
 
     width: 100%;
-    min-height: 75vh;
+    min-height: 100vh;
 
     padding: 10vh 0;
 
@@ -15,6 +23,10 @@
     align-items: center;
     @include media-breakpoint-up(lg){
       padding: 0 !important;
+      & > .eye-catcher {
+        min-height: 0 !important;
+        height: 80vh !important;
+      }
     }
     .box {
       z-index: 10;
