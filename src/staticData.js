@@ -76,11 +76,34 @@ export const productData = [
   }
 ]
 
+export const formHeaderData = [
+  {
+    className: "birthday-headline input100",
+    defaultValue: "Dunderkalas med hoppborg!",
+    text: "Vad vill du ha som rubrik?",
+    id: 1
+
+  },
+  {
+    className: "birthday-headline input50",
+    defaultValue: "Kent",
+    text: "Vem är kalaset för?",
+    id: 2
+  },
+  {
+    className: "birthday-headline input25",
+    defaultValue: "6",
+    text: "Hur mycket fylls?",
+    id: 3
+  }
+]
+
 
 export default {
   aboutData,
   footerData,
   footerImages,
   convincerData,
-  productData
+  productData,
+  formHeaderData
 }
