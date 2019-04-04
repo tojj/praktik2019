@@ -1,6 +1,6 @@
 import React from 'react'
 
-const FormBody = (props) => (
+const EventInput = (props) => (
 
   <div className="box-container">
     <div className="box">
@@ -37,5 +37,5 @@ const FormBody = (props) => (
   </div>
 )
 
-export default FormBody
+export default EventInput
 
