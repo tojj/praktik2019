@@ -3,18 +3,24 @@
   width: 100%;
   background: $secondary;
   z-index: 15;
+  .arrow-img {
+    width: 75px;
+    height: auto;
+    border-radius: 50%;
+    box-shadow: 2px 2px 10px $dark;
+  }
   .logo-holder {
     display: block;
     position: relative;
     width: 80%;
-    margin: 0 auto ;
+    margin: 0 auto;
     padding: 100px 0 0;
     .logo-img {
       width: 100%;
       height: auto;
     }
   }
-  @include media-breakpoint-up(md){
+  @include media-breakpoint-up(md) {
     position: relative;
     width: 80%;
     margin: 0 auto;
