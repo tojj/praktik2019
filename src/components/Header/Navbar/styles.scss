@@ -29,8 +29,13 @@ nav {
         display: inline-block;
         font-family: $big-text;
         font-weight: 800;
-        color: $primary !important;
+        color: $primary;
         margin: 0 0 0 2rem;
+        &:hover {
+          cursor: pointer;
+          text-decoration: none;
+          color: $dark !important;
+        }
         @include media-breakpoint-up(lg){
           font-size: 1.3rem;
         }
