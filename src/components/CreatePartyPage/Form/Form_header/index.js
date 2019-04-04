@@ -1,32 +1,33 @@
 import React from 'react'
+import staticData from '../../../../staticData'
 
 const Form_header = (props) => (
   <div className="form-header-container">
-  <h1 className="form-headline">Skapa Kalas</h1>
-  <div className="box-container">
-    <div className="box">
-      <form className="">
-        <label  className="birthday-label">
-          Vad vill du ha som rubrik?
-        <input className="birthday-headline input100" rows="2" type="text" defaultValue="Dunderkalas med hoppborg! Hoppas ni kan komma" />
-        </label>
-        <label  className="birthday-label">
-          Vad vill du ha som rubrik?
-        <input className="birthday-headline input100" rows="2" type="text" defaultValue="Dunderkalas med hoppborg! Hoppas ni kan komma" />
-        </label>
-        <label  className="birthday-label">
-          Vad vill du ha som rubrik?
-        <input className="birthday-headline input100" rows="2" type="text" defaultValue="Dunderkalas med hoppborg! Hoppas ni kan komma" />
-        </label>
-      </form>
-    </div>
+    <div className="box-container">
+      <div className="box">
+        <h2 className="form-headline">Skapa Kalas</h2>
+        <form>
+          {(staticData.formHeaderData.map(renderLabels))}
+        </form>
+      </div>
 
-    <div className="box">
+      <div className="box">
 
+      </div>
     </div>
-  </div>
   </div>
 )
+
+const renderLabels = ({ className, defaultValue, id, text }) => {
+
+  return (
+    <label className="birthday-label" key={id}>
+      {text}
+      <input className={className} rows="2" type="text" defaultValue={defaultValue} />
+    </label>
+  )
+}
+
 
 export default Form_header
 
