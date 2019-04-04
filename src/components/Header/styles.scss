@@ -2,9 +2,11 @@
   min-height: 20vh;
   width: 100%;
   background: $secondary;
+  z-index: 15;
   .logo-holder {
-    position: static;
-    width: 70%;
+    display: block;
+    position: relative;
+    width: 80%;
     margin: 0 auto ;
     padding: 100px 0 0;
     .logo-img {
@@ -14,18 +16,19 @@
   }
   @include media-breakpoint-up(md){
     position: relative;
-    width: 70vw;
+    width: 80%;
     margin: 0 auto;
     .logo-holder {
-      padding: 0;
+      padding: 2% 2% 0;
       position: absolute;
-      width: 10vw;
+      width: 20%;
+      max-height: 20vh;
       bottom: 0;
       left: 0;
     }
     .nav-wrapper {
       // absolute given in navbar/styles
-      width: 60vw;
+      width: 80%;
       bottom: 0;
       right: 0;
     }
