@@ -1,6 +1,9 @@
 .eye-catcher {
   .box-1 {
     color: $primary;
+    @include media-breakpoint-up(lg) {
+      text-align: left !important;
+    }
     .link-eye-catcher {
       background-color: $secondary;
       color: $primary;
