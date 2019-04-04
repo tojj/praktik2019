@@ -1,5 +1,6 @@
 import React from 'react'
 import staticData from '../../../../staticData'
+import ImageHandler from './ImageHandler/index'
 
 const Form_header = (props) => (
   <div className="form-header-container">
@@ -10,9 +11,8 @@ const Form_header = (props) => (
           {(staticData.formHeaderData.map(renderLabels))}
         </form>
       </div>
-
       <div className="box">
-
+        <ImageHandler />
       </div>
     </div>
   </div>
