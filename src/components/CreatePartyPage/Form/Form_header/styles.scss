@@ -1,0 +1,27 @@
+.form-headline {
+  color: $primary;
+  font-size: 2.5rem;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 800;
+
+}
+
+.birthday-headline {
+  display: flex;
+  border-radius: 9px;
+  padding: .5rem;
+}
+
+.birthday-label {
+  width: 100%;
+}
+
+.input100 {
+  width: 100%;
+}
+
+.form-header-container {
+  justify-content: center;
+  text-align: center;
+  margin-top: 60px;
+}

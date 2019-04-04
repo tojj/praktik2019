@@ -15,7 +15,23 @@
     align-items: center;
     @include media-breakpoint-up(lg){
       padding: 0 !important;
+
+      .input25 {
+        width: 25%;
+      }
+  
+      .input50 {
+        width: 50%;
+      }
+  
+      .input100 {
+        width: 100%;
+      }
     }
+
+    
+
+
     .box {
       z-index: 10;
       flex: 1;
