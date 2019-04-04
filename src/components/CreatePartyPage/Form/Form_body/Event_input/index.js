@@ -9,9 +9,6 @@ class EventInput extends React.Component {
   }
 
   render() {
-    // let today = new Date
-
-    // today = new Date(today.setDate(today.getDate() - 1)).getTime()
 
     return (
 
