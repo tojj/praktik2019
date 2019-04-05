@@ -17,25 +17,26 @@
     input {
       width: 100%;
     }
-    
-    @include media-breakpoint-up(lg){
+
+    @include media-breakpoint-up(lg) {
       padding: 0 !important;
 
       .input25 {
         width: 25%;
       }
-  
+
       .input50 {
         width: 50%;
       }
-  
+
       .input100 {
         width: 100%;
       }
+
+      .inputauto {
+        width: auto;
+      }
     }
-
-    
-
 
     .box {
       z-index: 10;
@@ -47,7 +48,7 @@
         width: 100%;
         height: auto;
         border-radius: 50%;
-        @include media-breakpoint-up(xl){
+        @include media-breakpoint-up(xl) {
           width: 75%;
         }
       }
