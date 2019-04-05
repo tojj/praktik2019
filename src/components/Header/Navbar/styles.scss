@@ -10,6 +10,7 @@ nav {
       background-color: $primary;
       padding: 0 0 1rem;
       height: auto;
+      top: 0;
       .link-item {
         display: inline-block;
         width: 100%;
@@ -46,11 +47,14 @@ nav {
       }
     }
   }
+  .burger-holder {
+    text-align: right;
+  }
   .burger-menu-btn {
+    cursor: pointer;
     background: rgba(0, 0, 0, 0);
     width: 50px;
     height: 50px;
-    float: right;
     margin: 1rem 1rem 0 0;
     @include media-breakpoint-up(md) {
       display: none;

@@ -51,11 +51,11 @@ class Navbar extends React.Component {
     
     return (
       <nav>
-        <div >
+        <div className="burger-holder">
           <img className="burger-menu-btn" onClick={this.toggle} alt="toggle menu" src="/images/burger-primary.png" />
         </div>
         <div className={this.state.burgerOpen ? 'nav-wrapper open' : 'nav-wrapper'}>
-          <div>
+          <div className="burger-holder"> 
             <img className="burger-menu-btn" onClick={this.toggle} alt="toggle menu" src="/images/burger-secondary.png" />
           </div>
           {this.props.showFull ? startPageNav : smallNav}
