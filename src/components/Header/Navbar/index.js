@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-scroll'
-import { NavLink } from 'react-router-dom'
+// import { NavLink } from 'react-router-dom'
 
 class Navbar extends React.Component {
   constructor(props) {
@@ -26,12 +26,8 @@ class Navbar extends React.Component {
             <div>
               <img className="burger-menu-btn" onClick={this.toggle} alt="close menu" src="/images/burger-secondary.png" />
             </div>
-            <NavLink
-              to="/skapa-kalas"
-              className="link-item">Skapa Kalas
-            </NavLink>
             <Link
-              // spy={true}
+              spy={true}
               smooth={true}
               duration={500}
               to="prodinfo-container"
