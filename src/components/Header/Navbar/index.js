@@ -26,6 +26,7 @@ class Navbar extends React.Component {
           duration={500}
           to={navItem.route}
           key={"navitem_" + i}
+          onClick={this.state.burgerOpen ? this.toggle : null}
           className="link-item">{navItem.name}
         </Link>
       )
@@ -35,6 +36,7 @@ class Navbar extends React.Component {
       <div>
         <NavLink
           to={navItems.smallNav[0].route}
+          onClick={this.state.burgerOpen ? this.toggle : null}
           className="link-item">{navItems.smallNav[0].name}
         </NavLink>
         <Link
@@ -42,18 +44,19 @@ class Navbar extends React.Component {
           smooth={true}
           duration={500}
           to={navItems.smallNav[1].route}
+          onClick={this.state.burgerOpen ? this.toggle : null}
           className="link-item">{navItems.smallNav[1].name}
         </Link>
       </div>
     
     return (
       <nav>
-        <div className="burger-menu-btn" onClick={this.toggle}>
-          <img src="/images/burger-primary.png" alt="open menu" />
+        <div >
+          <img className="burger-menu-btn" onClick={this.toggle} alt="toggle menu" src="/images/burger-primary.png" />
         </div>
         <div className={this.state.burgerOpen ? 'nav-wrapper open' : 'nav-wrapper'}>
           <div>
-            <img className="burger-menu-btn" onClick={this.toggle} alt="close menu" src="/images/burger-secondary.png" />
+            <img className="burger-menu-btn" onClick={this.toggle} alt="toggle menu" src="/images/burger-secondary.png" />
           </div>
           {this.props.showFull ? startPageNav : smallNav}
         </div>
