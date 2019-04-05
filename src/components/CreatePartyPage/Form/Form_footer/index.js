@@ -26,6 +26,7 @@ const Form_footer = props => (
     </div>
     <div className="slider-container">
       <div className="slider-content">
+        <h2 className="form-headline text-center">Välj välgörenhet</h2>
         <Slider {...settings}>
           <div className="testdiv">
             <img className="charImg" src="/images/barncancer-fonden.jpg" />
