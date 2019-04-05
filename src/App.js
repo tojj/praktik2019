@@ -10,14 +10,14 @@ import Footer from './components/Footer/index'
 import {updateBirthday} from './store/Birthday/BirthdayActions';
 
 const App = ({ updateBday, birthdayDate }) => {
-  
+
   const simpleAction = (event) => {
     updateBday(event.target.value);
   }
 
 const renderBirthdayDate = () => birthdayDate
   ? <span>{ birthdayDate }</span>
-  : null
+  : ''
 
 
   return (
@@ -26,20 +26,20 @@ const renderBirthdayDate = () => birthdayDate
         <Header />
       </header>
       <main>
+      { renderBirthdayDate() }
 
         <input 
           value={birthdayDate} 
           onChange={simpleAction}
         />
 
-        { renderBirthdayDate() }
-
         <Switch>
           <Route exact path="/" component={StartPage} />
           <Route exact path="/skapa-kalas" component={CreatePartyPage} />
         </Switch>
       </main>
-      <footer><Footer /></footer>
+      <footer><Footer /> 
+      </footer>
     </Router>
   )
 
