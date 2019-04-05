@@ -31,23 +31,20 @@ class Navbar extends React.Component {
       )
     })
       
-    const smallNav = () => {
-      return (
-        <div>
-          <NavLink
-            to={navItems.smallNav[0].route}
-            className="link-item">{navItems.smallNav[0].name}
-          </NavLink>
-          <Link
-            spy={true}
-            smooth={true}
-            duration={500}
-            to={navItems.smallNav[1].route}
-            className="link-item">{navItems.smallNav[1].name}
-          </Link>
-        </div>
-      )
-    }
+    const smallNav = 
+      <div>
+        <NavLink
+          to={navItems.smallNav[0].route}
+          className="link-item">{navItems.smallNav[0].name}
+        </NavLink>
+        <Link
+          spy={true}
+          smooth={true}
+          duration={500}
+          to={navItems.smallNav[1].route}
+          className="link-item">{navItems.smallNav[1].name}
+        </Link>
+      </div>
     
     return (
       <nav>
