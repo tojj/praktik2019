@@ -16,6 +16,5 @@ export function* watchUpdateBirthday(){
 }
 
 function* makeUpdateBirthday(action){
-  console.log(action)
   yield put(doUpdateBirthday(action.data))
 };

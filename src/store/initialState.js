@@ -1,5 +1,10 @@
 export default {
   birthday: {
-    birthdayDate: '',
+    birthdayEvent: {
+      title: '',
+      name: '',
+      age: '',
+      email: '',
+    }
   }
-};
+}

@@ -4,8 +4,7 @@ import { UPDATE_BIRTHDAY } from './BirthdayActions';
 export default function(state = initialState.birthday, action) {
   switch(action.type) {
     case UPDATE_BIRTHDAY:
-      console.log(action)
-      return { ...state, birthdayDate: action.data }
+      return { ...state, birthdayEvent: { ...state.birthdayEvent, ...action.data }}
 
     default:
       return state;
