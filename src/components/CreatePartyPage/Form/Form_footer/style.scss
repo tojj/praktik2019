@@ -59,7 +59,10 @@
   align-content: flex-start !important;
   justify-content: left !important;
   text-align: left !important;
-  margin-right: 5px;
+}
+
+.label-margin {
+  margin: 0 8px 0 8px;
 }
 
 .testdiv {
@@ -115,4 +118,20 @@
 
 .text-center {
   text-align: center;
+}
+
+.box-container {
+  display: flex;
+  flex-direction: column;
+  // flex-wrap: wrap;
+  position: relative;
+
+  width: 100%;
+  min-height: 10vh !important;
+
+  padding: 10vh 0;
+
+  justify-content: center;
+  align-content: center;
+  align-items: center;
 }

@@ -18,9 +18,11 @@ const Form_footer = props => (
         </label>
         <div className=".align-left">
           <input className="inputauto align-left" type="checkbox" />
-          <label className="align-left">Skänk till välgörenhet</label>
+          <label className="align-left label-margin">
+            Skänk till välgörenhet
+          </label>
           <input className="inputauto align-left " type="checkbox" />
-          <label className="align-left">Mer påkostat kalas</label>
+          <label className="align-left label-margin">Mer påkostat kalas</label>
         </div>
       </div>
     </div>
