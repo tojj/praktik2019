@@ -1,33 +1,86 @@
-import React from 'react'
-import staticData from '../../../../staticData'
+import React, { Component } from 'react'
+import { formHeaderData } from '../../../../staticData'
+import ImageHandler from './ImageHandler/index'
+import { connect } from 'react-redux'
+import { updateBirthday } from '../../../../store/Birthday/BirthdayActions'
+import Input from '../../../Input/index'
 
-const Form_header = (props) => (
-  <div className="form-header-container">
-    <div className="box-container">
-      <div className="box">
-        <h2 className="form-headline">Skapa Kalas</h2>
-        <form>
-          {(staticData.formHeaderData.map(renderLabels))}
-        </form>
-      </div>
+class Form_header extends Component {
 
-      <div className="box">
+  /**
+   * An advanced simple action
+   */
 
-      </div>
-    </div>
-  </div>
-)
+  simpleAction = (event) => {
+    this.props.updateBday(event.target.value)
+  }
 
-const renderLabels = ({ className, defaultValue, id, text }) => {
+  /**
+   * Render birthday date
+   */
 
-  return (
-    <label className="birthday-label" key={id}>
-      {text}
-      <input className={className} rows="2" type="text" defaultValue={defaultValue} />
+  renderBirthdayDate = () => this.props.birthdayDate
+    ? <span>{this.props.birthdayDate}</span>
+    : ''
+
+  /**
+   * Rendering my input fields here, so all three are shows
+   * I am doing this using Object.keys and map
+   */
+
+  renderInputs = () => this.props.birthdayEvent
+    ? Object.keys(this.props.birthdayEvent).map(this.renderInput)
+    : null
+
+
+  renderInput = key => (
+    <label className="birthday-label" key={key}>
+      {formHeaderData[key].text}
+      <Input
+        className={formHeaderData[key].className}
+        keyVal={key}
+        val={this.props.birthdayEvent[key]}
+        callback={this.callback}
+        placeholder={formHeaderData[key].defaultValue}
+      />
     </label>
   )
+
+  /**
+   * My callback function
+   */
+
+  callback = (value, key) => this.props.updateBday({ [key]: value })
+
+  render() {
+    return (
+      <div className="form-header-container">
+        <div className="box-container">
+          <div className="box">
+            <h2 className="form-headline">Skapa Kalas</h2>
+            <form>
+              {this.renderInputs()}
+              {this.renderBirthdayDate()}
+              <span>{}</span>
+            </form>
+          </div>
+          <div className="box">
+            <ImageHandler />
+          </div>
+        </div>
+      </div>
+    )
+  }
 }
 
+const mapStateToProps = state => {
+  return {
+    birthdayEvent: state.birthday.birthdayEvent
+  }
+}
 
-export default Form_header
+const mapDispatchToProps = dispatch => ({
+  updateBday: (data) => dispatch(updateBirthday(data))
+})
 
+export default connect(mapStateToProps, mapDispatchToProps)(Form_header)
