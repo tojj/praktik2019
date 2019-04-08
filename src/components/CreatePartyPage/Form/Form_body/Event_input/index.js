@@ -11,7 +11,7 @@ const EventInput = (props) => (
       <form>
         <label className="birthday-label">
           <span className="input-heading"> Skriv några ord till de inbjudna:</span>
-          <textarea className="textarea-label form-input input100" value="Skriv gärna någonting om kalaset..." />
+          <textarea className="textarea-label form-input input100" />
         </label>
         <label className="birthday-label">
           <span className="input-heading"> När är kalaset?</span>
