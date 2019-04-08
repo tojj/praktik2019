@@ -13,6 +13,11 @@
     justify-content: center;
     align-content: center;
     align-items: center;
+
+    input {
+      width: 100%;
+    }
+    
     @include media-breakpoint-up(lg){
       padding: 0 !important;
       .time-label {

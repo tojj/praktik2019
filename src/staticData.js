@@ -20,7 +20,7 @@ export const aboutData = [
 
 export const footerData = [
   {
-    text: "info@vojj.se",
+    text: "info@tojj.se",
     id: 1
   },
   {
@@ -71,10 +71,32 @@ export const productData = [
     id: 1
   },
   {
-    text: "Med Vojj är det nu enkelt att gå ihop och ge barnen något som de faktiskt önskar sig!",
+    text: "Med Tojj är det nu enkelt att gå ihop och ge barnen något som de faktiskt önskar sig!",
     id: 2
   }
 ]
+
+export const formHeaderData = {
+  title: {
+    className: "birthday-headline input100",
+    defaultValue: "Dunderkalas med hoppborg!",
+    text: "Vad vill du ha som rubrik?",
+    id: 1
+
+  },
+  name: {
+    className: "birthday-headline input50",
+    defaultValue: "Kent",
+    text: "Vem är kalaset för?",
+    id: 2
+  },
+  age: {
+    className: "birthday-headline input25",
+    defaultValue: "6",
+    text: "Hur mycket fylls?",
+    id: 3
+  },
+}
 
 
 export default {
@@ -82,5 +104,6 @@ export default {
   footerData,
   footerImages,
   convincerData,
-  productData
+  productData,
+  formHeaderData
 }

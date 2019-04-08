@@ -1,0 +1,30 @@
+{
+  "fullNav": [
+    {
+      "name": "Tojj",
+      "route": "prodinfo-container"
+    },
+    {
+      "name": "Varför?",
+      "route": "convincer-container"
+    },
+    {
+      "name": "Om oss",
+      "route": "about-container"
+    },
+    {
+      "name": "Kontakt",
+      "route": "contact-us"
+    }
+  ],
+  "smallNav": [
+    {
+      "name": "Startsida",
+      "route": "/"
+    },
+    {
+      "name": "Kontakt",
+      "route": "contact-us"
+    }
+  ]
+}
