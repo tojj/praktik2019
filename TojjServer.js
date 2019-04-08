@@ -24,7 +24,7 @@ module.exports = class Server {
     })
 
     const server = http.Server(app)
-    server.listen(3001, () => console.log('Vojj Server is on port 3001'))
+    server.listen(3001, () => console.log('Tojj Server is on port 3001'))
 
   }
 
