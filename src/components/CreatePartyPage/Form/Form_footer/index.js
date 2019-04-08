@@ -17,18 +17,24 @@ const Form_footer = props => (
           Vad vill du göra med överskott?{" "}
         </label>
         <div className=".align-left">
-          <input className="inputauto align-left" type="checkbox" />
-          <label className="align-left label-margin">
-            Skänk till välgörenhet
-          </label>
-          <input className="inputauto align-left " type="checkbox" />
-          <label className="align-left label-margin">Mer påkostat kalas</label>
+          <div className="input-div">
+            <input className="inputauto align-left" type="checkbox" />
+            <label className="align-left label-margin">
+              Skänk till välgörenhet
+            </label>
+          </div>
+          <div className="input-div">
+            <input className="inputauto align-left " type="checkbox" />
+            <label className="align-left label-margin">
+              Mer påkostat kalas
+            </label>
+          </div>
         </div>
       </div>
     </div>
+    <h2 className="form-headline text-center">Välj välgörenhet</h2>
     <div className="slider-container">
       <div className="slider-content">
-        <h2 className="form-headline text-center">Välj välgörenhet</h2>
         <Slider {...settings}>
           <div className="testdiv">
             <img className="charImg" src="/images/barncancer-fonden.jpg" />

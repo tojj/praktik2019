@@ -68,7 +68,6 @@
 .testdiv {
   min-height: 20vh;
   max-width: 200px;
-  background-color: lightblue;
 }
 
 .slider-container {
@@ -142,4 +141,12 @@
   .box-check {
     width: auto;
   }
+}
+
+.inputauto {
+  width: auto !important;
+}
+
+.input-div {
+  width: auto;
 }
