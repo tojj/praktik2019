@@ -96,12 +96,6 @@ export const formHeaderData = {
     text: "Hur mycket fylls?",
     id: 3
   },
-  email: {
-    className: "birthday-headline input25",
-    defaultValue: "6",
-    text: "ange email",
-    id: 3
-  }
 }
 
 

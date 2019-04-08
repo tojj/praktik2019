@@ -7,18 +7,9 @@ import StartPage from './components/StartPage/index'
 import CreatePartyPage from './components/CreatePartyPage/index'
 import Footer from './components/Footer/index'
 
-import {updateBirthday} from './store/Birthday/BirthdayActions';
+import {updateBirthday} from './store/Birthday/BirthdayActions'
 
-const App = ({ updateBday, birthdayDate }) => {
-
-  const simpleAction = (event) => {
-    updateBday(event.target.value);
-  }
-
-const renderBirthdayDate = () => birthdayDate
-  ? <span>{ birthdayDate }</span>
-  : ''
-
+const App = (props) => {
 
   return (
     <Router>
@@ -26,13 +17,6 @@ const renderBirthdayDate = () => birthdayDate
         <Header />
       </header>
       <main>
-      { renderBirthdayDate() }
-
-        <input 
-          value={birthdayDate} 
-          onChange={simpleAction}
-        />
-
         <Switch>
           <Route exact path="/" component={StartPage} />
           <Route exact path="/skapa-kalas" component={CreatePartyPage} />
@@ -53,4 +37,4 @@ const mapDispatchToProps = dispatch => ({
   updateBday: (data) => dispatch(updateBirthday(data))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App)

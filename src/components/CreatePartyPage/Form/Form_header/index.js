@@ -10,20 +10,28 @@ class Form_header extends Component {
   /**
    * An advanced simple action
    */
+
   simpleAction = (event) => {
-    this.props.updateBday(event.target.value);
+    this.props.updateBday(event.target.value)
   }
 
   /**
    * Render birthday date
    */
+
   renderBirthdayDate = () => this.props.birthdayDate
     ? <span>{this.props.birthdayDate}</span>
     : ''
 
+  /**
+   * Rendering my input fields here, so all three are shows
+   * I am doing this using Object.keys and map
+   */
+
   renderInputs = () => this.props.birthdayEvent
     ? Object.keys(this.props.birthdayEvent).map(this.renderInput)
-    : null;
+    : null
+
 
   renderInput = key => (
     <label className="birthday-label" key={key}>
@@ -38,7 +46,11 @@ class Form_header extends Component {
     </label>
   )
 
-  callback = (value, key) => this.props.updateBday({ [key]: value });
+  /**
+   * My callback function
+   */
+
+  callback = (value, key) => this.props.updateBday({ [key]: value })
 
   render() {
     return (
@@ -47,9 +59,9 @@ class Form_header extends Component {
           <div className="box">
             <h2 className="form-headline">Skapa Kalas</h2>
             <form>
-              {/* {(staticData.formHeaderData.map(this.renderLabels))} */}
               {this.renderInputs()}
               {this.renderBirthdayDate()}
+              <span>{}</span>
             </form>
           </div>
           <div className="box">

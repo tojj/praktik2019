@@ -4,7 +4,6 @@ export default {
       title: '',
       name: '',
       age: '',
-      email: '',
     }
   }
 }

@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 
 const Input = ({ val, callback, keyVal, placeholder, className }) => {
   /**
@@ -6,6 +6,7 @@ const Input = ({ val, callback, keyVal, placeholder, className }) => {
    * @param value
    * @private
    */
+  
   const _onChange = ({ target: { value }}) => {
     callback( value, keyVal )
   }
@@ -21,4 +22,4 @@ const Input = ({ val, callback, keyVal, placeholder, className }) => {
   )
 }
 
-export default Input;
+export default Input

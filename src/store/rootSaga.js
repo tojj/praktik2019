@@ -1,5 +1,5 @@
-import { all } from 'redux-saga/effects';
-import { watchUpdateBirthday } from './Birthday/BirthdaySaga';
+import { all } from 'redux-saga/effects'
+import { watchUpdateBirthday } from './Birthday/BirthdaySaga'
 
 /**
  * Generator funktion ska alltid ha * lär dig använda
