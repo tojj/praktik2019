@@ -20,6 +20,12 @@
     
     @include media-breakpoint-up(lg){
       padding: 0 !important;
+      .time-label {
+        display: flex;;
+      }
+      .input10 {
+        width: 10%;
+      }
 
       .input25 {
         width: 25%;
