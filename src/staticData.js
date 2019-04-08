@@ -20,7 +20,7 @@ export const aboutData = [
 
 export const footerData = [
   {
-    text: "info@vojj.se",
+    text: "info@tojj.se",
     id: 1
   },
   {
@@ -71,7 +71,7 @@ export const productData = [
     id: 1
   },
   {
-    text: "Med Vojj är det nu enkelt att gå ihop och ge barnen något som de faktiskt önskar sig!",
+    text: "Med Tojj är det nu enkelt att gå ihop och ge barnen något som de faktiskt önskar sig!",
     id: 2
   }
 ]

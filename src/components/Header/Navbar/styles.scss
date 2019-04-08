@@ -1,6 +1,7 @@
 nav {
   .nav-wrapper {
     display: none;
+    z-index: 20;
     &.open {
       width: 100%;
       position: absolute;
@@ -9,6 +10,7 @@ nav {
       background-color: $primary;
       padding: 0 0 1rem;
       height: auto;
+      top: 0;
       .link-item {
         display: inline-block;
         width: 100%;
@@ -23,14 +25,18 @@ nav {
       width: 100%;
       display: block;
       text-align: right;
-      background-color: $secondary;
       height: auto;
       .link-item {
         display: inline-block;
         font-family: $big-text;
         font-weight: 800;
-        color: $primary !important;
-        margin: 0 0 0 2rem;
+        color: $primary;
+        margin-left: 4rem;
+        &:hover {
+          cursor: pointer;
+          text-decoration: none;
+          color: $dark !important;
+        }
         @include media-breakpoint-up(lg){
           font-size: 1.3rem;
         }
@@ -40,11 +46,14 @@ nav {
       }
     }
   }
+  .burger-holder {
+    text-align: right;
+  }
   .burger-menu-btn {
+    cursor: pointer;
     background: rgba(0, 0, 0, 0);
     width: 50px;
     height: 50px;
-    float: right;
     margin: 1rem 1rem 0 0;
     @include media-breakpoint-up(md) {
       display: none;

@@ -7,14 +7,14 @@ import StartPage from './components/StartPage/index'
 import CreatePartyPage from './components/CreatePartyPage/index'
 import Footer from './components/Footer/index'
 
-import {updateBirthday} from './store/Birthday/BirthdayActions'
-
 const App = (props) => {
-
   return (
     <Router>
       <header>
-        <Header />
+        <Switch>
+          <Route exact path="/" render={(...routeProps)=> (<Header {...routeProps} startPage={true} />)} />
+          <Route path="/" render={(...routeProps)=> (<Header {...routeProps} startPage={false} />)} />
+        </Switch>
       </header>
       <main>
         <Switch>

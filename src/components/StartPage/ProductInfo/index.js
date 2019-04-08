@@ -2,9 +2,9 @@ import React from "react"
 import staticData from '../../../staticData'
 
 const ProductInfo = (props) => (
-  <div className="box-container prodinfo-container">
+  <div className="box-container prodinfo-container" id="prodinfo-container">
     <div className="box prodinfo-box-1">
-      <img className="box-img fg-image" src="/images/eye-catcher-img.png" alt="fg" />
+      <img className="box-img fg-image" src="/images/bd-boy.jpg" alt="child superhero" />
     </div>
     <div className="box prodinfo-box-2">
       <h2 className="prodinfo-header">Kvalitet över kvantitet</h2>

@@ -3,7 +3,7 @@ import staticData from '../../staticData'
 
 const Footer = (props) => (
   <div className="footer-container" id="contact-us">
-    <h1 className="footer-headliner">Vojj</h1>
+    <h1 className="footer-headliner">Tojj</h1>
     {staticData.footerData.map(renderFooterText)}
     <div className="media-container">
       {staticData.footerImages.map(renderFooterImages)}
