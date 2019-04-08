@@ -39,7 +39,6 @@ class SwishQR extends React.Component {
             <option>Blå</option>
             <option>Röd</option>
             <option>Grön</option>
-            <option><div height="10px" width="10px" backgroundColor="blue"/></option>
           </select>
         </div>
         <div className="box">
