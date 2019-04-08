@@ -6,6 +6,7 @@ import Header from './components/Header/index'
 import StartPage from './components/StartPage/index'
 import CreatePartyPage from './components/CreatePartyPage/index'
 import Footer from './components/Footer/index'
+import { updateBirthday } from './store/Birthday/BirthdayActions'
 
 const App = (props) => {
   return (
