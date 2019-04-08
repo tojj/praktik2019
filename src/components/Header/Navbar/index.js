@@ -9,9 +9,9 @@ class Navbar extends React.Component {
     this.state = {
       burgerOpen: false
     }    
-    this.toggle = this.toggle.bind(this)    
   }
-  toggle() {
+  
+  toggle = () => {
     this.setState({
       burgerOpen: !this.state.burgerOpen
     })
