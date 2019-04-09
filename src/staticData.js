@@ -90,27 +90,6 @@ export const formHeaderData = {
     text: "Vad vill du ha som rubrik?",
     id: 1
   },
-  {
-    className: "birthday-headline input50",
-    defaultValue: "Kent",
-    text: "Vem är kalaset för?",
-    id: 2
-  },
-  {
-    className: "birthday-headline input25",
-    defaultValue: "6",
-    text: "Hur mycket fylls?",
-    id: 3
-  }
-]
-
-export const formFooterData = [
-  {
-    className: "birthday-headline input100",
-    defaultValue: "Dunderkalas med hoppborg!",
-    text: "Vad vill du ha som rubrik?",
-    id: 1
-  },
   name: {
     className: "birthday-headline input50",
     defaultValue: "Kent",
@@ -122,7 +101,7 @@ export const formFooterData = [
     defaultValue: "6",
     text: "Hur mycket fylls?",
     id: 3
-  },
+  }
 }
 
 export const carouselData = [
@@ -159,6 +138,5 @@ export default {
   convincerData,
   productData,
   formHeaderData,
-  formFooterData,
   carouselData
 }
