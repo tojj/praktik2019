@@ -36,24 +36,7 @@ const Form_footer = props => (
     <div className="slider-container">
       <div className="slider-content">
         <Slider {...settings}>
-          <div className="slider-div">
-            <img className="charImg" src="/images/barncancer-fonden.jpg" />
-          </div>
-          <div className="slider-div">
-            <img className="charImg" src="/images/radda-barnen.png" />
-          </div>
-          <div className="slider-div">
-            <img className="charImg" src="/images/bris-ny.jpg" />
-          </div>
-          <div className="slider-div">
-            <img className="charImg" src="/images/sos-ny.jpg" />
-          </div>
-          <div className="slider-div">
-            <img className="charImg" src="/images/redcross.jpg" />
-          </div>
-          <div className="slider-div">
-            <img className="charImg" src="/images/habitat.jpg" />
-          </div>
+          {(staticData.carouselData.map(renderImage))}
         </Slider>
       </div>
     </div>
@@ -67,6 +50,14 @@ const Form_footer = props => (
     </div>
   </div>
 )
+
+const renderImage = ({ id, img }) => {
+  return (
+    <div className="slider-div" key={id}>
+      <img className="charImg" src={img} alt="" />
+    </div>
+  )
+}
 
 const settings = {
   dots: false,

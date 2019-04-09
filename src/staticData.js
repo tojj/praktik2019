@@ -126,6 +126,33 @@ export const formFooterData = [
   }
 ]
 
+export const carouselData = [
+  {
+    img: "/images/barncancer-fonden.jpg",
+    id: 1,
+  },
+  {
+    img: "/images/radda-barnen.png",
+    id: 2,
+  },
+  {
+    img: "/images/bris-ny.jpg",
+    id: 3,
+  },
+  {
+    img: "/images/sos-ny.jpg",
+    id: 4,
+  },
+  {
+    img: "/images/redcross.jpg",
+    id: 5,
+  },
+  {
+    img: "/images/habitat.jpg",
+    id: 6,
+  },
+]
+
 export default {
   aboutData,
   footerData,
@@ -133,5 +160,6 @@ export default {
   convincerData,
   productData,
   formHeaderData,
-  formFooterData
+  formFooterData,
+  carouselData
 }
