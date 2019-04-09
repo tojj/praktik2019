@@ -6,30 +6,24 @@ import Slider from "react-slick"
 const Form_footer = props => (
   <div className="form-footer-container">
     <div className="box-container">
-      <div className="box">
+      <div className="box max-height">
+        <h2 className="event-heading">Telefonnummer för swish</h2>
         <label className="birthday-label">
-          Telefonnummer för swish
           <input className="birthday-headline input100" rows="2" type="text" />
         </label>
       </div>
       <div className="box align-left">
-        <label className="birthday-label">
-          Vad vill du göra med överskott?{" "}
-        </label>
-        <div className=".align-left">
-          <div className="input-div">
-            <input className="inputauto align-left" type="checkbox" />
-            <label className="align-left label-margin">
-              Skänk till välgörenhet
-            </label>
+        <form class="form">
+          <h2 className="event-heading">Vad vill du göra med överskott?</h2>
+          <div class="inputGroup">
+            <input id="radio1" name="radio" type="radio" />
+            <label for="radio1">Ge till välgörenhet</label>
           </div>
-          <div className="input-div">
-            <input className="inputauto align-left " type="checkbox" />
-            <label className="align-left label-margin">
-              Mer påkostat kalas
-            </label>
+          <div class="inputGroup">
+            <input id="radio2" name="radio" type="radio" />
+            <label for="radio2">Mer påkostat kalas</label>
           </div>
-        </div>
+        </form>
       </div>
     </div>
     <h2 className="form-headline text-center">Välj välgörenhet</h2>
