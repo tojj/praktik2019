@@ -6,6 +6,8 @@
   height: 150px;
   border-radius: 9px;
   width: 100%;
+  background-size: cover;
+  background-clip: #fff;
 }
 
 .image-text {
@@ -30,7 +32,14 @@
 .image-dropdown {
   margin-top: 10px;
 }
-
+.dd-image {
+  width: 100% !important;
+}
+.dd-item {
+  display: inline-block;
+  width: 60px;
+  padding: 5px;
+}
 .image-dropdown {
   background-color: $secondary;
   color: $primary;
