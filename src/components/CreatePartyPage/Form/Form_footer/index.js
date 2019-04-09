@@ -36,7 +36,7 @@ const Form_footer = props => (
     <div className="slider-container">
       <div className="slider-content">
         <Slider {...settings}>
-          {(staticData.carouselData.map(renderImage))}
+          {staticData.carouselData.map(renderImage)}
         </Slider>
       </div>
     </div>
@@ -72,8 +72,7 @@ const settings = {
       settings: {
         slidesToShow: 3,
         slidesToScroll: 1,
-        infinite: true,
-        dots: true
+        infinite: true
       }
     },
     {
@@ -81,14 +80,15 @@ const settings = {
       settings: {
         slidesToShow: 2,
         slidesToScroll: 1,
-        initialSlide: 2
+        infinite: true
       }
     },
     {
       breakpoint: 595,
       settings: {
         slidesToShow: 1,
-        slidesToScroll: 1
+        slidesToScroll: 1,
+        infinite: true
       }
     }
   ]
