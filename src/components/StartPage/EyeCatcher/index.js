@@ -5,7 +5,7 @@ const EyeCatcher = (props) => (
   <div className="box-container eye-catcher" id="eye-catcher">
     <div className="box box-1">
       <h2 className="main-heading" id="eye-catcher-heading">BÄSTA PRESENTEN</h2>
-      <p>Med Vojj kan alla få det kalas de förtjänar. Klicka på knappen nedan för att skapa ditt kalas nu!</p>
+      <p>Med Tojj kan alla få det kalas de förtjänar. Klicka på knappen nedan för att skapa ditt kalas nu!</p>
       <Link to="/skapa-kalas" className="link-eye-catcher">Skapa kalas</Link>
     </div>
     <div className="box box-2">

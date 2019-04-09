@@ -1,2 +1,2 @@
-const Server = require('./VojjServer')
+const Server = require('./TojjServer')
 new Server()
