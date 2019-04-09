@@ -48,12 +48,12 @@ class ImageHandler extends React.Component {
             Våra urval <ArrowDownCircle />
           </DropdownToggle>
           <DropdownMenu>
-            <DropdownItem onClick={this.test} className="dd-item"><img className="dd-image" src="/images/patterns/cake.jpg" alt="asdad" /></DropdownItem>
-            <DropdownItem onClick={this.test} className="dd-item"><img className="dd-image" src="/images/patterns/camo.jpg" alt="asdad" /></DropdownItem>
-            <DropdownItem onClick={this.test} className="dd-item"><img className="dd-image" src="/images/patterns/heart.png" alt="asdad" /></DropdownItem>
-            <DropdownItem onClick={this.test} className="dd-item"><img className="dd-image" src="/images/patterns/blue.jpg" alt="asdad" /></DropdownItem>
-            <DropdownItem onClick={this.test} className="dd-item"><img className="dd-image" src="/images/patterns/leaf.png" alt="asdad" /></DropdownItem>
-            <DropdownItem onClick={this.test} className="dd-item"><img className="dd-image" src="/images/patterns/navy.jpg" alt="asdad" /></DropdownItem>
+            <DropdownItem onClick={this.test} className="dd-item"><img className="dd-image" src="/images/patterns/cake.jpg" alt="cake" /></DropdownItem>
+            <DropdownItem onClick={this.test} className="dd-item"><img className="dd-image" src="/images/patterns/camo.jpg" alt="camo" /></DropdownItem>
+            <DropdownItem onClick={this.test} className="dd-item"><img className="dd-image" src="/images/patterns/heart.jpg" alt="heart" /></DropdownItem>
+            <DropdownItem onClick={this.test} className="dd-item"><img className="dd-image" src="/images/patterns/blue.jpg" alt="blue" /></DropdownItem>
+            <DropdownItem onClick={this.test} className="dd-item"><img className="dd-image" src="/images/patterns/leaf.jpg" alt="leaf" /></DropdownItem>
+            <DropdownItem onClick={this.test} className="dd-item"><img className="dd-image" src="/images/patterns/navy.jpg" alt="navy" /></DropdownItem>
           </DropdownMenu>
         </Dropdown>
       </div>
