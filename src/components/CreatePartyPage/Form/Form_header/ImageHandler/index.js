@@ -43,17 +43,18 @@ class ImageHandler extends React.Component {
             : null
           }
         </div>
-        <Dropdown className="image-dropdown" isOpen={this.state.dropdownOpen} toggle={this.toggle}>
-          <DropdownToggle>
-            Våra urval <ArrowDownCircle />
+        <Dropdown className="image-dropdown" isOpen={this.state.dropdownOpen} toggle={this.toggle} style={{border: 'none', padding: '0', zIndex: '99'}}>
+          <DropdownToggle color="primary" className="w-100">
+            Välj bild <ArrowDownCircle />
           </DropdownToggle>
-          <DropdownMenu>
+          <DropdownMenu style={{padding: '5px 10px', width: '100%'}}>
             <DropdownItem onClick={this.test} className="dd-item"><img className="dd-image" src="/images/patterns/cake.jpg" alt="cake" /></DropdownItem>
             <DropdownItem onClick={this.test} className="dd-item"><img className="dd-image" src="/images/patterns/camo.jpg" alt="camo" /></DropdownItem>
             <DropdownItem onClick={this.test} className="dd-item"><img className="dd-image" src="/images/patterns/heart.jpg" alt="heart" /></DropdownItem>
             <DropdownItem onClick={this.test} className="dd-item"><img className="dd-image" src="/images/patterns/blue.jpg" alt="blue" /></DropdownItem>
             <DropdownItem onClick={this.test} className="dd-item"><img className="dd-image" src="/images/patterns/leaf.jpg" alt="leaf" /></DropdownItem>
             <DropdownItem onClick={this.test} className="dd-item"><img className="dd-image" src="/images/patterns/navy.jpg" alt="navy" /></DropdownItem>
+            <DropdownItem className="dd-item float-right"><img className="dd-image" src="/images/add-img.jpg" alt="add new" /></DropdownItem>
           </DropdownMenu>
         </Dropdown>
       </div>
