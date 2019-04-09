@@ -2,24 +2,23 @@
 @import "./bootstrap-overrides";
 
 // Import of Bootstrap
-@import 'node_modules/bootstrap/scss/functions';
-@import 'node_modules/bootstrap/scss/bootstrap';
+@import "node_modules/bootstrap/scss/functions";
+@import "node_modules/bootstrap/scss/bootstrap";
 
 // Import our Basic Styles for the application
-@import './basic-styles';
+@import "./basic-styles";
 
 //Import all our sass-files
 // HEADER
-@import '../Components/Header/styles';
-@import '../Components/Header/Navbar/styles';
+@import "../Components/Header/styles";
+@import "../Components/Header/Navbar/styles";
 
 // STARTPAGE
-@import '../components/StartPage/styles';
-@import '../components/StartPage/EyeCatcher/styles';
+@import "../components/StartPage/styles";
+@import "../components/StartPage/EyeCatcher/styles";
 @import "../Components/StartPage/ProductInfo/styles";
-@import '../components/StartPage/Convincer/styles';
-@import '../Components/StartPage/about_us/styles';
-
+@import "../components/StartPage/Convincer/styles";
+@import "../Components/StartPage/about_us/styles";
 
 // CREATEPARTYPAGE
 @import '../components/CreatePartyPage/styles';
@@ -28,10 +27,9 @@
 @import '../components/CreatePartyPage/Form/Form_body/styles';
 @import '../components/CreatePartyPage/Form/Form_body/Event_input/styles';
 @import '../components/CreatePartyPage/form/Form_header/ImageHandler/styles';
+@import "../components/CreatePartyPage/form/Form_footer/style";
 @import '../components/CreatePartyPage/SwishQR/styles';
-
-
 // PARTYPAGE
 
 // FOOTER
-@import '../Components/Footer/styles';
+@import "../Components/Footer/styles";

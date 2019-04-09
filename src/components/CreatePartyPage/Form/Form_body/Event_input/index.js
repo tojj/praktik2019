@@ -17,7 +17,7 @@ const EventInput = (props) => (
           <span className="input-heading">När är kalaset?</span>
           <div className="time-label">
             <input className="form-input input50" rows="2" type="date" />
-            <input className="form-input input25" rows="2" type="time" value="12:00" />
+            <input className="form-input input25" rows="2" type="time" />
           </div>
         </label>
         <label className="birthday-label">

@@ -1,4 +1,6 @@
-
+.fg-image {
+  width: 50% !important;
+}
 .event-heading{
   color: $primary;
 }
@@ -14,6 +16,7 @@
   display: flex;
   border-radius: 9px;
   padding: .5rem;
+  margin: 5px;
 }
 
 textarea:focus, input:focus {
@@ -23,3 +26,4 @@ textarea:focus, input:focus {
 input, select, textarea{
   color: #999;
 }
+
