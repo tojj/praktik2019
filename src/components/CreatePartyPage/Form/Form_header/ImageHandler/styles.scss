@@ -34,11 +34,12 @@
 }
 .dd-image {
   width: 100% !important;
+  padding: 5px;
 }
 .dd-item {
   display: inline-block;
   width: 60px;
-  padding: 5px;
+  padding: 0;
 }
 .image-dropdown {
   background-color: $secondary;
