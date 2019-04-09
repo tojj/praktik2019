@@ -1,11 +1,11 @@
 .startpage-wrapper {
   @include media-breakpoint-up(lg){
-    & > .eye-catcher {
-      min-height: 0 !important;
-      height: 80vh !important;
-    }
     .box-container {
       padding: 0 !important;
+      &.eye-catcher {
+        min-height: 0 !important;
+        height: 80vh !important;
+      }
     }
   }
   .box-container {
