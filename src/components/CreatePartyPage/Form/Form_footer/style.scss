@@ -159,9 +159,10 @@
   display: block;
   margin: 10px 0;
   position: relative;
+  border-radius: 10px;
 
   label {
-    padding: 12px 30px;
+    padding: 6px 30px;
     width: 100%;
     display: block;
     text-align: left;
@@ -171,6 +172,8 @@
     z-index: 2;
     transition: color 200ms ease-in;
     overflow: hidden;
+    border-radius: 10px;
+    font-family: $big-text;
 
     &:before {
       width: 10px;
@@ -243,19 +246,4 @@
   font-size: 18px;
   font-weight: 600;
   line-height: 36px;
-}
-
-*,
-*::before,
-*::after {
-  box-sizing: inherit;
-}
-
-html {
-  box-sizing: border-box;
-}
-
-code {
-  background-color: #9aa3ac;
-  padding: 0 8px;
 }
