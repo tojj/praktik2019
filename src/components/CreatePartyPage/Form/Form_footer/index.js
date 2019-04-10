@@ -6,7 +6,7 @@ import Slider from "react-slick"
 const Form_footer = props => (
   <div className="form-footer-container">
     <div className="box-container">
-      <div className="box max-height">
+      <div className="box">
         <h2 className="event-heading">Telefonnummer för swish</h2>
         <label className="birthday-label">
           <input
