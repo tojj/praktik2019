@@ -1,4 +1,9 @@
 import React from 'react'
+import {
+  FormGroup,
+  Label,
+  Input
+} from 'reactstrap'
 
 const EventInput = (props) => (
 
@@ -7,32 +12,30 @@ const EventInput = (props) => (
       <h2 className="event-heading">Var, när <br /> &amp; hur?</h2>
       <img className="box-img fg-image" src="/images/time-place.png" alt="event" />
     </div>
-    <div className="box">
-      <form>
-        <label className="birthday-label">
-          <span className="input-heading"> Skriv några ord till de inbjudna:</span>
-          <textarea className="textarea-label form-input input100" />
-        </label>
-        <label className="birthday-label">
-          <span className="input-heading">När är kalaset?</span>
-          <div className="time-label">
-            <input className="form-input input50" rows="2" type="date" />
-            <input className="form-input input25" rows="2" type="time" />
-          </div>
-        </label>
-        <label className="birthday-label">
-          <span className="input-heading">Plats:</span>
-          <input className="form-input input100" rows="2" type="text" placeholder="Gatuadress" />
-          <div className="time-label">
-            <input className="form-input input25" rows="2" type="text" placeholder="Postnummer" />
-            <input className="form-input input25" rows="2" type="text" placeholder="Stad" />
-          </div>
-        </label>
-        <label className="birthday-label">
-          <span className="input-heading">När vill du senast ha svar om vem som kommer?</span>
-          <input className="form-input input50" rows="2" type="date" />
-        </label>
-      </form>
+    <div className="box text-left">
+      <FormGroup>
+        <Label className="birthday-label">Skriv några ord till de inbjudna</Label>
+        <Input type="textarea" className="textarea-label form-input input100" />
+      </FormGroup>
+      <FormGroup>
+        <Label className="birthday-label">När är kalaset?</Label>
+        <div className="time-label">
+          <Input className="form-input input50" rows="2" type="date" />
+          <Input className="form-input input25" rows="2" type="time" defaultValue="12:00" />
+        </div>
+        <FormGroup>
+        </FormGroup>
+        <Label className="location-label">Plats</Label>
+        <Input className="form-input input100" rows="2" type="text" placeholder="Gatuadress" />
+        <div className="time-label mt-2">
+          <Input className="form-input input25" rows="2" type="text" placeholder="Postnr" />
+          <Input className="form-input input50" rows="2" type="text" placeholder="Stad" />
+        </div>
+      </FormGroup>
+      <FormGroup>
+        <Label className="birthday-label">När vill du senast ha svar om vem som kommer?</Label>
+        <Input className="form-input input50" rows="2" type="date" />
+      </FormGroup>
     </div>
   </div>
 )

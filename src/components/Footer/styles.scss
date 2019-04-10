@@ -4,7 +4,7 @@
   justify-content: center;
   text-align: center;
   flex-direction: column;
-  padding: 10vh 0 0;
+  padding: 5vh 0 0;
   color: $secondary;
 }
 
@@ -39,6 +39,20 @@
   
   &:nth-child(2){
     margin: 0 30px;
+  }
+}
+
+.media-icon {
+  
+  color: #eee;
+  transition: all .2s;
+
+  &:hover{
+    color: #fff;
+  }
+
+  &:nth-child(2){
+    margin: 0 15px;
   }
 }
 

@@ -1,11 +1,11 @@
 .startpage-wrapper {
   @include media-breakpoint-up(lg){
-    & > .eye-catcher {
-      min-height: 0 !important;
-      height: 80vh !important;
-    }
     .box-container {
       padding: 0 !important;
+      &.eye-catcher {
+        min-height: 0 !important;
+        height: 80vh !important;
+      }
     }
   }
   .box-container {
@@ -14,20 +14,13 @@
     position: relative;
 
     width: 100%;
-    min-height: 100vh !important;
+    min-height: 100vh;
 
     padding: 10vh 0;
 
     justify-content: center;
     align-content: center;
     align-items: center;
-    @include media-breakpoint-up(lg){
-      padding: 0 !important;
-      & > .eye-catcher {
-        min-height: 0 !important;
-        height: 80vh !important;
-      }
-    }
     .box {
       z-index: 10;
       flex: 1;

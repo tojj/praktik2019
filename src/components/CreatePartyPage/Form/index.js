@@ -2,13 +2,14 @@ import React from 'react'
 import FormHeader from './Form_header/index'
 import FormBody from './Form_body/index'
 import FormFooter from './Form_footer/index'
+import { Form } from 'reactstrap'
 
-const Form = props => (
-  <div className="form-container">
+const FormContainer = props => (
+  <Form className="form-container">
     <FormHeader />
     <FormBody />
     <FormFooter />
-  </div>
+  </Form>
 )
 
-export default Form
+export default FormContainer

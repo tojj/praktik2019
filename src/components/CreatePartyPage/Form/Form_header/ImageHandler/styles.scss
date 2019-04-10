@@ -6,6 +6,8 @@
   height: 150px;
   border-radius: 9px;
   width: 100%;
+  background-repeat: repeat;
+  background-clip: #fff;
 }
 
 .image-text {
@@ -30,7 +32,23 @@
 .image-dropdown {
   margin-top: 10px;
 }
-
+.dd-image {
+  width: 100% !important;
+  border: 1px solid $dark;
+  padding: 0;
+  border-radius: 10px;
+  background-color: black;
+  opacity: .85;
+  &:hover {
+    opacity: 1;
+  }
+}
+.dd-item {
+  display: inline-block;
+  width: 60px;
+  padding: 0;
+  margin: 5px 0 5px 5px;
+}
 .image-dropdown {
   background-color: $secondary;
   color: $primary;
@@ -42,10 +60,6 @@
   border-radius: 2px;
   margin-top: 1rem;
   transition: all .3s;
-  &:hover {
-    color: $secondary;
-    background-color: $primary;
-  }
 }
 
 @include media-breakpoint-up(md){
