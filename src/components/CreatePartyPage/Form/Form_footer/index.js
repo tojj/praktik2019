@@ -7,11 +7,7 @@ const Form_footer = props => (
   <div className="form-footer-container">
     <div className="box-container">
       <div className="box">
-        <img
-          className="box-img fg-image"
-          src="/images/present.png"
-          alt="event"
-        />
+        <img className="box-img" src="/images/present.png" alt="event" />
       </div>
       <div className="box align-left">
         <form className="form">
