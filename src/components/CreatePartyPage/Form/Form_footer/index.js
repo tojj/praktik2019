@@ -7,23 +7,11 @@ const Form_footer = props => (
   <div className="form-footer-container">
     <div className="box-container">
       <div className="box">
-        <h2 className="event-heading text-center">Telefonnummer för swish</h2>
-        <label className="birthday-label">
-          <input
-            className="birthday-headline input100"
-            rows="2"
-            type="text"
-            placeholder="Telefonnummer"
-          />
-        </label>
-        <label className="birthday-label">
-          <input
-            className="birthday-headline input100"
-            rows="2"
-            type="text"
-            placeholder="Belopp"
-          />
-        </label>
+        <img
+          className="box-img fg-image"
+          src="/images/present.png"
+          alt="event"
+        />
       </div>
       <div className="box align-left">
         <form className="form">
