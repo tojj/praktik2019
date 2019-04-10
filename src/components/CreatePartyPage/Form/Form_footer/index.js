@@ -17,11 +17,11 @@ const Form_footer = props => (
           <h2 className="event-heading">Vad vill du göra med överskott?</h2>
           <div className="inputGroup">
             <input id="radio1" name="radio" type="radio" />
-            <label for="radio1">Ge till välgörenhet</label>
+            <label htmlFor="radio1">Ge till välgörenhet</label>
           </div>
           <div className="inputGroup">
             <input id="radio2" name="radio" type="radio" />
-            <label for="radio2">Mer påkostat kalas</label>
+            <label htmlFor="radio2">Mer påkostat kalas</label>
           </div>
         </form>
       </div>
