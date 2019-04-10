@@ -7,29 +7,36 @@ const Form_footer = props => (
   <div className="form-footer-container">
     <div className="box-container">
       <div className="box">
-        <label className="birthday-label">
-          Telefonnummer för swish
-          <input className="birthday-headline input100" rows="2" type="text" />
-        </label>
+        <img className="box-img" src="/images/present.png" alt="event" />
       </div>
       <div className="box align-left">
-        <label className="birthday-label">
-          Vad vill du göra med överskott?{" "}
-        </label>
-        <div className=".align-left">
-          <div className="input-div">
-            <input className="inputauto align-left" type="checkbox" />
-            <label className="align-left label-margin">
-              Skänk till välgörenhet
+        <form className="form">
+          <h2 className="event-heading text-center">
+            Vad vill du göra med överskott?
+          </h2>
+          <div className="input-group">
+            <input
+              className="radio-input"
+              id="radio1"
+              name="radio"
+              type="radio"
+            />
+            <label className="radio-label" htmlFor="radio1">
+              Ge till välgörenhet
             </label>
           </div>
-          <div className="input-div">
-            <input className="inputauto align-left " type="checkbox" />
-            <label className="align-left label-margin">
+          <div className="input-group">
+            <input
+              className="radio-input"
+              id="radio2"
+              name="radio"
+              type="radio"
+            />
+            <label className="radio-label" htmlFor="radio2">
               Mer påkostat kalas
             </label>
           </div>
-        </div>
+        </form>
       </div>
     </div>
     <h2 className="form-headline charity-headline text-center">Välj välgörenhet</h2>
