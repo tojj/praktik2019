@@ -7,7 +7,7 @@ const Form_footer = props => (
   <div className="form-footer-container">
     <div className="box-container">
       <div className="box">
-        <h2 className="event-heading">Telefonnummer för swish</h2>
+        <h2 className="event-heading text-center">Telefonnummer för swish</h2>
         <label className="birthday-label">
           <input
             className="birthday-headline input100"
@@ -27,7 +27,9 @@ const Form_footer = props => (
       </div>
       <div className="box align-left">
         <form className="form">
-          <h2 className="event-heading">Vad vill du göra med överskott?</h2>
+          <h2 className="event-heading text-center">
+            Vad vill du göra med överskott?
+          </h2>
           <div className="input-group">
             <input
               className="radio-input"
