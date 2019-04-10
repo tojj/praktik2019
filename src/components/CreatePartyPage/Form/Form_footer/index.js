@@ -13,13 +13,13 @@ const Form_footer = props => (
         </label>
       </div>
       <div className="box align-left">
-        <form class="form">
+        <form className="form">
           <h2 className="event-heading">Vad vill du göra med överskott?</h2>
-          <div class="inputGroup">
+          <div className="inputGroup">
             <input id="radio1" name="radio" type="radio" />
             <label for="radio1">Ge till välgörenhet</label>
           </div>
-          <div class="inputGroup">
+          <div className="inputGroup">
             <input id="radio2" name="radio" type="radio" />
             <label for="radio2">Mer påkostat kalas</label>
           </div>
