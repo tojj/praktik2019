@@ -9,19 +9,46 @@ const Form_footer = props => (
       <div className="box max-height">
         <h2 className="event-heading">Telefonnummer för swish</h2>
         <label className="birthday-label">
-          <input className="birthday-headline input100" rows="2" type="text" />
+          <input
+            className="birthday-headline input100"
+            rows="2"
+            type="text"
+            placeholder="Telefonnummer"
+          />
+        </label>
+        <label className="birthday-label">
+          <input
+            className="birthday-headline input100"
+            rows="2"
+            type="text"
+            placeholder="Belopp"
+          />
         </label>
       </div>
       <div className="box align-left">
         <form className="form">
           <h2 className="event-heading">Vad vill du göra med överskott?</h2>
-          <div className="inputGroup">
-            <input id="radio1" name="radio" type="radio" />
-            <label htmlFor="radio1">Ge till välgörenhet</label>
+          <div className="input-group">
+            <input
+              className="radio-input"
+              id="radio1"
+              name="radio"
+              type="radio"
+            />
+            <label className="radio-label" htmlFor="radio1">
+              Ge till välgörenhet
+            </label>
           </div>
-          <div className="inputGroup">
-            <input id="radio2" name="radio" type="radio" />
-            <label htmlFor="radio2">Mer påkostat kalas</label>
+          <div className="input-group">
+            <input
+              className="radio-input"
+              id="radio2"
+              name="radio"
+              type="radio"
+            />
+            <label className="radio-label" htmlFor="radio2">
+              Mer påkostat kalas
+            </label>
           </div>
         </form>
       </div>
