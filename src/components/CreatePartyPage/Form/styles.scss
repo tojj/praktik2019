@@ -1,4 +1,7 @@
 .form-container {
-  background: $secondary;
+  @include media-breakpoint-up(lg){
+    max-width: 80%;
+    margin: 0 auto;
+  }
 }
 
