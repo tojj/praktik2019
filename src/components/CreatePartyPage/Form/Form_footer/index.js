@@ -10,7 +10,7 @@ const Form_footer = props => (
         <img className="box-img" src="/images/present.png" alt="event" />
       </div>
       <div className="box align-left">
-        <form className="form">
+        <div className="form">
           <h2 className="event-heading text-center">
             Vad vill du göra med överskott?
           </h2>
@@ -36,7 +36,7 @@ const Form_footer = props => (
               Mer påkostat kalas
             </label>
           </div>
-        </form>
+        </div>
       </div>
     </div>
     <h2 className="form-headline charity-headline text-center">Välj välgörenhet</h2>
