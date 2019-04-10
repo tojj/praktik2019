@@ -1,12 +1,16 @@
 import React from 'react'
 import staticData from '../../staticData'
+import { Facebook, Twitter, Linkedin } from 'react-feather'
 
 const Footer = (props) => (
   <div className="footer-container" id="contact-us">
     <h1 className="footer-headliner">Tojj</h1>
     {staticData.footerData.map(renderFooterText)}
     <div className="media-container">
-      {staticData.footerImages.map(renderFooterImages)}
+      <Facebook className="media-icon" size={36} />
+      <Twitter className="media-icon" size={36} />
+      <Linkedin className="media-icon" size={36} />
+
     </div>
   </div>
 )
@@ -21,12 +25,6 @@ const Footer = (props) => (
 const renderFooterText = ({ text, id }) => {
   return (
     <p className="footer-information" key={id}>{text}</p>
-  )
-}
-
-const renderFooterImages = ({ img, id }) => {
-  return (
-    <img src={img} className="footer-images" alt="" key={id}></img>
   )
 }
 

@@ -32,21 +32,6 @@ export const footerData = [
   }
 ]
 
-export const footerImages = [
-  {
-    img: "/images/001-facebook.png",
-    id: 1
-  },
-  {
-    img: "/images/002-twitter.png",
-    id: 2
-  },
-  {
-    img: "/images/003-linkedin.png",
-    id: 3
-  }
-]
-
 export const convincerData = [
   {
     header: "Present",
@@ -134,7 +119,6 @@ export const carouselData = [
 export default {
   aboutData,
   footerData,
-  footerImages,
   convincerData,
   productData,
   formHeaderData,
