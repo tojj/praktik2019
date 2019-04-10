@@ -4,6 +4,10 @@ import ImageHandler from './ImageHandler/index'
 import { connect } from 'react-redux'
 import { updateBirthday } from '../../../../store/Birthday/BirthdayActions'
 import Input from '../../../Input/index'
+import {
+  FormGroup,
+  Label
+} from 'reactstrap'
 
 class Form_header extends Component {
 
@@ -34,8 +38,10 @@ class Form_header extends Component {
 
 
   renderInput = key => (
-    <label className="birthday-label" key={key}>
-      {formHeaderData[key].text}
+    <FormGroup key={key}>
+      <Label className="birthday-label">
+        {formHeaderData[key].text}
+      </Label>
       <Input
         className={formHeaderData[key].className}
         keyVal={key}
@@ -43,7 +49,7 @@ class Form_header extends Component {
         callback={this.callback}
         placeholder={formHeaderData[key].defaultValue}
       />
-    </label>
+    </FormGroup>
   )
 
   /**
@@ -56,13 +62,13 @@ class Form_header extends Component {
     return (
       <div className="form-header-container">
         <div className="box-container">
-          <div className="box">
+          <div className="box text-left">
             <h2 className="form-headline">Skapa Kalas</h2>
-            <form>
+            <div>
               {this.renderInputs()}
               {this.renderBirthdayDate()}
               <span>{}</span>
-            </form>
+            </div>
           </div>
           <div className="box">
             <ImageHandler />

@@ -32,7 +32,7 @@ const Form_footer = props => (
         </div>
       </div>
     </div>
-    <h2 className="form-headline text-center">Välj välgörenhet</h2>
+    <h2 className="form-headline charity-headline text-center">Välj välgörenhet</h2>
     <div className="slider-container">
       <div className="slider-content">
         <Slider {...settings}>

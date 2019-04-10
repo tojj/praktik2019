@@ -33,7 +33,6 @@ class ImageHandler extends React.Component {
     let imgs = ["cake", "camo", "heart", "blue", "leaf", "navy"]
     return (
       <div className="imagehandler-container">
-        <h2 className="image-headline">Välj bakgrundsbild till kalaset</h2>
         <div className="image-pick-container" style={this.state.selected ? {background: 'url(' + this.state.imgSrc + ')'} : {background: '#fff'}}>
           
           {!this.state.selected ?
@@ -54,7 +53,7 @@ class ImageHandler extends React.Component {
                 <DropdownItem key={"dditem_"+i} onClick={this.test} className="dd-item"><img className="dd-image" src={"/images/patterns/" + img + ".jpg"} alt={img} /></DropdownItem>
               )
             })}
-            <DropdownItem className="dd-item float-right"><img className="dd-image" src="/images/add-img.jpg" alt="add new" /></DropdownItem>
+            <DropdownItem className="dd-item"><img className="dd-image" src="/images/add-img.jpg" alt="add new" /></DropdownItem>
           </DropdownMenu>
         </Dropdown>
       </div>
