@@ -17,7 +17,7 @@ const App = (props) => {
           <Route path="/" render={(...routeProps)=> (<Header {...routeProps} startPage={false} />)} />
         </Switch>
       </header>
-      <main>
+      <main id="main">
         <Switch>
           <Route exact path="/" component={StartPage} />
           <Route exact path="/skapa-kalas" component={CreatePartyPage} />
