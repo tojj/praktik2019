@@ -52,8 +52,12 @@ class SwishQR extends React.Component {
           <Button color="primary" type="button" onClick={this.getAllValuesAndChangeUrl}>Förhandsvisa QR-kod</Button>
         </div>
         <div className="box">
-          <figure className="qr-holder" style={{ backgroundColor: this.state.color }}>
-            {this.state.imgEl ? this.state.imgEl :
+          <figure className="qr-holder" 
+            style={{ 
+              backgroundColor: this.state.color, 
+              marginTop: '50px', 
+              overflow: 'hidden' 
+            }}>{this.state.imgEl ? this.state.imgEl :
             <img className="qr-img" src="/images/convincer5.png" alt="qr code" />}
           </figure>
         </div>
