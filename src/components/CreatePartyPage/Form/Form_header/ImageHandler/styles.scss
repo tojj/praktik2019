@@ -1,11 +1,10 @@
 .image-pick-container {
-  border-left: 2px solid $primary;
-  border-right: 2px solid $primary;
-  border-top: 5px solid $primary;
-  border-bottom: 5px solid $primary;
-  height: 150px;
-  border-radius: 9px;
-  width: 100%;
+  border: 2px solid $primary;
+  height: 300px;
+  width: 300px;
+  border-radius: 50%;
+  margin: 0 auto;
+  padding-top: 100px;
   background-repeat: repeat;
   background-clip: #fff;
 }
@@ -32,6 +31,12 @@
 .image-dropdown {
   margin-top: 10px;
 }
+
+// .dd-menu {
+//   // position: relative !important;
+//   // top: -40px !important;
+//   z-index: 90;
+// }
 .dd-image {
   width: 100% !important;
   border: 1px solid $dark;
@@ -63,12 +68,12 @@
 }
 
 @include media-breakpoint-up(md){
-  .image-pick-container {
-    height: 250px;
-  }
-  .container-image {
-    margin-top: 40px;
-  }
+  // .image-pick-container {
+  //   height: 250px;
+  // }
+  // .container-image {
+  //   margin-top: 40px;
+  // }
 
   .image-headline {
     color: $primary;
