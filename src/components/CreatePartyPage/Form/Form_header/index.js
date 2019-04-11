@@ -9,6 +9,7 @@ import {
   Label
 } from 'reactstrap'
 
+
 class Form_header extends Component {
 
   /**
@@ -22,6 +23,8 @@ class Form_header extends Component {
   /**
    * Render birthday date
    */
+
+
 
   renderBirthdayDate = () => this.props.birthdayDate
     ? <span>{this.props.birthdayDate}</span>
@@ -88,5 +91,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => ({
   updateBday: (data) => dispatch(updateBirthday(data))
 })
+
+
 
 export default connect(mapStateToProps, mapDispatchToProps)(Form_header)
