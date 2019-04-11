@@ -1,0 +1,43 @@
+.preview-container {
+  margin: 5vw;
+  background: #fff;
+  border: 1px solid #eee;
+}
+
+.birthday-kid {
+  text-align: center;
+  
+}
+
+.information-wrapper {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.desc-state {
+  flex: 1;
+}
+
+.date-state {
+  flex: 1;
+}
+
+.swish-wrapper {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.swish-child {
+  flex: 1;
+  flex-direction: column;
+}
+
+.map-wrapper {
+  display: flex;
+}
+
+.map-child {
+  flex: 1;
+}
