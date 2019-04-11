@@ -39,7 +39,9 @@ const Form_footer = props => (
         </div>
       </div>
     </div>
-    <h2 className="form-headline charity-headline text-center">Välj välgörenhet</h2>
+    <h2 className="form-headline charity-headline text-center">
+      Välj välgörenhet
+    </h2>
     <div className="slider-container">
       <div className="slider-content">
         <Slider {...settings}>
@@ -75,7 +77,7 @@ const settings = {
   swipeToSlide: true,
   responsive: [
     {
-      breakpoint: 1170,
+      breakpoint: 1500,
       settings: {
         slidesToShow: 3,
         slidesToScroll: 1,
@@ -83,7 +85,7 @@ const settings = {
       }
     },
     {
-      breakpoint: 875,
+      breakpoint: 1100,
       settings: {
         slidesToShow: 2,
         slidesToScroll: 1,
