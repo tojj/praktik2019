@@ -32,6 +32,7 @@ class SwishQR extends React.Component {
     return (
       <div className="box-container" id="swish-container">
         <div className="box text-left">
+          <h2 className="form-headline">Swish</h2>
           <FormGroup>
             <Label for="number-input">Telefonnummer</Label>
             <Input type="text" name="text" id="number-input" placeholder="0709123456" />

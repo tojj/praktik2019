@@ -6,12 +6,9 @@ import Slider from "react-slick"
 const Form_footer = props => (
   <div className="form-footer-container">
     <div className="box-container">
-      <div className="box">
-        <img className="box-img" src="/images/present.png" alt="event" />
-      </div>
       <div className="box align-left">
         <div className="form">
-          <h2 className="event-heading text-center">
+          <h2 className="form-headline text-center">
             Vad vill du göra med överskott?
           </h2>
           <div className="input-group">
@@ -50,10 +47,14 @@ const Form_footer = props => (
       </div>
     </div>
     <div className="buttons-container">
-      <Link to="/" className="link-cancel">
+      <Link 
+        to="/" 
+        className="link-cancel">
         Avbryt
       </Link>
-      <Link to="/skapa-kalas" className="link-party-page">
+      <Link 
+        to="/skapa-kalas" 
+        className="link-party-page">
         Godkänn
       </Link>
     </div>
