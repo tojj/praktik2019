@@ -11,11 +11,12 @@ class Form_footer extends React.Component {
     }
   }
   charityToggle = () => {
-    this.setState({charitySelected: !this.state.charitySelected})    
+    this.setState({charitySelected: !this.state.charitySelected})
   }
   render() {
     const settings = {
-      dots: false,
+      dots: true,
+      focusOnSelect: true,
       infinite: true,
       speed: 400,
       slidesToShow: 4,
@@ -48,9 +49,9 @@ class Form_footer extends React.Component {
         }
       ]
     }
-    const renderImage = ({ id, img }) => {
+    const renderImage = ({ id, img, name }) => {
       return (
-        <div className="slider-div" key={id}>
+        <div className="slider-div" key={id} id={name}>
           <img className="charImg" src={img} alt="" />
         </div>
       )
