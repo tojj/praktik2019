@@ -12,6 +12,8 @@ const Web_shop = props => (
         </div>
       </div>
       <div className="shop-item">
+        <div className="shop-item-overlay"> </div>
+        <div className="shop-item-checkmark"> </div>
         <img className="shop-img" src="/images/elefant.png" alt="event" />
         <div className="shop-info">
           <p>Kay Bojesen Flodhäst Träleksak</p>
