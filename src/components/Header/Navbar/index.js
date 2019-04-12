@@ -16,6 +16,19 @@ class Navbar extends React.Component {
       burgerOpen: !this.state.burgerOpen
     })
   }
+  burgerClose = () => {
+    this.setState({
+      burgerOpen: false
+    })
+  }
+  componentDidUpdate() {
+    let main = document.getElementById('main')
+    if (this.state.burgerOpen){
+      main.addEventListener('click', this.burgerClose)
+    } else {
+      main.removeEventListener('click', this.burgerClose)
+    }
+  }
   
   render() {
     const startPageNav =  navItems.fullNav.map((navItem, i) => {
