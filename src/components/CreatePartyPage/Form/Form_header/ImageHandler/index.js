@@ -1,8 +1,7 @@
 import React from 'react'
 import { Image, ArrowDownCircle } from 'react-feather'
 import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap'
-import REST from "../../../../../REST";
-class User extends REST { }
+
 
 
 class ImageHandler extends React.Component {
