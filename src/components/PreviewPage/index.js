@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 
 class PreviewPage extends Component {
 
-
   render() {
 
     return (
