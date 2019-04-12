@@ -3,6 +3,7 @@ const mongoose = require('mongoose')
 const http = require('http')
 const bodyParser = require('body-parser')
 const CreateRestRoutes = require('./CreateRestRoutes')
+const supersecret = require('./supersecret')
 
 
 
@@ -15,15 +16,13 @@ module.exports = class Server {
     await this.connectToDb();
     await this.startWebServer()
   }
-
-
+  
   connectToDb() {
     return new Promise((resolve, reject) => {
-      let dbName = 'tojj'
-      mongoose.connect(`mongodb://localhost/${dbName}`);
+      mongoose.connect(supersecret, { useNewUrlParser: true });
       global.db = mongoose.connection;
-      global.db.on('error', () => reject('Could not connect to global.db'));
-      global.db.once('open', () => resolve('Connected to global.db'));
+      db.on("error", () => reject("Could not connect to DB"));
+      db.once("open", () => resolve("Connected to DB"));
     });
   }
 
