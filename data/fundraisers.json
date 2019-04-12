@@ -1,0 +1,40 @@
+
+  [
+    {
+      "name":   "Barncancerfonden",
+      "desc":   "",
+      "image":  "/images/barncancer-fonden.jpg",
+      "link":   ""
+    },
+    {
+      "name":   "Rädda Barnen",
+      "desc":   "",
+      "image":  "/images/radda-barnen.png",
+      "link":   ""
+    },
+    {
+      "name":   "Bris",
+      "desc":   "",
+      "image":  "/images/bris-ny.jpg",
+      "link":   ""
+    },
+    {
+      "name":   "SOS Barnbyar",
+      "desc":   "",
+      "image":  "/images/sos-ny.jpg",
+      "link":   ""
+    },
+    {
+      "name":   "Röda Korset",
+      "desc":   "",
+      "image":  "/images/redcross.jpg",
+      "link":   ""
+    },
+    {
+      "name":   "Habitat for Humanity",
+      "desc":   "",
+      "image":  "/images/habitat.jpg",
+      "link":   ""
+    }
+  ]
+  
