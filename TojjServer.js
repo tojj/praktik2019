@@ -19,7 +19,7 @@ module.exports = class Server {
 
   connectToDb() {
     return new Promise((resolve, reject) => {
-      let dbName = 'tojj_database'
+      let dbName = 'tojj'
       mongoose.connect(`mongodb://localhost/${dbName}`);
       global.db = mongoose.connection;
       global.db.on('error', () => reject('Could not connect to global.db'));
