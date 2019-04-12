@@ -40,18 +40,15 @@
   position: absolute;
   width: 100%;
   height: 100%;
-  background-color: #4761b750;
+  background-color: #4761b718;
   z-index: 10;
   border-radius: 10px;
-  border-style: solid;
-  border-width: 5px;
-  border-color: #4762b7;
 }
 
 .shop-item-checkmark {
   background-image: url("data:image/svg+xml,%3Csvg width='264' height='264' viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5.414 11L4 12.414l5.414 5.414L20.828 6.414 19.414 5l-10 10z' fill='%23008A64' fill-rule='nonzero'/%3E%3C/svg%3E ");
   background-position-x: 100%;
-  z-index: 1000000000 !important;
+  z-index: 10 !important;
   position: absolute;
   width: 100%;
   height: 100%;
