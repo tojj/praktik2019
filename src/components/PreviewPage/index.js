@@ -3,13 +3,21 @@ import { connect } from 'react-redux'
 
 class PreviewPage extends Component {
 
+
+
+
   render() {
+
+    console.log(this.props)
 
     return (
       <div className="preview-container">
-        <h1 className="birthday-kid">STATE FYLLER STATE ÅR</h1>
+        <h1 className="birthday-kid"> {this.props.birthdayEvent.title}</h1>
         <div className="information-wrapper">
-          <div className="desc-state">Description state</div>
+          <div className="desc-state">
+            <h2>{this.props.birthdayEvent.name} FYLLER {this.props.birthdayEvent.age} ÅR</h2>
+            <p>Desc State</p>
+          </div>
           <div className="date-state">Datum states</div>
         </div>
 
@@ -28,4 +36,10 @@ class PreviewPage extends Component {
   }
 }
 
-export default PreviewPage
+const mapStateToProps = state => {
+  return {
+    birthdayEvent: state.birthday.birthdayEvent
+  }
+}
+
+export default connect(mapStateToProps)(PreviewPage)
