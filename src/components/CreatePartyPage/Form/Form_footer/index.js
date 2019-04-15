@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 import Slider from "react-slick"
 import REST from '../../../../REST'
 
-class Fundraiser extends REST {}
+class Fundraiser extends REST { }
 
 class Form_footer extends React.Component {
   constructor(props) {
@@ -17,10 +17,10 @@ class Form_footer extends React.Component {
     this.loadFundraisersAndMount()
   }
   charityToggle = () => {
-    this.setState({charitySelected: !this.state.charitySelected})
+    this.setState({ charitySelected: !this.state.charitySelected })
   }
   async loadFundraisersAndMount() {
-    this.allFundraisersData = await Fundraiser.find()    
+    this.allFundraisersData = await Fundraiser.find()
     this.allFundraisers = this.allFundraisersData.map((fundraiser, i) => {
       return (
         <div className="slider-div" key={"fundraiser_" + i} id={fundraiser._id}>
@@ -28,7 +28,7 @@ class Form_footer extends React.Component {
         </div>
       )
     })
-    this.setState({sliderContent: this.allFundraisers})
+    this.setState({ sliderContent: this.allFundraisers })
   }
   render() {
     const settings = {
@@ -121,21 +121,16 @@ class Form_footer extends React.Component {
             to="/"
             className="link-cancel">
             Avbryt
-      </Link>
+          </Link>
           <Link
             to="/skapa-kalas"
             className="link-party-page">
             Godkänn
-      </Link>
+          </Link>
         </div>
-        <ul>
-          {this.state.fundraisersContent}
-        </ul>
       </div>
     )
   }
 }
-
-
 
 export default Form_footer
