@@ -9,9 +9,11 @@ class Web_shop extends React.Component {
       active3: 0,
       active4: 0,
       active5: 0,
-      active6: 0
+      active6: 0,
+      presentInfo: false
     }
     this.toggleClass = this.toggleClass.bind(this)
+    this.toggleInfo = this.toggleInfo.bind(this)
   }
 
   toggleClass(i) {
@@ -24,6 +26,11 @@ class Web_shop extends React.Component {
     } else {
       this.setState({ [i]: 0 })
     }
+  }
+
+  toggleInfo() {
+    const currVal = this.state.presentInfo
+    this.setState({ presentInfo: !currVal })
   }
 
   render() {
@@ -106,11 +113,27 @@ class Web_shop extends React.Component {
           >
             <div className={this.state.active6 ? "shop-item-overlay" : ""} />
             <div className={this.state.active6 ? "shop-item-checkmark" : ""} />
-            <img className="shop-img" src="/images/zebra.png" alt="event" />
-            <div className="shop-info">
-              <p>Kay Bojesen Flodhäst Träleksak</p>
-              <p>Pris: 1000kr</p>
-            </div>
+            {this.state.presentInfo ? (
+              <div className="test-container">
+                <p>Kay Bojesen Flodhäst Träleksak</p>
+                <p>Kay Bojesen Flodhäst Träleksak</p>
+                <p>Kay Bojesen Flodhäst Träleksak</p>
+                <p>
+                  Pris: 1000kr <label onClick={this.toggleInfo}>Mer info</label>
+                </p>
+              </div>
+            ) : (
+              <div className="test-container">
+                <img className="shop-img" src="/images/zebra.png" alt="event" />
+                <div className="shop-info">
+                  <p>Kay Bojesen Flodhäst Träleksak</p>
+                  <p>
+                    Pris: 1000kr{" "}
+                    <label onClick={this.toggleInfo}>Mer info</label>
+                  </p>
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </div>
