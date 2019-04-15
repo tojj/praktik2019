@@ -13,17 +13,17 @@ module.exports = class Server {
   }
 
   async start() {
-    await this.connectToDb();
+    await this.connectToDb()
     await this.startWebServer()
   }
 
   connectToDb() {
     return new Promise((resolve, reject) => {
-      mongoose.connect(supersecret, { useNewUrlParser: true });
-      global.db = mongoose.connection;
-      db.on("error", () => reject("Could not connect to DB"));
-      db.once("open", () => resolve("Connected to DB"));
-    });
+      mongoose.connect(supersecret, { useNewUrlParser: true })
+      global.db = mongoose.connection
+      db.on("error", () => reject("Could not connect to DB"))
+      db.once("open", () => resolve("Connected to DB"))
+    })
   }
 
   /**
@@ -34,7 +34,7 @@ module.exports = class Server {
 
     const app = express()
 
-    app.use(bodyParser.json());
+    app.use(bodyParser.json())
 
     const models = {
       users: require('./models/User'),
@@ -42,9 +42,9 @@ module.exports = class Server {
       products: require('./models/Product')
     };
 
-    global.models = models;
+    global.models = models
 
-    new CreateRestRoutes(app, global.db, models);
+    new CreateRestRoutes(app, global.db, models)
 
     app.all('/json/*', (req, res) => {
       res.json({ url: req.url, ok: true })
