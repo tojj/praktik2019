@@ -7,7 +7,7 @@ let eventSchema = new Schema({
   age:        { type: Number, required: true },
   image:      { type: String, required: true },
   desc:       { type: String, required: true },
-  date:       { type: Date, required: true },
+  date:       { type: Number, required: true },
   location: { 
     street:   { type: String, required: true },
     zipcode:  { type: Number, required: true },
