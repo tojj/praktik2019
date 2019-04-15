@@ -37,7 +37,8 @@ module.exports = class Server {
     app.use(bodyParser.json());
 
     const models = {
-      users: require('./models/User')
+      users: require('./models/User'),
+      fundraisers: require('./models/Fundraiser')
     };
 
     global.models = models;
