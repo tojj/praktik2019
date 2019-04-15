@@ -16,7 +16,7 @@ module.exports = class Server {
     await this.connectToDb();
     await this.startWebServer()
   }
-  
+
   connectToDb() {
     return new Promise((resolve, reject) => {
       mongoose.connect(supersecret, { useNewUrlParser: true });
@@ -38,7 +38,8 @@ module.exports = class Server {
 
     const models = {
       users: require('./models/User'),
-      fundraisers: require('./models/Fundraiser')
+      fundraisers: require('./models/Fundraiser'),
+      products: require('./models/Product')
     };
 
     global.models = models;
