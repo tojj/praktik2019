@@ -1,0 +1,44 @@
+[
+  {
+    "name":   "Kay Bojesen Zebra Träfigur",
+    "price":  749,
+    "desc":   "Kay Bojesen på savannen. Trädjursfamiljen har utökats med den handmålade zebran, som var ett av Kay Bojesens första exotiska djur. Den skapades 1935 och är fortfarande lika älskad. Trädjursfamiljen består av en munter flock djur från träapor till sångfåglar. Hela flocken är älskade designklassiker som snabbt blir en del av familjen. Överlämna en gåva som håller hela livet och går i arv från generation till generation. En bra presentidé till dop, konfirmation, student och alla andra minnesvärda tillfällen.",
+    "image":  "https://www.olssongerthel.se/sites/all/files/styles/product_image_zoom/public/products/zebra.png",
+    "link":   "https://www.olssongerthel.se/rosendahl/zebra-trafigur-av-kay-bojensen"
+  },
+  {
+    "name":   "Kay Bojesen Flodhäst Träleksak",
+    "price":  805,
+    "desc":   "Kay Bojesens flodhäst designades 1955 och är ett av flera trädjur i Bojesens samling. Passar fint på byrån eller bokhyllan för såväl barnet som design-samlaren.",
+    "image":  "https://www.olssongerthel.se/sites/all/files/styles/product_image_zoom/public/products/hippo.png",
+    "link":   "https://www.olssongerthel.se/rosendahl/kay-bojesen-flodhast-traleksak"
+  },
+  {
+    "name":   "Kay Bojesen Elefant Träleksak",
+    "price":  1251,
+    "desc":   "Kay Bojesens elefant designades 1953 och är ett av flera trädjur i Bojesens samling. Passar fint på byrån eller bokhyllan för såväl barnet som design-samlaren.",
+    "image":  "https://www.olssongerthel.se/sites/all/files/styles/product_image_zoom/public/products/elefant.png",
+    "link":   "https://www.olssongerthel.se/rosendahl/kay-bojesen-elefant-traleksak"
+  },
+  {
+    "name":   "Kay Bojesen Apa Träleksak (Mini 9cm)",
+    "price":  699,
+    "desc":   "En klassiker bland träfigurer som började produceras redan 1951 och är än idag en av de mest populära doppresenterna i vårt dansktalande grannland.",
+    "image":  "https://www.olssongerthel.se/sites/all/files/styles/product_image_zoom/public/produktvisning/main_image/rosendahl-kay-bojesen-apa-mini-small-medium-large.png?itok=CdAQV_VE",
+    "link":   "https://www.olssongerthel.se/rosendahl/kay-bojesen-apa-traleksak"
+  },
+  {
+    "name":   "Kay Bojesen Alfred Fågel Original",
+    "price":  850,
+    "desc":   "Kay Bojesens underbara träfåglar som han designade på 1950-talet, men aldrig satte i produktion. Nu finns de dock att köpa! Perfekta att ge bort i exempelvis bröllopspresent, eller varför inte förgylla ditt eget hem med de söta turturduvorna.",
+    "image":  "https://www.olssongerthel.se/sites/all/files/styles/product_image_zoom/public/produktvisning/main_image/alfred-lovebirds.png",
+    "link":   "https://www.olssongerthel.se/rosendahl/alfred-lovebirds-kay-bojesen-original"
+  },
+  {
+    "name":   "Kay Bojesen Hund Träleksak",
+    "price":  805,
+    "desc":   "Kay Bojesens hund designades 1934 och är ett av flera trädjur i Bojesens samling. Passar fint på byrån eller bokhyllan för såväl barnet som design-samlaren.",
+    "image":  "https://www.olssongerthel.se/sites/all/files/styles/product_image_zoom/public/products/hund.png",
+    "link":   "https://www.olssongerthel.se/rosendahl/kay-bojesen-hund-traleksak"
+  }
+]

@@ -1,17 +1,34 @@
 import React from "react"
-import staticData from "../../../../staticData"
 import { Link } from "react-router-dom"
 import Slider from "react-slick"
+import REST from '../../../../REST'
+
+class Fundraiser extends REST { }
 
 class Form_footer extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      charitySelected: false
+      charitySelected: false,
+      sliderContent: ''
     }
+    this.allFundraisersData = []
+    this.allFundraisers = []
+    this.loadFundraisersAndMount()
   }
   charityToggle = () => {
-    this.setState({charitySelected: !this.state.charitySelected})
+    this.setState({ charitySelected: !this.state.charitySelected })
+  }
+  async loadFundraisersAndMount() {
+    this.allFundraisersData = await Fundraiser.find()
+    this.allFundraisers = this.allFundraisersData.map((fundraiser, i) => {
+      return (
+        <div className="slider-div" key={"fundraiser_" + i} id={fundraiser._id}>
+          <img className="charImg" src={fundraiser.image} alt={fundraiser.name} />
+        </div>
+      )
+    })
+    this.setState({ sliderContent: this.allFundraisers })
   }
   render() {
     const settings = {
@@ -49,13 +66,7 @@ class Form_footer extends React.Component {
         }
       ]
     }
-    const renderImage = ({ id, img, name }) => {
-      return (
-        <div className="slider-div" key={id} id={name}>
-          <img className="charImg" src={img} alt="" />
-        </div>
-      )
-    }
+
     return (
       <div className="form-footer-container">
         <div className="box-container">
@@ -99,7 +110,7 @@ class Form_footer extends React.Component {
             <div className="slider-container">
               <div className="slider-content">
                 <Slider {...settings}>
-                  {staticData.carouselData.map(renderImage)}
+                  {this.state.sliderContent}
                 </Slider>
               </div>
             </div>
@@ -110,18 +121,16 @@ class Form_footer extends React.Component {
             to="/"
             className="link-cancel">
             Avbryt
-      </Link>
+          </Link>
           <Link
             to="/skapa-kalas"
             className="link-party-page">
             Godkänn
-      </Link>
+          </Link>
         </div>
       </div>
     )
   }
 }
-
-
 
 export default Form_footer
