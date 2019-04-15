@@ -1,5 +1,5 @@
-const mongoose = require("mongoose");
-const Schema = mongoose.Schema;
+const mongoose = require("mongoose")
+const Schema = mongoose.Schema
 
 let userSchema = new Schema({
   firstName: { type: String, required: true },
@@ -8,6 +8,6 @@ let userSchema = new Schema({
   password: { type: String, required: true },
   address: { type: String, required: true },
   personalNumber: { type: Number, required: true }
-});
+})
 
-module.exports = global.db.model("User", userSchema);
+module.exports = global.db.model("User", userSchema)

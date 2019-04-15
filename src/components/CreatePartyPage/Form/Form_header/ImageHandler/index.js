@@ -12,7 +12,6 @@ class ImageHandler extends React.Component {
       imgSrc: '',
       dropdownOpen: false
     }
-    this.toggle = this.toggle.bind(this);
   }
 
   toggle = () => {
@@ -21,7 +20,7 @@ class ImageHandler extends React.Component {
     }))
   }
   test = (e) => {
-    console.log(e.target.src);
+    console.log(e.target.src)
 
     this.setState({
       selected: true,

@@ -9,7 +9,7 @@ export const UPDATE_BIRTHDAY = 'UPDATE_BIRTHDAY'
 export const updateBirthday = data => ({
   type: ACTION_UPDATE_BIRTHDAY,
   data
-});
+})
 
 export const doUpdateBirthday = (data) => ({
   type: UPDATE_BIRTHDAY,

@@ -1,5 +1,5 @@
-const mongoose = require("mongoose");
-const Schema = mongoose.Schema;
+const mongoose = require("mongoose")
+const Schema = mongoose.Schema
 
 let productSchema = new Schema({
   name: { type: String, required: true },
@@ -7,6 +7,6 @@ let productSchema = new Schema({
   desc: { type: String, required: true },
   link: { type: String, required: true, unique: true },
   image: { type: String, required: true, unique: true }
-});
+})
 
-module.exports = global.db.model("Product", productSchema);
+module.exports = global.db.model("Product", productSchema)
