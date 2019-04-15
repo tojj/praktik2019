@@ -34,7 +34,7 @@ class Web_shop extends React.Component {
         </h2>
         <div className="shop-item-container">
           <div
-            className="shop-item"
+            className={this.state.active1 ? "shop-item-border" : "shop-item"}
             id="1"
             onClick={e => this.toggleClass("active1", e)}
           >
@@ -47,7 +47,7 @@ class Web_shop extends React.Component {
             </div>
           </div>
           <div
-            className="shop-item"
+            className={this.state.active2 ? "shop-item-border" : "shop-item"}
             id="1"
             onClick={e => this.toggleClass("active2", e)}
           >
@@ -60,7 +60,7 @@ class Web_shop extends React.Component {
             </div>
           </div>
           <div
-            className="shop-item"
+            className={this.state.active3 ? "shop-item-border" : "shop-item"}
             id="1"
             onClick={e => this.toggleClass("active3", e)}
           >
@@ -73,7 +73,7 @@ class Web_shop extends React.Component {
             </div>
           </div>
           <div
-            className="shop-item"
+            className={this.state.active4 ? "shop-item-border" : "shop-item"}
             id="1"
             onClick={e => this.toggleClass("active4", e)}
           >
@@ -87,7 +87,7 @@ class Web_shop extends React.Component {
           </div>
 
           <div
-            className="shop-item"
+            className={this.state.active5 ? "shop-item-border" : "shop-item"}
             id="1"
             onClick={e => this.toggleClass("active5", e)}
           >
@@ -100,7 +100,7 @@ class Web_shop extends React.Component {
             </div>
           </div>
           <div
-            className="shop-item"
+            className={this.state.active6 ? "shop-item-border" : "shop-item"}
             id="1"
             onClick={e => this.toggleClass("active6", e)}
           >

@@ -36,6 +36,18 @@
   }
 }
 
+.shop-item-border {
+  position: relative;
+  width: 320px;
+  height: 200px;
+  margin: 10px 5px;
+  cursor: pointer;
+  border-radius: 10px;
+  border-style: solid;
+  border-width: 5px;
+  border-color: #4762b7;
+}
+
 .shop-item-overlay {
   position: absolute;
   width: 100%;
