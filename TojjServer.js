@@ -38,8 +38,9 @@ module.exports = class Server {
 
     const models = {
       users: require('./models/User'),
-      fundraisers: require('./models/Fundraiser'),
-      products: require('./models/Product')
+      events: require('./models/Event'),
+      products: require('./models/Product'),
+      fundraisers: require('./models/Fundraiser')
     };
 
     global.models = models
