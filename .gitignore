@@ -65,5 +65,3 @@ typings/
 
 # DB Connection / data imports to db
 supersecret.js
-importFundraisers.js
-importProducts.js
