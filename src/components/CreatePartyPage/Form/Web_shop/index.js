@@ -53,7 +53,7 @@ class Web_shop extends React.Component {
           >
             <div className={this.state.active2 ? "shop-item-overlay" : ""} />
             <div className={this.state.active2 ? "shop-item-checkmark" : ""} />
-            <img className="shop-img" src="/images/elefant.png" alt="event" />
+            <img className="shop-img" src="/images/hippo.png" alt="event" />
             <div className="shop-info">
               <p>Kay Bojesen Flodhäst Träleksak</p>
               <p>Pris: 1000kr</p>
@@ -66,7 +66,7 @@ class Web_shop extends React.Component {
           >
             <div className={this.state.active3 ? "shop-item-overlay" : ""} />
             <div className={this.state.active3 ? "shop-item-checkmark" : ""} />
-            <img className="shop-img" src="/images/elefant.png" alt="event" />
+            <img className="shop-img" src="/images/zebra.png" alt="event" />
             <div className="shop-info">
               <p>Kay Bojesen Flodhäst Träleksak</p>
               <p>Pris: 1000kr</p>
@@ -93,7 +93,7 @@ class Web_shop extends React.Component {
           >
             <div className={this.state.active5 ? "shop-item-overlay" : ""} />
             <div className={this.state.active5 ? "shop-item-checkmark" : ""} />
-            <img className="shop-img" src="/images/elefant.png" alt="event" />
+            <img className="shop-img" src="/images/hippo.png" alt="event" />
             <div className="shop-info">
               <p>Kay Bojesen Flodhäst Träleksak</p>
               <p>Pris: 1000kr</p>
@@ -106,7 +106,7 @@ class Web_shop extends React.Component {
           >
             <div className={this.state.active6 ? "shop-item-overlay" : ""} />
             <div className={this.state.active6 ? "shop-item-checkmark" : ""} />
-            <img className="shop-img" src="/images/elefant.png" alt="event" />
+            <img className="shop-img" src="/images/zebra.png" alt="event" />
             <div className="shop-info">
               <p>Kay Bojesen Flodhäst Träleksak</p>
               <p>Pris: 1000kr</p>

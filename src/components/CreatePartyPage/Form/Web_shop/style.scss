@@ -32,7 +32,6 @@
     border-width: 4px;
     border-color: #4762b7;
     transition: border-width 0.2s;
-    color: black;
   }
 }
 
@@ -46,6 +45,7 @@
   border-style: solid;
   border-width: 4px;
   border-color: #4762b7;
+  color: black;
 }
 
 .shop-item-overlay {
@@ -87,4 +87,9 @@
   font-family: $small-text;
   font-weight: bold;
   color: $dark;
+}
+
+.focused {
+  color: black;
+  transition: all 200ms;
 }
