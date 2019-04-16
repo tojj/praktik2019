@@ -84,7 +84,7 @@ class Form_header extends Component {
 
 const mapStateToProps = state => {
   return {
-    birthdayEvent: state.birthday.birthdayEvent
+    birthdayEvent: state.birthday.birthdayEvent,
   }
 }
 

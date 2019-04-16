@@ -40,13 +40,15 @@ export default class REST {
     return await response.json();
   }
 
-  static async find(query = '') {
+  /*static async find(query = '') {
     let response = await fetch('/json/' + this.baseRoute + query, {
       method: "GET",
       headers: {
         'Content-Type': 'application/json'
       }
     });
+
+    console.log(found)
     let found = await response.json();
     let wrapped = false;
     if (!found) {
@@ -64,6 +66,6 @@ export default class REST {
       result = result[0];
     }
     return result;
-  }
+  }*/
 
 }

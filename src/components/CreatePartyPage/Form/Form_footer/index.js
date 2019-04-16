@@ -14,12 +14,12 @@ class Form_footer extends React.Component {
     }
     this.allFundraisersData = []
     this.allFundraisers = []
-    this.loadFundraisersAndMount()
+    //this.loadFundraisersAndMount()
   }
   charityToggle = () => {
     this.setState({ charitySelected: !this.state.charitySelected })
   }
-  async loadFundraisersAndMount() {
+ /* async loadFundraisersAndMount() {
     this.allFundraisersData = await Fundraiser.find()
     this.allFundraisers = this.allFundraisersData.map((fundraiser, i) => {
       return (
@@ -29,7 +29,7 @@ class Form_footer extends React.Component {
       )
     })
     this.setState({ sliderContent: this.allFundraisers })
-  }
+  }*/
   render() {
     const settings = {
       dots: true,
