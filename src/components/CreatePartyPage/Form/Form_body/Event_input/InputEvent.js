@@ -1,7 +1,12 @@
 import React from "react"
-import { FormGroup, Label, Input } from "reactstrap"
+import { Input } from "reactstrap"
 
-const InputEvent = ({ name, type, placeholder, value, className, onChange }) => {
+const InputEvent = ({ name, type, callback, placeholder, value, className, onChange, keyVal }) => {
+
+
+  const _onChange = ({ target: { value } }) => {
+    callback(value, keyVal)
+  }
 
   return (
     <Input
@@ -10,7 +15,7 @@ const InputEvent = ({ name, type, placeholder, value, className, onChange }) => 
       type={type}
       placeholder={placeholder}
       className={className}
-      onChange={onChange}
+      onChange={_onChange}
     />
   )
 }

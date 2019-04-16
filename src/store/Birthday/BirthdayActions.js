@@ -5,6 +5,10 @@
 
 export const ACTION_UPDATE_BIRTHDAY = 'ACTION_UPDATE_BIRTHDAY'
 export const UPDATE_BIRTHDAY = 'UPDATE_BIRTHDAY'
+export const UPDATE_TIMEANDPLACE = 'UPDATE_TIMEANDPLACE'
+export const ACTION_UPDATE_TIME_AND_PLACE = 'ACTION_UPDATE_TIME_AND_PLACE'
+
+
 
 export const updateBirthday = data => ({
   type: ACTION_UPDATE_BIRTHDAY,
@@ -13,5 +17,16 @@ export const updateBirthday = data => ({
 
 export const doUpdateBirthday = (data) => ({
   type: UPDATE_BIRTHDAY,
+  data
+})
+
+
+export const updateBdayTimeAndPlace = data => ({
+  type: ACTION_UPDATE_TIME_AND_PLACE,
+  data
+})
+
+export const updateBirthdayTimeAndPlace = data => ({
+  type: UPDATE_TIMEANDPLACE,
   data
 })

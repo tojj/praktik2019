@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { eventInputData } from '../../../../../staticData'
 import { connect } from 'react-redux'
+import { updateBdayTimeAndPlace } from '../../../../../store/Birthday/BirthdayActions'
 import InputEvent from './InputEvent'
 import {
   FormGroup,
@@ -9,13 +10,14 @@ import {
 
 class EventInput extends Component {
 
-
-
   // handleChange = ({ currentTarget: input }) => {
   //   const data = { ...this.state.data };
   //   data[input.name] = input.value;
   //   this.setState({ data });
   // };
+  updateInfo = (event) => {
+    this.props.updateTimeAndPlace(event.target.value)
+  }
 
   renderInputs = () => this.props.birthdayTimeAndPlace
     ? Object.keys(this.props.birthdayTimeAndPlace).map(this.renderInput)
@@ -26,14 +28,18 @@ class EventInput extends Component {
       <Label htmlFor={eventInputData[key].name} className={eventInputData[key].classNameLabel}>{eventInputData[key].text}</Label>
       <InputEvent
         name={eventInputData[key].name}
-        // value={this.state.data[eventInputData[key].name]}
+        keyVal={key}
+        value={this.props.birthdayTimeAndPlace[key]}
         type={eventInputData[key].type}
         placeholder={eventInputData[key].placeholder}
         className={eventInputData[key].className}
-        onChange={this.handleChange}
+        callback={this.callback}
       />
     </FormGroup>
   )
+
+  callback = (value, key) => this.props.updateTimeAndPlace({ [key]: value })
+
 
   render() {
     return (
@@ -58,4 +64,10 @@ const mapStateToProps = state => {
 }
 
 
-export default connect(mapStateToProps)(EventInput)
+const mapDispatchToProps = dispatch => ({
+  updateTimeAndPlace: (data) => dispatch(updateBdayTimeAndPlace(data))
+})
+
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(EventInput)
