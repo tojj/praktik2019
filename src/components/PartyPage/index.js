@@ -7,7 +7,8 @@ class PartyPage extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      event: null
+      event: null,
+      background: "#4762b7"
     }
   }
   componentDidMount() {
@@ -15,8 +16,10 @@ class PartyPage extends React.Component {
     this.findEventAndMatchWithDB(eventLink)
       .then(data => {
         this.setState({
-          event: data
+          event: data,
+          background: "url(" + data.image + ")"
         })
+        
       })
   }
 
@@ -33,14 +36,19 @@ class PartyPage extends React.Component {
     let content = ''
     console.log(this.state.event);
     
+    // let imgsrc = "url(" + this.state.event.image + ")"
+    console.log(this.state.event);
+    
     if (this.state.event === null) {
       content = ''
     } else {
-      content = <div>
+      content = <div style={{padding: "10px", background: this.state.background}}>
+      <div style={{backgroundColor: "white"}}>
         <p>{this.state.event.title}</p>
         <p>{this.state.event.age}</p>
         <p>{this.state.event.child}</p>
         <p>{this.state.event.swish.amount}</p>
+      </div>
       </div>
     }
     return (
