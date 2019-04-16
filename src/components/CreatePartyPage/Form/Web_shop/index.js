@@ -129,7 +129,12 @@ class Web_shop extends React.Component {
                   <p>Kay Bojesen Flodhäst Träleksak</p>
                   <p>
                     Pris: 1000kr{" "}
-                    <label onClick={this.toggleInfo}>Mer info</label>
+                    <label
+                      className="more-info-label"
+                      onClick={this.toggleInfo}
+                    >
+                      Mer info
+                    </label>
                   </p>
                 </div>
               </div>
