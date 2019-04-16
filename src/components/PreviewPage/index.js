@@ -3,13 +3,8 @@ import { connect } from 'react-redux'
 
 class PreviewPage extends Component {
 
-
-
-
   render() {
-
-    console.log(this.props)
-
+    
     return (
       <div className="background-wrapper">
         <div className="preview-container">

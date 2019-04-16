@@ -1,6 +1,14 @@
 import { takeEvery, put } from 'redux-saga/effects'
-import { ACTION_UPDATE_BIRTHDAY } from './BirthdayActions'
-import { doUpdateBirthday} from './BirthdayActions'
+
+import { 
+  ACTION_UPDATE_BIRTHDAY,
+  
+} from './BirthdayActions'
+
+import {
+  doUpdateBirthday,
+} 
+from './BirthdayActions'
 
 /**
  * MÅSTE ALLTID HA * EFTER FUNCTION HÄR DÅ DET ÄR EN GENERATOR FUNCTION
