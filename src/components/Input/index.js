@@ -6,9 +6,9 @@ const Input = ({ val, callback, keyVal, placeholder, className }) => {
    * @param value
    * @private
    */
-  
-  const _onChange = ({ target: { value }}) => {
-    callback( value, keyVal )
+
+  const _onChange = ({ target: { value } }) => {
+    callback(value, keyVal)
   }
 
   return (
@@ -16,7 +16,7 @@ const Input = ({ val, callback, keyVal, placeholder, className }) => {
       type="text"
       onChange={_onChange}
       value={val}
-      placeholder={placeholder} 
+      placeholder={placeholder}
       className={className}
     />
   )

@@ -1,15 +1,16 @@
 import React from "react"
 import { FormGroup, Label, Input } from "reactstrap"
 
-const InputEvent = ({ name, type, label, placeholder, value, className, onChange }) => {
+const InputEvent = ({ classNameFormGroup, name, classNameLabel, type, text, placeholder, value, className, onChange, keyVal }) => {
+
   return (
-    <FormGroup>
-      <Label for={name}>{label}</Label>
+    <FormGroup className={classNameFormGroup}>
+      <Label htmlFor={name} className={classNameLabel}>{text}</Label>
       <Input
-        value={value}
-        type={type}
         id={name}
         name={name}
+        value={value}
+        type={type}
         placeholder={placeholder}
         className={className}
         onChange={onChange}
@@ -20,7 +21,7 @@ const InputEvent = ({ name, type, label, placeholder, value, className, onChange
 
 
 /**
- * onChange method need to be added
+ * onChange method needs to be added
  */
 
 export default InputEvent

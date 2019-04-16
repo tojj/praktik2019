@@ -19,30 +19,33 @@ const EventInput = (props) => (
       </FormGroup>
       <FormGroup className="input50">
         <Label htmlFor="date" className="birthday-label">När är kalaset?</Label>
-        <Input id="date" className="form-input" rows="2" type="date" />
+        <Input id="date" className="form-input" type="date" />
       </FormGroup>
       <FormGroup className="input25">
         <Label htmlFor="time" className="birthday-label"></Label>
-        <Input id="time" className="form-input mt-2 mt-lg-0 ml-2 " rows="2" type="time" defaultValue="12:00" />
+        <Input id="time" className="form-input mt-2 mt-lg-0" type="time" defaultValue="12:00" />
       </FormGroup>
-      <FormGroup className="input100 mb-0">
+      <FormGroup className="input100">
         <Label htmlFor="street" className="location-label">Plats</Label>
-        <Input id="street" className="form-input" rows="2" type="text" placeholder="Gatuadress" />
+        <Input id="street" className="form-input" type="text" placeholder="Gatuadress" />
       </FormGroup>
       <FormGroup className="input25">
-        <Label htmlFor="postnr" className="location-label inline-input"></Label>
-        <Input id="postnr" className="form-input mt-2" rows="2" type="text" placeholder="Postnr" />
+        <Label htmlFor="zip" className="location-label inline-input"></Label>
+        <Input id="zip" className="form-input mt-2" type="text" placeholder="Postnr" />
       </FormGroup>
       <FormGroup className="input50">
         <Label htmlFor="city" className="location-label inline-input "></Label>
-        <Input id="city" className="form-input mt-2 ml-2 " rows="2" type="text" placeholder="Stad" />
+        <Input id="city" className="form-input mt-2 " type="text" placeholder="Stad" />
       </FormGroup>
       <FormGroup>
         <Label htmlFor="deadline" className="birthday-label">När vill du senast ha svar om vem som kommer?</Label>
-        <Input id="deadline" className="form-input input50" rows="2" type="date" />
+        <Input id="deadline" className="form-input input50" type="date" />
       </FormGroup>
     </div>
   </div >
+
+
+
 )
 
 export default EventInput
