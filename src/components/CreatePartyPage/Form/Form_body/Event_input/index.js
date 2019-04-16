@@ -13,31 +13,36 @@ const EventInput = (props) => (
       <img className="box-img fg-image" src="/images/time-place.png" alt="event" />
     </div>
     <div className="box text-left">
-      <FormGroup>
-        <Label className="birthday-label">Skriv några ord till de inbjudna</Label>
-        <Input type="textarea" className="textarea-label form-input input100" />
+      <FormGroup className="input100">
+        <Label htmlFor="description" className="birthday-label">Skriv några ord till de inbjudna</Label>
+        <Input id="description" type="textarea" className="textarea-label form-input " />
+      </FormGroup>
+      <FormGroup className="input50">
+        <Label htmlFor="date" className="birthday-label">När är kalaset?</Label>
+        <Input id="date" className="form-input" rows="2" type="date" />
+      </FormGroup>
+      <FormGroup className="input25">
+        <Label htmlFor="time" className="birthday-label"></Label>
+        <Input id="time" className="form-input mt-2 mt-lg-0 ml-2 " rows="2" type="time" defaultValue="12:00" />
+      </FormGroup>
+      <FormGroup className="input100 mb-0">
+        <Label htmlFor="street" className="location-label">Plats</Label>
+        <Input id="street" className="form-input" rows="2" type="text" placeholder="Gatuadress" />
+      </FormGroup>
+      <FormGroup className="input25">
+        <Label htmlFor="postnr" className="location-label inline-input"></Label>
+        <Input id="postnr" className="form-input mt-2" rows="2" type="text" placeholder="Postnr" />
+      </FormGroup>
+      <FormGroup className="input50">
+        <Label htmlFor="city" className="location-label inline-input "></Label>
+        <Input id="city" className="form-input mt-2 ml-2 " rows="2" type="text" placeholder="Stad" />
       </FormGroup>
       <FormGroup>
-        <Label className="birthday-label">När är kalaset?</Label>
-        <div className="time-label">
-          <Input className="form-input input50" rows="2" type="date" />
-          <Input className="form-input input25 mt-2 mt-lg-0" rows="2" type="time" defaultValue="12:00" />
-        </div>
-        <FormGroup>
-        </FormGroup>
-        <Label className="location-label">Plats</Label>
-        <Input className="form-input input100" rows="2" type="text" placeholder="Gatuadress" />
-        <div className="time-label">
-          <Input className="form-input input25 mt-2" rows="2" type="text" placeholder="Postnr" />
-          <Input className="form-input input50 mt-2" rows="2" type="text" placeholder="Stad" />
-        </div>
-      </FormGroup>
-      <FormGroup>
-        <Label className="birthday-label">När vill du senast ha svar om vem som kommer?</Label>
-        <Input className="form-input input50" rows="2" type="date" />
+        <Label htmlFor="deadline" className="birthday-label">När vill du senast ha svar om vem som kommer?</Label>
+        <Input id="deadline" className="form-input input50" rows="2" type="date" />
       </FormGroup>
     </div>
-  </div>
+  </div >
 )
 
 export default EventInput
