@@ -14,14 +14,14 @@ let eventSchema = new Schema({
     city:     { type: String, required: true }
   },
   swish: {
-    number:   { type: Number, required: true },
+    number:   { type: String, required: true },
     amount:   { type: Number, required: true }
   },
   donate:     { type: Boolean },
   product:    { type: Schema.Types.ObjectId, ref: 'Product' },
-  charity:    { type: Schema.Types.ObjectId, ref: 'Fundraiser' },
+  fundraiser: { type: Schema.Types.ObjectId, ref: 'Fundraiser' },
   user:       { type: Schema.Types.ObjectId, ref: 'User' },
-  id:         { type: String, unique: true, required: true }
+  link:         { type: String, unique: true, required: true }
 })
 
 module.exports = global.db.model("Event", eventSchema)
