@@ -14,6 +14,7 @@
     justify-content: center;
     align-content: center;
     align-items: center;
+    padding: 15vw 5vw 0 !important;
 
     input, textarea {
       width: 100%;
@@ -21,7 +22,6 @@
 
     @include media-breakpoint-up(lg) {
       padding: 5vw 5vw 0 !important;
-      
       .time-label {
         display: flex;
         & input:nth-of-type(2) {

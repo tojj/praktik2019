@@ -123,7 +123,9 @@
 .max-height {
   height: 100%;
 }
-
+.slick-current .charImg {
+  border: 5px solid $primary;
+}
 .text-center {
   text-align: center;
 }
@@ -227,7 +229,7 @@
       border-color: #22c197;
     }
   }
-
+  
   .radio-input {
     width: 32px;
     height: 32px;
@@ -243,10 +245,14 @@
 }
 
 .form {
-  padding: 0 16px;
+  padding: 0 1rem;
   max-width: 550px;
-  margin: auto;
+  margin: 0 auto 2rem;
   font-size: 18px;
   font-weight: 600;
   line-height: 36px;
+}
+.charity-headline {
+  padding: 0 5vw;
+  margin-top: 2rem; 
 }

@@ -9,7 +9,7 @@ const EventInput = (props) => (
 
   <div className="box-container">
     <div className="box">
-      <h2 className="event-heading">Var, när <br /> &amp; hur?</h2>
+      <h2 className="form-headline">Var, när <br /> &amp; hur?</h2>
       <img className="box-img fg-image" src="/images/time-place.png" alt="event" />
     </div>
     <div className="box text-left">
@@ -21,15 +21,15 @@ const EventInput = (props) => (
         <Label className="birthday-label">När är kalaset?</Label>
         <div className="time-label">
           <Input className="form-input input50" rows="2" type="date" />
-          <Input className="form-input input25" rows="2" type="time" defaultValue="12:00" />
+          <Input className="form-input input25 mt-2 mt-lg-0" rows="2" type="time" defaultValue="12:00" />
         </div>
         <FormGroup>
         </FormGroup>
         <Label className="location-label">Plats</Label>
         <Input className="form-input input100" rows="2" type="text" placeholder="Gatuadress" />
-        <div className="time-label mt-2">
-          <Input className="form-input input25" rows="2" type="text" placeholder="Postnr" />
-          <Input className="form-input input50" rows="2" type="text" placeholder="Stad" />
+        <div className="time-label">
+          <Input className="form-input input25 mt-2" rows="2" type="text" placeholder="Postnr" />
+          <Input className="form-input input50 mt-2" rows="2" type="text" placeholder="Stad" />
         </div>
       </FormGroup>
       <FormGroup>

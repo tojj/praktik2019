@@ -8,5 +8,8 @@ html {
     main {
       flex: 1;
     }
+    .force-top {
+      z-index: 99
+    }
   }
 }
