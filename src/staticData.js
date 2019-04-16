@@ -133,22 +133,22 @@ export const eventInputData = {
     classNameLabel: "birthday-label",
     text: "När är kalaset?",
     type: "date",
-    placeholder: "",
+    placeholder: "12:00",
     className: "form-input"
   },
   time: {
     classNameFormGroup: "input25",
     name: "time",
     classNameLabel: "birthday-label",
-    text: "Skriv några ord till de inbjudna",
+    text: "",
     type: "time",
     placeholder: "12:00",
-    className: "form-input mt-2 mt-lg-0"
+    className: "form-input mt-2 mt-lg-0 ml-lg-2"
   },
   street: {
     classNameFormGroup: "input100",
     name: "street",
-    classNameLabel: "location-label",
+    classNameLabel: "birthday-label",
     text: "Plats",
     type: "text",
     placeholder: "Gatuadress",
@@ -170,7 +170,7 @@ export const eventInputData = {
     text: "",
     type: "text",
     placeholder: "Stad",
-    className: "form-input mt-2"
+    className: "form-input mt-2 ml-lg-2"
   },
   deadline: {
     classNameFormGroup: "",
@@ -189,5 +189,6 @@ export default {
   convincerData,
   productData,
   formHeaderData,
-  carouselData
+  carouselData,
+  eventInputData
 }
