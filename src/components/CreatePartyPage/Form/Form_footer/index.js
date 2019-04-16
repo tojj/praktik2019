@@ -129,6 +129,8 @@ class Form_footer extends React.Component {
           </Link>
         </div>
       </div>
+    )
+  }
 }
 
 export default Form_footer
