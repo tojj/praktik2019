@@ -116,11 +116,51 @@ export const carouselData = [
   },
 ]
 
+export const imageHandlerData = [
+  {
+    img: "/images/patterns/cake.jpg",
+    dropdownClass: "dd-item",
+    imgClass: "dd-image",
+    id: 1
+  },
+  {
+    img: "/images/patterns/camo.jpg",
+    dropdownClass: "dd-item",
+    imgClass: "dd-image",
+    id: 2
+  },
+  {
+    img: "/images/patterns/heart.jpg",
+    dropdownClass: "dd-item",
+    imgClass: "dd-image",
+    id: 3
+  },
+  {
+    img: "/images/patterns/blue.jpg",
+    dropdownClass: "dd-item",
+    imgClass: "dd-image",
+    id: 4
+  },
+  {
+    img: "/images/patterns/leaf.jpg",
+    dropdownClass: "dd-item",
+    imgClass: "dd-image",
+    id: 5
+  },
+  {
+    img: "/images/patterns/navy.jpg",
+    dropdownClass: "dd-item",
+    imgClass: "dd-image",
+    id: 6
+  },
+]
+
 export default {
   aboutData,
   footerData,
   convincerData,
   productData,
   formHeaderData,
-  carouselData
+  carouselData,
+  imageHandlerData
 }
