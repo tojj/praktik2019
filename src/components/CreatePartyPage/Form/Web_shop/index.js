@@ -109,32 +109,46 @@ class Web_shop extends React.Component {
           <div
             className={this.state.active6 ? "shop-item-border" : "shop-item"}
             id="1"
-            onClick={e => this.toggleClass("active6", e)}
           >
             <div className={this.state.active6 ? "shop-item-overlay" : ""} />
-            <div className={this.state.active6 ? "shop-item-checkmark" : ""} />
+            <div
+              className={this.state.active6 ? "shop-item-checkmark" : ""}
+              onClick={e => this.toggleClass("active6", e)}
+            />
             {this.state.presentInfo ? (
               <div className="test-container">
-                <p>Kay Bojesen Flodhäst Träleksak</p>
-                <p>Kay Bojesen Flodhäst Träleksak</p>
-                <p>Kay Bojesen Flodhäst Träleksak</p>
-                <p>
-                  Pris: 1000kr <label onClick={this.toggleInfo}>Mer info</label>
-                </p>
+                <label className="more-info-label" onClick={this.toggleInfo}>
+                  >
+                </label>
+                <div
+                  className="shop-info"
+                  onClick={e => this.toggleClass("active6", e)}
+                >
+                  <p>Kay Bojesen Flodhäst Träleksak</p>
+                  <p>Kay Bojesen Flodhäst Träleksak</p>
+                  <p>Kay Bojesen Flodhäst Träleksak</p>
+                  <p>Pris: 1000kr</p>
+                  <div className="more-info-container" />
+                </div>
               </div>
             ) : (
               <div className="test-container">
-                <img className="shop-img" src="/images/zebra.png" alt="event" />
-                <div className="shop-info">
+                <label className="more-info-label" onClick={this.toggleInfo}>
+                  >
+                </label>
+                <img
+                  className="shop-img"
+                  src="/images/zebra.png"
+                  alt="event"
+                  onClick={e => this.toggleClass("active6", e)}
+                />
+                <div
+                  className="shop-info"
+                  onClick={e => this.toggleClass("active6", e)}
+                >
                   <p>Kay Bojesen Flodhäst Träleksak</p>
                   <p>
-                    Pris: 1000kr{" "}
-                    <label
-                      className="more-info-label"
-                      onClick={this.toggleInfo}
-                    >
-                      Mer info
-                    </label>
+                    Pris: 1000kr <div className="more-info-container" />
                   </p>
                 </div>
               </div>
