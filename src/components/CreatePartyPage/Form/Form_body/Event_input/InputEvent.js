@@ -3,7 +3,9 @@ import { Input } from "reactstrap"
 
 const InputEvent = ({ name, type, callback, placeholder, value, className, onChange, keyVal }) => {
 
-
+  /**
+   * Handling input from the user
+   */
   const _onChange = ({ target: { value } }) => {
     callback(value, keyVal)
   }

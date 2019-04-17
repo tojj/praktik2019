@@ -21,6 +21,10 @@ export const doUpdateBirthday = (data) => ({
 })
 
 
+/**
+ * Action for updating information in EventInput component
+ */
+
 export const updateBdayTimeAndPlace = data => ({
   type: ACTION_UPDATE_TIME_AND_PLACE,
   data

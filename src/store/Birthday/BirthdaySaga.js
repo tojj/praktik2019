@@ -21,6 +21,9 @@ function* makeUpdateBirthday(action) {
   yield put(doUpdateBirthday(action.data))
 }
 
+/**
+ * Watcher for updates in EventInput component
+ */
 
 export function* watchUpdateTime() {
   yield takeEvery(ACTION_UPDATE_TIME_AND_PLACE, makeUpdateTimeAndPlace)

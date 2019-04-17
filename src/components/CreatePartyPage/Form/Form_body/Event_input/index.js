@@ -10,18 +10,21 @@ import {
 
 class EventInput extends Component {
 
-  // handleChange = ({ currentTarget: input }) => {
-  //   const data = { ...this.state.data };
-  //   data[input.name] = input.value;
-  //   this.setState({ data });
-  // };
+  /**
+   * Passing value from input
+   */
   updateInfo = (event) => {
     this.props.updateTimeAndPlace(event.target.value)
   }
 
+  /**
+   * Rendering input fields
+   */
+
   renderInputs = () => this.props.birthdayTimeAndPlace
     ? Object.keys(this.props.birthdayTimeAndPlace).map(this.renderInput)
     : null
+
 
   renderInput = key => (
     <FormGroup key={key} className={eventInputData[key].classNameFormGroup}>
@@ -38,6 +41,9 @@ class EventInput extends Component {
     </FormGroup>
   )
 
+  /**
+ * Callback function handling values from inputs
+ */
   callback = (value, key) => this.props.updateTimeAndPlace({ [key]: value })
 
 
@@ -63,11 +69,9 @@ const mapStateToProps = state => {
   }
 }
 
-
 const mapDispatchToProps = dispatch => ({
   updateTimeAndPlace: (data) => dispatch(updateBdayTimeAndPlace(data))
 })
-
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(EventInput)

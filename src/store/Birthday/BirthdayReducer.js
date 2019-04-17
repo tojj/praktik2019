@@ -3,7 +3,6 @@ import { UPDATE_BIRTHDAY } from './BirthdayActions'
 import { UPDATE_TIMEANDPLACE } from './BirthdayActions'
 
 
-
 export default function (state = initialState.birthday, action) {
   switch (action.type) {
     case UPDATE_BIRTHDAY:
