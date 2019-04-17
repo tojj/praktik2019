@@ -1,8 +1,10 @@
 import { takeEvery, put } from 'redux-saga/effects'
-import { ACTION_UPDATE_BIRTHDAY } from './BirthdayActions'
-import { doUpdateBirthday } from './BirthdayActions'
-import { ACTION_UPDATE_TIME_AND_PLACE } from './BirthdayActions'
-import { updateBirthdayTimeAndPlace } from './BirthdayActions'
+import {
+  ACTION_UPDATE_BIRTHDAY,
+  doUpdateBirthday,
+  ACTION_UPDATE_TIME_AND_PLACE,
+  updateBirthdayTimeAndPlace
+} from './BirthdayActions'
 
 
 /**

@@ -1,6 +1,8 @@
 import initialState from '../initialState'
-import { UPDATE_BIRTHDAY } from './BirthdayActions'
-import { UPDATE_TIMEANDPLACE } from './BirthdayActions'
+import {
+  UPDATE_BIRTHDAY,
+  UPDATE_TIMEANDPLACE
+} from './BirthdayActions'
 
 
 export default function (state = initialState.birthday, action) {
