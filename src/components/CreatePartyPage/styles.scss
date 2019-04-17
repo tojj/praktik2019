@@ -4,19 +4,15 @@
     flex-direction: column;
     // flex-wrap: wrap;
     position: relative;
-
     width: 100%;
     min-height: 0 !important;
-
     padding: 10vh 0;
-
-
     justify-content: center;
     align-content: center;
     align-items: center;
     padding: 15vw 5vw 0 !important;
 
-    input, textarea {
+    input, textarea, .input10, .input25, .input50, .input100 {
       width: 100%;
     }
 

@@ -4,6 +4,16 @@ export default {
       title: '',
       name: '',
       age: '',
+    },
+
+    birthdayTimeAndPlace: {
+      description: '',
+      date: '',
+      time: '',
+      street: '',
+      zip: '',
+      city: '',
+      deadline: ''
     }
   }
 }

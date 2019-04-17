@@ -1,13 +1,17 @@
 import { all } from 'redux-saga/effects'
-import { watchUpdateBirthday } from './Birthday/BirthdaySaga'
+import {
+  watchUpdateBirthday,
+  watchUpdateTime
+} from './Birthday/BirthdaySaga'
 
 /**
  * Generator funktion ska alltid ha * lär dig använda
  */
 
-export function* rootSaga(){
+export function* rootSaga() {
   yield all([
-      watchUpdateBirthday()
+    watchUpdateBirthday(),
+    watchUpdateTime()
   ])
 }
 
