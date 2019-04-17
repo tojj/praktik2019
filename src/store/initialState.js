@@ -6,7 +6,17 @@ export default {
       name: '',
       age: '',
     },
-
+    
+    birthdayTimeAndPlace: {
+      description: '',
+      date: '',
+      time: '',
+      street: '',
+      zip: '',
+      city: '',
+      deadline: ''
+    }
+    
     birthdayImage: '',
 
   }

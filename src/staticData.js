@@ -70,19 +70,19 @@ export const productData = [
 
 export const formHeaderData = {
   title: {
-    className: "birthday-headline input100 form-control",
+    className: " input100 form-control",
     defaultValue: "Dunderkalas med hoppborg!",
     text: "Vad vill du ha som rubrik?",
     id: 1
   },
   name: {
-    className: "birthday-headline input50 form-control",
+    className: " input50 form-control",
     defaultValue: "Kent",
     text: "Vem är kalaset för?",
     id: 2
   },
   age: {
-    className: "birthday-headline input25 form-control",
+    className: "input25 form-control",
     defaultValue: "6",
     text: "Hur mycket fylls?",
     id: 3
@@ -156,6 +156,72 @@ export const imageHandlerData = [
   },
 ]
 
+export const eventInputData = {
+  description: {
+    classNameFormGroup: "input100",
+    name: "description",
+    classNameLabel: "birthday-label",
+    text: "Skriv några ord till de inbjudna",
+    type: "textarea",
+    placeholder: "",
+    className: "textarea-label form-input"
+  },
+  date: {
+    classNameFormGroup: "input50",
+    name: "date",
+    classNameLabel: "birthday-label",
+    text: "När är kalaset?",
+    type: "date",
+    placeholder: "12:00",
+    className: "form-input"
+  },
+  time: {
+    classNameFormGroup: "input25",
+    name: "time",
+    classNameLabel: "birthday-label",
+    text: "",
+    type: "time",
+    placeholder: "12:00",
+    className: "form-input mt-2 mt-lg-0 ml-lg-2"
+  },
+  street: {
+    classNameFormGroup: "input100",
+    name: "street",
+    classNameLabel: "birthday-label",
+    text: "Plats",
+    type: "text",
+    placeholder: "Gatuadress",
+    className: "form-input"
+  },
+  zip: {
+    classNameFormGroup: "input25",
+    name: "zip",
+    classNameLabel: "location-label inline-input",
+    text: "",
+    type: "text",
+    placeholder: "Postnr",
+    className: "form-input mt-2"
+  },
+  city: {
+    classNameFormGroup: "input50",
+    name: "city",
+    classNameLabel: "location-label inline-input",
+    text: "",
+    type: "text",
+    placeholder: "Stad",
+    className: "form-input mt-2 ml-lg-2"
+  },
+  deadline: {
+    classNameFormGroup: "",
+    name: "deadline",
+    classNameLabel: "birthday-label",
+    text: "När vill du senast ha svar om vem som kommer?",
+    type: "date",
+    placeholder: "",
+    className: "form-input input50"
+  }
+}
+
 export default {
   aboutData,
   footerData,
@@ -163,5 +229,6 @@ export default {
   productData,
   formHeaderData,
   carouselData,
-  imageHandlerData
+  imageHandlerData,
+  eventInputData
 }

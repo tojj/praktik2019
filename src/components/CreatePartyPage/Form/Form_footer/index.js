@@ -1,16 +1,16 @@
 import React from "react"
 import { Link } from "react-router-dom"
 import Slider from "react-slick"
-import REST from '../../../../REST'
+import REST from "../../../../REST"
 
-class Fundraiser extends REST { }
+class Fundraiser extends REST {}
 
 class Form_footer extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
       charitySelected: false,
-      sliderContent: ''
+      sliderContent: ""
     }
     this.allFundraisersData = []
     this.allFundraisers = []
@@ -24,7 +24,11 @@ class Form_footer extends React.Component {
     this.allFundraisers = this.allFundraisersData.map((fundraiser, i) => {
       return (
         <div className="slider-div" key={"fundraiser_" + i} id={fundraiser._id}>
-          <img className="charImg" src={fundraiser.image} alt={fundraiser.name} />
+          <img
+            className="charImg"
+            src={fundraiser.image}
+            alt={fundraiser.name}
+          />
         </div>
       )
     })
@@ -73,7 +77,7 @@ class Form_footer extends React.Component {
           <div className="box align-left">
             <div className="form">
               <h2 className="form-headline text-center">
-                Vad vill du göra med överskott?
+                Vill du stödja en välgörenhet?
               </h2>
               <div className="input-group">
                 <input
@@ -81,10 +85,12 @@ class Form_footer extends React.Component {
                   id="radio1"
                   name="radio"
                   type="radio"
-                  onClick={!this.state.charitySelected ? this.charityToggle : null}
+                  onClick={
+                    !this.state.charitySelected ? this.charityToggle : null
+                  }
                 />
                 <label className="radio-label" htmlFor="radio1">
-                  Ge till välgörenhet
+                  Ja, det vill jag
                 </label>
               </div>
               <div className="input-group">
@@ -93,38 +99,34 @@ class Form_footer extends React.Component {
                   id="radio2"
                   name="radio"
                   type="radio"
-                  onClick={this.state.charitySelected ? this.charityToggle : null}
+                  onClick={
+                    this.state.charitySelected ? this.charityToggle : null
+                  }
                 />
                 <label className="radio-label" htmlFor="radio2">
-                  Mer påkostat kalas
+                  Nej tack, inte intresserad
                 </label>
               </div>
             </div>
           </div>
         </div>
-        {this.state.charitySelected ?
+        {this.state.charitySelected ? (
           <div>
             <h2 className="form-headline charity-headline text-center">
               Välj välgörenhet
             </h2>
             <div className="slider-container">
               <div className="slider-content">
-                <Slider {...settings}>
-                  {this.state.sliderContent}
-                </Slider>
+                <Slider {...settings}>{this.state.sliderContent}</Slider>
               </div>
             </div>
           </div>
-          : null}
+        ) : null}
         <div className="buttons-container">
-          <Link
-            to="/"
-            className="link-cancel">
+          <Link to="/" className="link-cancel">
             Avbryt
           </Link>
-          <Link
-            to="/skapa-kalas"
-            className="link-party-page">
+          <Link to="/skapa-kalas" className="link-party-page">
             Godkänn
           </Link>
           <Link

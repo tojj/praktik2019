@@ -1,8 +1,9 @@
 import initialState from '../initialState'
 import {
-
+  
   UPDATE_BIRTHDAY,
-  UPDATE_IMAGE
+  UPDATE_IMAGE,
+  UPDATE_TIMEANDPLACE
 
 } from './BirthdayActions'
 
@@ -15,13 +16,14 @@ export default function (state = initialState.birthday, action) {
 
     case UPDATE_IMAGE:
       return { ...state, birthdayImage: action.data }
-
+      
+    case UPDATE_TIMEANDPLACE:
+      return { ...state, birthdayTimeAndPlace: { ...state.birthdayTimeAndPlace, ...action.data } }
+    
     default:
       return state
 
-
   }
-
 
 }
 

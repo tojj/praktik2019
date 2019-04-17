@@ -169,7 +169,7 @@
 
   .radio-label {
     padding: 8px 20px;
-    width: 100%;
+    min-width: 100%;
     display: block;
     text-align: left;
     color: #3c454c;
@@ -182,8 +182,8 @@
     font-family: $big-text;
 
     &:before {
-      width: 10px;
-      height: 10px;
+      width: 15px;
+      height: 15px;
       border-radius: 50%;
       content: "";
       background-color: #4762b7;
@@ -229,7 +229,7 @@
       border-color: #22c197;
     }
   }
-  
+
   .radio-input {
     width: 32px;
     height: 32px;
@@ -254,5 +254,5 @@
 }
 .charity-headline {
   padding: 0 5vw;
-  margin-top: 2rem; 
+  margin-top: 2rem;
 }
