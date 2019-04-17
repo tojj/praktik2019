@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
 import Header from './components/Header/index'
 import StartPage from './components/StartPage/index'
-import PartyPage from './components/PartyPage/index'
 import PreviewPage from './components/PreviewPage/index'
 import CreatePartyPage from './components/CreatePartyPage/index'
 import Footer from './components/Footer/index'
@@ -23,7 +22,7 @@ const App = (props) => {
         <Switch>
           <Route exact path="/" component={StartPage} />
           <Route exact path="/skapa-kalas" component={CreatePartyPage} />
-          <Route exact path="/ditt-kalas" component={PartyPage} />
+          
           <Route exact path="/kalas-förhandsvisning" component={PreviewPage} />
         </Switch>
       </main>

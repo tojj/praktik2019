@@ -10,44 +10,59 @@ import { updateImage } from '../../../../../store/Birthday/BirthdayActions'
 class ImageHandler extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {    
+    this.state = {
       dropdownOpen: false
     }
-    
+
   }
+
+
+  /**
+   * Toggle method for dropdown button.
+   */
 
   toggle = () => {
     this.setState(prevState => ({
       dropdownOpen: !prevState.dropdownOpen
-      
+
     }))
   }
 
+  /** 
+   * Curry function som gör så att den bild man klickar på 
+   * själva url till bild blir redux state.
+   */
+
   updateImg = (imgUrl) => () => {
-    console.log(this.props)
     this.props.updateImg(imgUrl);
 
-  } 
+  }
 
   renderImages = ({ id, img, imgClass, dropdownClass }) => {
     return (
-      <DropdownItem 
+      <DropdownItem
         key={id}
         className={dropdownClass}
       >
-        <img className={imgClass} src={img} alt="" onClick={this.updateImg(img)}/>
+        <img className={imgClass} src={img} alt="" onClick={this.updateImg(img)} />
       </DropdownItem>
     )
   }
 
+  /**
+   * Conditional rendering
+   * Renderar och använder den i min JSX
+   * Alla turnary operators osv ska göras utanför JSX
+   */
+
 
   renderSelectedBgImg = () => this.props.birthdayImage
-    ? <img src={this.props.birthdayImage} />
+    ? <img src={this.props.birthdayImage} alt=""/>
     : (
       <div>
-      <p className="image-text">Ladda upp egen bakgrundsbild</p>
-      <Image className="img-icon container-image" />
-    </div> 
+        <p className="image-text">Ladda upp egen bakgrundsbild</p>
+        <Image className="img-icon container-image" />
+      </div>
     );
 
   render() {
@@ -56,7 +71,7 @@ class ImageHandler extends React.Component {
       <div className="imagehandler-container force-top">
         <div className="image-pick-container">
 
-        { this.renderSelectedBgImg() }
+          {this.renderSelectedBgImg()}
 
         </div>
         <Dropdown className="image-dropdown force-top" isOpen={this.state.dropdownOpen} toggle={this.toggle} style={{ border: 'none', padding: '0' }}>

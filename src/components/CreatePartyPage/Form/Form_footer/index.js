@@ -14,12 +14,12 @@ class Form_footer extends React.Component {
     }
     this.allFundraisersData = []
     this.allFundraisers = []
-    //this.loadFundraisersAndMount()
+    this.loadFundraisersAndMount()
   }
   charityToggle = () => {
     this.setState({ charitySelected: !this.state.charitySelected })
   }
- /* async loadFundraisersAndMount() {
+  async loadFundraisersAndMount() {
     this.allFundraisersData = await Fundraiser.find()
     this.allFundraisers = this.allFundraisersData.map((fundraiser, i) => {
       return (
@@ -29,7 +29,7 @@ class Form_footer extends React.Component {
       )
     })
     this.setState({ sliderContent: this.allFundraisers })
-  }*/
+  }
   render() {
     const settings = {
       dots: true,
@@ -126,6 +126,11 @@ class Form_footer extends React.Component {
             to="/skapa-kalas"
             className="link-party-page">
             Godkänn
+          </Link>
+          <Link
+            to="/kalas-förhandsvisning"
+            className="link-party-page">
+            Förhandsgranska
           </Link>
         </div>
       </div>

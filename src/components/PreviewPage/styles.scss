@@ -1,56 +1,61 @@
-.preview-container {
-  margin: 5vw;
-  background: #fff;
-  border: 1px solid #eee;
-  display: flex;
-  justify-content: center;
-  text-align: center;
-  flex-direction: column;
-}
-
-.birthday-kid {
-  text-align: center;
-  color: $primary;
-  font-family: $big-text;
-  margin-top: 20px;
-  
-}
-
-.information-wrapper {
-  display: flex;
-  justify-content: center;
-  text-align: center;
-}
-
-.desc-state {
-  flex: 1;
-}
-
-.date-state {
-  flex: 1;
-}
-
-.swish-wrapper {
-  display: flex;
-  justify-content: center;
-  text-align: center;
-}
-
-.swish-child {
-  flex: 1;
-  flex-direction: column;
-}
-
-.map-wrapper {
-  display: flex;
-}
-
-.map-child {
-  flex: 1;
-}
-
 .background-wrapper {
   background: #FFC107;
   padding: 1px 0 1px 0;
   opacity: 0.8;
+
+  .preview-container {
+    margin: 5vw;
+    background: #fff;
+    border: 1px solid #eee;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+  }
+
+  .birthday-kid {
+    text-align: center;
+    color: $primary;
+    font-family: $big-text;
+    margin-top: 20px;
+    
+  }
+
+  .information-wrapper {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+
+    .desc-state {
+      flex: 1;
+    }
+    
+    .date-state {
+      flex: 1;
+    }
+  }
+
+  .swish-wrapper {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+
+    .swish-child {
+      flex: 1;
+      flex-direction: column;
+    }
+
+  }
+
+  .map-wrapper {
+    display: flex;
+
+    .map-child {
+      flex: 1;
+    }
+
+  }
+
 }
+
+
