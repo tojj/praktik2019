@@ -50,7 +50,7 @@ class Shop_item extends React.Component {
             </label>
             <img
               className="shop-img"
-              src="/images/elefant.png"
+              src={this.props.image}
               alt="event"
               onClick={this.toggleSelected}
             />
