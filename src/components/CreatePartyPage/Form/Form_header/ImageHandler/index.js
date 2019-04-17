@@ -34,7 +34,7 @@ class ImageHandler extends React.Component {
    */
 
   updateImg = (imgUrl) => () => {
-    this.props.updateImg(imgUrl);
+    this.props.updateImg(imgUrl)
 
   }
 
@@ -63,7 +63,7 @@ class ImageHandler extends React.Component {
         <p className="image-text">Ladda upp egen bakgrundsbild</p>
         <Image className="img-icon container-image" />
       </div>
-    );
+    )
 
   render() {
     return (
