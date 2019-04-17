@@ -1,4 +1,5 @@
 import React, { Component } from "react"
+import ShopItem from "./ShopItem/index"
 
 class Web_shop extends React.Component {
   constructor(props) {
@@ -373,6 +374,7 @@ class Web_shop extends React.Component {
               </div>
             )}
           </div>
+          <ShopItem />
         </div>
       </div>
     )
