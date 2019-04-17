@@ -40,6 +40,7 @@ class ImageHandler extends React.Component {
     )
   }
 
+
   renderSelectedBgImg = () => this.props.birthdayImage
     ? <img src={this.props.birthdayImage} />
     : (

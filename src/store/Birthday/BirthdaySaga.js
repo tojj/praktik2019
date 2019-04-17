@@ -18,7 +18,7 @@ function* makeUpdateBirthday(action){
   yield put(doUpdateBirthday(action.data))
 }
 
-
+/*
 export function* watchUpdateImage(){
 
   yield takeEvery(
@@ -31,4 +31,4 @@ export function* watchUpdateImage(){
   console.log(action);
   yield put(updateTheImage(action.data))
 }
-
+*/

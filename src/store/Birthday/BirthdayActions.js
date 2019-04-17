@@ -19,12 +19,7 @@ export const doUpdateBirthday = (data) => ({
   data
 })
 
-export const updateImage = data => ({
-  type: ACTION_UPDATE_IMAGE,
-  data
-})
-
-export const updateTheImage = (data) => ({
+export const updateImage = (data) => ({
   type: UPDATE_IMAGE,
   data
 })
