@@ -120,27 +120,40 @@ export const carouselData = [
 export const shopData = [
   {
     img: "/images/elefant.png",
-    id: 1
+    id: 1,
+    text: 'Kay Bojesan Flodhäst Träleksak',
+    price: '1000kr'
   },
   {
     img: "/images/hippo.png",
-    id: 2
+    id: 2,
+    text: 'Kay Bojesan Flodhäst Träleksak',
+    price: '1000kr'
   },
   {
     img: "/images/zebra.png",
-    id: 3
+    id: 3,
+    text: 'Kay Bojesan Flodhäst Träleksak',
+    price: '1000kr'
   },
   {
     img: "/images/elefant.png",
-    id: 4
+    id: 4,
+    text: 'Kay Bojesan Flodhäst Träleksak',
+    price: '1000kr'
+
   },
   {
     img: "/images/hippo.png",
-    id: 5
+    id: 5,
+    text: 'Kay Bojesan Flodhäst Träleksak',
+    price: '1000kr'
   },
   {
     img: "/images/zebra.png",
-    id: 6
+    id: 6,
+    text: 'Kay Bojesan Flodhäst Träleksak',
+    price: '1000kr'
   }
 ]
 

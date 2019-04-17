@@ -1,15 +1,35 @@
 import React, { Component } from "react"
-import ShopItem from "./ShopItem/index"
 import staticData from "../../../../staticData"
 
 class Web_shop extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {}
+    
+
   }
 
-  renderShopItems = ({ img, id }) => {
-    return <ShopItem key={id} image={img} />
+  renderShopProducts = ({id, img, price, text }) => {
+    return (
+      <div className="shop-item" key={id}>
+      <div className="test-container">
+      <label className="more-info-label" onClick={this.toggleInfo} >
+        >
+      </label>
+      <img
+        className="shop-img"
+        src={img}
+        alt="event"
+        onClick={this.toggleSelected}
+      />
+      <div className="shop-info" onClick={this.toggleSelected} >
+        <p>{text}</p>
+        <p>
+          Pris: {price}
+        </p>
+      </div>
+    </div>
+    </div>
+    )
   }
 
   render() {
@@ -19,7 +39,7 @@ class Web_shop extends React.Component {
           Välj present
         </h2>
         <div className="shop-item-container">
-          {staticData.shopData.map(this.renderShopItems)}
+          {staticData.shopData.map(this.renderShopProducts)}
         </div>
       </div>
     )
