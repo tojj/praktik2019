@@ -1,0 +1,125 @@
+.party-bg {
+  padding: 60px 30px;
+  min-height: 80vh;
+  // background is set from /partypage/index.js
+  .party-card {
+    font-family: $small-text;
+    background-color: #fff;
+    box-shadow: 2px 2px 5px #000;
+    .party-title {
+      padding: 0 !important;
+      min-height: 200px;
+      & p {
+        font-family: $big-text;
+        font-weight: 800;
+        font-size: 40px;
+        color: $primary;
+        text-align: center;
+        margin: 0;
+      }
+    }
+    .party-info {
+      .party-child-age {
+        font-family: $big-text;
+        font-weight: 800;
+        text-align: center;
+        text-transform: uppercase;
+        font-size: 1.5rem;
+      }
+      .date-holder {
+        font-family: $big-text;
+        font-weight: 800;
+        text-align: center;
+        text-transform: uppercase;
+        .party-weekday {
+          font-size: 1.5rem;
+        }
+        .party-date {
+        }
+        .party-time {
+          font-size: 1.5rem;
+        }
+      }
+    }
+    .party-payment {
+      .box {
+        min-height: 500px;
+        text-align: center;
+        .box-img {
+          max-height: 300px;
+          max-width: 300px;
+          margin: 0 auto;
+          overflow: hidden;
+          border-radius: 10px;
+          border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+        p:nth-of-type(1) {
+          font-family: $big-text;
+          font-weight: 800;
+          margin-top: 1rem;
+        }
+      }
+      .swish-holder {
+        .qr-code {
+          padding: 10px;
+        }
+      }
+      .toy-holder {
+      }
+      .karma-holder {
+      }
+    }
+    .party-attending {
+      .attending-holder {
+        text-align: center;
+        p:nth-of-type(1) {
+          font-family: $big-text;
+          font-weight: 800;
+          font-size: 30px;
+          margin-top: 1rem;
+          color: $primary;
+        }
+      }
+    }
+    .party-location {
+      .maps-holder {
+      }
+      .location-holder {
+        font-family: $big-text;
+        font-weight: 800;
+        text-align: center;
+        text-transform: uppercase;
+        .party-street {
+          font-size: 1.5rem;
+        }
+        .party-osa{
+          font-size: 1.5rem;
+        }
+      }
+    }
+    a {
+      font-weight: bold;
+      text-decoration: none;
+      color: $primary;
+      &:hover {
+        color: $dark;
+      }
+    }
+    
+    // All general flex rules are here
+    .box-container {
+      display: flex;
+      flex-direction: row;
+      width: 80%;
+      margin: 0 auto;
+      justify-content: center;
+      align-content: center;
+      align-items: center;
+      padding: 50px 0;
+      .box {
+        flex: 1;
+        padding: 0 20px;
+      }
+    }
+  }
+}
