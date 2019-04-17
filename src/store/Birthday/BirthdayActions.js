@@ -10,6 +10,9 @@ export const UPDATE_TIMEANDPLACE = 'UPDATE_TIMEANDPLACE'
 
 
 
+export const ACTION_UPDATE_IMAGE = 'ACTION_UPDATE_IMAGE'
+export const UPDATE_IMAGE = 'UPDATE_IMAGE'
+
 export const updateBirthday = data => ({
   type: ACTION_UPDATE_BIRTHDAY,
   data
@@ -20,6 +23,10 @@ export const doUpdateBirthday = (data) => ({
   data
 })
 
+export const updateImage = (data) => ({
+  type: UPDATE_IMAGE,
+  data
+})
 
 /**
  * Action for updating information in EventInput component

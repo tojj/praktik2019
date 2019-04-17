@@ -1,11 +1,12 @@
 export default {
   birthday: {
+
     birthdayEvent: {
       title: '',
       name: '',
       age: '',
     },
-
+    
     birthdayTimeAndPlace: {
       description: '',
       date: '',
@@ -15,5 +16,8 @@ export default {
       city: '',
       deadline: ''
     }
+    
+    birthdayImage: '',
+
   }
 }
