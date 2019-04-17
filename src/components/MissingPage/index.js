@@ -7,12 +7,18 @@ class MissingPage extends React.Component {
   }
   render() {
     return (
-      <div className="missingPage">
-        <h2>The page is missing</h2>
-        <p>
-          We are sorry but we can't find the page {this.props.location.pathname}
-          .
-        </p>
+      <div className="mp-container">
+        <h1 className="mp-header">Sidan saknas</h1>
+        <h4 className="mp-info">
+          Vi kunde tyvärr inte hitta sidan {this.props.location.pathname}
+        </h4>
+        {this.props.partyPage ? (
+          <div>
+            <h4 className="mp-info">Vi kunde tyvärr inte hitta kalaset</h4>
+            <h4 className="mp-info">Gå vidare till skapa kalas-sidan</h4>
+          </div>
+        ) : null}
+        <img className="mp-img" src="/images/sadpepe.png" />
       </div>
     )
   }
