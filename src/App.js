@@ -1,12 +1,12 @@
 import React from "react"
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
-
 import Header from './components/Header/index'
 import StartPage from './components/StartPage/index'
 import CreatePartyPage from './components/CreatePartyPage/index'
 import Footer from './components/Footer/index'
 
 const App = (props) => {
+
   return (
     <Router>
       <header>
@@ -15,7 +15,7 @@ const App = (props) => {
           <Route path="/" render={(...routeProps) => (<Header {...routeProps} startPage={false} />)} />
         </Switch>
       </header>
-      <main>
+      <main id="main">
         <Switch>
           <Route exact path="/" component={StartPage} />
           <Route exact path="/skapa-kalas" component={CreatePartyPage} />

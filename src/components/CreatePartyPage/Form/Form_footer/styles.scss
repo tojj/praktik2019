@@ -123,7 +123,9 @@
 .max-height {
   height: 100%;
 }
-
+.slick-current .charImg {
+  border: 5px solid $primary;
+}
 .text-center {
   text-align: center;
 }
@@ -167,7 +169,7 @@
 
   .radio-label {
     padding: 8px 20px;
-    width: 100%;
+    min-width: 100%;
     display: block;
     text-align: left;
     color: #3c454c;
@@ -180,8 +182,8 @@
     font-family: $big-text;
 
     &:before {
-      width: 10px;
-      height: 10px;
+      width: 15px;
+      height: 15px;
       border-radius: 50%;
       content: "";
       background-color: #4762b7;
@@ -251,5 +253,6 @@
   line-height: 36px;
 }
 .charity-headline {
-  padding: 0 2vw;
+  padding: 0 5vw;
+  margin-top: 2rem;
 }
