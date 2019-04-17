@@ -28,7 +28,6 @@ const App = (props) => {
       </footer>
     </Router>
   )
-
 }
 
 export default App;

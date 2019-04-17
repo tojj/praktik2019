@@ -6,6 +6,7 @@ const InputEvent = ({ name, type, callback, placeholder, value, className, onCha
   /**
    * Handling input from the user
    */
+
   const _onChange = ({ target: { value } }) => {
     callback(value, keyVal)
   }

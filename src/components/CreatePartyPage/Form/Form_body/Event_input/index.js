@@ -13,6 +13,7 @@ class EventInput extends Component {
   /**
    * Passing value from input
    */
+
   updateInfo = (event) => {
     this.props.updateTimeAndPlace(event.target.value)
   }
@@ -44,6 +45,7 @@ class EventInput extends Component {
   /**
  * Callback function handling values from inputs
  */
+
   callback = (value, key) => this.props.updateTimeAndPlace({ [key]: value })
 
 
