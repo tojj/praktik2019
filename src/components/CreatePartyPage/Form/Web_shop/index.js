@@ -8,7 +8,7 @@ class Web_shop extends React.Component {
     this.state = {}
   }
 
-  renderOliverItems = ({ img, id }) => {
+  renderShopItems = ({ img, id }) => {
     return <ShopItem key={id} image={img} />
   }
 
@@ -19,7 +19,7 @@ class Web_shop extends React.Component {
           Välj present
         </h2>
         <div className="shop-item-container">
-          {staticData.shopData.map(this.renderOliverItems)}
+          {staticData.shopData.map(this.renderShopItems)}
         </div>
       </div>
     )
