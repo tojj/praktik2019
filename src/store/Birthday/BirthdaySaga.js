@@ -51,12 +51,6 @@ export function* watchUpdateImage(){
 }
 */
 
-  yield takeEvery(
-    ACTION_UPDATE_BIRTHDAY, 
-    makeUpdateBirthday
-  )
-}
-
 /**
  * Watcher for updates in EventInput component
  */

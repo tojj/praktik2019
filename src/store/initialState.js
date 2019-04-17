@@ -15,7 +15,7 @@ export default {
       zip: '',
       city: '',
       deadline: ''
-    }
+    },
     
     birthdayImage: '',
 
