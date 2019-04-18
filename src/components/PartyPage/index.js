@@ -2,6 +2,8 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import REST from '../../REST'
 
+import MapsGen from './MapsGen/index'
+
 class Event extends REST { }
 
 class PartyPage extends React.Component {
@@ -36,6 +38,13 @@ class PartyPage extends React.Component {
     } else {
       let party = this.state.event
 
+      /**
+       * Joining all the address information to the right format in order to send the correct props to MapsGen
+       */
+      let address = party.location.street.split(' ')
+      address = address.join('%20')
+      address = [address, party.location.zipcode, party.location.city].join('%20')  
+      
       /**
       * Saving the date in an array in order to split it up into multiple lines
       */
@@ -94,7 +103,7 @@ class PartyPage extends React.Component {
           </div>
           <div className="box-container border-top party-location">
             <div className="box maps-holder">
-              Här kommer "google maps-kartan" vara.
+              <MapsGen query={address} />
             </div>
             <div className="box border-left location-holder">
               <p className="party-street">{party.location.street}</p>
