@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import REST from '../../REST'
 
 import MapsGen from './MapsGen/index'
+import AttendingsList from './AttendingsList/index'
 
 class Event extends REST { }
 
@@ -98,7 +99,7 @@ class PartyPage extends React.Component {
           <div className="box-container party-attending border-top no-print">
             <div className="box attending-holder">
               <p>Hoppas ni kan komma, det gör i alla fall vi:</p>
-              Här kommer "Kommer-listan" vara.
+              <AttendingsList attendees={party.attending}/>
             </div>
           </div>
           <div className="box-container border-top party-location">
