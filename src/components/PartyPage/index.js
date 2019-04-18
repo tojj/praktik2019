@@ -99,14 +99,14 @@ class PartyPage extends React.Component {
           <div className="box-container party-attending border-top no-print">
             <div className="box attending-holder">
               <p>Hoppas ni kan komma, det gör i alla fall vi:</p>
-              <AttendingsList attendees={party.attending}/>
+              <AttendingsList attendees={party.attending} event={party._id}/>
             </div>
           </div>
           <div className="box-container border-top party-location">
-            <div className="box maps-holder">
+            <div className="box maps-holder border-right">
               <MapsGen query={address} />
             </div>
-            <div className="box border-left location-holder">
+            <div className="box location-holder">
               <p className="party-street">{party.location.street}</p>
               <p className="party-zip-city">{party.location.zipcode} {party.location.city}</p>
               <p className="party-osa">OSA senast {new Date(party.rsvp).toLocaleDateString('sv-SE', { weekday: 'long', day: 'numeric', month: 'long' })}</p>
