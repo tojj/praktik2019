@@ -1,18 +1,27 @@
 import React, { Component } from "react"
 import staticData from "../../../../staticData"
 
-class Web_shop extends React.Component {
+class Web_shop extends Component {
   constructor(props) {
     super(props)
+    this.state = {
+      selectedItem: ''
+    }
     
-
   }
 
+  determineItemStyle(id) {
+    const isItemSelected = this.state.selectedItem === id;
+    return isItemSelected ? "shop-item-x" : "shop-item";
+    
+  }
+  
   renderShopProducts = ({id, img, price, text }) => {
+
     return (
-      <div className="shop-item" key={id}>
+      <div className={this.determineItemStyle(id)} onClick={() => this.setState({ selectedItem: id })} key={id}>
       <div className="test-container">
-      <label className="more-info-label" onClick={this.toggleInfo} >
+      <label className="more-info-label">
         >
       </label>
       <img
@@ -21,7 +30,7 @@ class Web_shop extends React.Component {
         alt="event"
         onClick={this.toggleSelected}
       />
-      <div className="shop-info" onClick={this.toggleSelected} >
+      <div className="shop-info">
         <p>{text}</p>
         <p>
           Pris: {price}
@@ -29,6 +38,7 @@ class Web_shop extends React.Component {
       </div>
     </div>
     </div>
+    
     )
   }
 
