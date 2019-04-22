@@ -9,40 +9,32 @@ class AttendingsList extends React.Component {
     super(props)
     this.state = {
       showInput: false,
-      id: this.props.event
+      attendees: this.props.attendees
     }
-    this.sendToDB = this.sendToDB.bind(this)
+    this.saveAttendeeToDB = this.saveAttendeeToDB.bind(this)
   }
   clickHandler = () => {
     this.setState({ showInput: !this.state.showInput })
   }
-  async sendToDB() {
+  async saveAttendeeToDB() {
     const newAttendee = {
-      "name": document.getElementById('input-att-name').value,
-      "email": document.getElementById('input-att-email').value,
-      "joined": new Date().getTime()
+      name: document.getElementById('input-att-name').value,
+      email: document.getElementById('input-att-email').value,
+      joined: new Date().getTime()
     }
-    console.log(newAttendee);
-    
-    let event = await Event.find(this.props.event)
-    console.log(event.attending);
-    event.attending.push(newAttendee)
-    console.log(event.attending);
-    await event.save()
-    console.log('Saved');
-    
 
-    
-    
-    // event.attendees.push
-    // const found = await events.find(event => {return event._id === id} )
-    // console.log(found);
+    let event = await Event.find(this.props.event);
+    event.attending.push(newAttendee)
+
+    await event.save()
+    this.setState({ attendees: event.attending })
   }
+
   render() {
     return (
       <div>
         <div className="list-holder">
-          {this.props.attendees.map((attendee, i) => {
+          {this.state.attendees.map((attendee, i) => {
             return <Attendee attendee={attendee} key={"attendee_" + i} />
           })}
         </div>
@@ -50,10 +42,9 @@ class AttendingsList extends React.Component {
           <input type="text" placeholder="namn" id="input-att-name" />
           <input type="email" placeholder="epost" id="input-att-email" className="ml-2" /> <br />
           <button type="button" className="btn btn-danger mt-3" onClick={this.clickHandler}>Tillbaka</button>
-          <button type="button" className="btn btn-success mt-3 ml-2" onClick={this.sendToDB}>Bekräfta</button>
+          <button type="button" className="btn btn-success mt-3 ml-2" onClick={this.saveAttendeeToDB}>Bekräfta</button>
         </div>
           : <button type="button" className="btn btn-primary" onClick={this.clickHandler}>Jag kommer!</button>}
-
       </div>
     )
   }
