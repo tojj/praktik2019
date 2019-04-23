@@ -1,9 +1,11 @@
 import React from "react"
 import { Link } from "react-router-dom"
 import Slider from "react-slick"
+import Checkout from "../Form_footer/Checkout/index"
 import REST from "../../../../REST"
+import { Check } from "react-feather";
 
-class Fundraiser extends REST {}
+class Fundraiser extends REST { }
 
 class Form_footer extends React.Component {
   constructor(props) {
@@ -122,6 +124,7 @@ class Form_footer extends React.Component {
             </div>
           </div>
         ) : null}
+        <Checkout />
         <div className="buttons-container">
           <Link to="/" className="link-cancel">
             Avbryt
