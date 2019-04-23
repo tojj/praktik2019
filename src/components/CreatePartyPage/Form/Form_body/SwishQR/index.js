@@ -10,7 +10,7 @@ class SwishQR extends React.Component {
   }
   getAllValuesAndChangeUrl = () => {
     const number = document.getElementById('number-input').value
-    const amount = document.getElementById('amount-input').value
+    let amount = document.getElementById('amount-input').value
     let color = document.getElementById('color-input').value
     if (color === "Blå") {
       color = '#4762b7'
@@ -24,8 +24,17 @@ class SwishQR extends React.Component {
 
     this.setState({
       color: color,
-      imgEl: img
+      imgEl: img,
+      value: '',
     })
+  }
+
+  handleChange = (e) => {
+    const val = e.target.value
+    const max = 151
+    const maxLength = max - 1
+    const newVal = val < max ? val : maxLength
+    this.setState({ value: newVal });
   }
   render() {
 
@@ -39,7 +48,7 @@ class SwishQR extends React.Component {
           </FormGroup>
           <FormGroup>
             <Label for="amount-input">Belopp för Swish</Label>
-            <Input type="number" name="number" min="50" max="150" defaultValue="100" id="amount-input" />
+            <Input type="number" name="number" min="50" max="150" value={this.state.value} onChange={this.handleChange} placeholder="100" id="amount-input" />
           </FormGroup>
           <FormGroup>
             <Label for="color-input">Välj färg</Label>
@@ -52,13 +61,13 @@ class SwishQR extends React.Component {
           <Button color="primary" type="button" onClick={this.getAllValuesAndChangeUrl}>Förhandsvisa QR-kod</Button>
         </div>
         <div className="box">
-          <figure className="qr-holder" 
-            style={{ 
-              backgroundColor: this.state.color, 
-              marginTop: '50px', 
-              overflow: 'hidden' 
+          <figure className="qr-holder"
+            style={{
+              backgroundColor: this.state.color,
+              marginTop: '50px',
+              overflow: 'hidden'
             }}>{this.state.imgEl ? this.state.imgEl :
-            <img className="qr-img" src="/images/convincer5.png" alt="qr code" />}
+              <img className="qr-img" src="/images/convincer5.png" alt="qr code" />}
           </figure>
         </div>
       </div>
