@@ -32,8 +32,8 @@ class SwishQR extends React.Component {
   handleChange = (e) => {
     const val = e.target.value
     const max = 151
-    const maxLength = max.toString().length - 1
-    const newVal = val < max ? val : parseInt(val.toString().substring(0, maxLength))
+    const maxLength = max - 1
+    const newVal = val < max ? val : maxLength
     this.setState({ value: newVal });
   }
   render() {
