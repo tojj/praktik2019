@@ -7,7 +7,7 @@ const MapsGen = (props) => {
       style={{
         position: 'relative',
         textAlign: 'right',
-        height: '500px',
+        height: '400px',
         width: '100%'
       }}>
       <div
@@ -15,13 +15,13 @@ const MapsGen = (props) => {
         style={{
           overflow: 'hidden',
           background: 'none !important',
-          height: '500px',
+          height: '400px',
           width: '100%'
         }}>
         <iframe
           title="maps-location"
           width="100%"
-          height="500px"
+          height="400px"
           id="gmap_canvas"
           src={"https://maps.google.com/maps?q=" + props.query + "&t=&z=15&ie=UTF8&iwloc=&output=embed"} 
           frameBorder="0" 

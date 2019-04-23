@@ -44,8 +44,8 @@ class PartyPage extends React.Component {
        */
       let address = party.location.street.split(' ')
       address = address.join('%20')
-      address = [address, party.location.zipcode, party.location.city].join('%20')  
-      
+      address = [address, party.location.zipcode, party.location.city].join('%20')
+
       /**
       * Saving the date in an array in order to split it up into multiple lines
       */
@@ -60,10 +60,10 @@ class PartyPage extends React.Component {
           </div>
           <div className="box-container party-info border-top">
             <div className="box">
-              <p className="party-child-age">{party.child} fyller {party.age}!</p>
+              <p className="party-child-age">{party.child} fyller {party.age} år!</p>
               <p className="party-description">{party.desc}</p>
             </div>
-            <div className="box border-left date-holder">
+            <div className="box date-holder">
               <p className="party-weekday">{date[0]}</p>
               <p className="party-date">Den {date[1]} {date[2]}</p>
               <p className="party-time">kl {date[3]}</p>
@@ -99,17 +99,17 @@ class PartyPage extends React.Component {
           <div className="box-container party-attending border-top no-print">
             <div className="box attending-holder">
               <p>Hoppas ni kan komma, det gör i alla fall vi:</p>
-              <AttendingsList attendees={party.attending} event={party._id}/>
+              <AttendingsList attendees={party.attending} event={party._id} />
             </div>
           </div>
           <div className="box-container border-top party-location">
-            <div className="box maps-holder border-right">
+            <div className="box maps-holder">
               <MapsGen query={address} />
             </div>
             <div className="box location-holder">
               <p className="party-street">{party.location.street}</p>
               <p className="party-zip-city">{party.location.zipcode} {party.location.city}</p>
-              <p className="party-osa">OSA senast {new Date(party.rsvp).toLocaleDateString('sv-SE', { weekday: 'long', day: 'numeric', month: 'long' })}</p>
+              <p className="party-rsvp">OSA senast <br /> {new Date(party.rsvp).toLocaleDateString('sv-SE', { weekday: 'long', day: 'numeric', month: 'long' })}</p>
             </div>
           </div>
         </div>

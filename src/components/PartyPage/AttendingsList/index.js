@@ -28,15 +28,19 @@ class AttendingsList extends React.Component {
 
     await event.save()
     this.setState({ attendees: event.attending })
+    this.clickHandler()
   }
 
   render() {
     return (
       <div>
         <div className="list-holder">
-          {this.state.attendees.map((attendee, i) => {
-            return <Attendee attendee={attendee} key={"attendee_" + i} />
-          })}
+          {this.state.attendees 
+          ? this.state.attendees.map((attendee, i) => {
+            return <Attendee attendee={attendee} key={"attendee_" + i} index={i} />
+          }) 
+          : <p style={{color: '#444655', fontSize: '1.5rem'}}>Än så länge har ingen skrivit upp sig :(</p>
+          }
         </div>
         {this.state.showInput ? <div>
           <input type="text" placeholder="namn" id="input-att-name" />
@@ -44,7 +48,7 @@ class AttendingsList extends React.Component {
           <button type="button" className="btn btn-danger mt-3" onClick={this.clickHandler}>Tillbaka</button>
           <button type="button" className="btn btn-success mt-3 ml-2" onClick={this.saveAttendeeToDB}>Bekräfta</button>
         </div>
-          : <button type="button" className="btn btn-primary" onClick={this.clickHandler}>Jag kommer!</button>}
+          : <button type="button" className="btn btn-outline-primary mt-5" onClick={this.clickHandler}>Jag kommer!</button>}
       </div>
     )
   }
