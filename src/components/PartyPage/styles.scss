@@ -1,7 +1,7 @@
 .party-bg {
   padding: 60px 30px;
   @include media-breakpoint-up(lg) {
-  padding: 120px 60px;
+    padding: 120px 60px;
   }
   min-height: 80vh;
   // background is set from /partypage/index.js
@@ -75,7 +75,7 @@
       }
     }
     .party-payment {
-      .box {
+        .box {
         min-height: 500px;
         text-align: center;
         .box-img {
@@ -169,5 +169,63 @@
         flex-direction: row;
       }
     }
+    .print-me {
+      flex-direction: row !important;
+      display: none;
+      flex: 1;
+      .box {
+        text-align: center;
+        img {
+          width: 50%;
+          height: auto;
+          margin: 0 auto;
+        }
+        p {
+          font-family: $big-text;
+          font-weight: 400;
+          font-size: 1rem;
+        }
+      }
+    }
   }
+}
+@media print {
+  header, footer, .no-print, .no-print * {
+    display: none
+  }
+  .print-me {
+    display: flex !important;
+    padding: 40px 0 0 !important;
+    .box {
+      min-height: 0 !important;
+    }
+  }
+  .party-bg {
+    height: 1400px !important;
+    .party-card{
+      height: 1270px !important;
+      overflow: hidden;
+    .party-payment, .party-attending {
+      margin: -80px 0 0 !important;
+    }
+    }
+  }
+  .box-container {
+    flex-direction: row !important;
+    border-top: 0 !important;
+    min-height: 0 !important;
+  }
+  .box {
+    border: 0 !important;
+    padding: 0 !important;
+  }
+  .party-location, .party-info, .print-me {
+    border-top: 1px solid rgba(0, 0, 0, 0.1) !important;
+  }
+  .location-holder, .date-holder {
+    padding: 0 !important;
+    border-left: 1px solid rgba(0, 0, 0, 0.1) !important;
+  }
+  
+  @page { size: auto;  margin: 0mm; }
 }

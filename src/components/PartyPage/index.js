@@ -14,7 +14,7 @@ class PartyPage extends React.Component {
       event: null
     }
   }
-  
+
   componentDidMount() {
     const eventLink = this.props.match.params.link
     this.findEventAndMatchWithDB(eventLink)
@@ -68,6 +68,16 @@ class PartyPage extends React.Component {
               <p className="party-weekday">{date[0]}</p>
               <p className="party-date">Den {date[1]} {date[2]}</p>
               <p className="party-time">kl {date[3]}</p>
+            </div>
+          </div>
+          <div className="box-container border-top print-me">
+            <div className="box">
+              <img src="/images/card.png" alt="" />
+              <p>Ta gärna med ett fint kort!</p>
+            </div>
+            <div className="box">
+              <img src="/images/card.png" alt="" />
+              <p>Skanna denna koden för att komma till kalaset.</p>
             </div>
           </div>
           <div className="box-container border-top party-payment no-print">
