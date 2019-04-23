@@ -21,19 +21,20 @@
 @import "../Components/StartPage/about_us/styles";
 
 // CREATEPARTYPAGE
-@import '../components/CreatePartyPage/styles';
-@import '../components/CreatePartyPage/Form/styles';
-@import '../components/CreatePartyPage/form/Form_header/styles';
-@import '../components/CreatePartyPage/Form/Form_body/styles';
-@import '../components/CreatePartyPage/Form/Form_body/Event_input/styles';
-@import '../components/CreatePartyPage/form/Form_body/SwishQR/styles';
-@import '../components/CreatePartyPage/form/Form_header/ImageHandler/styles';
+@import "../components/CreatePartyPage/styles";
+@import "../components/CreatePartyPage/Form/styles";
+@import "../components/CreatePartyPage/form/Form_header/styles";
+@import "../components/CreatePartyPage/form/Form_header/ImageHandler/styles";
+@import "../components/CreatePartyPage/Form/Form_body/styles";
+@import "../components/CreatePartyPage/Form/Form_body/Event_input/styles";
+@import "../components/CreatePartyPage/form/Form_body/SwishQR/styles";
 @import "../components/CreatePartyPage/form/Form_footer/styles";
-// PARTYPAGE
 
+// PARTYPAGE
+@import "../components/PartyPage/styles";
 
 // PREVIEWPAGE
-@import '../components/PreviewPage/styles';
+@import "../components/PreviewPage/styles";
 
 // FOOTER
 @import "../Components/Footer/styles";
