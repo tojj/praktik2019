@@ -14,6 +14,7 @@ class PartyPage extends React.Component {
       event: null
     }
   }
+  
   componentDidMount() {
     const eventLink = this.props.match.params.link
     this.findEventAndMatchWithDB(eventLink)
@@ -122,6 +123,5 @@ class PartyPage extends React.Component {
     )
   }
 }
-
 
 export default PartyPage

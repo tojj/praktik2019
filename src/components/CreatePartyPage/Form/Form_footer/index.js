@@ -129,6 +129,11 @@ class Form_footer extends React.Component {
           <Link to="/skapa-kalas" className="link-party-page">
             Godkänn
           </Link>
+          <Link
+            to="/kalas-förhandsvisning"
+            className="link-party-page">
+            Förhandsgranska
+          </Link>
         </div>
       </div>
     )

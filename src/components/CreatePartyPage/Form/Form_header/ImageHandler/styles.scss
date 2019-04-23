@@ -4,19 +4,30 @@
   width: 300px;
   border-radius: 50%;
   margin: 0 auto;
-  padding-top: 100px;
   background-repeat: repeat;
   background-clip: #fff;
-}
+  background: #fff;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-.image-text {
-  font-size: 1rem !important;
-  padding: 10px;
-}
 
-.container-image {
-  color: $primary;
+  .image-text {
+    font-size: 1rem !important;
+    padding: 10px;
+  }
+
+  .container-image {
+    color: $primary;
+    
+  }
+
+  .image-dropdown {
+    margin-top: 10px;
+  }
   
+
 }
 
 .image-headline {
@@ -28,15 +39,6 @@
   text-align: left;
 }
 
-.image-dropdown {
-  margin-top: 10px;
-}
-
-// .dd-menu {
-//   // position: relative !important;
-//   // top: -40px !important;
-//   z-index: 90;
-// }
 .dd-image {
   width: 100% !important;
   border: 1px solid $dark;
