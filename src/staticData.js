@@ -121,39 +121,50 @@ export const shopData = [
   {
     img: "/images/elefant.png",
     id: 1,
-    text: 'Kay Bojesan Flodhäst Träleksak',
-    price: '1000kr'
+    text: "Kay Bojesan Flodhäst Träleksak",
+    price: "1000kr",
+    desc:
+      "Kay Bojesens elefant designades 1955 och är ett av flera trädjur i Bojesens samling. Passar fint på byrån eller bokhyllan för såväl barnet som design-samlaren."
   },
   {
     img: "/images/hippo.png",
     id: 2,
-    text: 'Kay Bojesan Flodhäst Träleksak',
-    price: '1000kr'
+    text: "Kay Bojesan Flodhäst Träleksak",
+    price: "1000kr",
+    desc:
+      "Kay Bojesens elefant designades 1955 och är ett av flera trädjur i Bojesens samling. Passar fint på byrån eller bokhyllan för såväl barnet som design-samlaren."
   },
   {
     img: "/images/zebra.png",
     id: 3,
-    text: 'Kay Bojesan Flodhäst Träleksak',
-    price: '1000kr'
+    text: "Kay Bojesan Flodhäst Träleksak",
+    price: "1000kr",
+    desc:
+      "Kay Bojesens elefant designades 1955 och är ett av flera trädjur i Bojesens samling. Passar fint på byrån eller bokhyllan för såväl barnet som design-samlaren."
   },
   {
     img: "/images/elefant.png",
     id: 4,
-    text: 'Kay Bojesan Flodhäst Träleksak',
-    price: '1000kr'
-
+    text: "Kay Bojesan Flodhäst Träleksak",
+    price: "1000kr",
+    desc:
+      "Kay Bojesens elefant designades 1955 och är ett av flera trädjur i Bojesens samling. Passar fint på byrån eller bokhyllan för såväl barnet som design-samlaren."
   },
   {
     img: "/images/hippo.png",
     id: 5,
-    text: 'Kay Bojesan Flodhäst Träleksak',
-    price: '1000kr'
+    text: "Kay Bojesan Flodhäst Träleksak",
+    price: "1000kr",
+    desc:
+      "Kay Bojesens elefant designades 1955 och är ett av flera trädjur i Bojesens samling. Passar fint på byrån eller bokhyllan för såväl barnet som design-samlaren."
   },
   {
     img: "/images/zebra.png",
     id: 6,
-    text: 'Kay Bojesan Flodhäst Träleksak',
-    price: '1000kr'
+    text: "Kay Bojesan Flodhäst Träleksak",
+    price: "1000kr",
+    desc:
+      "Kay Bojesens elefant designades 1955 och är ett av flera trädjur i Bojesens samling. Passar fint på byrån eller bokhyllan för såväl barnet som design-samlaren."
   }
 ]
 

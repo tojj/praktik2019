@@ -38,7 +38,7 @@ class Web_shop extends Component {
     }
   }
 
-  renderShopProducts = ({ id, img, price, text }) => {
+  renderShopProducts = ({ id, img, price, text, desc }) => {
     return (
       <div className={this.determineItemStyle2(id)} key={id}>
         <div
@@ -51,9 +51,7 @@ class Web_shop extends Component {
 
         {this.state.showInfo === id ? (
           <div className="test-container">
-            <p>{text}</p>
-            <p>{text}</p>
-            <p>{text}</p>
+            <p>{desc}</p>
           </div>
         ) : (
           <div className="test-container">
