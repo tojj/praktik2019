@@ -85,23 +85,23 @@ class Checkout extends React.Component {
           </div>) : null}
         {this.state.noRegisterOption ? (<div className="box-container">
           <div className="box align-left">
-            <FormGroup>
+            <FormGroup className="input50">
               <Label for="firstName-input">Förnamn</Label>
               <Input type="text" name="firstName" id="firstName-input" placeholder="Förnamn" className="form-input" />
             </FormGroup>
-            <FormGroup>
+            <FormGroup className="input50">
               <Label htmlFor="lastName-input" className="ml-lg-2">Efternamn</Label>
               <Input type="text" name="lastName" id="lastName-input" placeholder="Efternamn" className="form-input ml-lg-2" />
             </FormGroup>
-            <FormGroup>
+            <FormGroup className="input50">
               <Label htmlFor="email-input">E-post</Label>
               <Input type="email" name="email" id="email-input" placeholder="E-post" className="form-input" />
             </FormGroup>
-            <FormGroup>
+            <FormGroup className="input50">
               <Label htmlFor="phoneNumber-input" className="position-relative ml-lg-2" title="Ange ditt telefonnummer om du vill få sms aviseringar">Telefonnummer<HelpCircle className="iconFeather" /></Label>
               <Input type="phoneNumber" name="phoneNumber" id="phoneNumber-input" placeholder="Telefonnummer" className="form-input ml-lg-2" />
             </FormGroup>
-            <FormGroup>
+            <FormGroup className="input50">
               <Label htmlFor="address-input">Adress</Label>
               <Input type="text" name="" id="address-input" placeholder="Adress" className="form-input" />
             </FormGroup>
@@ -109,7 +109,7 @@ class Checkout extends React.Component {
               <Label htmlFor="zipcode-input" className="ml-lg-2">Postnummer</Label>
               <Input type="number" name="zipcode" id="zipcode-input" placeholder="Postnummer" className="form-input ml-lg-2" />
             </FormGroup>
-            <FormGroup>
+            <FormGroup className="input50">
               <Label htmlFor="city-input">Stad <i data-feather="help-circle"></i></Label>
               <Input type="text" name="city" id="city-input" placeholder="Stad" className="form-input" />
             </FormGroup>
