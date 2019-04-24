@@ -16,13 +16,15 @@ class Checkout extends React.Component {
 
   loginToggle = () => {
     this.setState({
-      loginOption: !this.state.loginOption
+      loginOption: !this.state.loginOption,
+      noRegisterOption: false
     })
   }
 
   registerToggle = () => {
     this.setState({
-      noRegisterOption: !this.state.noRegisterOption
+      noRegisterOption: !this.state.noRegisterOption,
+      loginOption: false
     })
   }
 
