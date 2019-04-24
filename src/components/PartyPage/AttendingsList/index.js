@@ -42,7 +42,7 @@ class AttendingsList extends React.Component {
           : <p style={{color: '#444655', fontSize: '1.5rem'}}>Än så länge har ingen skrivit upp sig :(</p>
           }
         </div>
-        {this.state.showInput ? <div>
+        {this.state.showInput ? <div className="pt-2">
           <input type="text" placeholder="namn" id="input-att-name" />
           <input type="email" placeholder="epost" id="input-att-email" className="ml-2" /> <br />
           <button type="button" className="btn btn-danger mt-3" onClick={this.clickHandler}>Tillbaka</button>

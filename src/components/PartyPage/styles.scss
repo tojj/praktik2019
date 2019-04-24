@@ -1,5 +1,8 @@
 .party-bg {
-  padding: 60px 30px;
+  padding: 60px 15px;
+  @include media-breakpoint-up(sm) {
+    padding: 60px 30px;
+  }
   @include media-breakpoint-up(lg) {
     padding: 120px 60px;
   }
@@ -95,6 +98,26 @@
       .swish-holder {
         .qr-code {
           padding: 10px; // Only used for the bg-color to work. Remove once SWISH API is in place.
+        }
+      }
+    }
+    .party-congratulation {
+      .box:nth-of-type(1){
+        flex: 2 !important;
+      }
+      figure {
+        text-align: center;
+        margin-top: 1rem;
+        @include media-breakpoint-up(md){
+          margin-top: 0;
+        }
+        .box-img {
+          width: 80%;
+          height: auto;
+          margin: 0 auto;
+          overflow: hidden;
+          border-radius: 50%;
+          border: 1px solid rgba(0, 0, 0, 0.1);
         }
       }
     }
