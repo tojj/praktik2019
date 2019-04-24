@@ -5,40 +5,43 @@ class Web_shop extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      selectedItem: ''
+      selectedItem: ""
     }
-    
   }
 
   determineItemStyle(id) {
-    const isItemSelected = this.state.selectedItem === id;
-    return isItemSelected ? "shop-item-x" : "shop-item";
-    
+    const isItemSelected = this.state.selectedItem === id
+    return isItemSelected ? "shop-item-overlay shop-item-checkmark" : ""
   }
-  
-  renderShopProducts = ({id, img, price, text }) => {
 
+  determineItemStyle2(id) {
+    const isItemSelected = this.state.selectedItem === id
+    return isItemSelected ? "shop-item-border" : "shop-item"
+  }
+
+  renderShopProducts = ({ id, img, price, text }) => {
     return (
-      <div className={this.determineItemStyle(id)} onClick={() => this.setState({ selectedItem: id })} key={id}>
-      <div className="test-container">
-      <label className="more-info-label">
+      <div className={this.determineItemStyle2(id)}>
+        <div
+          className={this.determineItemStyle(id)}
+          onClick={() => this.setState({ selectedItem: id })}
+          key={id}
         >
-      </label>
-      <img
-        className="shop-img"
-        src={img}
-        alt="event"
-        onClick={this.toggleSelected}
-      />
-      <div className="shop-info">
-        <p>{text}</p>
-        <p>
-          Pris: {price}
-        </p>
+          <div className="test-container">
+            <label className="more-info-label">></label>
+            <img
+              className="shop-img"
+              src={img}
+              alt="event"
+              onClick={this.toggleSelected}
+            />
+            <div className="shop-info">
+              <p>{text}</p>
+              <p>Pris: {price}</p>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-    </div>
-    
     )
   }
 
