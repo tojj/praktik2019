@@ -10,19 +10,19 @@ class Web_shop extends Component {
     }
   }
 
-  determineItemStyle(id) {
+  toggleSelectOverlay(id) {
     const isItemSelected = this.state.selectedItem === id
     return isItemSelected
       ? "shop-item-overlay shop-item-checkmark"
       : "placeholder-div"
   }
 
-  determineItemStyle2(id) {
+  toggleSelectBorder(id) {
     const isItemSelected = this.state.selectedItem === id
     return isItemSelected ? "shop-item-border" : "shop-item"
   }
 
-  checkIfAlreadySelected(id) {
+  toggleSelected(id) {
     if (this.state.selectedItem === id) {
       this.setState({ selectedItem: "" })
     } else {
@@ -40,10 +40,10 @@ class Web_shop extends Component {
 
   renderShopProducts = ({ id, img, price, text, desc }) => {
     return (
-      <div className={this.determineItemStyle2(id)} key={id}>
+      <div className={this.toggleSelectBorder(id)} key={id}>
         <div
-          className={this.determineItemStyle(id)}
-          onClick={() => this.checkIfAlreadySelected(id)}
+          className={this.toggleSelectOverlay(id)}
+          onClick={() => this.toggleSelected(id)}
         />
         <label className="more-info-label" onClick={() => this.toggleInfo(id)}>
           >
