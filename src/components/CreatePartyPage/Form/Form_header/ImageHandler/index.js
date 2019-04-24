@@ -60,8 +60,8 @@ class ImageHandler extends React.Component {
     ? <img src={this.props.birthdayImage} alt=""/>
     : (
       <div>
-        <p className="image-text">Ladda upp egen bakgrundsbild</p>
-        <Image className="img-icon container-image" />
+        <p className="image-text">Välj bakgrundsbild</p>
+        <Image className="img-icon container-image" size={48} />
       </div>
     )
 
