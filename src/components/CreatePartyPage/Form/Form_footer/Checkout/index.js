@@ -1,6 +1,5 @@
 import React from 'react'
 import { Button, Input, FormGroup, Label } from 'reactstrap'
-
 import { HelpCircle } from 'react-feather';
 
 
@@ -12,7 +11,6 @@ class Checkout extends React.Component {
       noRegisterOption: false,
       userLogin: false
     }
-
   }
 
   loginToggle = () => {
@@ -94,7 +92,7 @@ class Checkout extends React.Component {
                   <Input type="password" name="password" id="password-confirmation-input" placeholder="Bekräfta ditt nya lösenord" pattern="^((?=.*[a-z])(?=.*[A-Z])(?=.*\d)|(?=.*[a-z])(?=.*[A-Z])(?=.*[^A-Za-z0-9])|(?=.*[a-z])(?=.*\d)(?=.*[^A-Za-z0-9])|(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]))([A-Za-z\d@#$%^&amp;*\-_+=[\]{}|\\:',?/`~&quot;();!]|\.(?!@)){8,16}$" title="Upprepa ditt nya lösenord" required="" className="registration-form" />
                 </FormGroup>
                 <div className="error item-level login-item" aria-hidden="true"><p className="registration-text mb-2">Har du redan ett konto? Vänligen logga in.</p></div>
-                <Button color="primary" type="button" >Avbryt</Button>
+                <Button color="primary" type="button" onClick={this.loginToggle} >Avbryt</Button>
                 <Button color="primary" type="button" className="ml-lg-2" >Fortsätt</Button>
                 <Button color="primary" type="button" className="ml-lg-2" onClick={this.userLoginToggle}>Logga in</Button>
               </div >
@@ -103,7 +101,7 @@ class Checkout extends React.Component {
 
 
         {this.state.userLogin ? (
-          <div class="set-width">
+          <div className="set-width">
             <div className="login-container">
               <div className="login-content">
                 <h2 className="form-headline">Logga in</h2>
@@ -113,10 +111,9 @@ class Checkout extends React.Component {
                 </FormGroup>
                 <FormGroup>
                   <Label htmlFor="password-input">Lösenord</Label>
-                  <Input type="password" name="password" id="user-password-input" placeholder="Nytt lösenord" pattern="^((?=.*[a-z])(?=.*[A-Z])(?=.*\d)|(?=.*[a-z])(?=.*[A-Z])(?=.*[^A-Za-z0-9])|(?=.*[a-z])(?=.*\d)(?=.*[^A-Za-z0-9])|(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]))([A-Za-z\d@#$%^&amp;*\-_+=[\]{}|\\:',?/`~&quot;();!]|\.(?!@)){8,16}$" title="Välj ett nytt lösenord" required="" className="registration-form" />
+                  <Input type="password" name="password" id="user-password-input" placeholder="Lösenord" pattern="^((?=.*[a-z])(?=.*[A-Z])(?=.*\d)|(?=.*[a-z])(?=.*[A-Z])(?=.*[^A-Za-z0-9])|(?=.*[a-z])(?=.*\d)(?=.*[^A-Za-z0-9])|(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]))([A-Za-z\d@#$%^&amp;*\-_+=[\]{}|\\:',?/`~&quot;();!]|\.(?!@)){8,16}$" required="" className="registration-form" />
                 </FormGroup>
-
-                <Button color="primary" type="button" >Avbryt</Button>
+                <Button color="primary" type="button" onClick={this.userLoginToggle}>Avbryt</Button>
                 <Button color="primary" type="button" className="ml-lg-2" >Logga in</Button>
               </div >
             </div>
