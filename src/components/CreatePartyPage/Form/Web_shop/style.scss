@@ -110,8 +110,14 @@
   height: 40%;
   font-family: $small-text;
   font-weight: bold;
-  box-sizing: border-box;
   color: $dark;
+}
+
+.placeholder-div {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 100000 !important;
 }
 
 .focused {
