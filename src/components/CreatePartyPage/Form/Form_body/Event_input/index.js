@@ -1,44 +1,79 @@
-import React from 'react'
+import React, { Component } from 'react'
+import { eventInputData } from '../../../../../staticData'
+import { connect } from 'react-redux'
+import { updateBdayTimeAndPlace } from '../../../../../store/Birthday/BirthdayActions'
+import InputEvent from './InputEvent'
 import {
   FormGroup,
-  Label,
-  Input
+  Label
 } from 'reactstrap'
 
-const EventInput = (props) => (
+class EventInput extends Component {
 
-  <div className="box-container">
-    <div className="box">
-      <h2 className="event-heading">Var, när <br /> &amp; hur?</h2>
-      <img className="box-img fg-image" src="/images/time-place.png" alt="event" />
-    </div>
-    <div className="box text-left">
-      <FormGroup>
-        <Label className="birthday-label">Skriv några ord till de inbjudna</Label>
-        <Input type="textarea" className="textarea-label form-input input100" />
-      </FormGroup>
-      <FormGroup>
-        <Label className="birthday-label">När är kalaset?</Label>
-        <div className="time-label">
-          <Input className="form-input input50" rows="2" type="date" />
-          <Input className="form-input input25" rows="2" type="time" defaultValue="12:00" />
+  /**
+   * Passing value from input
+   */
+
+  updateInfo = (event) => {
+    this.props.updateTimeAndPlace(event.target.value)
+  }
+
+  /**
+   * Rendering input fields
+   */
+
+  renderInputs = () => this.props.birthdayTimeAndPlace
+    ? Object.keys(this.props.birthdayTimeAndPlace).map(this.renderInput)
+    : null
+
+
+  renderInput = key => (
+    <FormGroup key={key} className={eventInputData[key].classNameFormGroup}>
+      <Label htmlFor={eventInputData[key].name} className={eventInputData[key].classNameLabel}>{eventInputData[key].text}</Label>
+      <InputEvent
+        name={eventInputData[key].name}
+        keyVal={key}
+        value={this.props.birthdayTimeAndPlace[key]}
+        type={eventInputData[key].type}
+        placeholder={eventInputData[key].placeholder}
+        className={eventInputData[key].className}
+        callback={this.callback}
+      />
+    </FormGroup>
+  )
+
+  /**
+ * Callback function handling values from inputs
+ */
+
+  callback = (value, key) => this.props.updateTimeAndPlace({ [key]: value })
+
+
+  render() {
+    return (
+      <div className="box-container">
+        <div className="box">
+          <h2 className="form-headline">Var, när <br /> &amp; hur?</h2>
+          <img className="box-img fg-image" src="/images/time-place.png" alt="event" />
         </div>
-        <FormGroup>
-        </FormGroup>
-        <Label className="location-label">Plats</Label>
-        <Input className="form-input input100" rows="2" type="text" placeholder="Gatuadress" />
-        <div className="time-label mt-2">
-          <Input className="form-input input25" rows="2" type="text" placeholder="Postnr" />
-          <Input className="form-input input50" rows="2" type="text" placeholder="Stad" />
+        <div className="box text-left">
+          {this.renderInputs()}
         </div>
-      </FormGroup>
-      <FormGroup>
-        <Label className="birthday-label">När vill du senast ha svar om vem som kommer?</Label>
-        <Input className="form-input input50" rows="2" type="date" />
-      </FormGroup>
-    </div>
-  </div>
-)
+      </div >
+    )
+  }
 
-export default EventInput
 
+}
+const mapStateToProps = state => {
+  return {
+    birthdayTimeAndPlace: state.birthday.birthdayTimeAndPlace
+  }
+}
+
+const mapDispatchToProps = dispatch => ({
+  updateTimeAndPlace: (data) => dispatch(updateBdayTimeAndPlace(data))
+})
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(EventInput)

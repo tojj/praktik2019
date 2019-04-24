@@ -1,0 +1,173 @@
+.party-bg {
+  padding: 60px 30px;
+  @include media-breakpoint-up(lg) {
+  padding: 120px 60px;
+  }
+  min-height: 80vh;
+  // background is set from /partypage/index.js
+  .party-card {
+    font-family: $small-text;
+    background-color: #fff;
+    box-shadow: 2px 2px 5px #000;
+    .party-title {
+      padding: 50px 0 !important;
+      min-height: 200px;
+      & p {
+        font-family: $big-text;
+        font-weight: 800;
+        font-size: 30px;
+        color: $primary;
+        text-align: center;
+        margin: 0;
+        @include media-breakpoint-up(sm) {
+          font-size: 35px;
+        }
+        @include media-breakpoint-up(md) {
+          font-size: 45px;
+        }
+        @include media-breakpoint-up(lg) {
+          font-size: 50px;
+        }
+        @include media-breakpoint-up(xl) {
+          font-size: 55px;
+        }
+      }
+    }
+    .party-info {
+      .box:nth-of-type(1) {
+        padding: 0 0 50px !important;
+        @include media-breakpoint-up(md) {
+          padding: 0 20px 0 0 !important;
+        }
+      }
+      .party-child-age {
+        font-family: $big-text;
+        font-weight: 800;
+        text-align: center;
+        text-transform: uppercase;
+        font-size: 1.5rem;
+      }
+      .date-holder {
+        padding: 50px 0 0 !important;
+        font-family: $big-text;
+        font-weight: 800;
+        text-align: center;
+        text-transform: uppercase;
+        border-top: 1px solid rgba(0, 0, 0, 0.1);
+        p {
+          font-size: 1.5rem;
+          margin: 0 10px;
+        }
+        @include media-breakpoint-up(sm) {
+          p {
+            font-size: 2rem;
+          }
+        }
+        @include media-breakpoint-up(md) {
+          padding: 0 !important;
+          border-top: 0;
+          border-left: 1px solid rgba(0, 0, 0, 0.1);
+          .party-weekday,
+          .party-time {
+            font-size: 2.5rem;
+          }
+        }
+      }
+    }
+    .party-payment {
+      .box {
+        min-height: 500px;
+        text-align: center;
+        .box-img {
+          max-height: 300px;
+          max-width: 300px;
+          margin: 0 auto;
+          overflow: hidden;
+          border-radius: 10px;
+          border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+        p:nth-of-type(1) {
+          font-family: $big-text;
+          font-weight: 800;
+          margin-top: 1rem;
+        }
+      }
+      .swish-holder {
+        .qr-code {
+          padding: 10px; // Only used for the bg-color to work. Remove once SWISH API is in place.
+        }
+      }
+    }
+    .party-attending {
+      .attending-holder {
+        text-align: center;
+        p:nth-of-type(1) {
+          font-family: $big-text;
+          font-weight: 800;
+          font-size: 30px;
+          margin-top: 1rem;
+          color: $primary;
+        }
+        .list-holder {
+          text-align: center;
+        }
+      }
+    }
+    .party-location {
+      @include media-breakpoint-up(md) {
+        flex-direction: column !important;
+      }
+      @include media-breakpoint-up(lg) {
+        flex-direction: row !important;
+      }
+      .maps-holder {
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        padding: 0 0 50px !important;
+        @include media-breakpoint-up(lg) {
+          border-bottom: 0;
+          border-right: 1px solid rgba(0, 0, 0, 0.1);
+          padding: 0 1vw 0 0 !important;
+        }
+      }
+      .location-holder {
+        padding: 50px 0 0 !important;
+        font-family: $big-text;
+        font-weight: 800;
+        text-align: center;
+        text-transform: uppercase;
+        .party-street,
+        .party-rsvp {
+          font-size: 1.5rem;
+        }
+      }
+    }
+    a {
+      font-weight: bold;
+      text-decoration: none;
+      color: $primary;
+      &:hover {
+        color: $dark;
+      }
+    }
+
+    // All general flex rules are here
+    .box-container {
+      display: flex;
+      flex-direction: column;
+      width: 90%;
+      margin: 0 auto;
+      justify-content: center;
+      align-content: center;
+      align-items: center;
+      padding: 50px 0;
+      .box {
+        flex: 1;
+        padding: 0 20px;
+        width: 100%;
+      }
+      @include media-breakpoint-up(md) {
+        flex-direction: row;
+      }
+    }
+  }
+}
