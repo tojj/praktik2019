@@ -75,13 +75,26 @@
 .item-level{
   
   text-align: left;
-  #registration-text{
+  .registration-text{
     font-size: 14px !important;
     @include media-breakpoint-up(lg) {
     width:50%;
     
     margin: 0 auto;
   }
+}
+}
+
+.login-item{
+text-align: center;
+}
+
+.set-width{
+  width: 100%;
+  @include media-breakpoint-up(lg) {
+    width:100%;
+    
+    margin: 0 auto;
 }
 }
 
@@ -92,4 +105,9 @@
   width: 50% !important;
   margin: 0 auto;
 }
+}
+
+.login-form{
+  width: 250% !important;
+  margin: 0 auto;
 }
