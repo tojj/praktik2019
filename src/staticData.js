@@ -90,7 +90,6 @@ export const formHeaderData = {
   }
 }
 
-
 export const carouselData = [
   {
     img: "/images/barncancer-fonden.jpg",
@@ -205,7 +204,7 @@ export const imageHandlerData = [
     dropdownClass: "dd-item",
     imgClass: "dd-image",
     id: 6
-  },
+  }
 ]
 
 export const eventInputData = {
@@ -282,6 +281,6 @@ export default {
   formHeaderData,
   carouselData,
   imageHandlerData,
-  eventInputData
+  eventInputData,
   shopData
 }
