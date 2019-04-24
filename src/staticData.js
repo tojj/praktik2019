@@ -63,7 +63,8 @@ export const productData = [
     id: 1
   },
   {
-    text: "Med Tojj är det nu enkelt att gå ihop och ge barnen något som de faktiskt önskar sig!",
+    text:
+      "Med Tojj är det nu enkelt att gå ihop och ge barnen något som de faktiskt önskar sig!",
     id: 2
   }
 ]
@@ -89,32 +90,82 @@ export const formHeaderData = {
   }
 }
 
-
 export const carouselData = [
   {
     img: "/images/barncancer-fonden.jpg",
-    id: 1,
+    id: 1
   },
   {
     img: "/images/radda-barnen.png",
-    id: 2,
+    id: 2
   },
   {
     img: "/images/bris-ny.jpg",
-    id: 3,
+    id: 3
   },
   {
     img: "/images/sos-ny.jpg",
-    id: 4,
+    id: 4
   },
   {
     img: "/images/redcross.jpg",
-    id: 5,
+    id: 5
   },
   {
     img: "/images/habitat.jpg",
-    id: 6,
+    id: 6
+  }
+]
+
+export const shopData = [
+  {
+    img: "/images/elefant.png",
+    id: 1,
+    text: "Kay Bojesan Flodhäst Träleksak",
+    price: "1000kr",
+    desc:
+      "Kay Bojesens elefant designades 1955 och är ett av flera trädjur i Bojesens samling. Passar fint på byrån eller bokhyllan för såväl barnet som design-samlaren."
   },
+  {
+    img: "/images/hippo.png",
+    id: 2,
+    text: "Kay Bojesan Flodhäst Träleksak",
+    price: "1000kr",
+    desc:
+      "Kay Bojesens elefant designades 1955 och är ett av flera trädjur i Bojesens samling. Passar fint på byrån eller bokhyllan för såväl barnet som design-samlaren."
+  },
+  {
+    img: "/images/zebra.png",
+    id: 3,
+    text: "Kay Bojesan Flodhäst Träleksak",
+    price: "1000kr",
+    desc:
+      "Kay Bojesens elefant designades 1955 och är ett av flera trädjur i Bojesens samling. Passar fint på byrån eller bokhyllan för såväl barnet som design-samlaren."
+  },
+  {
+    img: "/images/elefant.png",
+    id: 4,
+    text: "Kay Bojesan Flodhäst Träleksak",
+    price: "1000kr",
+    desc:
+      "Kay Bojesens elefant designades 1955 och är ett av flera trädjur i Bojesens samling. Passar fint på byrån eller bokhyllan för såväl barnet som design-samlaren."
+  },
+  {
+    img: "/images/hippo.png",
+    id: 5,
+    text: "Kay Bojesan Flodhäst Träleksak",
+    price: "1000kr",
+    desc:
+      "Kay Bojesens elefant designades 1955 och är ett av flera trädjur i Bojesens samling. Passar fint på byrån eller bokhyllan för såväl barnet som design-samlaren."
+  },
+  {
+    img: "/images/zebra.png",
+    id: 6,
+    text: "Kay Bojesan Flodhäst Träleksak",
+    price: "1000kr",
+    desc:
+      "Kay Bojesens elefant designades 1955 och är ett av flera trädjur i Bojesens samling. Passar fint på byrån eller bokhyllan för såväl barnet som design-samlaren."
+  }
 ]
 
 export const imageHandlerData = [
@@ -153,7 +204,7 @@ export const imageHandlerData = [
     dropdownClass: "dd-item",
     imgClass: "dd-image",
     id: 6
-  },
+  }
 ]
 
 export const eventInputData = {
@@ -230,5 +281,6 @@ export default {
   formHeaderData,
   carouselData,
   imageHandlerData,
-  eventInputData
+  eventInputData,
+  shopData
 }
