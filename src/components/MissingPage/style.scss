@@ -6,9 +6,11 @@
 }
 
 .mp-container {
-  min-height: 20vw;
+  min-height: 44vw;
   width: 80%;
   margin: 50px auto 30px auto;
+  background-image: url("/images/missingPageImg.png");
+  background-size: cover;
 }
 
 .mp-info {
