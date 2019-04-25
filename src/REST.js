@@ -47,6 +47,7 @@ export default class REST {
         'Content-Type': 'application/json'
       }
     });
+
     let found = await response.json();
     let wrapped = false;
     if (!found) {

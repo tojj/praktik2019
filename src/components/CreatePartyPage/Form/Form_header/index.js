@@ -24,12 +24,10 @@ class Form_header extends Component {
    * Render birthday date
    */
 
-
-
-  renderBirthdayDate = () => this.props.birthdayDate
-    ? <span>{this.props.birthdayDate}</span>
-    : ''
-
+  renderBirthdayDate = () => this.props.birthdayEvent.age
+    ? <span>{this.props.birthdayEvent.age}</span> 
+    : console.log(this.props.birthdayEvent.age)
+      
   /**
    * Rendering my input fields here, so all three are shows
    * I am doing this using Object.keys and map
@@ -69,8 +67,7 @@ class Form_header extends Component {
             <h2 className="form-headline">Skapa Kalas</h2>
             <div>
               {this.renderInputs()}
-              {this.renderBirthdayDate()}
-              <span>{}</span>
+              {/*this.renderBirthdayDate()*/}
             </div>
           </div>
           <div className="box force-top">
@@ -84,7 +81,7 @@ class Form_header extends Component {
 
 const mapStateToProps = state => {
   return {
-    birthdayEvent: state.birthday.birthdayEvent
+    birthdayEvent: state.birthday.birthdayEvent,
   }
 }
 

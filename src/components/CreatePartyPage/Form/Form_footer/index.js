@@ -24,6 +24,8 @@ class Form_footer extends React.Component {
     this.allFundraisers = this.allFundraisersData.map((fundraiser, i) => {
       return (
         <div className="slider-div" key={"fundraiser_" + i} id={fundraiser._id}>
+          <div className="charity-overlay" />
+          <div className="charity-checkmark" />
           <img
             className="charImg"
             src={fundraiser.image}
@@ -128,6 +130,9 @@ class Form_footer extends React.Component {
           </Link>
           <Link to="/skapa-kalas" className="link-party-page">
             Godkänn
+          </Link>
+          <Link to="/kalas-förhandsvisning" className="link-party-page">
+            Förhandsgranska
           </Link>
         </div>
       </div>

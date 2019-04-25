@@ -2,20 +2,27 @@
   width: 50% !important;
 }
 
-.birthday-label{
+.birthday-label {
   text-align: left;
- 
+  display: block; 
 }
+
 .input-heading{
   font-weight: 600;
 }
-
 
 textarea:focus, input:focus {
   color: #000000;
 }
 
-input, select, textarea{
+input, select, textarea {
   color: #999;
 }
 
+.inline-input {
+  display: inline;
+}
+
+.input25, .input50 {
+  display: inline-block;
+}
