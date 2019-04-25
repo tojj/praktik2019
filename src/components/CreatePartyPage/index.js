@@ -17,18 +17,20 @@ class CreatePartyPage extends React.Component {
 
   async createEvent() {
     const link = await this.generateLink()
+    let date = this.props.birthdayTimeAndPlace.date + ' ' + this.props.birthdayTimeAndPlace.time
+    date = new Date(date).getTime()
     const newEvent = new Event({
       title: this.props.birthdayEvent.title,
       child: this.props.birthdayEvent.name,
       age: this.props.birthdayEvent.age,
       image: "url('" + this.props.birthdayImage + "')",
-      desc: "Jag fyller år och jag vill bjuda alla på min superroliga fest som kommer att hållas på mitt favoritställe i hela världen. Ta med saft och bullar för jag bjuder inte på någonting!",
-      date: 1568894400000,
-      rsvp: 1566172800000,
+      desc: this.props.birthdayTimeAndPlace.description,
+      date: date,
+      rsvp: new Date(this.props.birthdayTimeAndPlace.deadline).getTime(),
       location: {
-        street: "Jägersrovägen 179",
-        zipcode: 21375,
-        city: "Malmö"
+        street: this.props.birthdayTimeAndPlace.street,
+        zipcode: this.props.birthdayTimeAndPlace.zip,
+        city: this.props.birthdayTimeAndPlace.city
       },
       swish: {
         number: "0709629276",
@@ -53,10 +55,10 @@ class CreatePartyPage extends React.Component {
    */
   generateLink = () => {
     let link = []
-    const name = 'Pontus' // = redux.state...child
+    const name = this.props.birthdayEvent.name
     link.push(name.slice(0, 2).toUpperCase())
     console.log(link)
-    link.push('' + 28)// 28 = redux.state...age
+    link.push(this.props.birthdayEvent.age)
     console.log(link)
     
     let saltArray = 'qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890'
@@ -85,7 +87,9 @@ class CreatePartyPage extends React.Component {
 const mapStateToProps = state => {
   return {
     birthdayEvent: state.birthday.birthdayEvent,
-    birthdayImage: state.birthday.birthdayImage
+    birthdayImage: state.birthday.birthdayImage,
+    birthdayTimeAndPlace: state.birthday.birthdayTimeAndPlace
+
   }
 }
 
