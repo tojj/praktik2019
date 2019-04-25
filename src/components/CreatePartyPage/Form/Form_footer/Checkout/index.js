@@ -5,7 +5,11 @@ import {
   FormGroup,
   Label
 } from 'reactstrap'
+import { doUpdateGuestDetails } from '../../../../../store/Birthday/BirthdayActions'
+import { connect } from 'react-redux'
 import { HelpCircle } from 'react-feather'
+import InputEvent from '../../Form_body/Event_input/InputEvent'
+import { guestUserData } from '../../../../../staticData'
 
 
 class Checkout extends React.Component {
@@ -41,6 +45,33 @@ class Checkout extends React.Component {
       noRegisterOption: false
     })
   }
+
+
+  updateInfo = (event) => {
+    this.props.updateInfo(event.target.value)
+  }
+
+  renderInputs = () => this.props.guestUser
+    ? Object.keys(this.props.guestUser).map(this.renderInput)
+    : null
+
+
+  renderInput = key => (
+    <FormGroup key={key} className={guestUserData[key].classNameFormGroup}>
+      <Label htmlFor={guestUserData[key].id} className={guestUserData[key].classNameLabel}>{guestUserData[key].label}</Label>
+      <InputEvent
+        name={guestUserData[key].name}
+        keyVal={key}
+        value={this.props.guestUser[key]}
+        type={guestUserData[key].type}
+        placeholder={guestUserData[key].label}
+        className={guestUserData[key].className}
+        callback={this.callback}
+      />
+    </FormGroup>
+  )
+
+  callback = (value, key) => this.props.updateInfo({ [key]: value })
 
   render() {
     return (
@@ -128,34 +159,8 @@ class Checkout extends React.Component {
         {this.state.noRegisterOption ? (<div className="box-container">
           <div className="box align-left">
             <h2 className="form-headline">Fortsätt som gästanvändare</h2>
-            <FormGroup className="input50">
-              <Label for="firstName-input">Förnamn</Label>
-              <Input type="text" name="firstName" id="firstName-input" placeholder="Förnamn" className="form-input" />
-            </FormGroup>
-            <FormGroup className="input50">
-              <Label htmlFor="lastName-input" className="ml-lg-2">Efternamn</Label>
-              <Input type="text" name="lastName" id="lastName-input" placeholder="Efternamn" className="form-input ml-lg-2" />
-            </FormGroup>
-            <FormGroup className="input50">
-              <Label htmlFor="email-input">E-post</Label>
-              <Input type="email" name="email" id="email-input" placeholder="E-post" className="form-input" />
-            </FormGroup>
-            <FormGroup className="input50">
-              <Label htmlFor="phoneNumber-input" className="position-relative ml-lg-2" title="Ange ditt telefonnummer om du vill få sms aviseringar">Telefonnummer<HelpCircle className="iconFeather" /></Label>
-              <Input type="phoneNumber" name="phoneNumber" id="phoneNumber-input" placeholder="Telefonnummer" className="form-input ml-lg-2" />
-            </FormGroup>
-            <FormGroup className="input50">
-              <Label htmlFor="address-input">Adress</Label>
-              <Input type="text" name="" id="address-input" placeholder="Adress" className="form-input" />
-            </FormGroup>
-            <FormGroup className="input25">
-              <Label htmlFor="zipcode-input" className="ml-lg-2">Postnummer</Label>
-              <Input type="number" name="zipcode" id="zipcode-input" placeholder="Postnummer" className="form-input ml-lg-2" />
-            </FormGroup>
-            <FormGroup className="input50">
-              <Label htmlFor="city-input">Stad <i data-feather="help-circle"></i></Label>
-              <Input type="text" name="city" id="city-input" placeholder="Stad" className="form-input" />
-            </FormGroup>
+            {this.renderInputs()}
+
             <Button color="primary" type="button" className="button-for-register" >Slutför</Button>
           </div>
         </div>) : null}
@@ -164,4 +169,15 @@ class Checkout extends React.Component {
   }
 }
 
-export default Checkout
+const mapStateToProps = state => {
+  return {
+    guestUser: state.birthday.guestUser
+  }
+}
+
+const mapDispatchToProps = dispatch => ({
+  updateInfo: (data) => dispatch(doUpdateGuestDetails(data))
+})
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Checkout)

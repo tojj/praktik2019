@@ -1,11 +1,13 @@
 import { takeEvery, put } from 'redux-saga/effects'
 
-import { 
+import {
   ACTION_UPDATE_BIRTHDAY,
   doUpdateBirthday,
   ACTION_UPDATE_TIME_AND_PLACE,
   updateBirthdayTimeAndPlace,
-  
+  ACTION_UPDATE_GUEST_USER_DETAILS,
+  updateGuestDetails
+
 } from './BirthdayActions'
 
 
@@ -21,7 +23,7 @@ import {
 export function* watchUpdateBirthday() {
 
   yield takeEvery( /* Nedanstående lyssnar din watcher saga på */
-    ACTION_UPDATE_BIRTHDAY, 
+    ACTION_UPDATE_BIRTHDAY,
     makeUpdateBirthday
   )
 }
@@ -32,7 +34,7 @@ export function* watchUpdateBirthday() {
  * När takeEvery dispatchas (för oss är det ACTION_UPDATE_BIRTHDAY osv) börjar den göra its thing
  */
 
-function* makeUpdateBirthday(action){
+function* makeUpdateBirthday(action) {
   yield put(doUpdateBirthday(action.data))
 }
 
@@ -63,3 +65,15 @@ function* makeUpdateTimeAndPlace(action) {
   yield put(updateBirthdayTimeAndPlace(action.data))
 }
 
+
+/**
+ * Watcher for updates in Guest Details component
+ */
+/*
+export function* watchUpdateGuestUserDetails() {
+  yield takeEvery(ACTION_UPDATE_GUEST_USER_DETAILS, makeUpdateGuestUserDetails)
+}
+
+function* makeUpdateGuestUserDetails(action) {
+  yield put(updateGuestDetails(action.data))
+}*/

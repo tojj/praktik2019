@@ -1,3 +1,5 @@
+import { HelpCircle } from "react-feather";
+
 export const aboutData = [
   {
     text:
@@ -273,6 +275,74 @@ export const eventInputData = {
   }
 }
 
+
+export const guestUserData = {
+  firstName: {
+    classNameFormGroup: "input50",
+    id: "firstName-input",
+    name: "firstName",
+    classNameLabel: "",
+    label: "Förnamn",
+    type: "text",
+    className: "form-input"
+  },
+  lastName: {
+    classNameFormGroup: "input50",
+    id: "lastName-input",
+    name: "lastName",
+    classNameLabel: "ml-lg-2",
+    label: "Efternamn",
+    type: "text",
+    className: "form-input ml-lg-2"
+  },
+  email: {
+    classNameFormGroup: "input50",
+    id: "email-input",
+    name: "email",
+    classNameLabel: "",
+    label: "E-post",
+    type: "email",
+    className: "form-input"
+  },
+  phoneNumber: {
+    classNameFormGroup: "input50",
+    id: "phoneNumber-input",
+    name: "phoneNumber",
+    classNameLabel: "position-relative ml-lg-2",
+    label: "Telefonnummer",
+    type: "text",
+    className: "form-input ml-lg-2"
+  },
+  address: {
+    classNameFormGroup: "input50",
+    id: "address-input",
+    name: "address",
+    classNameLabel: "",
+    label: "Adress",
+    type: "text",
+    className: "form-input"
+  },
+  zipcode: {
+    classNameFormGroup: "input25",
+    id: "zipcode-input",
+    name: "zipcode",
+    classNameLabel: "ml-lg-2",
+    label: "Postnummer",
+    type: "number",
+    className: "form-input ml-lg-2"
+  },
+  city: {
+    classNameFormGroup: "input50",
+    id: "city-input",
+    name: "city",
+    classNameLabel: "",
+    label: "Stad",
+    type: "text",
+    className: "form-input"
+  }
+}
+
+
 export default {
   aboutData,
   footerData,
@@ -282,5 +352,6 @@ export default {
   carouselData,
   imageHandlerData,
   eventInputData,
+  guestUserData,
   shopData
 }
