@@ -1,13 +1,20 @@
 import React, { Component } from "react"
 import staticData from "../../../../staticData"
+import REST from "../../../../REST"
 
+class Product extends REST { }
 class Web_shop extends Component {
   constructor(props) {
     super(props)
     this.state = {
       selectedItem: "",
-      showInfo: ""
+      showInfo: "",
+      shopContent: ""
     }
+    this.allProductsData = []
+    this.allProducts = []
+    this.renderShopProducts = this.renderShopProducts.bind(this)
+    this.renderShopProducts()
   }
 
   determineItemStyle(id) {
@@ -28,6 +35,7 @@ class Web_shop extends Component {
     } else {
       this.setState({ selectedItem: id })
     }
+    console.log(this.state.selectedItem)
   }
 
   toggleInfo(id) {
@@ -38,37 +46,41 @@ class Web_shop extends Component {
     }
   }
 
-  renderShopProducts = ({ id, img, price, text, desc }) => {
-    return (
-      <div className={this.determineItemStyle2(id)} key={id}>
+  async renderShopProducts() {
+    this.allProductsData = await Product.find()
+    this.allProducts = this.allProductsData.map((product, i) => {
+      return (
+      <div className={this.determineItemStyle2(i)} key={"product_"+i}>
         <div
-          className={this.determineItemStyle(id)}
-          onClick={() => this.checkIfAlreadySelected(id)}
+          className={this.determineItemStyle(i)}
+          onClick={() => this.checkIfAlreadySelected(i)}
         />
-        <label className="more-info-label" onClick={() => this.toggleInfo(id)}>
+        <label className="more-info-label" onClick={() => this.toggleInfo(i)}>
           >
-        </label>
-
-        {this.state.showInfo === id ? (
+          </label>
+        {console.log(this.state.showInfo, i)}
+        {this.state.showInfo === i ? (
           <div className="test-container">
-            <p>{desc}</p>
+            <p>{product.desc}</p>
           </div>
         ) : (
-          <div className="test-container">
-            <img
-              className="shop-img"
-              src={img}
-              alt="event"
-              onClick={this.toggleSelected}
-            />
-            <div className="shop-info">
-              <p>{text}</p>
-              <p>Pris: {price}</p>
+            <div className="test-container">
+              <img
+                className="shop-img"
+                src={product.image}
+                alt="product-img"
+                onClick={this.toggleSelected}
+              />
+              <div className="shop-info">
+                <p>{product.text}</p>
+                <p>Pris: {product.price}</p>
+              </div>
             </div>
-          </div>
-        )}
+          )}
       </div>
-    )
+      )
+    })
+    this.setState({shopContent: this.allProducts})
   }
 
   render() {
@@ -78,7 +90,7 @@ class Web_shop extends Component {
           Välj present
         </h2>
         <div className="shop-item-container">
-          {staticData.shopData.map(this.renderShopProducts)}
+          {this.state.shopContent}
         </div>
       </div>
     )
