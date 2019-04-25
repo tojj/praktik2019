@@ -1,23 +1,27 @@
 import React from 'react'
-import { Link } from "react-router-dom"
+import { connect } from 'react-redux'
 import FormContainer from './Form/index'
 import REST from '../../REST'
+import Buttons from './Buttons/index'
 
 class Event extends REST {}
 
 class CreatePartyPage extends React.Component {
   constructor(props){
     super(props)
+    this.state = {
+      eventLink: ''
+    }
     this.createEvent = this.createEvent.bind(this)
   }
 
   async createEvent() {
     const link = await this.generateLink()
     const newEvent = new Event({
-      title: "Pontus födelsedagsfest på Toys'R'Us's parkering",
-      child: "Pontus",
-      age: 28,
-      image: "/images/patterns/dock.jpg",
+      title: this.props.birthdayEvent.title,
+      child: this.props.birthdayEvent.name,
+      age: this.props.birthdayEvent.age,
+      image: "url('" + this.props.birthdayImage + "')",
       desc: "Jag fyller år och jag vill bjuda alla på min superroliga fest som kommer att hållas på mitt favoritställe i hela världen. Ta med saft och bullar för jag bjuder inte på någonting!",
       date: 1568894400000,
       rsvp: 1566172800000,
@@ -37,7 +41,6 @@ class CreatePartyPage extends React.Component {
       product: "5cb453e226d34fc2bfc5af07",
       link: link
     })
-    
     await newEvent.save()
     console.log(newEvent);
     
@@ -50,10 +53,10 @@ class CreatePartyPage extends React.Component {
    */
   generateLink = () => {
     let link = []
-    const pon = 'Pontus'
-    link.push(pon.slice(0, 2).toUpperCase())
+    const name = 'Pontus' // = redux.state...child
+    link.push(name.slice(0, 2).toUpperCase())
     console.log(link)
-    link.push('' + 28)
+    link.push('' + 28)// 28 = redux.state...age
     console.log(link)
     
     let saltArray = 'qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890'
@@ -64,36 +67,26 @@ class CreatePartyPage extends React.Component {
       salt = salt + letter
     }
     link.push(salt)
-    link.join('')
+    link = link.join('')
     console.log(link);
-    link = link[0] + link[1] + link[2]
+    this.setState({eventLink: link})
     return link
   }
   render() {
     return (
       <div className="createpartypage-wrapper">
         <FormContainer />
-        <div className="buttons-container">
-          <Link
-            to="/"
-            className="link-cancel">
-            Avbryt
-          </Link>
-          <Link
-            to="/skapa-kalas"
-            className="link-party-page"
-            onClick={this.createEvent}>
-            Godkänn
-          </Link>
-          <Link
-            to="/kalas-förhandsvisning"
-            className="link-party-page">
-            Förhandsgranska
-          </Link>
-        </div>
+        <Buttons eventLink={'/kalas/' + this.state.eventLink} createEvent={this.createEvent} />
       </div>
     )
   }
 }
 
-export default CreatePartyPage
+const mapStateToProps = state => {
+  return {
+    birthdayEvent: state.birthday.birthdayEvent,
+    birthdayImage: state.birthday.birthdayImage
+  }
+}
+
+export default connect(mapStateToProps)(CreatePartyPage)
