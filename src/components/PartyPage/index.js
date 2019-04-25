@@ -14,7 +14,7 @@ class PartyPage extends React.Component {
       event: null
     }
   }
-  
+
   componentDidMount() {
     const eventLink = this.props.match.params.link
     this.findEventAndMatchWithDB(eventLink)
@@ -70,6 +70,16 @@ class PartyPage extends React.Component {
               <p className="party-time">kl {date[3]}</p>
             </div>
           </div>
+          <div className="box-container border-top print-me">
+            <div className="box">
+              <img src="/images/card.png" alt="" />
+              <p>Ta gärna med ett fint kort!</p>
+            </div>
+            <div className="box">
+              <img src="/images/card.png" alt="" />
+              <p>Skanna denna koden för att komma till kalaset.</p>
+            </div>
+          </div>
           <div className="box-container border-top party-payment no-print">
             <div className="box swish-holder">
               <div className="qr-code box-img" style={{ background: party.swish.color }}>
@@ -77,6 +87,7 @@ class PartyPage extends React.Component {
               </div>
               <p>Swish</p>
               <p>Skanna koden ovan med hjälp av swish-appen eller swisha {party.swish.amount} kronor till {party.swish.number}.</p>
+              <a href="/fragor-och-svar#betalningar" target="_blank" rel="noopener noreferrer">Läs mer...</a>
             </div>
             <div className="box toy-holder">
               <div className="box-img">
@@ -96,6 +107,17 @@ class PartyPage extends React.Component {
                 <a href={party.fundraiser.link} target="_blank" rel="noopener noreferrer">Läs mer...</a>
               </div>
               : null}
+          </div>
+          <div className="box-container party-congratulation border-top no-print">
+            <div className="box">
+              <p>Egna presenter undanbedes i första hand på grund av miljön. Men {party.child} hade verkligen uppskattat om man tog med sig ett fint grattis-kort på denna speciella dag!</p>
+              <a href="/fragor-och-svar#egna-presenter" target="_blank" rel="noopener noreferrer">Läs mer...</a>
+            </div>
+            <div className="box">
+              <figure>
+                <img className="box-img" src="/images/card.png" alt="birthday-card"/>
+              </figure>
+            </div>
           </div>
           <div className="box-container party-attending border-top no-print">
             <div className="box attending-holder">
