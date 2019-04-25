@@ -12,12 +12,6 @@ class MissingPage extends React.Component {
         <h4 className="mp-info">
           Vi kunde tyvärr inte hitta sidan {this.props.location.pathname}
         </h4>
-        {this.props.partyPage ? (
-          <div>
-            <h4 className="mp-info">Vi kunde tyvärr inte hitta kalaset</h4>
-            <h4 className="mp-info">Gå vidare till skapa kalas-sidan</h4>
-          </div>
-        ) : null}
         <img className="mp-img" src="/images/sadpepe.png" />
       </div>
     )
