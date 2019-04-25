@@ -56,8 +56,22 @@ class Checkout extends React.Component {
     : null
 
 
-  renderInput = key => (
-    <FormGroup key={key} className={guestUserData[key].classNameFormGroup}>
+  renderInput = key => {
+    if (key === "phoneNumber") {
+      return (<FormGroup key="phoneNumber" className="input50">
+        <Label htmlFor="phoneNumber-input" className="position-relative ml-lg-2" title="Ange ditt telefonnummer om du vill få sms aviseringar">Telefonnummer<HelpCircle className="iconFeather" /></Label>
+        <InputEvent
+          name={guestUserData[key].name}
+          keyVal={key}
+          value={this.props.guestUser[key]}
+          type={guestUserData[key].type}
+          placeholder={guestUserData[key].label}
+          className={guestUserData[key].className}
+          callback={this.callback}
+        />
+      </FormGroup>)
+    }
+    return (<FormGroup key={key} className={guestUserData[key].classNameFormGroup}>
       <Label htmlFor={guestUserData[key].id} className={guestUserData[key].classNameLabel}>{guestUserData[key].label}</Label>
       <InputEvent
         name={guestUserData[key].name}
@@ -69,7 +83,9 @@ class Checkout extends React.Component {
         callback={this.callback}
       />
     </FormGroup>
-  )
+    )
+  }
+
 
   callback = (value, key) => this.props.updateInfo({ [key]: value })
 
