@@ -35,7 +35,7 @@ class AttendingsList extends React.Component {
     return (
       <div>
         <div className="list-holder">
-          {this.state.attendees 
+          {this.state.attendees.length > 0 
           ? this.state.attendees.map((attendee, i) => {
             return <Attendee attendee={attendee} key={"attendee_" + i} index={i} />
           }) 
