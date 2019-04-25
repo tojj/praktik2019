@@ -1,6 +1,11 @@
 import React from 'react'
-import { Button, Input, FormGroup, Label } from 'reactstrap'
-import { HelpCircle } from 'react-feather';
+import {
+  Button,
+  Input,
+  FormGroup,
+  Label
+} from 'reactstrap'
+import { HelpCircle } from 'react-feather'
 
 
 class Checkout extends React.Component {

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 import Slider from "react-slick"
 import Checkout from "../Form_footer/Checkout/index"
 import REST from "../../../../REST"
-import { Check } from "react-feather";
+
 
 class Fundraiser extends REST { }
 
