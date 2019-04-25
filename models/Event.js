@@ -7,21 +7,26 @@ let eventSchema = new Schema({
   age:        { type: Number, required: true },
   image:      { type: String, required: true },
   desc:       { type: String, required: true },
-  date:       { type: Number, required: true },
+  date:       Number,
+  rsvp:       Number,
   location: { 
     street:   { type: String, required: true },
     zipcode:  { type: Number, required: true },
     city:     { type: String, required: true }
   },
   swish: {
-    number:   { type: Number, required: true },
-    amount:   { type: Number, required: true }
+    number:   { type: String, required: true },
+    amount:   { type: Number, required: true },
+    image:    { type: String, required: true },
+    color:    { type: String, required: true },
+    
   },
   donate:     { type: Boolean },
+  attending:  { type: Array },  
   product:    { type: Schema.Types.ObjectId, ref: 'Product' },
-  charity:    { type: Schema.Types.ObjectId, ref: 'Fundraiser' },
+  fundraiser: { type: Schema.Types.ObjectId, ref: 'Fundraiser' },
   user:       { type: Schema.Types.ObjectId, ref: 'User' },
-  id:         { type: String, unique: true, required: true }
+  link:       { type: String, unique: true, required: true }
 })
 
 module.exports = global.db.model("Event", eventSchema)
