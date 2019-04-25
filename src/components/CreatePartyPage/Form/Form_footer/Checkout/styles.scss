@@ -1,20 +1,26 @@
-.style-class{
-  justify-content: center;
-  text-align: center;
-}
-
-.my-container {
-  width: 100%;
-  height: 100%;
-  align-content: center !important;
-  justify-content: center !important;
-  text-align: center !important;
-  padding: 0 5% 0 5%;
+.box-details-container {
+  display: flex;
+  flex-direction: column;
+  padding: 8vh 0;
   @include media-breakpoint-up(lg) {
+    flex-direction: column;
+    padding: 5vw 5vw 0 !important;
+  }
+  position: relative;
   width: 100%;
-}
+  justify-content: center;
+  align-content: center;
+  align-items: center;
 
+  .box {
+    width: 100%;
 
+    .iconFeather {
+      width: 12px;
+      position: absolute;
+      top: 0;
+    }
+  }
 }
 
 .login-container {
@@ -24,91 +30,42 @@
   justify-content: center !important;
   text-align: center !important;
   padding: 0 5% 0 5%;
- 
+
+  .login-content {
+    max-width: 100%;
+    margin: 0 auto 0 auto;
+
+    .item-level {
+      text-align: left;
+      .registration-text {
+        font-size: 14px !important;
+        @include media-breakpoint-up(lg) {
+          width: 50%;
+          margin: 0 auto;
+        }
+      }
+    }
+    .login-item {
+      text-align: center;
+    }
+
+    @include media-breakpoint-up(lg) {
+      .registration-form {
+        width: 50% !important;
+        margin: 0 auto;
+      }
+    }
+  }
 }
 
-.button-for-register{
+.button-for-register {
   display: block;
 }
 
-
-.login-content{
-  max-width: 100%;
-  margin: 0 auto 0 auto;
-}
-
-.my-content {
-  max-width: 80% !important;
-  margin: 0 auto 0 auto;
-}
-
-.box-details-container {
-  display: flex;
-  flex-direction: column;
-  @include media-breakpoint-up(lg) {
-    flex-direction: column;
-      padding: 5vw 5vw 0 !important;
-    
-  }
-
-   //flex-wrap: wrap;
-  position: relative;
-
+.set-width {
   width: 100%;
-
-  padding: 8vh 0;
-
-  justify-content: center;
-  align-content: center;
-  align-items: center;
-  .box {
+  @include media-breakpoint-up(lg) {
     width: 100%;
-  }
-}
-
-.iconFeather {
-  width: 12px;
-  position: absolute;
-  top: 0;
-}
-
-.item-level{
-  
-  text-align: left;
-  .registration-text{
-    font-size: 14px !important;
-    @include media-breakpoint-up(lg) {
-    width:50%;
-    
     margin: 0 auto;
   }
 }
-}
-
-.login-item{
-text-align: center;
-}
-
-.set-width{
-  width: 100%;
-  @include media-breakpoint-up(lg) {
-    width:100%;
-    
-    margin: 0 auto;
-}
-}
-
-@include media-breakpoint-up(lg) {
-
-
-.registration-form{
-  width: 50% !important;
-  margin: 0 auto;
-}
-}
-
-.login-form{
-  width: 250% !important;
-  margin: 0 auto;
-}
-

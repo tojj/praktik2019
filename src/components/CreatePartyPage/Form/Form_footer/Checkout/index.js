@@ -44,7 +44,7 @@ class Checkout extends React.Component {
 
   render() {
     return (
-      <div className="box-details-container details-container style-class" id="checkout-container">
+      <div className="box-details-container" id="checkout-container">
         <div className="box align-left">
           <div className="form">
             <h2 className="form-headline text-center">
