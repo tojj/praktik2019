@@ -1,5 +1,4 @@
 import React from "react"
-import { Link } from "react-router-dom"
 import Slider from "react-slick"
 import REST from "../../../../REST"
 
@@ -122,19 +121,6 @@ class Form_footer extends React.Component {
             </div>
           </div>
         ) : null}
-        <div className="buttons-container">
-          <Link to="/" className="link-cancel">
-            Avbryt
-          </Link>
-          <Link to="/skapa-kalas" className="link-party-page">
-            Godkänn
-          </Link>
-          <Link
-            to="/kalas-förhandsvisning"
-            className="link-party-page">
-            Förhandsgranska
-          </Link>
-        </div>
       </div>
     )
   }
