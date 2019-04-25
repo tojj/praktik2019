@@ -44,7 +44,6 @@ class CreatePartyPage extends React.Component {
       link: link
     })
     await newEvent.save()
-    console.log(newEvent);
     
     
   }
@@ -57,9 +56,7 @@ class CreatePartyPage extends React.Component {
     let link = []
     const name = this.props.birthdayEvent.name
     link.push(name.slice(0, 2).toUpperCase())
-    console.log(link)
     link.push(this.props.birthdayEvent.age)
-    console.log(link)
     
     let saltArray = 'qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890'
     saltArray = saltArray.split("")
@@ -70,7 +67,6 @@ class CreatePartyPage extends React.Component {
     }
     link.push(salt)
     link = link.join('')
-    console.log(link);
     this.setState({eventLink: link})
     return link
   }
