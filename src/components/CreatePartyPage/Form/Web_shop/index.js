@@ -2,40 +2,44 @@ import React, { Component } from "react"
 import staticData from "../../../../staticData"
 import REST from "../../../../REST"
 
-class Product extends REST { }
+class Product extends REST {}
 class Web_shop extends Component {
   constructor(props) {
     super(props)
     this.state = {
       selectedItem: "",
       showInfo: "",
-      shopContent: ""
+      allProductsData: ""
     }
-    this.allProductsData = []
-    this.allProducts = []
-    this.renderShopProducts = this.renderShopProducts.bind(this)
-    this.renderShopProducts()
+    this.allProductsData = ""
+    this.loadData()
   }
 
-  determineItemStyle(id) {
+  async loadData() {
+    this.allProductsData = await Product.find()
+    console.log(this.allProductsData)
+    this.setState({ allProductsData: this.allProductsData })
+  }
+
+  toggleSelectOverlay(id) {
     const isItemSelected = this.state.selectedItem === id
     return isItemSelected
       ? "shop-item-overlay shop-item-checkmark"
       : "placeholder-div"
   }
 
-  determineItemStyle2(id) {
+  toggleSelectBorder(id) {
     const isItemSelected = this.state.selectedItem === id
     return isItemSelected ? "shop-item-border" : "shop-item"
   }
 
-  checkIfAlreadySelected(id) {
+  toggleSelected(id) {
     if (this.state.selectedItem === id) {
       this.setState({ selectedItem: "" })
     } else {
       this.setState({ selectedItem: id })
+      console.log(this.state.selectedItem)
     }
-    console.log(this.state.selectedItem)
   }
 
   toggleInfo(id) {
@@ -46,54 +50,88 @@ class Web_shop extends Component {
     }
   }
 
-  async renderShopProducts() {
-    this.allProductsData = await Product.find()
-    this.allProducts = this.allProductsData.map((product, i) => {
-      return (
-      <div className={this.determineItemStyle2(i)} key={"product_"+i}>
+  renderShopProducts = ({ id, img, price, text, desc }) => {
+    return (
+      <div className={this.toggleSelectBorder(id)} key={id}>
         <div
-          className={this.determineItemStyle(i)}
-          onClick={() => this.checkIfAlreadySelected(i)}
+          className={this.toggleSelectOverlay(id)}
+          onClick={() => this.toggleSelected(id)}
         />
-        <label className="more-info-label" onClick={() => this.toggleInfo(i)}>
+        <label className="more-info-label" onClick={() => this.toggleInfo(id)}>
           >
-          </label>
-        {console.log(this.state.showInfo, i)}
-        {this.state.showInfo === i ? (
+        </label>
+
+        {this.state.showInfo === id ? (
           <div className="test-container">
-            <p>{product.desc}</p>
+            <p>{desc}</p>
           </div>
         ) : (
-            <div className="test-container">
-              <img
-                className="shop-img"
-                src={product.image}
-                alt="product-img"
-                onClick={this.toggleSelected}
-              />
-              <div className="shop-info">
-                <p>{product.text}</p>
-                <p>Pris: {product.price}</p>
-              </div>
+          <div className="test-container">
+            <img
+              className="shop-img"
+              src={img}
+              alt="event"
+              onClick={this.toggleSelected}
+            />
+            <div className="shop-info">
+              <p>{text}</p>
+              <p>Pris: {price}</p>
             </div>
-          )}
+          </div>
+        )}
       </div>
-      )
-    })
-    this.setState({shopContent: this.allProducts})
+    )
   }
 
   render() {
-    return (
-      <div className="webshop-container">
-        <h2 className="form-headline charity-headline text-center">
-          Välj present
-        </h2>
-        <div className="shop-item-container">
-          {this.state.shopContent}
+    if (this.state.allProductsData === "") {
+      return <div />
+    } else {
+      return (
+        <div className="webshop-container">
+          <h2 className="form-headline charity-headline text-center">
+            Välj present
+          </h2>
+          <div className="shop-item-container">
+            {this.allProductsData.map((product, id) => {
+              return (
+                <div className={this.toggleSelectBorder(product._id)} key={id}>
+                  <div
+                    className={this.toggleSelectOverlay(product._id)}
+                    onClick={() => this.toggleSelected(product._id)}
+                  />
+                  <label
+                    className="more-info-label"
+                    onClick={() => this.toggleInfo(product._id)}
+                  >
+                    >
+                  </label>
+
+                  {this.state.showInfo === product._id ? (
+                    <div className="test-container">
+                      <p>{product.desc}</p>
+                    </div>
+                  ) : (
+                    <div className="test-container">
+                      <img
+                        className="shop-img"
+                        src={product.image}
+                        alt="event"
+                        onClick={this.toggleSelected}
+                      />
+                      <div className="shop-info">
+                        <p>{product.desc}</p>
+                        <p>Pris: {product.price}</p>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              )
+            })}
+          </div>
         </div>
-      </div>
-    )
+      )
+    }
   }
 }
 
