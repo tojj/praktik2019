@@ -1,5 +1,4 @@
 import React from "react"
-import { Link } from "react-router-dom"
 import Slider from "react-slick"
 import Checkout from "../Form_footer/Checkout/index"
 import REST from "../../../../REST"
@@ -18,9 +17,11 @@ class Form_footer extends React.Component {
     this.allFundraisers = []
     this.loadFundraisersAndMount()
   }
+  
   charityToggle = () => {
     this.setState({ charitySelected: !this.state.charitySelected })
   }
+
   async loadFundraisersAndMount() {
     this.allFundraisersData = await Fundraiser.find()
     this.allFundraisers = this.allFundraisersData.map((fundraiser, i) => {
@@ -126,18 +127,6 @@ class Form_footer extends React.Component {
             </div>
           </div>
         ) : null}
-        <Checkout />
-        <div className="buttons-container">
-          <Link to="/" className="link-cancel">
-            Avbryt
-          </Link>
-          <Link to="/skapa-kalas" className="link-party-page">
-            Godkänn
-          </Link>
-          <Link to="/kalas-förhandsvisning" className="link-party-page">
-            Förhandsgranska
-          </Link>
-        </div>
       </div>
     )
   }

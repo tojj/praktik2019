@@ -1,6 +1,11 @@
 import React from 'react'
 import staticData from '../../staticData'
-import { Facebook, Twitter, Linkedin } from 'react-feather'
+
+import { 
+  Facebook, 
+  Twitter, 
+  Linkedin 
+} from 'react-feather'
 
 const Footer = (props) => (
   <div className="footer-container" id="contact-us">

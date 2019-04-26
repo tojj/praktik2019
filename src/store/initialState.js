@@ -29,5 +29,13 @@ export default {
       city: ''
     }
 
+  },
+
+  swish: {
+
+    swishMoney: '50',
+    
   }
+
+  
 }

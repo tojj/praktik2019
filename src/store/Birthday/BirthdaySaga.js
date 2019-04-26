@@ -38,21 +38,6 @@ function* makeUpdateBirthday(action) {
   yield put(doUpdateBirthday(action.data))
 }
 
-/*
-export function* watchUpdateImage(){
-
-  yield takeEvery(
-    ACTION_UPDATE_IMAGE,
-    makeUpdateImage
-  )
-}
-
- function* makeUpdateImage(action){
-  console.log(action);
-  yield put(updateTheImage(action.data))
-}
-*/
-
 /**
  * Watcher for updates in EventInput component
  */
