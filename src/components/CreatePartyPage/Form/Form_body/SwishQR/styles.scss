@@ -1,17 +1,14 @@
 #swish-container {
-  .qr-holder {
-    display: inline-block;
-    padding: 10px;
-    margin-bottom: 0;
-    border-radius: 5%;
-    width: 250px;
-    height: 250px;
-    background-color: #fff;
-    border: 1px solid $dark;
-    .qr-img {
-      width: 100%;
-      height: auto;
-    }
-  }
-  
+  margin-bottom: 100px;
+}
+
+.qr-img {
+  border-radius: 9px;
+  border: 1px solid #ced4da;
+}
+
+.swish-form {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
 }
