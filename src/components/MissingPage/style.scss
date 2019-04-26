@@ -1,0 +1,25 @@
+.mp-header {
+  color: $primary;
+  font-size: 48px;
+  font-weight: bold;
+  font-family: $big-text;
+}
+
+.mp-container {
+  width: 80%;
+  margin: 50px auto 30px auto;
+}
+
+.mp-background {
+  width: 100%;
+  height: auto;
+}
+
+.mp-info {
+  color: $primary;
+}
+
+.mp-img {
+  max-width: 400px;
+  max-height: 400px;
+}
