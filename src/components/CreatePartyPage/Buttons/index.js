@@ -5,11 +5,6 @@ const Buttons = (props) => {
   return (
     <div className="buttons-container">
       <Link
-        to="/kalas-förhandsvisning"
-        className="link-party-page">
-        Förhandsgranska
-      </Link> <br />
-      <Link
         to="/"
         className="link-cancel">
         Avbryt
@@ -19,6 +14,11 @@ const Buttons = (props) => {
         onClick={props.createEvent}>
         Godkänn
       </button>
+      <Link
+        to="/kalas-förhandsvisning"
+        className="link-party-page">
+        Förhandsgranska
+      </Link>
       
     </div>
   )
