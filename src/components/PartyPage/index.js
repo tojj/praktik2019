@@ -33,7 +33,7 @@ class PartyPage extends React.Component {
   render() {
     let content = ''
     if (!this.state.event) {
-      content = <MissingPage />
+      content = <MissingPage link="/skapa-kalas" linkName="Skapa nytt kalas" title="Kalaset finns inte" />
     } else {
       let party = this.state.event
 
