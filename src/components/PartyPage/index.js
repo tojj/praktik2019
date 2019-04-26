@@ -43,6 +43,7 @@ class PartyPage extends React.Component {
       /**
        * Joining all the address information to the right format in order to send the correct props to MapsGen
        */
+
       let address = party.location.street.split(' ')
       address = address.join('%20')
       address = [address, party.location.zipcode, party.location.city].join('%20')
@@ -50,6 +51,7 @@ class PartyPage extends React.Component {
       /**
       * Saving the date in an array in order to split it up into multiple lines
       */
+     
       let date = new Date(party.date).toLocaleDateString('sv-SE', { weekday: 'long', day: 'numeric', month: 'long', hour: 'numeric', minute: 'numeric' }).split(" ")
 
       content = <div style={{ background: party.image }} className="party-bg">

@@ -13,6 +13,7 @@ const even = {
   display: 'inline-block',
   margin: '5px'
 }
+
 const odd = {
   background: '#fbf7ee',
   color: '#444655',
@@ -26,6 +27,7 @@ const odd = {
   display: 'inline-block',
   margin: '5px'
 }
+
 const Attendee = (props) => {
   return (
     <div

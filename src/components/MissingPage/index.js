@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 
-class MissingPage extends React.Component {
+class MissingPage extends Component {
   constructor(props) {
     super(props)
     this.state = {}

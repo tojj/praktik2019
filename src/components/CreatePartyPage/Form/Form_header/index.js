@@ -19,14 +19,6 @@ class Form_header extends Component {
   simpleAction = (event) => {
     this.props.updateBday(event.target.value)
   }
-
-  /**
-   * Render birthday date
-   */
-
-  renderBirthdayDate = () => this.props.birthdayEvent.age
-    ? <span>{this.props.birthdayEvent.age}</span> 
-    : console.log(this.props.birthdayEvent.age)
       
   /**
    * Rendering my input fields here, so all three are shows
@@ -67,7 +59,6 @@ class Form_header extends Component {
             <h2 className="form-headline">Skapa Kalas</h2>
             <div>
               {this.renderInputs()}
-              {/*this.renderBirthdayDate()*/}
             </div>
           </div>
           <div className="box force-top">

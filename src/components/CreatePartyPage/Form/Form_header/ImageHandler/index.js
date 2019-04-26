@@ -1,6 +1,17 @@
 import React from 'react'
-import { Image, ArrowDownCircle } from 'react-feather'
-import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap'
+
+import { 
+  Image, 
+  ArrowDownCircle 
+} from 'react-feather'
+
+import { 
+  Dropdown, 
+  DropdownToggle, 
+  DropdownMenu, 
+  DropdownItem 
+} from 'reactstrap'
+
 import staticData from '../../../../../staticData'
 import { connect } from 'react-redux'
 import { updateImage } from '../../../../../store/Birthday/BirthdayActions'
