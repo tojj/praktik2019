@@ -1,0 +1,17 @@
+.about-container {
+  background: url(/images/balloons.jpg);
+  background-size: cover;
+  background-position: bottom right;
+  color: #fff;
+  h2, p {
+    text-align: center !important;
+  }
+  .color-overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: $orange;
+    opacity: 0.8;
+    z-index: 1;
+  }
+}
