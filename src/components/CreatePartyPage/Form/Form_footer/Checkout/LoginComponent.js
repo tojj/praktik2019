@@ -35,6 +35,7 @@ class LoginComponent extends React.Component {
             {staticData.loginData.map(this.renderLoginData)}
             <Button color="primary" type="button" onClick={this.props.userLoginToggle}>Avbryt</Button>
             <Button color="primary" type="button" className="ml-lg-2" >Logga in</Button>
+            <Button color="primary" type="button" className="ml-lg-2" onClick={this.props.loginToggle}>Skapa konto</Button>
           </div >
         </div>
       </div>

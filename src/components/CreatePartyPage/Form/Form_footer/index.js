@@ -17,7 +17,7 @@ class Form_footer extends React.Component {
     this.allFundraisers = []
     this.loadFundraisersAndMount()
   }
-  
+
   charityToggle = () => {
     this.setState({ charitySelected: !this.state.charitySelected })
   }
@@ -127,6 +127,7 @@ class Form_footer extends React.Component {
             </div>
           </div>
         ) : null}
+        <Checkout />
       </div>
     )
   }

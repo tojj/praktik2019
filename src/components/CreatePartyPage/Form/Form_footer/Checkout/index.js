@@ -126,15 +126,18 @@ class Checkout extends React.Component {
         </div>
 
 
+        {this.state.userLogin ? (
+          <LoginComponent
+            userLoginToggle={this.userLoginToggle}
+            loginToggle={this.loginToggle}
+          />
+        ) : null}
+
+
         {this.state.loginOption ? (
           <RegisterComponent
             loginToggle={this.loginToggle}
             userLoginToggle={this.userLoginToggle} />
-        ) : null}
-
-
-        {this.state.userLogin ? (
-          <LoginComponent userLoginToggle={this.userLoginToggle} />
         ) : null}
 
 
