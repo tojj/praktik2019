@@ -5,10 +5,25 @@ import {
   FormGroup,
   Label
 } from 'reactstrap'
+import staticData from '../../../../../staticData'
 
 class LoginComponent extends React.Component {
   constructor(props) {
     super(props)
+  }
+
+  renderLoginData = ({ id, type, name, label, className, pattern }) => {
+    return (
+      <FormGroup>
+        <Label htmlFor={id}>{label}</Label>
+        <Input
+          type={type}
+          name={name}
+          pattern={pattern}
+          className={className}
+          placeholder={label}
+        />
+      </FormGroup>)
   }
 
   render() {
@@ -17,14 +32,7 @@ class LoginComponent extends React.Component {
         <div className="login-container">
           <div className="login-content">
             <h2 className="form-headline">Logga in</h2>
-            <FormGroup >
-              <Label htmlFor="email-input">E-postadress</Label>
-              <Input type="email" name="email" id="user-email-input" placeholder="E-postadress" className="registration-form" required="" />
-            </FormGroup>
-            <FormGroup>
-              <Label htmlFor="password-input">Lösenord</Label>
-              <Input type="password" name="password" id="user-password-input" placeholder="Lösenord" pattern="^((?=.*[a-z])(?=.*[A-Z])(?=.*\d)|(?=.*[a-z])(?=.*[A-Z])(?=.*[^A-Za-z0-9])|(?=.*[a-z])(?=.*\d)(?=.*[^A-Za-z0-9])|(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]))([A-Za-z\d@#$%^&amp;*\-_+=[\]{}|\\:',?/`~&quot;();!]|\.(?!@)){8,16}$" required="" className="registration-form" />
-            </FormGroup>
+            {staticData.loginData.map(this.renderLoginData)}
             <Button color="primary" type="button" onClick={this.props.userLoginToggle}>Avbryt</Button>
             <Button color="primary" type="button" className="ml-lg-2" >Logga in</Button>
           </div >

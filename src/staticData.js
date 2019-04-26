@@ -343,6 +343,58 @@ export const guestUserData = {
 }
 
 
+export const createAccountData = [
+  {
+    id: "email-input",
+    type: "email",
+    name: "email",
+    label: "E-postadress",
+    placeholder: "E-postadress",
+    className: "registration-form",
+    pattern: "",
+    title: "",
+  },
+  {
+    id: "password-input-first",
+    type: "password",
+    name: "password",
+    label: "Nytt lösenord",
+    placeholder: "Nytt lösenord",
+    className: "registration-form",
+    pattern: "^((?=.*[a-z])(?=.*[A-Z])(?=.*\d)|(?=.*[a-z])(?=.*[A-Z])(?=.*[^A-Za-z0-9])|(?=.*[a-z])(?=.*\d)(?=.*[^A-Za-z0-9])|(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]))([A-Za-z\d@#$%^&amp;*\-_+=[\]{}|\\:',?/`~&quot;();!]|\.(?!@)){8,16}$",
+    title: "Välj ett nytt lösenord",
+  },
+  {
+    id: "password-input-confirmation",
+    type: "password",
+    name: "password",
+    label: "",
+    placeholder: "Bekräfta ditt nya lösenord",
+    className: "registration-form",
+    pattern: "^((?=.*[a-z])(?=.*[A-Z])(?=.*\d)|(?=.*[a-z])(?=.*[A-Z])(?=.*[^A-Za-z0-9])|(?=.*[a-z])(?=.*\d)(?=.*[^A-Za-z0-9])|(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]))([A-Za-z\d@#$%^&amp;*\-_+=[\]{}|\\:',?/`~&quot;();!]|\.(?!@)){8,16}$",
+    title: "Upprepa ditt nya lösenord",
+  }
+]
+
+export const loginData = [
+  {
+    id: "user-email-input",
+    type: "email",
+    name: "email",
+    label: "E-postadress",
+    className: "registration-form",
+    pattern: ""
+  },
+  {
+    id: "user-password-input",
+    type: "password",
+    name: "password",
+    label: "Lösenord",
+    className: "registration-form",
+    pattern: "^((?=.*[a-z])(?=.*[A-Z])(?=.*\d)|(?=.*[a-z])(?=.*[A-Z])(?=.*[^A-Za-z0-9])|(?=.*[a-z])(?=.*\d)(?=.*[^A-Za-z0-9])|(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]))([A-Za-z\d@#$%^&amp;*\-_+=[\]{}|\\:',?/`~&quot;();!]|\.(?!@)){8,16}$"
+  }
+]
+
 export default {
   aboutData,
   footerData,
@@ -353,5 +405,7 @@ export default {
   imageHandlerData,
   eventInputData,
   guestUserData,
+  createAccountData,
+  loginData,
   shopData
 }
