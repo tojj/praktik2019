@@ -120,7 +120,7 @@ class Web_shop extends Component {
                         onClick={this.toggleSelected}
                       />
                       <div className="shop-info">
-                        <p>{product.desc}</p>
+                        <p>{product.name}</p>
                         <p>Pris: {product.price}</p>
                       </div>
                     </div>
