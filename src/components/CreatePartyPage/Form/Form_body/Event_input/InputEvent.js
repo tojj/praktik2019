@@ -24,8 +24,5 @@ const InputEvent = ({ name, type, callback, placeholder, value, className, onCha
 }
 
 
-/**
- * onChange method needs to be added
- */
 
 export default InputEvent

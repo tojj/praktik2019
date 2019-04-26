@@ -1,8 +1,10 @@
 import React from "react"
 import Slider from "react-slick"
+import Checkout from "../Form_footer/Checkout/index"
 import REST from "../../../../REST"
 
-class Fundraiser extends REST {}
+
+class Fundraiser extends REST { }
 
 class Form_footer extends React.Component {
   constructor(props) {
@@ -15,7 +17,7 @@ class Form_footer extends React.Component {
     this.allFundraisers = []
     this.loadFundraisersAndMount()
   }
-  
+
   charityToggle = () => {
     this.setState({ charitySelected: !this.state.charitySelected })
   }
@@ -125,6 +127,7 @@ class Form_footer extends React.Component {
             </div>
           </div>
         ) : null}
+        <Checkout />
       </div>
     )
   }
