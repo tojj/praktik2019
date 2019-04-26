@@ -54,7 +54,7 @@ class PreviewPage extends Component {
                 <img src={""} className="img-fluid" alt="qr-code" />
               </div>
               <p>Swish</p>
-              <p>Skanna koden ovan med hjälp av swish-appen eller swisha {""} kronor till {""}.</p>
+              <p>Skanna koden ovan med hjälp av swish-appen eller swisha {this.props.swishMoney} kronor till 0709629276.</p>
             </div>
             <div className="box toy-holder">
               <div className="box-img">
@@ -109,7 +109,8 @@ const mapStateToProps = state => {
   return {
     birthdayEvent: state.birthday.birthdayEvent,
     birthdayImage: state.birthday.birthdayImage,
-    birthdayTimeAndPlace: state.birthday.birthdayTimeAndPlace
+    birthdayTimeAndPlace: state.birthday.birthdayTimeAndPlace,
+    swishMoney: state.swish.swishMoney,
   }
 }
 

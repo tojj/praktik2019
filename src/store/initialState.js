@@ -19,5 +19,13 @@ export default {
     
     birthdayImage: '',
 
+  },
+
+  swish: {
+
+    swishMoney: '50',
+    
   }
+
+  
 }
