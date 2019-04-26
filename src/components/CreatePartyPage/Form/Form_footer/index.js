@@ -15,9 +15,11 @@ class Form_footer extends React.Component {
     this.allFundraisers = []
     this.loadFundraisersAndMount()
   }
+  
   charityToggle = () => {
     this.setState({ charitySelected: !this.state.charitySelected })
   }
+
   async loadFundraisersAndMount() {
     this.allFundraisersData = await Fundraiser.find()
     this.allFundraisers = this.allFundraisersData.map((fundraiser, i) => {
