@@ -1,7 +1,6 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import REST from '../../REST'
-
+import MissingPage from '../MissingPage/index'
 import MapsGen from './MapsGen/index'
 import AttendingsList from './AttendingsList/index'
 
@@ -34,9 +33,7 @@ class PartyPage extends React.Component {
   render() {
     let content = ''
     if (!this.state.event) {
-      content = <div style={{ minHeight: '80vh', width: '100%', background: 'red' }}>
-        <h2 style={{ color: 'white', height: '100%' }}>Sorry, detta kalaset finns inte. Om du vill skapa ett nytt kalas, <Link to="/skapa-kalas">klicka här</Link></h2>
-      </div>
+      content = <MissingPage link="/skapa-kalas" linkName="Skapa nytt kalas" title="Kalaset finns inte" />
     } else {
       let party = this.state.event
 

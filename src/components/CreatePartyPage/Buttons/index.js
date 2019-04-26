@@ -19,6 +19,7 @@ const Buttons = (props) => {
         className="link-party-page">
         Förhandsgranska
       </Link>
+      
     </div>
   )
 }
