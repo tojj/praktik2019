@@ -59,11 +59,13 @@ class CreatePartyPage extends React.Component {
 
 
   }
+
   /**
    * Link will be equal to the first 2 letters of the 
    * birthday child's name, uppercased. Followed by the age 
    * they will turn and 3 random symbols.
    */
+  
   generateLink = () => {
     let link = []
     const name = this.props.birthdayEvent.name

@@ -1,5 +1,11 @@
 import React from "react"
-import { Input, FormGroup, Label } from "reactstrap"
+
+import { 
+  Input,
+  FormGroup, 
+  Label 
+} from "reactstrap"
+
 import { connect } from 'react-redux'
 import { updateSwish } from '../../../../../store/Swish/SwishActions'
 
@@ -19,11 +25,6 @@ class SwishQR extends React.Component {
     const newVal = val < max ? val : maxLength
     this.setState({ value: newVal })
     this.props.updateSwishAmount(e.target.value)
-  }
-
-  updateSwishAmount = () => {
-    console.log('test', this.props)
-    console.log(this.tate.bi)
   }
 
   render() {
@@ -51,7 +52,6 @@ class SwishQR extends React.Component {
             className="qr-img"
             src="/images/convincer5.png"
             alt="qr code"
-            onClick={this.updateSwishAmount}
           />
         </div>
       </div>

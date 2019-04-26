@@ -13,9 +13,11 @@ class AttendingsList extends React.Component {
     }
     this.saveAttendeeToDB = this.saveAttendeeToDB.bind(this)
   }
+  
   clickHandler = () => {
     this.setState({ showInput: !this.state.showInput })
   }
+
   async saveAttendeeToDB() {
     const newAttendee = {
       name: document.getElementById('input-att-name').value,
