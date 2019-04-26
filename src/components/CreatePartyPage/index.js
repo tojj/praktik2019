@@ -4,15 +4,19 @@ import FormContainer from './Form/index'
 import REST from '../../REST'
 import Buttons from './Buttons/index'
 
-class Event extends REST {}
+class Event extends REST { }
 
 class CreatePartyPage extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props)
     this.state = {
       eventLink: ''
     }
     this.createEvent = this.createEvent.bind(this)
+  }
+
+  redirectTo = (target) => {
+    this.props.history.push(target)
   }
 
   async createEvent() {
@@ -43,9 +47,17 @@ class CreatePartyPage extends React.Component {
       product: "5cb453e226d34fc2bfc5af07",
       link: link
     })
-    await newEvent.save()
-    
-    
+    await newEvent.save().then(data => {
+      if (!data.name) {
+        const target = "/kalas/" + link
+        this.redirectTo(target) 
+      } else {
+        alert('ERROR:' + data.message) 
+      }
+    })
+
+
+
   }
   /**
    * Link will be equal to the first 2 letters of the 
@@ -57,7 +69,7 @@ class CreatePartyPage extends React.Component {
     const name = this.props.birthdayEvent.name
     link.push(name.slice(0, 2).toUpperCase())
     link.push(this.props.birthdayEvent.age)
-    
+
     let saltArray = 'qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890'
     saltArray = saltArray.split("")
     let salt = ''
@@ -67,14 +79,14 @@ class CreatePartyPage extends React.Component {
     }
     link.push(salt)
     link = link.join('')
-    this.setState({eventLink: link})
+    this.setState({ eventLink: link })
     return link
   }
   render() {
     return (
       <div className="createpartypage-wrapper">
         <FormContainer />
-        <Buttons eventLink={'/kalas/' + this.state.eventLink} createEvent={this.createEvent} />
+        <Buttons createEvent={this.createEvent} />
       </div>
     )
   }

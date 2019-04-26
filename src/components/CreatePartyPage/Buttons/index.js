@@ -9,12 +9,11 @@ const Buttons = (props) => {
         className="link-cancel">
         Avbryt
       </Link>
-      <Link
-        to={props.eventLink}
+      <button
         className="link-party-page"
         onClick={props.createEvent}>
         Godkänn
-      </Link>
+      </button>
       <Link
         to="/kalas-förhandsvisning"
         className="link-party-page">
