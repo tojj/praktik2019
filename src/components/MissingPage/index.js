@@ -1,4 +1,4 @@
-import React, { Component } from "react"
+import React from 'react'
 
 class MissingPage extends React.Component {
   constructor(props) {
@@ -10,11 +10,12 @@ class MissingPage extends React.Component {
       <div className="mp-container">
         <h1 className="mp-header">Sidan saknas</h1>
         <h4 className="mp-info">
-          Vi kunde tyvärr inte hitta sidan {this.props.location.pathname}
+          Vi kunde tyvärr inte hitta sidan {window.location.pathname}
         </h4>
         <img className="mp-background" src="/images/missingPageImg.png" />
       </div>
     )
   }
 }
+
 export default MissingPage
