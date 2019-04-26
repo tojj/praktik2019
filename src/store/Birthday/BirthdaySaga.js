@@ -5,8 +5,6 @@ import {
   doUpdateBirthday,
   ACTION_UPDATE_TIME_AND_PLACE,
   updateBirthdayTimeAndPlace,
-  ACTION_UPDATE_GUEST_USER_DETAILS,
-  updateGuestDetails
 
 } from './BirthdayActions'
 

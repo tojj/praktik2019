@@ -8,15 +8,13 @@ import {
 import staticData from '../../../../../staticData'
 
 class RegisterComponent extends React.Component {
-  constructor(props) {
-    super(props)
-  }
+
 
   renderCreateAcountData = ({ id, type, name, label, placeholder, className, pattern, title }) => {
     if (id === "password-input-first") {
       return (
-        <div>
-          <FormGroup>
+        <div key={id}>
+          <FormGroup >
             <Label htmlFor={id}>{label}</Label>
             <Input
               type={type}
@@ -33,7 +31,7 @@ class RegisterComponent extends React.Component {
     }
     else {
       return (
-        <FormGroup>
+        <FormGroup key={id}>
           <Label htmlFor={id}>{label}</Label>
           <Input
             type={type}

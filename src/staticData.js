@@ -1,5 +1,3 @@
-import { HelpCircle } from "react-feather";
-
 export const aboutData = [
   {
     text:
@@ -361,7 +359,7 @@ export const createAccountData = [
     label: "Nytt lösenord",
     placeholder: "Nytt lösenord",
     className: "registration-form",
-    pattern: "^((?=.*[a-z])(?=.*[A-Z])(?=.*\d)|(?=.*[a-z])(?=.*[A-Z])(?=.*[^A-Za-z0-9])|(?=.*[a-z])(?=.*\d)(?=.*[^A-Za-z0-9])|(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]))([A-Za-z\d@#$%^&amp;*\-_+=[\]{}|\\:',?/`~&quot;();!]|\.(?!@)){8,16}$",
+    pattern: "",
     title: "Välj ett nytt lösenord",
   },
   {
@@ -371,7 +369,7 @@ export const createAccountData = [
     label: "",
     placeholder: "Bekräfta ditt nya lösenord",
     className: "registration-form",
-    pattern: "^((?=.*[a-z])(?=.*[A-Z])(?=.*\d)|(?=.*[a-z])(?=.*[A-Z])(?=.*[^A-Za-z0-9])|(?=.*[a-z])(?=.*\d)(?=.*[^A-Za-z0-9])|(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]))([A-Za-z\d@#$%^&amp;*\-_+=[\]{}|\\:',?/`~&quot;();!]|\.(?!@)){8,16}$",
+    pattern: "",
     title: "Upprepa ditt nya lösenord",
   }
 ]
@@ -391,7 +389,7 @@ export const loginData = [
     name: "password",
     label: "Lösenord",
     className: "registration-form",
-    pattern: "^((?=.*[a-z])(?=.*[A-Z])(?=.*\d)|(?=.*[a-z])(?=.*[A-Z])(?=.*[^A-Za-z0-9])|(?=.*[a-z])(?=.*\d)(?=.*[^A-Za-z0-9])|(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]))([A-Za-z\d@#$%^&amp;*\-_+=[\]{}|\\:',?/`~&quot;();!]|\.(?!@)){8,16}$"
+    pattern: ""
   }
 ]
 

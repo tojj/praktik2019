@@ -8,15 +8,14 @@ import {
 import staticData from '../../../../../staticData'
 
 class LoginComponent extends React.Component {
-  constructor(props) {
-    super(props)
-  }
+
 
   renderLoginData = ({ id, type, name, label, className, pattern }) => {
     return (
-      <FormGroup>
+      <FormGroup key={id}>
         <Label htmlFor={id}>{label}</Label>
         <Input
+          key={id}
           type={type}
           name={name}
           pattern={pattern}
