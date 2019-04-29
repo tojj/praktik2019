@@ -48,15 +48,13 @@ class RegisterComponent extends React.Component {
   render() {
     return (
       <div>
-        <div className="login-container">
-          <div className="login-content">
-            <h2 className="form-headline">Skapa konto</h2>
-            {staticData.createAccountData.map(this.renderCreateAcountData)}
-            <div className="error item-level login-item" aria-hidden="true"><p className="registration-text mb-2">Har du redan ett konto? Vänligen logga in.</p></div>
-            <Button color="primary" type="button" onClick={this.props.loginToggle} >Avbryt</Button>
-            <Button color="primary" type="button" className="ml-lg-2" >Fortsätt</Button>
-            <Button color="primary" type="button" className="ml-lg-2" onClick={this.props.userLoginToggle}>Logga in</Button>
-          </div >
+        <div className="box align-left">
+          <h2 className="form-headline">Skapa konto</h2>
+          {staticData.createAccountData.map(this.renderCreateAcountData)}
+          <div className="error item-level login-item" aria-hidden="true"><p className="registration-text mb-2">Har du redan ett konto? Vänligen logga in.</p></div>
+          <Button color="primary" type="button" onClick={this.props.loginToggle} >Avbryt</Button>
+          <Button color="primary" type="button" className="ml-lg-2" >Fortsätt</Button>
+          <Button color="primary" type="button" className="ml-lg-2" onClick={this.props.userLoginToggle}>Logga in</Button>
         </div>
       </div>
     )
