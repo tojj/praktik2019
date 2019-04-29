@@ -10,7 +10,7 @@ class QuestionAndAnswer extends React.Component {
   }
 
   /**
-   * If toggle=false, set to true and run the parents clickcounter-method 
+   * If toggle=false, set to true and run the parents pushcounter-method 
    * with the child's ID as an argument. If not, set it to false.
    */
   toggle = () => {
@@ -29,12 +29,11 @@ class QuestionAndAnswer extends React.Component {
 
   render() {
     return (
-      <div className="qna-item border-top border-bottom" onClick={this.toggle}>
+      <div className="qna-item border-bottom" onClick={this.toggle}>
         <div>
-          <p>{this.props.question}</p>
-          <p>count: {this.props.count}</p>
+          <p>{this.props.question}, {this.props.count}</p>
         </div>
-        {this.toggle
+        {this.state.toggle
           ? <div>
             <p>{this.props.answer}</p>
           </div>

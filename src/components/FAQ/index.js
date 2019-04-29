@@ -14,23 +14,18 @@ class FAQ extends React.Component {
     this.getAllQnaAndMount = this.getAllQnaAndMount.bind(this)
     this.pushCounts = this.pushCounts.bind(this)
   }
-  async pushCounts(id) {
-    let qna = await Qna.find(id)
-    qna.count++
+  async pushCounts(id) {    
+    let qna = await Qna.find(id)    
+    qna.counter++
     await qna.save()
   }
   async getAllQnaAndMount() {
-    console.log('before');
-    
-    const allQnaData = await Qna.find()
-    console.log('after fetch');
-
+    const allQnaData = await Qna.find(`.find().sort({counter: -1}).exec()`)
     const allQna = allQnaData.map((qna, i) => {
       return (
-        <QuestionAndAnswer question={qna.question} answer={qna.answer} key={i} id={qna._id} count={qna.count} clickHandler={this.pushCounts}/>
+        <QuestionAndAnswer question={qna.question} answer={qna.answer} key={i} id={qna._id} count={qna.counter} clickHandler={this.pushCounts}/>
       )
     })
-    console.log('after map');
 
     this.setState({qnaContent: allQna})
   }
