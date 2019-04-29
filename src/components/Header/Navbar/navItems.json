@@ -15,10 +15,6 @@
     {
       "name": "Kontakt",
       "route": "contact-us"
-    },
-    {
-      "name": "FAQ",
-      "route": "faq"
     }
   ],
   "smallNav": [
