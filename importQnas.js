@@ -20,19 +20,19 @@ let qnaData = require('./data/FAQ.json')
 
 async function importJsonDataToDb() {
   let allQnaCount = await Qna.count()
-  // if the db already contains Fundraiser then delete them
+  // if the db already contains Qnas then delete them
   if (allQnaCount > 0) {
     console.log('Deleted old qnas', await Qna.remove({}))
   }
 
-  // creates Fundraisers
+  // creates Qnas
   for (let data of qnaData) {
     let qna = new Qna(data)
     await qna.save()
   }
-  // after the import count the Fundraisers again
+  // after the import count the Qnas again
   allQnasCount = await Qna.count()
-  console.log(`Imported ${allQnasCount} fundraisers to the database`)
+  console.log(`Imported ${allQnasCount} qnas to the database`)
   // Exit the app
   process.exit()
 }
