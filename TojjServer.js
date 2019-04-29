@@ -40,7 +40,8 @@ module.exports = class Server {
       users: require('./models/User'),
       events: require('./models/Event'),
       products: require('./models/Product'),
-      fundraisers: require('./models/Fundraiser')
+      fundraisers: require('./models/Fundraiser'),
+      qnas: require('./models/Qna')
     };
 
     global.models = models
