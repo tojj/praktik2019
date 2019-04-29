@@ -33,7 +33,7 @@ class FAQ extends React.Component {
   render() {
     return (
       <div className="faq-wrapper p-5 bg-white">
-        <h2 className="mb-5">FAQ - Frågor och svar</h2>
+        <h2>FAQ - Frågor och svar</h2>
         {this.state.qnaContent}
       </div>
     )

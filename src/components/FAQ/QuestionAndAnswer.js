@@ -1,11 +1,16 @@
 import React from 'react'
+import { 
+  ChevronUp,
+  ChevronDown
+} from 'react-feather'
 
 
 class QuestionAndAnswer extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      toggle: false
+      toggle: false,
+      arrow: <ChevronDown />
     }
   }
 
@@ -16,12 +21,14 @@ class QuestionAndAnswer extends React.Component {
   toggle = () => {
     if(!this.state.toggle){
       this.setState({
-        toggle: !this.state.toggle
+        toggle: !this.state.toggle,
+        arrow: <ChevronUp />
       })
       this.props.clickHandler(this.props.id)
     } else {
       this.setState({
-        toggle: !this.state.toggle
+        toggle: !this.state.toggle,
+        arrow: <ChevronDown />
       })
     }
     
@@ -29,9 +36,9 @@ class QuestionAndAnswer extends React.Component {
 
   render() {
     return (
-      <div className="qna-item border-bottom" onClick={this.toggle}>
-        <div>
-          <p>{this.props.question}, {this.props.count}</p>
+      <div className="qna-item border-bottom" >
+        <div onClick={this.toggle}>
+          <p style={{fontWeight: 'bold'}}>{this.props.question}, {this.props.count} {this.state.arrow}</p>
         </div>
         {this.state.toggle
           ? <div>
