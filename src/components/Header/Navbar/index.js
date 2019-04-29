@@ -8,9 +8,9 @@ class Navbar extends React.Component {
     super(props)
     this.state = {
       burgerOpen: false
-    }    
+    }
   }
-  
+
   toggle = () => {
     this.setState({
       burgerOpen: !this.state.burgerOpen
@@ -23,15 +23,15 @@ class Navbar extends React.Component {
   }
   componentDidUpdate() {
     let main = document.getElementById('main')
-    if (this.state.burgerOpen){
+    if (this.state.burgerOpen) {
       main.addEventListener('click', this.burgerClose)
     } else {
       main.removeEventListener('click', this.burgerClose)
     }
   }
-  
+
   render() {
-    const startPageNav =  navItems.fullNav.map((navItem, i) => {
+    const startPageNav = navItems.fullNav.map((navItem, i) => {
       return (
         <Link
           spy={true}
@@ -44,8 +44,8 @@ class Navbar extends React.Component {
         </Link>
       )
     })
-      
-    const smallNav = 
+
+    const smallNav =
       <div>
         <NavLink
           to={navItems.smallNav[0].route}
@@ -61,14 +61,14 @@ class Navbar extends React.Component {
           className="link-item">{navItems.smallNav[1].name}
         </Link>
       </div>
-    
+
     return (
       <nav>
         <div className="burger-holder">
           <img className="burger-menu-btn" onClick={this.toggle} alt="toggle menu" src="/images/burger-primary.png" />
         </div>
         <div className={this.state.burgerOpen ? 'nav-wrapper open' : 'nav-wrapper'}>
-          <div className="burger-holder"> 
+          <div className="burger-holder">
             <img className="burger-menu-btn" onClick={this.toggle} alt="toggle menu" src="/images/burger-secondary.png" />
           </div>
           {this.props.showFull ? startPageNav : smallNav}

@@ -1,0 +1,16 @@
+.faq-wrapper {
+  width: 80%;
+  margin: 50px auto;
+  border-radius: 5px;
+  h2 {
+    margin-bottom: 6rem;
+    font-family: $big-text;
+    font-weight: 400;
+    text-align: center
+  }
+  .qna-item {  
+    transition: all 2s;
+    margin-top: 1rem;
+    font-family: $big-text;
+  }
+}
