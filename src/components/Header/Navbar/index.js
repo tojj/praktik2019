@@ -31,7 +31,7 @@ class Navbar extends React.Component {
   }
 
   render() {
-    let startPageNav = navItems.fullNav.map((navItem, i) => {
+    const startPageNav = navItems.fullNav.map((navItem, i) => {
       return (
         <Link
           spy={true}
@@ -44,11 +44,6 @@ class Navbar extends React.Component {
         </Link>
       )
     })
-    startPageNav += <NavLink
-      to='faq'
-      onClick={this.state.burgerOpen ? this.toggle : null}>FAQ
-
-    </NavLink>
 
     const smallNav =
       <div>
