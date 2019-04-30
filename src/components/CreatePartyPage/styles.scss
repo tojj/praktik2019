@@ -80,6 +80,7 @@
     input,
     textarea,
     .input10,
+    .input20,
     .input25,
     .input50,
     .input100 {
@@ -96,6 +97,10 @@
       }
       .input10 {
         width: 10%;
+      }
+
+      .input20 {
+        width: 20%;
       }
 
       .input25 {
