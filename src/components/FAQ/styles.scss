@@ -1,14 +1,73 @@
 .faq-wrapper {
-  width: 80%;
+  width: 100%;
+  padding: 0.5rem;
+  @include media-breakpoint-up(md) {
+    width: 80%;
+    padding: 2rem;
+  }
   margin: 50px auto;
   border-radius: 5px;
+  .category-holder {
+    width: 100%;
+    min-height: 100px;
+    max-height: 500px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    text-align: center;
+    justify-content: space-between;    
+    .category-item {
+      color: $dark;
+      text-align: center;
+      flex: 1;
+      margin: 15px 0;
+      max-width: 24%;
+      padding: 15px;
+      border: 1px solid rgba(0, 0, 0, 0.3);
+      border-radius: 5px;
+      svg {
+        width: 32px;
+      }
+      .category-name {
+        font-size: 0.75rem;
+        margin: 0;
+      }
+      @include media-breakpoint-up(sm) {
+        padding: 20px;
+        svg {
+          width: 48px;
+          height: 48px;
+        }
+        .category-name {
+          font-size: 1rem;
+        }
+      }
+      @include media-breakpoint-up(md) {
+        max-width: 24%;
+        padding: 30px;
+        .category-name {
+          font-size: 1rem;
+        }
+      }
+      @include media-breakpoint-up(lg) {
+        max-width: 20%;
+        svg {
+          width: 72px;
+          height: 72px;
+        }
+        .category-name {
+          font-size: 1.5rem;
+        }
+      }
+    }
+  }
   h2 {
-    margin-bottom: 6rem;
+    margin: 2rem 0 6rem;
     font-family: $big-text;
     font-weight: 400;
-    text-align: center
+    text-align: center;
   }
-  .qna-item {  
+  .qna-item {
     transition: all 2s;
     margin-top: 1rem;
     font-family: $big-text;
