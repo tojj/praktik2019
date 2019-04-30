@@ -57,7 +57,13 @@
     align-items: center;
     padding: 15vw 5vw 0 !important;
 
-    input, textarea, .input10, .input25, .input50, .input100 {
+    input,
+    textarea,
+    .input10,
+    .input20,
+    .input25,
+    .input50,
+    .input100 {
       width: 100%;
     }
 
@@ -66,11 +72,15 @@
       .time-label {
         display: flex;
         & input:nth-of-type(2) {
-          margin-left: .5rem;
+          margin-left: 0.5rem;
         }
       }
       .input10 {
         width: 10%;
+      }
+
+      .input20 {
+        width: 20%;
       }
 
       .input25 {
@@ -122,14 +132,13 @@
       h2 {
         font-size: 3rem;
       }
-      
     }
     @include media-breakpoint-up(lg) {
       flex-direction: row;
-      .box:nth-of-type(1){
+      .box:nth-of-type(1) {
         padding-right: 10px;
       }
-      .box:nth-of-type(2){
+      .box:nth-of-type(2) {
         padding-left: 10px;
       }
 
