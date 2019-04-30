@@ -1,0 +1,17 @@
+.invite-wrapper {
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+
+  .invite-input {
+    width: 50% !important;
+    margin: auto auto 30px auto;
+  }
+
+  .send-button {
+    width: 50% !important;
+    margin: auto auto 50px auto;
+  }
+}

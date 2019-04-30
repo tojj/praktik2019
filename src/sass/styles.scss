@@ -8,7 +8,7 @@
 // Import our Basic Styles for the application
 @import "./basic-styles";
 
-//Import all our sass-files
+// Import all our sass-files
 // HEADER
 @import "../Components/Header/styles";
 @import "../Components/Header/Navbar/styles";
@@ -37,11 +37,15 @@
 // PREVIEWPAGE
 @import "../components/PreviewPage/styles";
 
-//MISSINGPAGE
+// MISSINGPAGE
 @import "../components/MissingPage/style";
 
-//FAQ
+// FAQ
 @import "../components/FAQ/styles";
+
+// CONFIRMATION PAGE 
+@import "../components/ConfirmationPage/styles";
+@import "../components/BirthdayInvite/styles";
 
 // FOOTER
 @import "../Components/Footer/styles";

@@ -95,7 +95,7 @@ class PreviewPage extends Component {
           <Link to="/skapa-kalas" className="link-cancel">
             Tillbaka
           </Link>
-          <Link to="/s" className="link-party-page">
+          <Link to="/bekräftelse" className="link-party-page">
             Godkänn
           </Link>
         </div>
