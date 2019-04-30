@@ -10,7 +10,17 @@ import staticData from '../../../../../staticData'
 class RegisterComponent extends React.Component {
 
 
-  renderCreateAcountData = ({ id, type, classNameFormGroup, name, label, classNameLabel, placeholder, className, pattern, title }) => {
+  renderCreateAcountData = ({
+    id,
+    type,
+    classNameFormGroup,
+    name,
+    label,
+    classNameLabel,
+    placeholder,
+    className,
+    pattern,
+    title }) => {
 
     return (
       <FormGroup key={id} className={classNameFormGroup}>
