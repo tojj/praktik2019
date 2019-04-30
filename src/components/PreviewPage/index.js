@@ -76,8 +76,8 @@ class PreviewPage extends Component {
               </div>
               <p>Swish</p>
               <p>
-                Skanna koden ovan med hjälp av swish-appen eller swisha{" "}
-                {this.props.swishMoney} kronor till 0709629276.
+                Skanna koden ovan med hjälp av swish-appen för att betala{" "}
+                {this.props.swishMoney} kronor av presenten
               </p>
             </div>
             <div className="box toy-holder">
