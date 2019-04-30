@@ -49,7 +49,7 @@ class CreatePartyPage extends React.Component {
     })
     await newEvent.save().then(data => {
       if (!data.name) {
-        const target = "/kalas/" + link
+        const target = "/kalas/" + link + "/bekräftelse"
         this.redirectTo(target) 
       } else {
         alert('ERROR:' + data.message) 

@@ -13,5 +13,12 @@
   .send-button {
     width: 50% !important;
     margin: auto auto 50px auto;
+    color: $primary;
+    border-color: $primary;
+
+    &:hover {
+      background: $primary !important;
+      color: white;
+    }
   }
 }

@@ -10,7 +10,6 @@ const Buttons = (props) => {
         Avbryt
       </Link>
       <button
-        to="/bekräftelse"
         className="link-party-page"
         onClick={props.createEvent}>
         Godkänn

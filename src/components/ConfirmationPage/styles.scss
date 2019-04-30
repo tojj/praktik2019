@@ -15,7 +15,20 @@
     font-size: 2.5rem;
   }
 
-  .conf-info {
-    font-family: "Open Sans", sans-serif;
-  }
+}
+
+.bday-invite-wrapper {
+  width: 80%;
+  margin: 50px auto;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  flex-direction: column;
+}
+
+.conf-button {
+  margin: auto auto 40px auto;
+  min-width: 50% !important;
+
 }
