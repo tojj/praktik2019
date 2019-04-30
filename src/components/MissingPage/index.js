@@ -7,9 +7,6 @@ import { Link } from "react-router-dom"
  */
 
 class MissingPage extends Component {
-  constructor(props) {
-    super(props)
-  }
   render() {
     return (
       <div className="mp-container">
@@ -25,7 +22,7 @@ class MissingPage extends Component {
         >
           {this.props.link ? this.props.linkName : "Tillbaka till Start"}
         </Link>
-        <img className="mp-background" src="/images/missingPageImg.png" />
+        <img className="mp-background" src="/images/missingPageImg.png" alt="balloons" />
       </div>
     )
   }

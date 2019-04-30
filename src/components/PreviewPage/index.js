@@ -71,7 +71,7 @@ class PreviewPage extends Component {
                 </div>
                 <p>Överskott</p>
                 <p>Eventuellt överskott har vi valt att skänka direkt till {""}. Om du vill veta mer om organisationen kan du klicka nedan.</p>
-                <a href={""} target="_blank" rel="noopener noreferrer">Läs mer...</a>
+                <a href={"/vanliga-fragor"} target="_blank" rel="noopener noreferrer">Läs mer...</a>
               </div>
               : null}
           </div>
