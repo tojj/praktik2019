@@ -1,46 +1,66 @@
 .createpartypage-wrapper {
   .buttons-container {
-    display: flex;
-    position: relative;
-    width: 100%;
-    justify-content: center;
     margin: 80px 0 80px 0;
-    .link-cancel {
-      background-color: $secondary;
-      text-align: center;
-      color: red;
-      font-family: $big-text;
-      font-weight: 800;
-      font-size: 20px;
-      border: 2px solid red;
-      padding: 5px 5px;
-      border-radius: 2px;
-      margin-top: 1rem;
-      margin-right: 5px;
-      transition: all 0.3s;
-      min-width: 110px;
-      &:hover {
-        color: $secondary;
-        background-color: red;
-        text-decoration: none;
+    .buttons-row1,
+    .buttons-row2 {
+      display: flex;
+      position: relative;
+      width: 100%;
+      justify-content: center;
+      .link-cancel {
+        background-color: $secondary;
+        text-align: center;
+        color: red;
+        font-family: $big-text;
+        font-weight: 800;
+        font-size: 20px;
+        border: 2px solid red;
+        padding: 5px 5px;
+        border-radius: 2px;
+        margin: 5px 5px 5px 0;
+        transition: all 0.3s;
+        min-width: 110px;
+        &:hover {
+          color: $secondary;
+          background-color: red;
+          text-decoration: none;
+        }
       }
-    }
-    .link-party-page {
-      background-color: $secondary;
-      color: #007e50;
-      font-family: $big-text;
-      font-weight: 800;
-      font-size: 20px;
-      border: 2px solid #007e50;
-      padding: 5px 5px;
-      border-radius: 2px;
-      margin-top: 1rem;
-      margin-left: 5px;
-      transition: all 0.3s;
-      &:hover {
-        color: $secondary;
-        background-color: #007e50;
-        text-decoration: none;
+      .link-party-page {
+        background-color: $secondary;
+        color: #007e50;
+        font-family: $big-text;
+        font-weight: 800;
+        font-size: 20px;
+        border: 2px solid #007e50;
+        padding: 5px 5px;
+        border-radius: 2px;
+        margin: 5px 0 5px 5px;
+        transition: all 0.3s;
+        &:hover {
+          color: $secondary;
+          background-color: #007e50;
+          text-decoration: none;
+        }
+      }
+      .link-preview-page {
+        background-color: $secondary;
+        color: #007e50;
+        font-family: $big-text;
+        font-weight: 800;
+        font-size: 20px;
+        border: 2px solid #007e50;
+        padding: 5px 5px;
+        border-radius: 2px;
+        margin: 5px 0 5px 0;
+        transition: all 0.3s;
+        min-width: 230px;
+        text-align: center;
+        &:hover {
+          color: $secondary;
+          background-color: #007e50;
+          text-decoration: none;
+        }
       }
     }
   }

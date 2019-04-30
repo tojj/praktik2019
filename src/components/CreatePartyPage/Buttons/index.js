@@ -1,25 +1,22 @@
-import React from 'react'
+import React from "react"
 import { Link } from "react-router-dom"
 
-const Buttons = (props) => {
+const Buttons = props => {
   return (
     <div className="buttons-container">
-      <Link
-        to="/"
-        className="link-cancel">
-        Avbryt
-      </Link>
-      <button
-        className="link-party-page"
-        onClick={props.createEvent}>
-        Godkänn
-      </button>
-      <Link
-        to="/kalas-förhandsvisning"
-        className="link-party-page">
-        Förhandsgranska
-      </Link>
-      
+      <div className="buttons-row1">
+        <Link to="/kalas-förhandsvisning" className="link-preview-page">
+          Förhandsgranska
+        </Link>
+      </div>
+      <div className="buttons-row2">
+        <Link to="/" className="link-cancel">
+          Avbryt
+        </Link>
+        <button className="link-party-page" onClick={props.createEvent}>
+          Godkänn
+        </button>
+      </div>
     </div>
   )
 }

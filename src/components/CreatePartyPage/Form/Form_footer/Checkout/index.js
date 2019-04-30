@@ -1,17 +1,12 @@
-import React from 'react'
-import {
-  Button,
-  FormGroup,
-  Label
-} from 'reactstrap'
-import { doUpdateGuestDetails } from '../../../../../store/Birthday/BirthdayActions'
-import RegisterComponent from '../Checkout/RegisterComponent'
-import LoginComponent from '../Checkout/LoginComponent'
-import { connect } from 'react-redux'
-import { HelpCircle } from 'react-feather'
-import InputEvent from '../../Form_body/Event_input/InputEvent'
-import { guestUserData } from '../../../../../staticData'
-
+import React from "react"
+import { Button, FormGroup, Label } from "reactstrap"
+import { doUpdateGuestDetails } from "../../../../../store/Birthday/BirthdayActions"
+import RegisterComponent from "../Checkout/RegisterComponent"
+import LoginComponent from "../Checkout/LoginComponent"
+import { connect } from "react-redux"
+import { HelpCircle } from "react-feather"
+import InputEvent from "../../Form_body/Event_input/InputEvent"
+import { guestUserData } from "../../../../../staticData"
 
 class Checkout extends React.Component {
   constructor(props) {
@@ -25,7 +20,7 @@ class Checkout extends React.Component {
 
   loginToggle = () => {
     this.setState({
-      loginOption: !this.state.loginOption,
+      loginOption: true,
       noRegisterOption: false,
       userLogin: false
     })
@@ -33,7 +28,7 @@ class Checkout extends React.Component {
 
   registerToggle = () => {
     this.setState({
-      noRegisterOption: !this.state.noRegisterOption,
+      noRegisterOption: true,
       loginOption: false,
       userLogin: false
     })
@@ -47,20 +42,47 @@ class Checkout extends React.Component {
     })
   }
 
-
-  updateInfo = (event) => {
+  updateInfo = event => {
     this.props.updateInfo(event.target.value)
   }
 
-  renderInputs = () => this.props.guestUser
-    ? Object.keys(this.props.guestUser).map(this.renderInput)
-    : null
-
+  renderInputs = () =>
+    this.props.guestUser
+      ? Object.keys(this.props.guestUser).map(this.renderInput)
+      : null
 
   renderInput = key => {
     if (key === "phoneNumber") {
-      return (<FormGroup key="phoneNumber" className="input50">
-        <Label htmlFor="phoneNumber-input" className="position-relative ml-lg-2" title="Ange ditt telefonnummer om du vill få sms aviseringar">Telefonnummer<HelpCircle className="iconFeather" /></Label>
+      return (
+        <FormGroup key="phoneNumber" className="input50">
+          <Label
+            htmlFor="phoneNumber-input"
+            className="position-relative ml-lg-2"
+            title="Ange ditt telefonnummer om du vill få sms aviseringar"
+          >
+            Telefonnummer
+            <HelpCircle className="iconFeather" />
+          </Label>
+          <InputEvent
+            name={guestUserData[key].name}
+            keyVal={key}
+            value={this.props.guestUser[key]}
+            type={guestUserData[key].type}
+            placeholder={guestUserData[key].label}
+            className={guestUserData[key].className}
+            callback={this.callback}
+          />
+        </FormGroup>
+      )
+    }
+    return (
+      <FormGroup key={key} className={guestUserData[key].classNameFormGroup}>
+        <Label
+          htmlFor={guestUserData[key].id}
+          className={guestUserData[key].classNameLabel}
+        >
+          {guestUserData[key].label}
+        </Label>
         <InputEvent
           name={guestUserData[key].name}
           keyVal={key}
@@ -70,23 +92,9 @@ class Checkout extends React.Component {
           className={guestUserData[key].className}
           callback={this.callback}
         />
-      </FormGroup>)
-    }
-    return (<FormGroup key={key} className={guestUserData[key].classNameFormGroup}>
-      <Label htmlFor={guestUserData[key].id} className={guestUserData[key].classNameLabel}>{guestUserData[key].label}</Label>
-      <InputEvent
-        name={guestUserData[key].name}
-        keyVal={key}
-        value={this.props.guestUser[key]}
-        type={guestUserData[key].type}
-        placeholder={guestUserData[key].label}
-        className={guestUserData[key].className}
-        callback={this.callback}
-      />
-    </FormGroup>
+      </FormGroup>
     )
   }
-
 
   callback = (value, key) => this.props.updateInfo({ [key]: value })
 
@@ -95,9 +103,7 @@ class Checkout extends React.Component {
       <div className="box-details-container" id="checkout-container">
         <div className="box align-left">
           <div className="form">
-            <h2 className="form-headline text-center">
-              Slutför
-              </h2>
+            <h2 className="form-headline text-center">Slutför</h2>
             <div className="input-group">
               <input
                 className="radio-input"
@@ -108,7 +114,7 @@ class Checkout extends React.Component {
               />
               <label className="radio-label" htmlFor="radio3">
                 Fortsätt som inloggad användare
-                </label>
+              </label>
             </div>
             <div className="input-group">
               <input
@@ -120,11 +126,10 @@ class Checkout extends React.Component {
               />
               <label className="radio-label" htmlFor="radio4">
                 Fortsätt utan inloggning
-                </label>
+              </label>
             </div>
           </div>
         </div>
-
 
         {this.state.userLogin ? (
           <LoginComponent
@@ -133,24 +138,31 @@ class Checkout extends React.Component {
           />
         ) : null}
 
-
         {this.state.loginOption ? (
           <RegisterComponent
             loginToggle={this.loginToggle}
-            userLoginToggle={this.userLoginToggle} />
+            userLoginToggle={this.userLoginToggle}
+          />
         ) : null}
 
+        {this.state.noRegisterOption ? (
+          <div className="box-container">
+            <div className="box align-left">
+              <h2 className="form-headline">Fortsätt som gästanvändare</h2>
+              {this.renderInputs()}
 
-        {this.state.noRegisterOption ? (<div className="box-container">
-          <div className="box align-left">
-            <h2 className="form-headline">Fortsätt som gästanvändare</h2>
-            {this.renderInputs()}
-
-            <Button color="primary" type="button" className="button-for-register" >Slutför</Button>
+              <Button
+                color="primary"
+                type="button"
+                className="button-for-register"
+              >
+                Slutför
+              </Button>
+            </div>
           </div>
-        </div>) : null}
-      </div>)
-
+        ) : null}
+      </div>
+    )
   }
 }
 
@@ -161,8 +173,10 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = dispatch => ({
-  updateInfo: (data) => dispatch(doUpdateGuestDetails(data))
+  updateInfo: data => dispatch(doUpdateGuestDetails(data))
 })
 
-
-export default connect(mapStateToProps, mapDispatchToProps)(Checkout)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Checkout)
