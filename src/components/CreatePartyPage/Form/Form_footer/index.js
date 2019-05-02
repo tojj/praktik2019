@@ -46,24 +46,20 @@ class Form_footer extends React.Component {
     this.setState({ sliderContent: this.allFundraisers })
   }
 
-  // selected = () => {
-  //   let fundraisers = this.state.sliderContent
-  //   for (let fundraiser of fundraisers) {
-  //     console.log(fundraiser.props);
-  //   }
-
-  // }
-
-
-
-
-
+  /**
+  * Getting selected Fundraiser
+  */
 
   findFundraisersId = (e) => {
     const selectedId = e.target.id
     this.fundraiserId = selectedId
     this.getSelectedFundraiser()
   }
+
+  /**
+   * Searching for the selected Fundraiser in the
+   * database and updating Redux state
+   */
 
   async getSelectedFundraiser() {
     this.selectedFundraiser = await Fundraiser.find(`.find({_id: '${this.fundraiserId}'})`)
@@ -77,9 +73,7 @@ class Form_footer extends React.Component {
     this.props.updateSelectedFundraiser(
       fundraiser
     )
-
   }
-
 
 
   render() {
@@ -172,7 +166,6 @@ class Form_footer extends React.Component {
         ) : null}
         <Checkout />
       </div>
-
     )
   }
 }
@@ -180,7 +173,6 @@ class Form_footer extends React.Component {
 const mapStateToProps = state => {
   return {
     fundraiser: state.birthday.fundraiser
-
   }
 }
 
