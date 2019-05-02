@@ -13,9 +13,11 @@ class AttendingsList extends React.Component {
     }
     this.saveAttendeeToDB = this.saveAttendeeToDB.bind(this)
   }
+  
   clickHandler = () => {
     this.setState({ showInput: !this.state.showInput })
   }
+
   async saveAttendeeToDB() {
     const newAttendee = {
       name: document.getElementById('input-att-name').value,
@@ -35,14 +37,14 @@ class AttendingsList extends React.Component {
     return (
       <div>
         <div className="list-holder">
-          {this.state.attendees 
+          {this.state.attendees.length > 0 
           ? this.state.attendees.map((attendee, i) => {
             return <Attendee attendee={attendee} key={"attendee_" + i} index={i} />
           }) 
           : <p style={{color: '#444655', fontSize: '1.5rem'}}>Än så länge har ingen skrivit upp sig :(</p>
           }
         </div>
-        {this.state.showInput ? <div>
+        {this.state.showInput ? <div className="pt-2">
           <input type="text" placeholder="namn" id="input-att-name" />
           <input type="email" placeholder="epost" id="input-att-email" className="ml-2" /> <br />
           <button type="button" className="btn btn-danger mt-3" onClick={this.clickHandler}>Tillbaka</button>

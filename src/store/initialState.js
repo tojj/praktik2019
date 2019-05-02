@@ -6,7 +6,7 @@ export default {
       name: '',
       age: '',
     },
-    
+
     birthdayTimeAndPlace: {
       description: '',
       date: '',
@@ -16,8 +16,26 @@ export default {
       city: '',
       deadline: ''
     },
-    
+
     birthdayImage: '',
 
+    guestUser: {
+      firstName: '',
+      lastName: '',
+      email: '',
+      phoneNumber: '',
+      address: '',
+      zipcode: '',
+      city: ''
+    }
+
+  },
+
+  swish: {
+
+    swishMoney: '50',
+    
   }
+
+  
 }

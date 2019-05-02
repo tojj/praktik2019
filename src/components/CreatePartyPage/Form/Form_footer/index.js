@@ -1,9 +1,10 @@
 import React from "react"
-import { Link } from "react-router-dom"
 import Slider from "react-slick"
+import Checkout from "../Form_footer/Checkout/index"
 import REST from "../../../../REST"
 
-class Fundraiser extends REST {}
+
+class Fundraiser extends REST { }
 
 class Form_footer extends React.Component {
   constructor(props) {
@@ -16,14 +17,18 @@ class Form_footer extends React.Component {
     this.allFundraisers = []
     this.loadFundraisersAndMount()
   }
+
   charityToggle = () => {
     this.setState({ charitySelected: !this.state.charitySelected })
   }
+
   async loadFundraisersAndMount() {
     this.allFundraisersData = await Fundraiser.find()
     this.allFundraisers = this.allFundraisersData.map((fundraiser, i) => {
       return (
         <div className="slider-div" key={"fundraiser_" + i} id={fundraiser._id}>
+          <div className="charity-overlay" />
+          <div className="charity-checkmark" />
           <img
             className="charImg"
             src={fundraiser.image}
@@ -122,19 +127,7 @@ class Form_footer extends React.Component {
             </div>
           </div>
         ) : null}
-        <div className="buttons-container">
-          <Link to="/" className="link-cancel">
-            Avbryt
-          </Link>
-          <Link to="/skapa-kalas" className="link-party-page">
-            Godkänn
-          </Link>
-          <Link
-            to="/kalas-förhandsvisning"
-            className="link-party-page">
-            Förhandsgranska
-          </Link>
-        </div>
+        <Checkout />
       </div>
     )
   }

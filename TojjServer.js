@@ -2,8 +2,8 @@ const express = require('express')
 const mongoose = require('mongoose')
 const http = require('http')
 const bodyParser = require('body-parser')
-const CreateRestRoutes = require('./CreateRestRoutes')
 const supersecret = require('./supersecret')
+const CreateRestRoutes = require('./CreateRestRoutes')
 
 
 
@@ -40,7 +40,8 @@ module.exports = class Server {
       users: require('./models/User'),
       events: require('./models/Event'),
       products: require('./models/Product'),
-      fundraisers: require('./models/Fundraiser')
+      fundraisers: require('./models/Fundraiser'),
+      qnas: require('./models/Qna')
     };
 
     global.models = models

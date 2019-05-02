@@ -5,16 +5,28 @@ import StartPage from './components/StartPage/index'
 import PreviewPage from './components/PreviewPage/index'
 import CreatePartyPage from './components/CreatePartyPage/index'
 import PartyPage from './components/PartyPage/index'
+import FAQ from "./components/FAQ/index"
 import Footer from './components/Footer/index'
+import MissingPage from "./components/MissingPage/index"
 
-const App = (props) => {
-
+const App = props => {
   return (
     <Router>
       <header>
         <Switch>
-          <Route exact path="/" render={(...routeProps) => (<Header {...routeProps} startPage={true} />)} />
-          <Route path="/" render={(...routeProps) => (<Header {...routeProps} startPage={false} />)} />
+          <Route
+            exact
+            path="/"
+            render={(...routeProps) => (
+              <Header {...routeProps} startPage={true} />
+            )}
+          />
+          <Route
+            path="/"
+            render={(...routeProps) => (
+              <Header {...routeProps} startPage={false} />
+            )}
+          />
         </Switch>
       </header>
       <main id="main">
@@ -23,6 +35,9 @@ const App = (props) => {
           <Route exact path="/skapa-kalas" component={CreatePartyPage} />
           <Route exact path="/kalas/:link" component={PartyPage} />          
           <Route exact path="/kalas-förhandsvisning" component={PreviewPage} />
+          <Route exact path="/vanliga-fragor" component={FAQ} />
+
+          <Route component={MissingPage} />
         </Switch>
       </main>
       <footer><Footer /></footer>
