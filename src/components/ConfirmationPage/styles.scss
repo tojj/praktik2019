@@ -32,3 +32,23 @@
   min-width: 50% !important;
 
 }
+
+.send-button {
+  width: 50% !important;
+  margin: 25px auto 4px auto;
+  color: $primary;
+  border-color: $primary;
+
+  &:hover {
+    background: $primary !important;
+    color: white;
+  }
+
+}
+
+svg {
+  padding: 4px;
+  &:hover {
+    color: red;
+  }
+}
