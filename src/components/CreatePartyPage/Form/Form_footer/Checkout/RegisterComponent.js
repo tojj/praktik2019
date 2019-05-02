@@ -6,9 +6,76 @@ import {
   Label
 } from 'reactstrap'
 import staticData from '../../../../../staticData'
+import REST from '../../../../../REST'
+
+class User extends REST { }
 
 class RegisterComponent extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      data: {
+        firstName: "",
+        lastName: "",
+        address: "",
+        zipCode: "",
+        city: "",
+        phoneNumber: "",
+        email: "",
+        password: "",
+        passwordRepeat: ""
+      }
+    }
+  }
 
+
+  handleChange = ({ currentTarget: input }) => {
+    const data = { ...this.state.data }
+    data[input.name] = input.value
+    this.setState({ data })
+  }
+
+  handleSubmit = e => {
+    e.preventDefault()
+    this.getUserData();
+    this.resetForm();
+  }
+
+  resetForm = () => {
+
+    this.setState({
+      data: {
+        firstName: "",
+        lastName: "",
+        address: "",
+        zipCode: "",
+        city: "",
+        phoneNumber: "",
+        email: "",
+        password: "",
+        passwordRepeat: ""
+      }
+    })
+  }
+
+  async getUserData() {
+
+    const { data } = this.state
+    let newUser = new User({
+      firstName: data.firstName,
+      lastName: data.lastName,
+      address: data.address,
+      zipCode: data.zipCode,
+      city: data.city,
+      phoneNumber: data.phoneNumber,
+      email: data.email,
+      password: data.password,
+      passwordRepeat: data.passwordRepeat
+    })
+    await newUser.save()
+    console.log(newUser, "New User created!");
+
+  }
 
   renderCreateAcountData = ({
     id,
@@ -22,16 +89,19 @@ class RegisterComponent extends React.Component {
     pattern,
     title }) => {
 
+    const { data } = this.state
     return (
       <FormGroup key={id} className={classNameFormGroup}>
         <Label htmlFor={id} className={classNameLabel}>{label}</Label>
         <Input
           type={type}
           name={name}
+          value={data[name]}
           pattern={pattern}
           title={title}
           className={className}
           placeholder={placeholder}
+          onChange={this.handleChange}
         />
       </FormGroup>)
   }
@@ -39,7 +109,9 @@ class RegisterComponent extends React.Component {
 
   render() {
     return (
+
       <div className="box-container">
+
         <div className="box align-left set-width-registration">
           <h2 className="form-headline">Skapa konto</h2>
           {staticData.createAccountData.map(this.renderCreateAcountData)}
@@ -47,12 +119,14 @@ class RegisterComponent extends React.Component {
 
           <div className="registration-buttons">
             <Button color="primary" type="button" onClick={this.props.loginToggle} >Avbryt</Button>
-            <Button color="primary" type="button" className="ml-lg-2" >Fortsätt</Button>
+            <Button color="primary" type="button" className="ml-lg-2" onClick={this.handleSubmit}>Fortsätt</Button>
             <Button color="primary" type="button" className="ml-lg-2" onClick={this.props.userLoginToggle}>Logga in</Button>
-            <div className="error item-level login-item" aria-hidden="true"><p className="registration-text-log-in mb-2">Har du redan ett konto? Vänligen logga in.</p></div>
+            <div className="error item-level login-item" aria-hidden="true"><p className="registration-text-log-in mb-2">Har du redan ett konto? Vänligen  <span>logga in </span></p></div>
           </div>
         </div>
-      </div>
+
+      </div >
+
     )
   }
 }
