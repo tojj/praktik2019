@@ -321,22 +321,22 @@ export const guestUserData = {
     className: "form-input"
   },
   zipcode: {
-    classNameFormGroup: "input25",
+    classNameFormGroup: "input20 display-inline",
     id: "zipcode-input",
     name: "zipcode",
     classNameLabel: "ml-lg-2",
-    label: "Postnummer",
+    label: "Postnr",
     type: "number",
     className: "form-input ml-lg-2"
   },
   city: {
-    classNameFormGroup: "input50",
+    classNameFormGroup: "input27",
     id: "city-input",
     name: "city",
-    classNameLabel: "",
+    classNameLabel: "ml-lg-3",
     label: "Stad",
     type: "text",
-    className: "form-input"
+    className: "form-input ml-lg-3"
   }
 }
 

@@ -2,9 +2,10 @@
   display: flex;
   flex-direction: column;
   padding: 8vh 0;
+
   @include media-breakpoint-up(lg) {
     flex-direction: column;
-    padding: 5vw 5vw 0 !important;
+    //padding: 5vw 0 !important;
   }
   position: relative;
   width: 100%;
@@ -21,14 +22,31 @@
       top: 0;
     }
 
+    .form-header {
+      text-align: center;
+      color: $primary;
+      padding-bottom: 2vh;
+      font-weight: 700;
+      font-family: $big-text;
+      padding-bottom: 2vh;
+    }
+
     .registration-text-log-in {
       font-size: 14px !important;
       margin-top: 2%;
       @include media-breakpoint-up(lg) {
-        font-size: 12px !important;
+        padding-top: 1%;
+        font-size: 13px !important;
         width: 35%;
         margin: 0 auto;
         margin-bottom: 3%;
+        .login-link {
+          color: $primary;
+          cursor: pointer;
+          &:hover {
+            opacity: 1;
+          }
+        }
       }
     }
     .registration-text-password {
@@ -84,6 +102,32 @@
       text-align: center;
     }
 
+    .registration-text-log-in {
+      font-size: 14px !important;
+      margin-top: 2%;
+      @include media-breakpoint-up(lg) {
+        padding-top: 1%;
+        font-size: 15px !important;
+        width: 35%;
+        margin: 0 auto;
+        margin-bottom: 3%;
+        .login-link {
+          color: $primary;
+          cursor: pointer;
+          &:hover {
+            opacity: 1;
+          }
+        }
+      }
+    }
+
+    .form-header {
+      color: $primary;
+      padding-bottom: 2vh;
+      font-weight: 700;
+      font-family: "Montserrat", sans-serif;
+    }
+
     @include media-breakpoint-up(lg) {
       .registration-form {
         width: 50% !important;
@@ -115,4 +159,14 @@
 
 .display-inline {
   display: inline-block;
+}
+@include media-breakpoint-up(lg) {
+  .account-container {
+    padding-top: 0 !important;
+  }
+}
+
+.box-container .box .form-header {
+  color: $primary;
+  padding-bottom: 2vh;
 }

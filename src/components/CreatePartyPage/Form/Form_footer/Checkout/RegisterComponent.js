@@ -35,6 +35,7 @@ class RegisterComponent extends React.Component {
     this.setState({ data })
   }
 
+
   handleSubmit = e => {
     e.preventDefault()
     this.getUserData();
@@ -61,6 +62,7 @@ class RegisterComponent extends React.Component {
   async getUserData() {
 
     const { data } = this.state
+
     let newUser = new User({
       firstName: data.firstName,
       lastName: data.lastName,
@@ -110,21 +112,17 @@ class RegisterComponent extends React.Component {
   render() {
     return (
 
-      <div className="box-container">
-
+      <div className="box-container account-container">
         <div className="box align-left set-width-registration">
-          <h2 className="form-headline">Skapa konto</h2>
+          <h4 className="form-header">Skapa konto</h4>
           {staticData.createAccountData.map(this.renderCreateAcountData)}
           <div className="error item-level" aria-hidden="true"><p className="registration-text-password">Lösenordet måste bestå av 8-16 tecken, och innehålla minst 3 av följande alternativ: Stor eller liten bokstav (A-z), siffra eller specialtecken.</p></div>
-
           <div className="registration-buttons">
             <Button color="primary" type="button" onClick={this.props.loginToggle} >Avbryt</Button>
             <Button color="primary" type="button" className="ml-lg-2" onClick={this.handleSubmit}>Fortsätt</Button>
-            <Button color="primary" type="button" className="ml-lg-2" onClick={this.props.userLoginToggle}>Logga in</Button>
-            <div className="error item-level login-item" aria-hidden="true"><p className="registration-text-log-in mb-2">Har du redan ett konto? Vänligen  <span>logga in </span></p></div>
+            <div className="error item-level login-item" aria-hidden="true"><p className="registration-text-log-in mb-2">Har du redan ett konto? Vänligen  <span className="login-link" onClick={this.props.userLoginToggle}>logga in </span></p></div>
           </div>
         </div>
-
       </div >
 
     )

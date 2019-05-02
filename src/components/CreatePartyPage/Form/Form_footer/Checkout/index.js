@@ -110,7 +110,7 @@ class Checkout extends React.Component {
                 id="radio3"
                 name="radio"
                 type="radio"
-                onClick={this.loginToggle}
+                onClick={this.userLoginToggle}
               />
               <label className="radio-label" htmlFor="radio3">
                 Fortsätt som inloggad användare
@@ -146,9 +146,9 @@ class Checkout extends React.Component {
         ) : null}
 
         {this.state.noRegisterOption ? (
-          <div className="box-container">
+          <div className="box-container set-width-registration">
             <div className="box align-left">
-              <h2 className="form-headline">Fortsätt som gästanvändare</h2>
+              <h4 className="form-header">Fortsätt som gästanvändare</h4>
               {this.renderInputs()}
 
               <Button
