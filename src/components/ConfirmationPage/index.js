@@ -9,15 +9,8 @@ class ConfirmationPage extends React.Component {
     this.state = {
       emails: [],
       currentEmail: { text: '', key: '' },
-      counter: 0,
     }
 
-    setInterval(this.incrementCounter)
-
-  }
-
-  incrementCounter = () => {
-    this.setState(({counter}) => ({counter: counter++}))
   }
 
   handleInput = e => {
