@@ -127,10 +127,10 @@ class PreviewPage extends Component {
                 {this.props.birthdayTimeAndPlace.street}
               </p>
               <p className="party-zip-city">
-                {this.props.birthdayTimeAndPlace.city} {""}
+                {this.props.birthdayTimeAndPlace.zip} {this.props.birthdayTimeAndPlace.city}
               </p>
               <p className="party-rsvp">
-                OSA senast <br />{" "}
+                OSA senast <br />
                 {new Date(
                   this.props.birthdayTimeAndPlace.deadline
                 ).toLocaleDateString("sv-SE", {

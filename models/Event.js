@@ -11,7 +11,7 @@ let eventSchema = new Schema({
   rsvp:       Number,
   location: { 
     street:   { type: String, required: true },
-    zipcode:  { type: Number, required: true },
+    zipcode:  { type: String, required: true },
     city:     { type: String, required: true }
   },
   swish: {
