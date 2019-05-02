@@ -2,17 +2,18 @@ const mongoose = require("mongoose")
 const Schema = mongoose.Schema
 
 let eventSchema = new Schema({
-  title: { type: String, required: true },
-  child: { type: String, required: true },
-  age: { type: Number, required: true },
-  image: { type: String, required: true },
-  desc: { type: String, required: true },
-  date: Number,
-  rsvp: Number,
-  location: {
-    street: { type: String, required: true },
-    zipcode: { type: String, required: true },
-    city: { type: String, required: true }
+
+  title:      { type: String, required: true },
+  child:      { type: String, required: true },
+  age:        { type: Number, required: true },
+  image:      { type: String, required: true },
+  desc:       { type: String, required: true },
+  date:       Number,
+  rsvp:       Number,
+  location: { 
+    street:   { type: String, required: true },
+    zipcode:  { type: String, required: true },
+    city:     { type: String, required: true }
   },
   swish: {
     number: { type: String, required: true },
