@@ -93,25 +93,25 @@ class PreviewPage extends Component {
                 Läs mer...
               </a>
             </div>
-            {"" ? (
-              <div className="box karma-holder">
-                <div className="box-img">
-                  <img src={this.props.fundraiser.image} className="img-fluid" alt="fundraiser" />
-                </div>
-                <p>Överskott</p>
-                <p>
-                  Eventuellt överskott har vi valt att skänka direkt till {""}.
-                  Om du vill veta mer om organisationen kan du klicka nedan.
-                </p>
-                <a
-                  href={"/vanliga-fragor"}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Läs mer...
-                </a>
+
+            <div className="box karma-holder">
+              <div className="box-img">
+                <img src={this.props.fundraiser.image} className="img-fluid" alt="fundraiser" />
               </div>
-            ) : null}
+              <p>Överskott</p>
+              <p>
+                Eventuellt överskott har vi valt att skänka direkt till {this.props.fundraiser.name}.
+                Om du vill veta mer om organisationen kan du klicka nedan.
+                </p>
+              <a
+                href={this.props.fundraiser.link}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Läs mer...
+                </a>
+            </div>
+
           </div>
           <div className="box-container party-attending border-top no-print">
             <div className="box attending-holder">
@@ -160,7 +160,8 @@ const mapStateToProps = state => {
     birthdayEvent: state.birthday.birthdayEvent,
     birthdayImage: state.birthday.birthdayImage,
     birthdayTimeAndPlace: state.birthday.birthdayTimeAndPlace,
-    swishMoney: state.swish.swishMoney
+    swishMoney: state.swish.swishMoney,
+    fundraiser: state.birthday.fundraiser
   }
 }
 

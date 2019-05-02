@@ -23,7 +23,8 @@ export default {
       id: '',
       name: '',
       image: '',
-      link: ''
+      link: '',
+      donate: false
     },
 
     guestUser: {

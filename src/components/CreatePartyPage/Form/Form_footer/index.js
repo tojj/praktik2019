@@ -71,7 +71,8 @@ class Form_footer extends React.Component {
       id: this.selectedFundraiser[0]._id,
       name: this.selectedFundraiser[0].name,
       image: this.selectedFundraiser[0].image,
-      link: this.selectedFundraiser[0].link
+      link: this.selectedFundraiser[0].link,
+      donate: true
     }
     this.props.updateSelectedFundraiser(
       fundraiser
