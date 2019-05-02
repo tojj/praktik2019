@@ -16,6 +16,8 @@ class Form_footer extends React.Component {
     this.allFundraisersData = []
     this.allFundraisers = []
     this.loadFundraisersAndMount()
+    this.fundraiserId = ""
+    this.selectedFundraiser = ""
   }
 
   charityToggle = () => {
@@ -26,19 +28,47 @@ class Form_footer extends React.Component {
     this.allFundraisersData = await Fundraiser.find()
     this.allFundraisers = this.allFundraisersData.map((fundraiser, i) => {
       return (
-        <div className="slider-div" key={"fundraiser_" + i} id={fundraiser._id}>
+        <div className="slider-div" key={"fundraiser_" + i}>
           <div className="charity-overlay" />
           <div className="charity-checkmark" />
           <img
             className="charImg"
             src={fundraiser.image}
             alt={fundraiser.name}
+            id={fundraiser._id}
+            onClick={this.findFundraisersId}
           />
         </div>
       )
     })
     this.setState({ sliderContent: this.allFundraisers })
   }
+
+  selected = () => {
+    let fundraisers = this.state.sliderContent
+    for (let fundraiser of fundraisers) {
+      console.log(fundraiser.props);
+    }
+
+  }
+
+  findFundraisersId = (e) => {
+    console.log("I am selected", e.target.id)
+    const selectedId = e.target.id
+    this.fundraiserId = selectedId
+    console.log(selectedId, "this is the id");
+
+    this.getSelectedFundraiser()
+  }
+
+  async getSelectedFundraiser() {
+    this.selectedFundraiser = await Fundraiser.find(`.find({_id: '${this.fundraiserId}'})`)
+    console.log(this.selectedFundraiser);
+
+  }
+
+
+
   render() {
     const settings = {
       dots: true,
@@ -121,7 +151,7 @@ class Form_footer extends React.Component {
               Välj välgörenhet
             </h2>
             <div className="slider-container">
-              <div className="slider-content">
+              <div className="slider-content" onClick={this.selected()}>
                 <Slider {...settings}>{this.state.sliderContent}</Slider>
               </div>
             </div>
