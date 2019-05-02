@@ -7,7 +7,10 @@ class Category extends React.Component {
   }
   render() {
     return (
-      <div className="category-item" id={this.props.name} onClick={this.clickHandler}>
+      <div 
+        className="category-item" 
+        id={this.props.name} 
+        onClick={this.clickHandler}>
         <p>{this.props.data.icon}</p>
         <p className="category-name">{this.props.data.name}</p>
       </div>

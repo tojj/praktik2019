@@ -15,8 +15,21 @@
     flex-wrap: wrap;
     flex-direction: row;
     text-align: center;
-    justify-content: space-between;    
+    justify-content: space-between; 
+    .category-item:nth-child(1):hover, .category-item:nth-child(1):active{
+      background: $primary !important;
+    }
+    .category-item:nth-child(2):hover{
+      background: $pink !important;
+    }  
+    .category-item:nth-child(3):hover{
+      background: $orange !important;
+    }  
+    .category-item:nth-child(4):hover{
+      background: $success !important;
+    }  
     .category-item {
+      cursor: pointer;
       color: $dark;
       text-align: center;
       flex: 1;
@@ -25,6 +38,11 @@
       padding: 15px;
       border: 1px solid rgba(0, 0, 0, 0.3);
       border-radius: 5px;
+      transition: all .3s;
+      &:hover {
+        color: $light;
+      }
+      
       svg {
         width: 32px;
       }
@@ -71,5 +89,8 @@
     transition: all 2s;
     margin-top: 1rem;
     font-family: $big-text;
+  }
+  .freebirdSolidBackground {
+    background: $primary !important;
   }
 }

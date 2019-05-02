@@ -7,7 +7,7 @@ import {
 } from 'react-feather'
 import Category from './Category'
 
-const CategoriesArr = [
+let CategoriesArr = [
   {
     "icon": <Gift />,
     "name": 'Presenter'
@@ -26,9 +26,19 @@ const CategoriesArr = [
   }
 ]
 class Categories extends React.Component {
+  constructor(props){
+    super(props)
+    this.state = {
+      active: ''
+    }
+  }
   clickHandler = (name) => {
     this.props.clickHandler(name)
-
+    this.setState({active: name})
+    console.log(this.state.active)
+    
+    
+    
   }
   render() {
     return (

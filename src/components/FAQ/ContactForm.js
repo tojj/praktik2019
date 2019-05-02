@@ -2,14 +2,17 @@ import React from 'react'
 
 const ContactForm = () => {
   return (
-    <div>
-      Namn: <br />
-      <input type="text" /> <br />
-      Epost: <br />
-      <input type="email" /> <br />
-      Meddeland: <br />
-      <textarea /> <br /> <br />
-      <button className="btn btn-primary">Skicka!</button>
+    <div style={{textAlign: 'center', marginTop: '2rem'}}>
+      <iframe 
+        title="Google-form"
+        src="https://docs.google.com/forms/d/e/1FAIpQLSd_ByeAA5Vh6OCMmMjuQglS8X7NAovGOIWmb1BqJWUURHvuXw/viewform?embedded=true" 
+        width="640" 
+        height="790" 
+        frameBorder="0" 
+        marginHeight="0" 
+        marginWidth="0">
+          Läser in...
+        </iframe>
     </div>
   )
 }
