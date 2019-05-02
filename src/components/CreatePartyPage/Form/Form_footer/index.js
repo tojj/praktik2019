@@ -2,6 +2,8 @@ import React from "react"
 import Slider from "react-slick"
 import Checkout from "../Form_footer/Checkout/index"
 import REST from "../../../../REST"
+import { connect } from 'react-redux'
+import { doUpdateFundraiser } from '../../../../store/Birthday/BirthdayActions'
 
 
 class Fundraiser extends REST { }
@@ -44,26 +46,36 @@ class Form_footer extends React.Component {
     this.setState({ sliderContent: this.allFundraisers })
   }
 
-  selected = () => {
-    let fundraisers = this.state.sliderContent
-    for (let fundraiser of fundraisers) {
-      console.log(fundraiser.props);
-    }
+  // selected = () => {
+  //   let fundraisers = this.state.sliderContent
+  //   for (let fundraiser of fundraisers) {
+  //     console.log(fundraiser.props);
+  //   }
 
-  }
+  // }
+
+
+
+
+
 
   findFundraisersId = (e) => {
-    console.log("I am selected", e.target.id)
     const selectedId = e.target.id
     this.fundraiserId = selectedId
-    console.log(selectedId, "this is the id");
-
     this.getSelectedFundraiser()
   }
 
   async getSelectedFundraiser() {
     this.selectedFundraiser = await Fundraiser.find(`.find({_id: '${this.fundraiserId}'})`)
-    console.log(this.selectedFundraiser);
+    let fundraiser = {
+      id: this.selectedFundraiser[0]._id,
+      name: this.selectedFundraiser[0].name,
+      image: this.selectedFundraiser[0].image,
+      link: this.selectedFundraiser[0].link
+    }
+    this.props.updateSelectedFundraiser(
+      fundraiser
+    )
 
   }
 
@@ -151,7 +163,7 @@ class Form_footer extends React.Component {
               Välj välgörenhet
             </h2>
             <div className="slider-container">
-              <div className="slider-content" onClick={this.selected()}>
+              <div className="slider-content">
                 <Slider {...settings}>{this.state.sliderContent}</Slider>
               </div>
             </div>
@@ -159,8 +171,26 @@ class Form_footer extends React.Component {
         ) : null}
         <Checkout />
       </div>
+
     )
   }
 }
 
-export default Form_footer
+const mapStateToProps = state => {
+  return {
+    fundraiser: state.birthday.fundraiser
+
+  }
+}
+
+const mapDispatchToProps = dispatch => ({
+  updateSelectedFundraiser: (data) => dispatch(doUpdateFundraiser(data))
+})
+
+
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Form_footer)
+
+
+
