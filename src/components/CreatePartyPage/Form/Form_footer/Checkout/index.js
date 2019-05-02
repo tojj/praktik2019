@@ -7,7 +7,6 @@ import { connect } from "react-redux"
 import { HelpCircle } from "react-feather"
 import InputEvent from "../../Form_body/Event_input/InputEvent"
 import { guestUserData } from "../../../../../staticData"
-import { NavLink, Link } from "react-router-dom";
 
 class Checkout extends React.Component {
   constructor(props) {
