@@ -57,7 +57,7 @@ class Categories extends React.Component {
     for (let category of CategoriesArr){
       category.active = false
     }
-    if(index){
+    if(index || index === 0){
       CategoriesArr[index].active = true
     }
   }
@@ -73,7 +73,7 @@ class Categories extends React.Component {
 
   render() {
     return (
-      <div className="mt-5 category-holder">
+      <div className="category-holder">
         {CategoriesArr.map((category, i) => {
           return (
             <Category data={CategoriesArr[i]} clickHandler={this.clickHandler} key={"category_" + i} />

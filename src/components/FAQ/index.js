@@ -20,11 +20,12 @@ class FAQ extends React.Component {
     this.getQnaAmountTotal = this.getQnaAmountTotal.bind(this)
     this.getAllQnaAndMount = this.getAllQnaAndMount.bind(this)
     this.renderCategoryContent = this.renderCategoryContent.bind(this)
-
     this.pushCounts = this.pushCounts.bind(this)
   }
   componentDidMount(){
-    this.renderCategoryContent(this.props.match.params.link)    
+    let Link = this.props.match.params.link
+    this.renderCategoryContent(Link)
+
   }
   async pushCounts(id) {
     let qna = await Qna.find(id)
