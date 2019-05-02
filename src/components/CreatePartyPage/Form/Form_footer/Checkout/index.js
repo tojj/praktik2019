@@ -7,6 +7,7 @@ import { connect } from "react-redux"
 import { HelpCircle } from "react-feather"
 import InputEvent from "../../Form_body/Event_input/InputEvent"
 import { guestUserData } from "../../../../../staticData"
+import { NavLink, Link } from "react-router-dom";
 
 class Checkout extends React.Component {
   constructor(props) {
@@ -17,6 +18,10 @@ class Checkout extends React.Component {
       userLogin: false
     }
   }
+
+  /** 
+   * Toggling between Login Component, Register Component and Guest User Component
+   */
 
   loginToggle = () => {
     this.setState({
@@ -41,6 +46,11 @@ class Checkout extends React.Component {
       noRegisterOption: false
     })
   }
+
+
+  /** 
+   * Getting input value and rendering inputs
+   */
 
   updateInfo = event => {
     this.props.updateInfo(event.target.value)

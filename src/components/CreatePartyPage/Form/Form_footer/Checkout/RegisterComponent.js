@@ -38,26 +38,15 @@ class RegisterComponent extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault()
-    this.getUserData();
+    this.getUserData()
     this.resetForm();
   }
 
-  resetForm = () => {
 
-    this.setState({
-      data: {
-        firstName: "",
-        lastName: "",
-        address: "",
-        zipCode: "",
-        city: "",
-        phoneNumber: "",
-        email: "",
-        password: "",
-        passwordRepeat: ""
-      }
-    })
-  }
+  /** 
+   * Creating new user (getting value from input) and saving the User
+   * to the database
+   */
 
   async getUserData() {
 
@@ -75,8 +64,27 @@ class RegisterComponent extends React.Component {
       passwordRepeat: data.passwordRepeat
     })
     await newUser.save()
-    console.log(newUser, "New User created!");
+  }
 
+  /** 
+  *Resetting input fields after submition 
+  */
+
+  resetForm = () => {
+
+    this.setState({
+      data: {
+        firstName: "",
+        lastName: "",
+        address: "",
+        zipCode: "",
+        city: "",
+        phoneNumber: "",
+        email: "",
+        password: "",
+        passwordRepeat: ""
+      }
+    })
   }
 
   renderCreateAcountData = ({

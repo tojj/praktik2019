@@ -22,13 +22,17 @@
       top: 0;
     }
 
+    .user-form-links {
+      text-decoration: none;
+    }
+
     .form-header {
       text-align: center;
       color: $primary;
       padding-bottom: 2vh;
       font-weight: 700;
       font-family: $big-text;
-      padding-bottom: 2vh;
+      padding-bottom: 5vh;
     }
 
     .registration-text-log-in {
@@ -79,7 +83,7 @@
   align-content: center !important;
   justify-content: center !important;
   text-align: center !important;
-  padding: 0 5% 0 5%;
+  padding: 5vw 5vw 0 !important;
 
   .login-content {
     max-width: 100%;
@@ -166,7 +170,8 @@
   }
 }
 
-.box-container .box .form-header {
+.box-details-container .box-container .box .form-header {
   color: $primary;
-  padding-bottom: 2vh;
+  padding-bottom: 5vh;
+  margin-top: 0;
 }
