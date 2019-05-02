@@ -1,7 +1,7 @@
 import React from 'react'
 import {
   Gift,
-  User,
+  Heart,
   Clipboard,
   HelpCircle
 } from 'react-feather'
@@ -10,36 +10,67 @@ import Category from './Category'
 let CategoriesArr = [
   {
     "icon": <Gift />,
-    "name": 'Presenter'
+    "name": 'presenter',
+    "active": false,
+    "styling": {backgroundColor: '#4762b7', color: 'white'}
   },
   {
-    "icon": <User />,
-    "name": 'Konto'
+    "icon": <Heart />,
+    "name": 'välgörenhet',
+    "active": false,
+    "styling": {backgroundColor: '#F66E9F', color: 'white'}
   },
   {
     "icon": <Clipboard />,
-    "name": 'Avtal'
+    "name": 'avtal',
+    "active": false,
+    "styling": {backgroundColor: '#FFC263', color: 'white'}
   },
   {
     "icon": <HelpCircle />,
-    "name": 'Kontakt'
+    "name": 'kontakt',
+    "active": false,
+    "styling": {backgroundColor: '#008A64', color: 'white'}
   }
 ]
 class Categories extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props)
     this.state = {
       active: ''
     }
   }
+  componentDidMount(){
+    if (this.props.name){
+      this.clickHandler(this.props.name)
+    } else {
+      return
+    }
+  }
   clickHandler = (name) => {
     this.props.clickHandler(name)
-    this.setState({active: name})
-    console.log(this.state.active)
-    
-    
-    
+
+    /**
+     * Find the object with the "name" and set it to active = true
+     */
+    let index = this.findObjectByKey(CategoriesArr, "name", name)
+    for (let category of CategoriesArr){
+      category.active = false
+    }
+    if(index){
+      CategoriesArr[index].active = true
+    }
   }
+  findObjectByKey = (array, key, value) => {
+    for (var i = 0; i < array.length; i++) {
+      if (array[i][key] === value) {
+        return i;
+      }
+    }
+    return null;
+  }
+
+
   render() {
     return (
       <div className="mt-5 category-holder">

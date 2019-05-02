@@ -23,6 +23,9 @@ class FAQ extends React.Component {
 
     this.pushCounts = this.pushCounts.bind(this)
   }
+  componentDidMount(){
+    this.renderCategoryContent(this.props.match.params.link)    
+  }
   async pushCounts(id) {
     let qna = await Qna.find(id)
     qna.counter++
@@ -45,7 +48,7 @@ class FAQ extends React.Component {
     })
   }
   async renderCategoryContent(category) {
-    if(category === 'Kontakt'){
+    if(category === 'kontakt'){
       this.setState({ categoryContent: <ContactForm />})
       return
     }
@@ -69,8 +72,9 @@ class FAQ extends React.Component {
         {this.state.qnaContent.length === this.state.totalAmount ? null :
           <button type="button" className="mt-3 btn btn-outline-dark" onClick={this.getAllQnaAndMount}>Läs in fler</button>
         }
-        <Categories clickHandler={this.renderCategoryContent} />
+        <Categories name={this.props.match.params.link} clickHandler={this.renderCategoryContent} />
         {this.state.categoryContent}
+       
 
       </div>
     )

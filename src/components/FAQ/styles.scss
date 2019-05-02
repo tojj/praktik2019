@@ -49,6 +49,7 @@
       .category-name {
         font-size: 0.75rem;
         margin: 0;
+        text-transform: capitalize;
       }
       @include media-breakpoint-up(sm) {
         padding: 20px;
@@ -89,8 +90,5 @@
     transition: all 2s;
     margin-top: 1rem;
     font-family: $big-text;
-  }
-  .freebirdSolidBackground {
-    background: $primary !important;
   }
 }
