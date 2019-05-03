@@ -27,6 +27,15 @@ export default {
       donate: false
     },
 
+    present: {
+      id: '',
+      name: '',
+      desc: '',
+      image: '',
+      link: '',
+      price: ''
+    },
+
     guestUser: {
       firstName: '',
       lastName: '',

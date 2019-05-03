@@ -45,9 +45,10 @@ class CreatePartyPage extends React.Component {
       donate: this.props.fundraiser.donate,
       fundraiser: this.props.fundraiser.id,
       attending: [],
-      product: "5cb453e226d34fc2bfc5af07",
+      product: this.props.present.id,
       link: link
     })
+
     await newEvent.save().then(data => {
       if (!data.name) {
         const target = "/kalas/" + link
@@ -99,9 +100,8 @@ const mapStateToProps = state => {
   return {
     birthdayEvent: state.birthday.birthdayEvent,
     birthdayImage: state.birthday.birthdayImage,
-    birthdayTimeAndPlace: state.birthday.birthdayTimeAndPlace,
     fundraiser: state.birthday.fundraiser
-
+    present: state.birthday.present
   }
 }
 
