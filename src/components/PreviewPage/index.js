@@ -160,7 +160,7 @@ const mapStateToProps = state => {
     birthdayEvent: state.birthday.birthdayEvent,
     birthdayImage: state.birthday.birthdayImage,
     birthdayTimeAndPlace: state.birthday.birthdayTimeAndPlace,
-    fundraiser: state.birthday.fundraiser
+    fundraiser: state.birthday.fundraiser,
     present: state.birthday.present
   }
 }
