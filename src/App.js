@@ -8,6 +8,7 @@ import PartyPage from './components/PartyPage/index'
 import Faq from "./components/FAQ/index"
 import Footer from './components/Footer/index'
 import MissingPage from "./components/MissingPage/index"
+import ConfirmationPage from "./components/ConfirmationPage"
 
 const App = props => {
   return (
@@ -35,9 +36,9 @@ const App = props => {
           <Route exact path="/skapa-kalas" component={CreatePartyPage} />
           <Route exact path="/kalas/:link" component={PartyPage} />          
           <Route exact path="/kalas-förhandsvisning" component={PreviewPage} />
+          <Route exact path="/kalas/:link/bekräftelse" component={ConfirmationPage} />
           <Route exact path="/vanliga-fragor" component={Faq} />
           <Route exact path="/vanliga-fragor/:link" component={Faq} />
-
           <Route component={MissingPage} />
         </Switch>
       </main>

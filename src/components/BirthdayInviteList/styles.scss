@@ -1,0 +1,37 @@
+.theEmails {
+  background: #4762b7;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 2px;
+  border: 2px solid #4762b7;
+  margin: 5px;
+  display: inline-block;
+  padding: 7px;
+}
+
+.email-list-wrapper {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  flex-direction: column;
+  margin: auto;
+}
+
+.example-enter {
+  opacity: 0.01;
+}
+
+.example-enter.example-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+
+.example-leave {
+  opacity: 1;
+}
+
+.example-leave.example-leave-active {
+  opacity: 0.01;
+  transition: opacity 300ms ease-in;
+}

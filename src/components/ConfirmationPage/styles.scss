@@ -1,0 +1,54 @@
+.conf-wrapper {
+  width: 80%;
+  margin: 50px auto;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  flex-direction: column;
+
+  .conf-headline {
+    color: #4762b7;
+    margin: 2rem 0 2rem 0;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 800;
+    font-size: 2.5rem;
+  }
+
+}
+
+.bday-invite-wrapper {
+  width: 80%;
+  margin: 50px auto;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  flex-direction: column;
+}
+
+.conf-button {
+  margin: auto auto 40px auto;
+  min-width: 50% !important;
+
+}
+
+.send-button {
+  width: 50% !important;
+  margin: 25px auto 4px auto;
+  color: $primary;
+  border-color: $primary;
+
+  &:hover {
+    background: $primary !important;
+    color: white;
+  }
+
+}
+
+svg {
+  padding: 4px;
+  &:hover {
+    color: red;
+  }
+}
