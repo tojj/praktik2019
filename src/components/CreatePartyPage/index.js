@@ -42,7 +42,8 @@ class CreatePartyPage extends React.Component {
         image: "http://betalamedswish.se/API/Get/?n=0709629276&a=150&m=PON28d4W&la=true&lm=true&s=500",
         color: "#4762b7"
       },
-      donate: false,
+      donate: this.props.fundraiser.donate,
+      fundraiser: this.props.fundraiser.id,
       attending: [],
       product: this.props.present.id,
       link: link
@@ -99,7 +100,7 @@ const mapStateToProps = state => {
   return {
     birthdayEvent: state.birthday.birthdayEvent,
     birthdayImage: state.birthday.birthdayImage,
-    birthdayTimeAndPlace: state.birthday.birthdayTimeAndPlace,
+    fundraiser: state.birthday.fundraiser,
     present: state.birthday.present
   }
 }

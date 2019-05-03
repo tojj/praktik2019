@@ -19,6 +19,14 @@ export default {
 
     birthdayImage: '',
 
+    fundraiser: {
+      id: '',
+      name: '',
+      image: '',
+      link: '',
+      donate: false
+    },
+
     present: {
       id: '',
       name: '',
