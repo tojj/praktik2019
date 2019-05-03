@@ -8,7 +8,7 @@ import PartyPage from './components/PartyPage/index'
 import FAQ from "./components/FAQ/index"
 import Footer from './components/Footer/index'
 import MissingPage from "./components/MissingPage/index"
-import ConfirmationPage from "./components/ConfirmationPage";
+import ConfirmationPage from "./components/ConfirmationPage"
 
 const App = props => {
   return (

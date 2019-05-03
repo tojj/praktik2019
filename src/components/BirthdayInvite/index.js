@@ -23,4 +23,4 @@ class BirthdayInvite extends React.Component {
 }
 
 
-export default BirthdayInvite;
+export default BirthdayInvite

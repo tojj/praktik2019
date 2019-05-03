@@ -8,7 +8,7 @@ class ConfirmationPage extends React.Component {
     super()
     this.state = {
       emails: [],
-      currentEmail: { text: '', key: '' },
+      currentEmail: { text: '', key: '' }
     }
 
   }
