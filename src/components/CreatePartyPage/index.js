@@ -44,15 +44,16 @@ class CreatePartyPage extends React.Component {
       },
       donate: false,
       attending: [],
-      product: "5cb453e226d34fc2bfc5af07",
+      product: this.props.present.id,
       link: link
     })
+
     await newEvent.save().then(data => {
       if (!data.name) {
         const target = "/kalas/" + link
-        this.redirectTo(target) 
+        this.redirectTo(target)
       } else {
-        alert('ERROR:' + data.message) 
+        alert('ERROR:' + data.message)
       }
     })
 
@@ -65,7 +66,7 @@ class CreatePartyPage extends React.Component {
    * birthday child's name, uppercased. Followed by the age 
    * they will turn and 3 random symbols.
    */
-  
+
   generateLink = () => {
     let link = []
     const name = this.props.birthdayEvent.name
@@ -98,8 +99,8 @@ const mapStateToProps = state => {
   return {
     birthdayEvent: state.birthday.birthdayEvent,
     birthdayImage: state.birthday.birthdayImage,
-    birthdayTimeAndPlace: state.birthday.birthdayTimeAndPlace
-
+    birthdayTimeAndPlace: state.birthday.birthdayTimeAndPlace,
+    present: state.birthday.present
   }
 }
 

@@ -82,14 +82,14 @@ class PreviewPage extends Component {
             </div>
             <div className="box toy-holder">
               <div className="box-img">
-                <img src={""} className="img-fluid" alt="qr-code" />
+                <img src={this.props.present.image} className="img-fluid" alt="qr-code" />
               </div>
               <p>Present</p>
               <p>
-                Pengarna som samlas in kommer att gå till att köpa {""} som{" "}
+                Pengarna som samlas in kommer att gå till att köpa {this.props.present.name} som{" "}
                 {"party.child"} önskar sig.
               </p>
-              <a href={"/"} target="_blank" rel="noopener noreferrer">
+              <a href={this.props.present.link} target="_blank" rel="noopener noreferrer">
                 Läs mer...
               </a>
             </div>
@@ -150,7 +150,7 @@ class PreviewPage extends Component {
             </Link>
           </div>
         </div>
-      </div>
+      </div >
     )
   }
 }
@@ -160,7 +160,8 @@ const mapStateToProps = state => {
     birthdayEvent: state.birthday.birthdayEvent,
     birthdayImage: state.birthday.birthdayImage,
     birthdayTimeAndPlace: state.birthday.birthdayTimeAndPlace,
-    swishMoney: state.swish.swishMoney
+    swishMoney: state.swish.swishMoney,
+    present: state.birthday.present
   }
 }
 
