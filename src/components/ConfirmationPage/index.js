@@ -25,13 +25,11 @@ class ConfirmationPage extends React.Component {
     e.preventDefault()
     const newEmail = this.state.currentEmail
     if (newEmail.text !== '') {
-      console.log(newEmail)
       const emails = [...this.state.emails, newEmail]
       this.setState({
         emails: emails,
         currentEmail: { text: '', key: '' },
       })
-      console.log(emails)
     }
   }
 
