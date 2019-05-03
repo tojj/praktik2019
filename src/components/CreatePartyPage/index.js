@@ -22,7 +22,11 @@ class CreatePartyPage extends React.Component {
   async createEvent() {
     const link = await this.generateLink()
     let date = this.props.birthdayTimeAndPlace.date + ' ' + this.props.birthdayTimeAndPlace.time
+    console.log(this.props.birthdayTimeAndPlace.date, '.DATE')
+    console.log(this.props.birthdayTimeAndPlace.time, 'TIME')
+    console.log(date, 'DATE')
     date = new Date(date).getTime()
+    console.log(date, 'DATE')
     const newEvent = new Event({
       title: this.props.birthdayEvent.title,
       child: this.props.birthdayEvent.name,
@@ -100,6 +104,7 @@ const mapStateToProps = state => {
   return {
     birthdayEvent: state.birthday.birthdayEvent,
     birthdayImage: state.birthday.birthdayImage,
+    birthdayTimeAndPlace: state.birthday.birthdayTimeAndPlace,
     fundraiser: state.birthday.fundraiser,
     present: state.birthday.present
   }
