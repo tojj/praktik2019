@@ -4,7 +4,6 @@ import React from 'react'
 class Category extends React.Component {
   clickHandler = () => {
     this.props.clickHandler(this.props.data.name)   
-    console.log('Im sending my name to categories:', this.props.data.name);
      
   }
   render() {

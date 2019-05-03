@@ -62,12 +62,12 @@ class Categories extends React.Component {
     }
   }
   findObjectByKey = (array, key, value) => {
-    for (var i = 0; i < array.length; i++) {
+    for (let i = 0; i < array.length; i++) {
       if (array[i][key] === value) {
-        return i;
+        return i
       }
     }
-    return null;
+    return null
   }
 
 
