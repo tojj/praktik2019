@@ -1,8 +1,9 @@
 import React, { Component } from "react"
-import staticData from "../../../../staticData"
 import REST from "../../../../REST"
+import { connect } from 'react-redux'
+import { doUpdateProductInfo } from '../../../../store/Birthday/BirthdayActions'
 
-class Product extends REST {}
+class Product extends REST { }
 class Web_shop extends Component {
   constructor(props) {
     super(props)
@@ -12,12 +13,12 @@ class Web_shop extends Component {
       allProductsData: ""
     }
     this.allProductsData = ""
+    this.productId = ""
     this.loadData()
   }
 
   async loadData() {
     this.allProductsData = await Product.find()
-    console.log(this.allProductsData)
     this.setState({ allProductsData: this.allProductsData })
   }
 
@@ -36,10 +37,10 @@ class Web_shop extends Component {
   toggleSelected(id) {
     if (this.state.selectedItem === id) {
       this.setState({ selectedItem: "" })
-      //console.log(this.state.selectedItem)
     } else {
       this.setState({ selectedItem: id })
-      //console.log(this.state.selectedItem)
+      this.productId = id
+      this.findProductInDb()
     }
   }
 
@@ -49,6 +50,19 @@ class Web_shop extends Component {
     } else {
       this.setState({ showInfo: "" })
     }
+  }
+
+  async findProductInDb() {
+    let selectedProduct = await Product.find(`.findById('${this.productId}')`);
+    let productToSave = {
+      id: selectedProduct._id,
+      name: selectedProduct.name,
+      desc: selectedProduct.desc,
+      image: selectedProduct.image,
+      link: selectedProduct.link,
+      price: selectedProduct.price
+    }
+    this.props.updateProduct(productToSave)
   }
 
   renderShopProducts = ({ id, img, price, text, desc }) => {
@@ -67,19 +81,19 @@ class Web_shop extends Component {
             <p>{desc}</p>
           </div>
         ) : (
-          <div className="test-container">
-            <img
-              className="shop-img"
-              src={img}
-              alt="event"
-              onClick={this.toggleSelected}
-            />
-            <div className="shop-info">
-              <p>{text}</p>
-              <p>Pris: {price}</p>
+            <div className="test-container">
+              <img
+                className="shop-img"
+                src={img}
+                alt="event"
+                onClick={this.toggleSelected}
+              />
+              <div className="shop-info">
+                <p>{text}</p>
+                <p>Pris: {price}</p>
+              </div>
             </div>
-          </div>
-        )}
+          )}
       </div>
     )
   }
@@ -104,19 +118,19 @@ class Web_shop extends Component {
               <p>{product.desc}</p>
             </div>
           ) : (
-            <div className="test-container">
-              <img
-                className="shop-img"
-                src={product.image}
-                alt="event"
-                onClick={this.toggleSelected}
-              />
-              <div className="shop-info">
-                <p>{product.name}</p>
-                <p>Pris: {product.price}</p>
+              <div className="test-container">
+                <img
+                  className="shop-img"
+                  src={product.image}
+                  alt="event"
+                  onClick={this.toggleSelected}
+                />
+                <div className="shop-info">
+                  <p>{product.name}</p>
+                  <p>Pris: {product.price}</p>
+                </div>
               </div>
-            </div>
-          )}
+            )}
         </div>
       )
     })
@@ -132,11 +146,21 @@ class Web_shop extends Component {
             Välj present
           </h2>
           <div className="shop-item-container">{this.renderProducts()}</div>
-          {console.log(this.state.selectedItem)}
         </div>
       )
     }
   }
 }
 
-export default Web_shop
+const mapDispatchToProps = dispatch => ({
+  updateProduct: data => dispatch(doUpdateProductInfo(data))
+})
+
+const mapStateToProps = state => {
+  return {
+    present: state.birthday.present
+  }
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Web_shop)
