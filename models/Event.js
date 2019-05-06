@@ -17,7 +17,7 @@ let eventSchema = new Schema({
   },
   swish: {
     number: { type: String, required: true },
-    amount: { type: Number, required: true },
+    amount: { type: String },
     image: { type: String, required: true },
     color: { type: String, required: true },
 

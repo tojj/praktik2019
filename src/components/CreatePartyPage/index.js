@@ -42,8 +42,8 @@ class CreatePartyPage extends React.Component {
       },
       swish: {
         number: "0709629276",
-        amount: 150,
-        image: "http://betalamedswish.se/API/Get/?n=0709629276&a=150&m=PON28d4W&la=true&lm=true&s=500",
+        amount: this.props.swishMoney,
+        image: "http://betalamedswish.se/API/Get/?n=0709629276&a=" + this.props.swishMoney + "&m=" + link + "&la=true&lm=true&s=500",
         color: "#4762b7"
       },
       donate: this.props.fundraiser.donate,
@@ -106,7 +106,8 @@ const mapStateToProps = state => {
     birthdayImage: state.birthday.birthdayImage,
     birthdayTimeAndPlace: state.birthday.birthdayTimeAndPlace,
     fundraiser: state.birthday.fundraiser,
-    present: state.birthday.present
+    present: state.birthday.present,
+    swishMoney: state.swish.swishMoney
   }
 }
 
