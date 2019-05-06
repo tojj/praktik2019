@@ -35,6 +35,7 @@
           width: 75%;
         }
       }
+
       h2,
       h4 {
         font-family: $big-text;
@@ -51,6 +52,14 @@
         font-family: $small-text;
         font-size: 1.5rem;
       }
+    }
+
+    .box-img-left {
+      text-align: left;
+    }
+
+    .box-img-right {
+      text-align: right;
     }
     @include media-breakpoint-up(md) {
       padding: 10vw;
