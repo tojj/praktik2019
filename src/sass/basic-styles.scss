@@ -1,4 +1,7 @@
 html {
+  body {
+    font-family: $small-text;
+  }
   body > div > main {
     background-color: $secondary !important;
     display: flex;
@@ -9,7 +12,7 @@ html {
       flex: 1;
     }
     .force-top {
-      z-index: 99
+      z-index: 99;
     }
   }
 }

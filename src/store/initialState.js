@@ -19,6 +19,23 @@ export default {
 
     birthdayImage: '',
 
+    fundraiser: {
+      id: '',
+      name: '',
+      image: '',
+      link: '',
+      donate: false
+    },
+
+    present: {
+      id: '',
+      name: '',
+      desc: '',
+      image: '',
+      link: '',
+      price: ''
+    },
+
     guestUser: {
       firstName: '',
       lastName: '',
@@ -34,8 +51,8 @@ export default {
   swish: {
 
     swishMoney: '50',
-    
+
   }
 
-  
+
 }

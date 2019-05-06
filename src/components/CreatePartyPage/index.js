@@ -22,7 +22,11 @@ class CreatePartyPage extends React.Component {
   async createEvent() {
     const link = await this.generateLink()
     let date = this.props.birthdayTimeAndPlace.date + ' ' + this.props.birthdayTimeAndPlace.time
+    console.log(this.props.birthdayTimeAndPlace.date, '.DATE')
+    console.log(this.props.birthdayTimeAndPlace.time, 'TIME')
+    console.log(date, 'DATE')
     date = new Date(date).getTime()
+    console.log(date, 'DATE')
     const newEvent = new Event({
       title: this.props.birthdayEvent.title,
       child: this.props.birthdayEvent.name,
@@ -38,21 +42,23 @@ class CreatePartyPage extends React.Component {
       },
       swish: {
         number: "0709629276",
-        amount: 150,
-        image: "http://betalamedswish.se/API/Get/?n=0709629276&a=150&m=PON28d4W&la=true&lm=true&s=500",
+        amount: this.props.swishMoney,
+        image: "http://betalamedswish.se/API/Get/?n=0709629276&a=" + this.props.swishMoney + "&m=" + link + "&la=true&lm=true&s=500",
         color: "#4762b7"
       },
-      donate: false,
+      donate: this.props.fundraiser.donate,
+      fundraiser: this.props.fundraiser.id,
       attending: [],
-      product: "5cb453e226d34fc2bfc5af07",
+      product: this.props.present.id,
       link: link
     })
+
     await newEvent.save().then(data => {
       if (!data.name) {
-        const target = "/kalas/" + link
+        const target = "/kalas/" + link + "/bekräftelse"
         this.redirectTo(target) 
       } else {
-        alert('ERROR:' + data.message) 
+        alert('ERROR:' + data.message)
       }
     })
 
@@ -65,7 +71,7 @@ class CreatePartyPage extends React.Component {
    * birthday child's name, uppercased. Followed by the age 
    * they will turn and 3 random symbols.
    */
-  
+
   generateLink = () => {
     let link = []
     const name = this.props.birthdayEvent.name
@@ -98,8 +104,10 @@ const mapStateToProps = state => {
   return {
     birthdayEvent: state.birthday.birthdayEvent,
     birthdayImage: state.birthday.birthdayImage,
-    birthdayTimeAndPlace: state.birthday.birthdayTimeAndPlace
-
+    birthdayTimeAndPlace: state.birthday.birthdayTimeAndPlace,
+    fundraiser: state.birthday.fundraiser,
+    present: state.birthday.present,
+    swishMoney: state.swish.swishMoney
   }
 }
 

@@ -82,36 +82,36 @@ class PreviewPage extends Component {
             </div>
             <div className="box toy-holder">
               <div className="box-img">
-                <img src={""} className="img-fluid" alt="qr-code" />
+                <img src={this.props.present.image} className="img-fluid" alt="qr-code" />
               </div>
               <p>Present</p>
               <p>
-                Pengarna som samlas in kommer att gå till att köpa {""} som{" "}
+                Pengarna som samlas in kommer att gå till att köpa {this.props.present.name} som{" "}
                 {"party.child"} önskar sig.
               </p>
-              <a href={"/"} target="_blank" rel="noopener noreferrer">
+              <a href={this.props.present.link} target="_blank" rel="noopener noreferrer">
                 Läs mer...
               </a>
             </div>
-            {"" ? (
-              <div className="box karma-holder">
-                <div className="box-img">
-                  <img src={""} className="img-fluid" alt="fundraiser" />
-                </div>
-                <p>Överskott</p>
-                <p>
-                  Eventuellt överskott har vi valt att skänka direkt till {""}.
-                  Om du vill veta mer om organisationen kan du klicka nedan.
-                </p>
-                <a
-                  href={"/vanliga-fragor"}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Läs mer...
-                </a>
+
+            <div className="box karma-holder">
+              <div className="box-img">
+                <img src={this.props.fundraiser.image} className="img-fluid" alt="fundraiser" />
               </div>
-            ) : null}
+              <p>Överskott</p>
+              <p>
+                Eventuellt överskott har vi valt att skänka direkt till {this.props.fundraiser.name}.
+                Om du vill veta mer om organisationen kan du klicka nedan.
+                </p>
+              <a
+                href={this.props.fundraiser.link}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Läs mer...
+                </a>
+            </div>
+
           </div>
           <div className="box-container party-attending border-top no-print">
             <div className="box attending-holder">
@@ -127,10 +127,10 @@ class PreviewPage extends Component {
                 {this.props.birthdayTimeAndPlace.street}
               </p>
               <p className="party-zip-city">
-                {this.props.birthdayTimeAndPlace.city} {""}
+                {this.props.birthdayTimeAndPlace.zip} {this.props.birthdayTimeAndPlace.city}
               </p>
               <p className="party-rsvp">
-                OSA senast <br />{" "}
+                OSA senast <br />
                 {new Date(
                   this.props.birthdayTimeAndPlace.deadline
                 ).toLocaleDateString("sv-SE", {
@@ -145,12 +145,12 @@ class PreviewPage extends Component {
             <Link to="/skapa-kalas" className="link-cancel-prepp">
               Tillbaka
             </Link>
-            <Link to="/s" className="link-party-page-prepp">
+            <Link to="/bekräftelse" className="link-party-page-prepp">
               Godkänn
             </Link>
           </div>
         </div>
-      </div>
+      </div >
     )
   }
 }
@@ -160,7 +160,8 @@ const mapStateToProps = state => {
     birthdayEvent: state.birthday.birthdayEvent,
     birthdayImage: state.birthday.birthdayImage,
     birthdayTimeAndPlace: state.birthday.birthdayTimeAndPlace,
-    swishMoney: state.swish.swishMoney
+    fundraiser: state.birthday.fundraiser,
+    present: state.birthday.present
   }
 }
 
