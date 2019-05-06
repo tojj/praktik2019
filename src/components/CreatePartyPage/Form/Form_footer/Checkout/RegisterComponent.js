@@ -39,7 +39,7 @@ class RegisterComponent extends React.Component {
   handleSubmit = e => {
     e.preventDefault()
     this.getUserData()
-    this.resetForm();
+
   }
 
 
@@ -63,7 +63,23 @@ class RegisterComponent extends React.Component {
       password: data.password,
       passwordRepeat: data.passwordRepeat
     })
-    await newUser.save()
+    let user = await User.find(`.find({email: '${newUser.email}'})`);
+    if (user.length === 0 && newUser.password !== newUser.passwordRepeat) {
+      alert("Passwords must match!")
+      console.log(("Passwords must match!"))
+
+    }
+    else if (user.length === 0) {
+      if (newUser.password === newUser.passwordRepeat) {
+        newUser.save()
+        console.log("User registered!", newUser)
+        this.resetForm();
+      }
+    }
+    else {
+      console.log("User already exists")
+      alert("User exists! Choose another email.")
+    }
   }
 
   /** 
