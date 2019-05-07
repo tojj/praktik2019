@@ -3,8 +3,10 @@ import {
   Gift,
   Heart,
   HelpCircle,
-  Folder
+  Folder,
+  Plus
 } from 'react-feather'
+import { Link } from 'react-router-dom'
 import Categories from '../FAQ/Categories'
 import DataItem from './DataItem/index'
 import DataEditor from './DataEditor/index'
@@ -50,6 +52,7 @@ class AdminPage extends React.Component {
         "styling": { backgroundColor: '#008A64', color: 'white' }
       }
     ]
+    this.editNewObject = this.editNewObject.bind(this)
     this.deleteObject = this.deleteObject.bind(this)
     this.saveObject = this.saveObject.bind(this)
   }
@@ -71,21 +74,30 @@ class AdminPage extends React.Component {
    * Ja du Pontus, läs vad funktionerna heter och gilla läget.
    * Titta inte i dem.
    */
-  renderObjectToEdit = (obj) => {
-    if(!this.state.editObject){
-      this.setState({editObject: <DataEditor collection={this.state.currentColl} object={obj} delete={this.deleteObject} save={this.saveObject} />})
+  renderObjectToEdit = (obj, newObj = false) => {
+    if (!this.state.editObject) {
+      this.setState({ editObject: <DataEditor newObj={newObj} collection={this.state.currentColl} object={obj} delete={this.deleteObject} save={this.saveObject} /> })
     } else {
-      this.setState({editObject: ''})
+      this.setState({ editObject: '' })
     }
   }
+  async editNewObject() {
+    let object = await this.state.currentColl.find(`.find().limit(1).exec()`)
+    this.renderObjectToEdit(object[0], true)
+  }
   async deleteObject(obj) {
-    await obj.delete()    
-    this.setState({editObject: ''})
+    await obj.delete()
+    this.setState({ editObject: '' })
     this.renderContentFromDb(this.state.currentColl)
   }
-  async saveObject(obj) {    
-    await obj.save()    
-    this.setState({editObject: ''})
+  async saveObject(obj) {
+    if (this.state.currentColl === Qna && !obj.counter){
+      obj.counter = 1
+    }
+    await obj.save()
+    console.log('saved: ', obj);
+    
+    this.setState({ editObject: '' })
     this.renderContentFromDb(this.state.currentColl)
   }
   async renderContentFromDb(collection) {
@@ -93,7 +105,17 @@ class AdminPage extends React.Component {
     const foundObjects = foundObjectsArr.map((object, i) => {
       return <DataItem object={object} key={i} index={i} clickHandler={this.renderObjectToEdit} />
     })
-    this.setState({content: foundObjects, currentColl: collection, editObject: '' })
+    this.setState({
+      content: <div style={{ textAlign: 'right' }}>
+        {collection === Event
+          ? <Link className="btn btn-primary" to="/skapa-kalas">Lägg till <Plus /></Link>
+          : <button onClick={this.editNewObject} className="btn btn-primary">Lägg till <Plus /></button>
+        }
+        {foundObjects}
+      </div>,
+      currentColl: collection,
+      editObject: ''
+    })
   }
 
   render() {
@@ -104,10 +126,11 @@ class AdminPage extends React.Component {
         <div className="data-editor">
           {this.state.editObject}
         </div>
-        {this.state.editObject ? <button onClick={this.renderObjectToEdit} className="mt-3 btn btn-outline-danger">Tillbaka</button> 
-        : <div className="category-content-list">
-          {this.state.content}
-        </div>}
+        {this.state.editObject
+          ? <button onClick={this.renderObjectToEdit} className="mt-3 btn btn-outline-danger">Tillbaka</button>
+          : <div className="category-content-list">
+            {this.state.content}
+          </div>}
       </div>
     )
   }

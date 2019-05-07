@@ -15,10 +15,10 @@ class DataEditor extends React.Component {
   createObject = () => {
     let object = this.props.object
     this.entriesData.map(entry => {
-      if (entry[0] === 'location' || entry[0] === 'swish' || entry[0] === 'attending') {
-        //Don't do anything
+      if (entry[0] === '_id' || entry[0] === 'location' || entry[0] === 'swish' || entry[0] === 'attending') {
+
       } else {
-          object[entry[0]] = document.getElementById(entry[0]).value
+        object[entry[0]] = document.getElementById(entry[0]).value
       }
     })
     if (document.getElementById('street') ||
@@ -29,7 +29,7 @@ class DataEditor extends React.Component {
         zipcode: document.getElementById('zipcode').value,
         city: document.getElementById('city').value
       }
-    }  
+    }
     if (
       document.getElementById('amount') ||
       document.getElementById('color') ||
@@ -39,6 +39,9 @@ class DataEditor extends React.Component {
         color: document.getElementById('color').value,
         number: document.getElementById('number').value,
       }
+    }
+    if (this.props.newObj) {
+      delete object._id
     }
     return object
   }
@@ -51,21 +54,35 @@ class DataEditor extends React.Component {
             && entry[0] !== '_id'
             && entry[0] !== 'attending'
             && entry[0] !== 'location'
-            && entry[0] !== 'swish' 
+            && entry[0] !== 'swish'
             ? <div>
               <p className="object-key">{entry[0]}</p>
-              <input className="w-100" type="text" defaultValue={entry[1]} id={entry[0]} />
+              {entry[0] === 'category' && this.props.newObj
+                ? <select
+                  id="category"
+                  className="w-100">
+                  <option>presenter</option>
+                  <option>välgörenhet</option>
+                  <option>avtal</option>
+                  <option>allmänt</option>
+                </select>
+                : <input
+                  className="w-100"
+                  type={entry[0] === 'counter' ? "number" : "text"}
+                  defaultValue={!this.props.newObj ? entry[1] : ''}
+                  id={entry[0]} />
+              }
             </div>
-            : <div>
+            : <div className="hide-me">
               <p className="object-key">{entry[0]}</p>
-              <input className="w-100" type="text" readOnly defaultValue={entry[1]} id={entry[0]} />
+              <input className="w-100" type="text" readOnly defaultValue={!this.props.newObj ? entry[1] : ''} id={entry[0]} />
             </div>}
         </div>
       )
     })
     return (
-      <div className="edit-wrapper">
-        <p style={{ textAlign: 'center', fontWeight: 'bold' }}>{this.props.object._id}</p>
+      <div>
+        <p style={{ textAlign: 'center', fontWeight: 'bold' }}>{this.props.newObj ? 'Nytt objekt' : this.props.object._id}</p>
         {entries}
         {this.props.object.location ?
           <div>
@@ -91,8 +108,8 @@ class DataEditor extends React.Component {
           </div>
           : null
         }
-        <button onClick={this.deleteObject} className="btn btn-danger mt-5 float-right d-block">Ta bort</button>
-        <button onClick={this.saveObject} className="btn btn-success w-10 mt-5 d-block">Spara</button>
+        <button onClick={this.deleteObject} className="btn btn-danger mt-5 float-right">Ta bort</button>
+        <button onClick={this.saveObject} className="btn btn-success mt-5">Spara</button>
       </div>
     )
   }

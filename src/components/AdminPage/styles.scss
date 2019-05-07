@@ -86,9 +86,12 @@
       }
     }
   }
-  .edit-wrapper {
+  .data-editor {
     .object-key {
       text-transform: capitalize;
+    }
+    .hide-me {
+      visibility: hidden;
     }
   }
   .preview-item {
