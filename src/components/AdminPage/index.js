@@ -24,7 +24,8 @@ class AdminPage extends React.Component {
     this.state = {
       loggedId: true,
       currentColl: '',
-      editObject: ''
+      editObject: '',
+      content: <p style={{minHeight: '30vh'}}>Välj en av kategorierna ovan för att redigera objekt.</p>
     }
     this.categories = [
       {
