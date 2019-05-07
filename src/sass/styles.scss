@@ -1,5 +1,3 @@
-// CSS RESET
-
 // Import Bootstrap Overrides
 @import "./bootstrap-overrides";
 
@@ -33,6 +31,7 @@
 @import "../components/CreatePartyPage/form/Form_footer/styles";
 @import "../components/CreatePartyPage/Form/Form_footer/Checkout/styles";
 @import "../components/CreatePartyPage/form/Web_shop/style";
+
 // PARTYPAGE
 @import "../components/PartyPage/styles";
 
@@ -44,6 +43,9 @@
 
 // FAQ
 @import "../components/FAQ/styles";
+
+// ADMINPAGE
+@import "../components/AdminPage/styles";
 
 // CONFIRMATION PAGE 
 @import "../components/ConfirmationPage/styles";

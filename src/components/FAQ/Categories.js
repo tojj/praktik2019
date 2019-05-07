@@ -1,6 +1,5 @@
 import React from 'react'
 import Category from './Category'
-import { throws } from 'assert';
 
 class Categories extends React.Component {
   constructor(props) {
