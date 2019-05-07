@@ -94,9 +94,7 @@ class AdminPage extends React.Component {
     if (this.state.currentColl === Qna && !obj.counter){
       obj.counter = 1
     }
-    await obj.save()
-    console.log('saved: ', obj);
-    
+    await obj.save()    
     this.setState({ editObject: '' })
     this.renderContentFromDb(this.state.currentColl)
   }

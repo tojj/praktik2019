@@ -53,7 +53,7 @@ class Web_shop extends Component {
   }
 
   async findProductInDb() {
-    let selectedProduct = await Product.find(`.findById('${this.productId}')`);
+    let selectedProduct = await Product.find(`.findById('${this.productId}')`)
     let productToSave = {
       id: selectedProduct._id,
       name: selectedProduct.name,
