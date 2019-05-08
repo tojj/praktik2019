@@ -25,13 +25,18 @@ nav {
       width: 100%;
       display: block;
       text-align: right;
+      font-size: 1.1rem;
+      position: absolute;
+      top: 50%;
+      -ms-transform: translateY(-50%);
+      transform: translateY(-50%);
       .link-item {
         display: inline-block;
         font-family: $big-text;
         font-weight: 800;
         color: $secondary;
         margin-left: 4rem;
-        margin-bottom: 2.75vh;
+        //margin-bottom: 2.75vh;
         &:hover {
           cursor: pointer;
           text-decoration: none;
