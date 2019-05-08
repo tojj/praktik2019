@@ -1,9 +1,9 @@
 import React, { Component } from "react"
 import REST from "../../../../REST"
-import { connect } from 'react-redux'
-import { doUpdateProductInfo } from '../../../../store/Birthday/BirthdayActions'
+import { connect } from "react-redux"
+import { doUpdateProductInfo } from "../../../../store/Birthday/BirthdayActions"
 
-class Product extends REST { }
+class Product extends REST {}
 class Web_shop extends Component {
   constructor(props) {
     super(props)
@@ -53,7 +53,7 @@ class Web_shop extends Component {
   }
 
   async findProductInDb() {
-    let selectedProduct = await Product.find(`.findById('${this.productId}')`);
+    let selectedProduct = await Product.find(`.findById('${this.productId}')`)
     let productToSave = {
       id: selectedProduct._id,
       name: selectedProduct.name,
@@ -81,19 +81,19 @@ class Web_shop extends Component {
             <p>{desc}</p>
           </div>
         ) : (
-            <div className="test-container">
-              <img
-                className="shop-img"
-                src={img}
-                alt="event"
-                onClick={this.toggleSelected}
-              />
-              <div className="shop-info">
-                <p>{text}</p>
-                <p>Pris: {price}</p>
-              </div>
+          <div className="test-container">
+            <img
+              className="shop-img"
+              src={img}
+              alt="event"
+              onClick={this.toggleSelected}
+            />
+            <div className="shop-info">
+              <p>{text}</p>
+              <p>Pris: {price}</p>
             </div>
-          )}
+          </div>
+        )}
       </div>
     )
   }
@@ -110,7 +110,7 @@ class Web_shop extends Component {
             className="more-info-label"
             onClick={() => this.toggleInfo(product._id)}
           >
-            >
+            <img src="/images/infoTab.png" />
           </label>
 
           {this.state.showInfo === product._id ? (
@@ -118,19 +118,19 @@ class Web_shop extends Component {
               <p>{product.desc}</p>
             </div>
           ) : (
-              <div className="test-container">
-                <img
-                  className="shop-img"
-                  src={product.image}
-                  alt="event"
-                  onClick={this.toggleSelected}
-                />
-                <div className="shop-info">
-                  <p>{product.name}</p>
-                  <p>Pris: {product.price}</p>
-                </div>
+            <div className="test-container">
+              <img
+                className="shop-img"
+                src={product.image}
+                alt="event"
+                onClick={this.toggleSelected}
+              />
+              <div className="shop-info">
+                <p>{product.name}</p>
+                <p>Pris: {product.price}</p>
               </div>
-            )}
+            </div>
+          )}
         </div>
       )
     })
@@ -162,5 +162,7 @@ const mapStateToProps = state => {
   }
 }
 
-
-export default connect(mapStateToProps, mapDispatchToProps)(Web_shop)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Web_shop)
