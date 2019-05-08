@@ -14,11 +14,12 @@ header {
     .logo-holder {
       display: block;
       position: absolute;
-      top: 10px;
+      top: 50% !important;
+      -ms-transform: translateY(-50%);
+      transform: translateY(-50%);
       left: 1rem;
       width: 30%;
       z-index: 50;
-      width: 30%;
       margin: 0 auto;
       padding: 0;
       font-family: "Montserrat";
@@ -30,12 +31,12 @@ header {
         text-decoration: none;
         color: #fff;
       }
-      .logo-img {
-        width: 100%;
-        height: auto;
-      }
+      //.logo-img {
+      //  width: 100%;
+      //  height: auto;
+      // }
     }
-    @include media-breakpoint-up(md) {
+    @include media-breakpoint-up(xs) {
       position: relative;
       width: 88.7vw;
       margin: 0 auto;
