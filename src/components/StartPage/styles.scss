@@ -65,7 +65,7 @@
       padding: 10vw;
       .box {
         h2 {
-          font-size: 3rem;
+          font-size: 4.5rem;
         }
       }
     }
@@ -73,7 +73,7 @@
       flex-direction: row;
       padding: 5vh;
       p {
-        font-size: 1rem !important;
+        font-size: 1.2rem !important;
       }
     }
     @include media-breakpoint-up(xl) {

@@ -110,7 +110,7 @@ class Web_shop extends Component {
             className="more-info-label"
             onClick={() => this.toggleInfo(product._id)}
           >
-            <img src="/images/infoTab.png" />
+            <img src="/images/infoTab.png" alt="" />
           </label>
 
           {this.state.showInfo === product._id ? (
