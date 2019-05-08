@@ -8,57 +8,52 @@
       width: 100%;
       justify-content: center;
       .link-cancel {
-        background-color: $secondary;
+        background-color: red;
         text-align: center;
-        color: red;
+        color: white;
         font-family: $big-text;
         font-weight: 800;
         font-size: 20px;
-        border: 2px solid red;
         padding: 5px 5px;
-        border-radius: 2px;
         margin: 5px 5px 5px 0;
         transition: all 0.3s;
         min-width: 110px;
         &:hover {
           color: $secondary;
-          background-color: red;
+          background-color: #ff5151;
           text-decoration: none;
         }
       }
       .link-party-page {
-        background-color: $secondary;
-        color: #007e50;
+        background-color: #007e50;
+        color: white;
         font-family: $big-text;
         font-weight: 800;
         font-size: 20px;
-        border: 2px solid #007e50;
         padding: 5px 5px;
-        border-radius: 2px;
         margin: 5px 0 5px 5px;
         transition: all 0.3s;
+        border: 1px solid #007e50;
         &:hover {
           color: $secondary;
-          background-color: #007e50;
+          background-color: #009b62;
           text-decoration: none;
         }
       }
       .link-preview-page {
-        background-color: $secondary;
-        color: #007e50;
+        background-color: #007e50;
+        color: white;
         font-family: $big-text;
         font-weight: 800;
         font-size: 20px;
-        border: 2px solid #007e50;
         padding: 5px 5px;
-        border-radius: 2px;
         margin: 5px 0 5px 0;
         transition: all 0.3s;
         min-width: 230px;
         text-align: center;
         &:hover {
           color: $secondary;
-          background-color: #007e50;
+          background-color: #009b62;
           text-decoration: none;
         }
       }

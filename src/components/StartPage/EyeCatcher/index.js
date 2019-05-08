@@ -7,7 +7,7 @@ const EyeCatcher = props => (
       <h2 className="main-heading" id="eye-catcher-heading">
         BÄSTA PRESENTEN
       </h2>
-      <p>
+      <p className="eye-text">
         Med Tojj kan alla få det kalas de förtjänar. Klicka på knappen nedan för
         att skapa ditt kalas nu!
       </p>
