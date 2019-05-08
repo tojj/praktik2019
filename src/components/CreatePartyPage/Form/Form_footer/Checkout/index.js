@@ -18,7 +18,7 @@ class Checkout extends React.Component {
     }
   }
 
-  /** 
+  /**
    * Toggling between Login Component, Register Component and Guest User Component
    */
 
@@ -46,8 +46,7 @@ class Checkout extends React.Component {
     })
   }
 
-
-  /** 
+  /**
    * Getting input value and rendering inputs
    */
 
@@ -117,7 +116,7 @@ class Checkout extends React.Component {
               <input
                 className="radio-input"
                 id="radio3"
-                name="radio"
+                name="radioUser"
                 type="radio"
                 onClick={this.userLoginToggle}
               />
@@ -129,7 +128,7 @@ class Checkout extends React.Component {
               <input
                 className="radio-input"
                 id="radio4"
-                name="radio"
+                name="radioUser"
                 type="radio"
                 onClick={this.registerToggle}
               />
