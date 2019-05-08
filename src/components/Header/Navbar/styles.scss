@@ -25,23 +25,25 @@ nav {
       width: 100%;
       display: block;
       text-align: right;
-      height: auto;
+      font-size: 1.1rem;
+      position: absolute;
+      top: 50%;
+      -ms-transform: translateY(-50%);
+      transform: translateY(-50%);
       .link-item {
         display: inline-block;
         font-family: $big-text;
         font-weight: 800;
-        color: $primary;
+        color: $secondary;
         margin-left: 4rem;
+        //margin-bottom: 2.75vh;
         &:hover {
           cursor: pointer;
           text-decoration: none;
-          color: $dark !important;
+          color: #ffffff !important;
         }
-        @include media-breakpoint-up(lg){
+        @include media-breakpoint-up(lg) {
           font-size: 1.3rem;
-        }
-        @include media-breakpoint-up(xl){
-          font-size: 2rem;
         }
       }
     }
