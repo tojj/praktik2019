@@ -11,6 +11,7 @@ import Categories from '../FAQ/Categories'
 import DataItem from './DataItem/index'
 import DataEditor from './DataEditor/index'
 import REST from '../../REST'
+import MissingPage from '../../components/MissingPage/index'
 
 class Product extends REST { }
 class Fundraiser extends REST { }
@@ -118,20 +119,25 @@ class AdminPage extends React.Component {
   }
 
   render() {
-    return (
-      <div className="admin-wrapper">
-        <h2>Admin - Hantering</h2>
-        <Categories categories={this.categories} name={this.props.match.params.link} clickHandler={this.renderCategoryContent} />
-        <div className="data-editor">
-          {this.state.editObject}
+    if (this.state.loggedId) {
+      return (
+        <div className="admin-wrapper">
+          <h2>Admin - Hantering</h2>
+          <Categories categories={this.categories} name={this.props.match.params.link} clickHandler={this.renderCategoryContent} />
+          <div className="data-editor">
+            {this.state.editObject}
+          </div>
+          {this.state.editObject
+            ? <button onClick={this.renderObjectToEdit} className="mt-3 btn btn-outline-danger">Tillbaka</button>
+            : <div className="category-content-list">
+              {this.state.content}
+            </div>}
         </div>
-        {this.state.editObject
-          ? <button onClick={this.renderObjectToEdit} className="mt-3 btn btn-outline-danger">Tillbaka</button>
-          : <div className="category-content-list">
-            {this.state.content}
-          </div>}
-      </div>
-    )
+      )
+    } else {
+      return <MissingPage />
+    }
+    
   }
 }
 

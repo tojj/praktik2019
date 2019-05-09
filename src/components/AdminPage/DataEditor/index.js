@@ -15,7 +15,10 @@ class DataEditor extends React.Component {
   createObject = () => {
     let object = this.props.object
     this.entriesData.map(entry => {
-      if (entry[0] === '_id' || entry[0] === 'location' || entry[0] === 'swish' || entry[0] === 'attending') {
+      if (entry[0] === '_id' || 
+      entry[0] === 'location' || 
+      entry[0] === 'swish' || 
+      entry[0] === 'attending') {
 
       } else {
         object[entry[0]] = document.getElementById(entry[0]).value
