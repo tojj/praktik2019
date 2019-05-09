@@ -8,6 +8,7 @@ import {
 import staticData from '../../../../../staticData'
 import REST from '../../../../../REST'
 
+
 class User extends REST { }
 
 class RegisterComponent extends React.Component {
@@ -51,6 +52,7 @@ class RegisterComponent extends React.Component {
   async getUserData() {
 
     const { data } = this.state
+    let errors = []
 
     let newUser = new User({
       firstName: data.firstName,
@@ -63,17 +65,27 @@ class RegisterComponent extends React.Component {
       password: data.password,
       passwordRepeat: data.passwordRepeat
     })
-    let user = await User.find(`.find({email: '${newUser.email}'})`);
+
+
+
+    let user = await User.find(`.find({email: '${newUser.email}'})`)
     if (user.length === 0 && newUser.password !== newUser.passwordRepeat) {
       alert("Passwords must match!")
       console.log(("Passwords must match!"))
+      errors.push({ msg: "Passwords must match!" })
+      this.resetPasswordFields()
 
+    }
+    else if (user.length === 0 && newUser.password.length < 7) {
+      alert("Password has to be at least 7 characters")
+      console.log("Password has to be at least 7 characters")
+      errors.push({ msg: "Password has to be at least 7 characters" })
     }
     else if (user.length === 0) {
       if (newUser.password === newUser.passwordRepeat) {
         newUser.save()
         console.log("User registered!", newUser)
-        this.resetForm();
+        this.resetForm()
       }
     }
     else {
@@ -97,6 +109,15 @@ class RegisterComponent extends React.Component {
         city: "",
         phoneNumber: "",
         email: "",
+        password: "",
+        passwordRepeat: ""
+      }
+    })
+  }
+
+  resetPasswordFields = () => {
+    this.setState({
+      data: {
         password: "",
         passwordRepeat: ""
       }
@@ -128,6 +149,7 @@ class RegisterComponent extends React.Component {
           className={className}
           placeholder={placeholder}
           onChange={this.handleChange}
+          required
         />
       </FormGroup>)
   }

@@ -1,4 +1,5 @@
 const mongoose = require("mongoose")
+const bcrypt = require("bcrypt")
 const Schema = mongoose.Schema
 
 let userSchema = new Schema({
@@ -14,4 +15,8 @@ let userSchema = new Schema({
   //event: { type: Schema.Types.ObjectId, ref: 'Event' }
 })
 
-module.exports = global.db.model("User", userSchema)
+userSchema.pre("save", async function () {
+  this.password = await bcrypt.hash(this.password + passwordSalt, 10);
+})
+
+module.exports = global.db.model("User", userSchema) 

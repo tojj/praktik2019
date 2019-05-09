@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "axios": "^0.18.0",
+    "bcrypt": "^3.0.6",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
     "bootstrap": "^4.3.1",
@@ -11,7 +12,7 @@
     "concurrently": "^4.1.0",
     "connect-mongo": "^2.0.3",
     "express": "^4.16.4",
-    "express-session": "^1.15.6",
+    "express-session": "^1.16.1",
     "http-proxy-middleware": "^0.19.1",
     "mongodb": "^3.2.3",
     "mongoose": "^5.4.20",
