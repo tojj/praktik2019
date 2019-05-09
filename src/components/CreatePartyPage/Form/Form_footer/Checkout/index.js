@@ -122,7 +122,7 @@ class Checkout extends React.Component {
                 onClick={this.userLoginToggle}
               />
               <label className="radio-label" htmlFor="radio3">
-                Fortsätt som inloggad användare
+                Skapa konto
               </label>
             </div>
             <div className="input-group">
@@ -134,25 +134,18 @@ class Checkout extends React.Component {
                 onClick={this.registerToggle}
               />
               <label className="radio-label" htmlFor="radio4">
-                Fortsätt utan inloggning
+                Fortsätt som gäst
               </label>
             </div>
           </div>
         </div>
 
         {this.state.userLogin ? (
-          <LoginComponent
-            userLoginToggle={this.userLoginToggle}
-            loginToggle={this.loginToggle}
-          />
+         <RegisterComponent
+         loginToggle={this.loginToggle}
+       />
         ) : null}
 
-        {this.state.loginOption ? (
-          <RegisterComponent
-            loginToggle={this.loginToggle}
-            userLoginToggle={this.userLoginToggle}
-          />
-        ) : null}
 
         {this.state.noRegisterOption ? (
           <div className="box-container set-width-registration">

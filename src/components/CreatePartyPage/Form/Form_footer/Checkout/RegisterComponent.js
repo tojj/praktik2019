@@ -80,6 +80,7 @@ class RegisterComponent extends React.Component {
       alert("Password has to be at least 7 characters")
       console.log("Password has to be at least 7 characters")
       errors.push({ msg: "Password has to be at least 7 characters" })
+      console.log(errors, "errors");
     }
     else if (user.length === 0) {
       if (newUser.password === newUser.passwordRepeat) {
