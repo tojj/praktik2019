@@ -15,7 +15,7 @@ class BirthdayInvite extends React.Component {
             onChange={this.props.handleInput}
             type="email"
           />
-          <button className="link-party-page add-email" type="submit">Lägg till</button>
+          <button className="link-party-page add-email btn btn-primary" type="submit">Lägg till</button>
         </form>
       </div>
     )

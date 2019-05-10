@@ -65,3 +65,6 @@ typings/
 
 # DB Connection / data imports to db
 supersecret.js
+
+# Mailserver API key
+secretmail.js

@@ -3,6 +3,7 @@ const mongoose = require('mongoose')
 const http = require('http')
 const bodyParser = require('body-parser')
 const supersecret = require('./supersecret')
+const secretmail = require('./secretmail')
 const CreateRestRoutes = require('./CreateRestRoutes')
 const nodemailer = require('nodemailer')
 
@@ -56,7 +57,7 @@ module.exports = class Server {
         secure: true,
         auth: {
           user: 'apikey',
-          pass: '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'
+          pass: secretmail
         },
         tls: {
           rejectUnauthorized: false

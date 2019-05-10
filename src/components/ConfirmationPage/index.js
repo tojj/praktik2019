@@ -10,7 +10,7 @@ class ConfirmationPage extends React.Component {
       emails: [],
       currentEmail: { text: '', key: '' }
     }
-
+    this.sendInvites = this.sendInvites.bind(this)
   }
 
   handleInput = e => {
@@ -46,7 +46,10 @@ class ConfirmationPage extends React.Component {
     let url = window.location.pathname.split("/")
     this.props.history.push("/kalas/" + url[2])
   }
-
+  async sendInvites() {
+    console.log('hi');
+    
+  }
   
 
   render() {
@@ -68,7 +71,7 @@ class ConfirmationPage extends React.Component {
             />
           <BirthdayInviteList entries={this.state.emails} deleteEmail={this.deleteEmail} />
 
-          <button className="link-party-page send-button">Skicka</button>
+          <button onClick={this.sendInvites} className="link-party-page send-button">Skicka</button>
           <button onClick={this.redirectToYourParty} className="link-party-page conf-button">Tryck här för att komma till kalaset!</button>
         </div>
       </div>
