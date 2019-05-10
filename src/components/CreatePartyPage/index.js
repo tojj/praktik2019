@@ -10,14 +10,40 @@ class CreatePartyPage extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      eventLink: ''
+      eventLink: '',
     }
+    this.errors = []
     this.createEvent = this.createEvent.bind(this)
   }
 
   redirectTo = (target) => {
     this.props.history.push(target)
   }
+
+  validateFirstName = () => {
+    if (this.propbs.guestUser.firstName < 2) {
+      this.errors.push({msg: 'Förnamnet måste inhålla minst två tecken'})
+      console.log(this.errors)
+    } else {
+      return
+    }
+  }
+
+  validateLastName = () => {
+    if (this.propbs.guestUser.lastName < 2) {
+      this.errors.push({msg: 'Förnamnet måste inhålla minst två tecken'})
+      console.log(this.errors)
+    } else {
+      return
+    }
+  }
+
+  validateEmail = () => {
+    
+  }
+
+  
+
 
   async createEvent() {
     const link = await this.generateLink()
@@ -50,13 +76,25 @@ class CreatePartyPage extends React.Component {
       fundraiser: this.props.fundraiser.id,
       attending: [],
       product: this.props.present.id,
-      link: link
-    })
+      link: link,
+    
+      guestUser: {
+        firstName: this.props.guestUser.firstName,
+        lastName: this.props.guestUser.lastName,
+        email: this.props.guestUser.email,
+        phoneNumber: this.props.guestUser.phoneNumber,
+        address: this.props.guestUser.address,
+        zipcode: this.props.guestUser.zipcode,
+        city: this.props.guestUser.city
 
+      }
+
+    })
+    
     await newEvent.save().then(data => {
       if (!data.name) {
         const target = "/kalas/" + link + "/bekräftelse"
-        this.redirectTo(target) 
+        this.redirectTo(target)
       } else {
         alert('ERROR:' + data.message)
       }
@@ -107,7 +145,8 @@ const mapStateToProps = state => {
     birthdayTimeAndPlace: state.birthday.birthdayTimeAndPlace,
     fundraiser: state.birthday.fundraiser,
     present: state.birthday.present,
-    swishMoney: state.swish.swishMoney
+    swishMoney: state.swish.swishMoney,
+    guestUser: state.birthday.guestUser,
   }
 }
 

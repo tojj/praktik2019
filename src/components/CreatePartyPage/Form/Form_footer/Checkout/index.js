@@ -151,14 +151,6 @@ class Checkout extends React.Component {
             <div className="box align-left">
               <h4 className="form-header">Fortsätt som gästanvändare</h4>
               {this.renderInputs()}
-
-              <Button
-                color="primary"
-                type="button"
-                className="button-for-register"
-              >
-                Slutför
-              </Button>
             </div>
           </div>
         ) : null}
