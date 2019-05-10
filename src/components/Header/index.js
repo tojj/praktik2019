@@ -11,7 +11,7 @@ const Header = props => {
       </ScrollToTop>
       <Navbar showFull={props.startPage} />
       <NavLink className="logo-holder" to="/">
-        <img src="/images/tojj-logo2.png" className="logo-img" alt="logo" />
+        Tojj
       </NavLink>
     </div>
   )
