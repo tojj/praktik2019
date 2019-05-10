@@ -7,7 +7,62 @@ import {
 } from 'reactstrap'
 import staticData from '../../../../../staticData'
 
+class User extends REST { }
+class Login extends REST {
+  async delete() {
+    this._id = 1;
+    return super.delete();
+  }
+  static get baseRoute() {
+    return "login/";
+  }
+}
+
 class LoginComponent extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      data: { email: "", password: "" },
+      errors: {}
+    }
+  }
+
+
+  handleChange = ({ currentTarget: input }) => {
+    const data = { ...this.state.data }
+    data[input.name] = input.value
+    this.setState({ data })
+  }
+
+
+  handleSubmit = e => {
+    e.preventDefault()
+    this.submitForm()
+  }
+
+
+
+
+  async submitForm() {
+    let newLogin = new Login({
+      email: this.state.data.email,
+      password: this.state.data.password
+    })
+    // let user = await User.find(
+    //   `.findOne({email:'$${newLogin.email}'})`
+    // );
+    // let user = await User.find(`.find({email: '${newLogin.email}'})`);
+    let result = await newLogin.save();
+    if (result.error && result.error === "The password does not match!") {
+    } else if (
+      result.error === "Not logged in!" ||
+      result.error === "No such user!"
+    ) {
+      console.log("Wrong password");
+    } else if (result.loggedIn === true) {
+      console.log("Hej Du är nu inloggad.")
+    }
+  }
 
 
   renderLoginData = ({ id, type, name, label, className, pattern }) => {
