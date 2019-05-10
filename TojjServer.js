@@ -66,10 +66,9 @@ module.exports = class Server {
       
       const mailOptions = {
         from: `"Tojj" <tojjinfo@gmail.com>`,
-        to: `${req.body.email}`,
-        subject: `Kalasinbjudan`,
-        html: `${req.body.message}`,
-        replyTo: `tojjinfo@gmail.com`
+        bcc: `${req.body.email}`,
+        subject: `${req.body.subject}`,
+        html: `${req.body.message}`
       }
       transporter.sendMail(mailOptions, function(err, res) {
         if (err) {
