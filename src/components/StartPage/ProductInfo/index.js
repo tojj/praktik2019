@@ -3,10 +3,10 @@ import staticData from "../../../staticData"
 
 const ProductInfo = props => (
   <div className="box-container prodinfo-container" id="prodinfo-container">
-    <div className="box prodinfo-box-1">
+    <div className="box box-1 box-img-left">
       <img className="box-img" src="/images/bd-boy.jpg" alt="child superhero" />
     </div>
-    <div className="box prodinfo-box-2">
+    <div className="box box-2">
       <h2 className="prodinfo-header">Kvalitet över kvantitet</h2>
       {staticData.productData.map(renderProductText)}
     </div>

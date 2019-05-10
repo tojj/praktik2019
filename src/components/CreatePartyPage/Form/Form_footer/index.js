@@ -125,7 +125,7 @@ class Form_footer extends React.Component {
                 <input
                   className="radio-input"
                   id="radio1"
-                  name="radio"
+                  name="radioCharity"
                   type="radio"
                   onClick={
                     !this.state.charitySelected ? this.charityToggle : null
@@ -139,7 +139,7 @@ class Form_footer extends React.Component {
                 <input
                   className="radio-input"
                   id="radio2"
-                  name="radio"
+                  name="radioCharity"
                   type="radio"
                   onClick={
                     this.state.charitySelected ? this.charityToggle : null
