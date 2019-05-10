@@ -20,10 +20,10 @@ export default {
     birthdayImage: '',
 
     fundraiser: {
-      id: '',
-      name: '',
-      image: '',
-      link: '',
+      id: null,
+      name: null,
+      image: null,
+      link: null,
       donate: false
     },
 

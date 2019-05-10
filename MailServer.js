@@ -1,6 +1,6 @@
 const nodemailer = require("nodemailer")
 
-async function main() {
+const MailServer = async function main() {
   // Generate test SMTP service account from ethereal.email
   // Only needed if you don't have a real mail account for testing
   //let testAccount = await nodemailer.createTestAccount()
@@ -37,3 +37,4 @@ async function main() {
 }
 
 main().catch(console.error);
+module.exports = MailServer
