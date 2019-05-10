@@ -1,5 +1,5 @@
 import React from "react"
-import { Button, FormGroup, Label } from "reactstrap"
+import {  FormGroup, Label } from "reactstrap"
 import { doUpdateGuestDetails } from "../../../../../store/Birthday/BirthdayActions"
 import RegisterComponent from "../Checkout/RegisterComponent"
 import LoginComponent from "../Checkout/LoginComponent"
@@ -154,25 +154,14 @@ class Checkout extends React.Component {
             : null
         }
 
-
-
-        {
-          this.state.noRegisterOption ? (
-            <div className="box-container set-width-registration">
-              <div className="box align-left">
-                <h4 className="form-header">Fortsätt som gästanvändare</h4>
-                {this.renderInputs()}
-
-                <Button
-                  color="primary"
-                  type="button"
-                  className="button-for-register"
-                >
-                  Slutför
-              </Button>
-              </div>
+        {this.state.noRegisterOption ? (
+          <div className="box-container set-width-registration">
+            <div className="box align-left">
+              <h4 className="form-header">Fortsätt som gästanvändare</h4>
+              {this.renderInputs()}
             </div>
-          ) : null
+          </div>
+        ) : null
         }
       </div >
     )
