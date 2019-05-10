@@ -21,10 +21,9 @@ class Checkout extends React.Component {
   /**
    * Toggling between Login Component, Register Component and Guest User Component
    */
-
   loginToggle = () => {
     this.setState({
-      loginOption: true,
+      loginOption: !this.state.loginOption,
       noRegisterOption: false,
       userLogin: false
     })
@@ -32,7 +31,7 @@ class Checkout extends React.Component {
 
   registerToggle = () => {
     this.setState({
-      noRegisterOption: true,
+      noRegisterOption: !this.state.noRegisterOption,
       loginOption: false,
       userLogin: false
     })
@@ -45,7 +44,6 @@ class Checkout extends React.Component {
       noRegisterOption: false
     })
   }
-
   /**
    * Getting input value and rendering inputs
    */
@@ -108,7 +106,7 @@ class Checkout extends React.Component {
 
   render() {
     return (
-      <div className="box-details-container" id="checkout-container">
+      <div className="box-details-container" id="checkout-container" >
         <div className="box align-left">
           <div className="form">
             <h2 className="form-headline text-center">Slutför</h2>
@@ -140,29 +138,43 @@ class Checkout extends React.Component {
         </div>
 
         {this.state.userLogin ? (
-         <RegisterComponent
-         loginToggle={this.loginToggle}
-       />
-        ) : null}
+          <RegisterComponent
+            loginToggle={this.loginToggle}
+            userLoginToggle={this.userLoginToggle}
+          />
+        ) : null
+        }
+
+        {
+          this.state.loginOption ? (
+            <LoginComponent
+              loginToggle={this.loginToggle}
+              userLoginToggle={this.userLoginToggle} />
+          )
+            : null
+        }
 
 
-        {this.state.noRegisterOption ? (
-          <div className="box-container set-width-registration">
-            <div className="box align-left">
-              <h4 className="form-header">Fortsätt som gästanvändare</h4>
-              {this.renderInputs()}
 
-              <Button
-                color="primary"
-                type="button"
-                className="button-for-register"
-              >
-                Slutför
+        {
+          this.state.noRegisterOption ? (
+            <div className="box-container set-width-registration">
+              <div className="box align-left">
+                <h4 className="form-header">Fortsätt som gästanvändare</h4>
+                {this.renderInputs()}
+
+                <Button
+                  color="primary"
+                  type="button"
+                  className="button-for-register"
+                >
+                  Slutför
               </Button>
+              </div>
             </div>
-          </div>
-        ) : null}
-      </div>
+          ) : null
+        }
+      </div >
     )
   }
 }

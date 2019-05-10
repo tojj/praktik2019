@@ -165,9 +165,9 @@ class RegisterComponent extends React.Component {
           {staticData.createAccountData.map(this.renderCreateAcountData)}
           <div className="error item-level" aria-hidden="true"><p className="registration-text-password">Lösenordet måste bestå av 8-16 tecken, och innehålla minst 3 av följande alternativ: Stor eller liten bokstav (A-z), siffra eller specialtecken.</p></div>
           <div className="registration-buttons">
-            <Button color="primary" type="button" onClick={this.props.loginToggle} >Avbryt</Button>
+            <Button color="primary" type="button" onClick={this.props.userLoginToggle} >Avbryt</Button>
             <Button color="primary" type="button" className="ml-lg-2" onClick={this.handleSubmit}>Fortsätt</Button>
-            <div className="error item-level login-item" aria-hidden="true"><p className="registration-text-log-in mb-2">Har du redan ett konto? Vänligen  <span className="login-link" onClick={this.props.userLoginToggle}>logga in </span></p></div>
+            <div className="error item-level login-item" aria-hidden="true"><p className="registration-text-log-in mb-2">Har du redan ett konto? Vänligen  <span className="login-link" onClick={this.props.loginToggle}>logga in </span></p></div>
           </div>
         </div>
       </div >
