@@ -6,6 +6,7 @@ import {
   Label
 } from 'reactstrap'
 import staticData from '../../../../../staticData'
+import REST from '../../../../../REST'
 
 class User extends REST { }
 class Login extends REST {
@@ -22,7 +23,10 @@ class LoginComponent extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      data: { email: "", password: "" },
+      data: {
+        email: "",
+        password: ""
+      },
       errors: {}
     }
   }
@@ -37,22 +41,24 @@ class LoginComponent extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault()
-    this.submitForm()
+    this.login()
   }
 
 
 
 
-  async submitForm() {
+  async login() {
+    const { data } = this.state
     let newLogin = new Login({
-      email: this.state.data.email,
-      password: this.state.data.password
+      email: data.email,
+      password: data.password
     })
     // let user = await User.find(
     //   `.findOne({email:'$${newLogin.email}'})`
     // );
     // let user = await User.find(`.find({email: '${newLogin.email}'})`);
-    let result = await newLogin.save();
+    let result = await newLogin.save()
+    console.log(newLogin, "this is login");
     if (result.error && result.error === "The password does not match!") {
     } else if (
       result.error === "Not logged in!" ||
@@ -76,6 +82,8 @@ class LoginComponent extends React.Component {
           pattern={pattern}
           className={className}
           placeholder={label}
+          onChange={this.handleChange}
+          required
         />
       </FormGroup>)
   }
@@ -87,7 +95,7 @@ class LoginComponent extends React.Component {
           <h4 className="form-header" >Logga in</h4>
           {staticData.loginData.map(this.renderLoginData)}
           <Button color="primary" type="button" onClick={this.props.loginToggle}>Avbryt</Button>
-          <Button color="primary" type="button" className="ml-lg-2" >Logga in</Button>
+          <Button color="primary" type="button" className="ml-lg-2" onClick={this.handleSubmit}>Logga in</Button>
           <div className="error item-level login-item" aria-hidden="true"><p className="registration-text-log-in mb-2"><span className="login-link" onClick={this.props.userLoginToggle}>Registrera här</span></p></div>
         </div >
       </div>

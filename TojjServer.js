@@ -64,7 +64,7 @@ module.exports = class Server {
 
     new CreateRestRoutes(app, global.db, models)
 
-    new LoginHandler(app, global.db, models.users);
+    new LoginHandler(app, models.users);
 
     app.all('/json/*', (req, res) => {
       res.json({ url: req.url, ok: true })
