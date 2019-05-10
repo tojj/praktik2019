@@ -9,6 +9,7 @@ import Faq from "./components/FAQ/index"
 import Footer from './components/Footer/index'
 import MissingPage from "./components/MissingPage/index"
 import ConfirmationPage from "./components/ConfirmationPage"
+import Test from './components/test/index'
 
 const App = props => {
   return (
@@ -39,6 +40,7 @@ const App = props => {
           <Route exact path="/kalas/:link/bekräftelse" component={ConfirmationPage} />
           <Route exact path="/vanliga-fragor" component={Faq} />
           <Route exact path="/vanliga-fragor/:link" component={Faq} />
+          <Route exact path="/test" component={Test} />
           <Route component={MissingPage} />
         </Switch>
       </main>
