@@ -79,7 +79,7 @@
       }
     }
     .party-payment {
-        .box {
+      .box {
         min-height: 500px;
         text-align: center;
         .box-img {
@@ -103,13 +103,13 @@
       }
     }
     .party-congratulation {
-      .box:nth-of-type(1){
+      .box:nth-of-type(1) {
         flex: 2 !important;
       }
       figure {
         text-align: center;
         margin-top: 1rem;
-        @include media-breakpoint-up(md){
+        @include media-breakpoint-up(md) {
           margin-top: 0;
         }
         .box-img {
@@ -214,24 +214,42 @@
   }
 }
 @media print {
-  header, footer, .no-print, .no-print * {
-    display: none
+  header,
+  footer,
+  .no-print,
+  .no-print * {
+    display: none;
   }
   .print-me {
-    display: flex !important;
-    padding: 40px 0 0 !important;
-    .box {
-      min-height: 0 !important;
+    display: block !important;
+    text-align: center;
+    border: 0;
+    .party-qr {
+      width: 60%;
+      height: 60%;
+      margin: 0 auto !important;
+      display: inline-block;
+      padding: 10px;
+      background-color: $primary;
+      border-radius: 10px;
     }
+  }
+  .help-text {
+    width: 80%;
+    font-style: italic;
+    color: $dark;
+    font-size: .7rem;
+    margin: 100px auto 0;
   }
   .party-bg {
     height: 800px !important;
-    .party-card{
+    .party-card {
       height: 700px !important;
       overflow: hidden;
-    .party-payment, .party-attending {
-      margin: -80px 0 0 !important;
-    }
+      .party-payment,
+      .party-attending {
+        margin: -80px 0 0 !important;
+      }
     }
   }
   .box-container {
@@ -243,13 +261,14 @@
     border: 0 !important;
     padding: 0 !important;
   }
-  .party-location, .party-info {
+  .party-location,
+  .party-info {
     border-top: 1px solid rgba(0, 0, 0, 0.1) !important;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1) !important;
   }
-  .location-holder, .date-holder {
-    padding: 0 !important;
-    border-left: 1px solid rgba(0, 0, 0, 0.1) !important;
+
+  @page {
+    size: auto;
+    margin: 0mm;
   }
-  
-  @page { size: auto;  margin: 0mm; }
 }

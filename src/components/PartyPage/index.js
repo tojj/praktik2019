@@ -96,9 +96,6 @@ class PartyPage extends React.Component {
                 <p className="party-description">{party.desc}</p>
               </div>
               <div className="box date-holder">
-                <p className="party-child-age print-me">
-                  {party.child} fyller {party.age} år!
-                </p>
                 <p className="party-weekday">{date[0]}</p>
                 <p className="party-date">
                   Den {date[1]} {date[2]}
@@ -106,8 +103,14 @@ class PartyPage extends React.Component {
                 <p className="party-time">kl {date[3]}</p>
               </div>
               <div className="box print-me">
-                <img src="/images/arrow.png" className="img-fluid p-5" alt="qr link to party"/>
+                <p>Scanna koden för att komma direkt till kalaset. Glöm inte att meddela om du kommer!</p><br />
+                <img src={"http://chart.apis.google.com/chart?cht=qr&chs=500x500&chl=tojj.se/kalas/" + party.link + "&chld=H|0"} className="party-qr" alt="qr link to party"/>
               </div>
+            </div>
+            <div className="print-me">
+              <p className="help-text">Tojj.se är ett verktyg för att anordna kalas och inbjudningar. Vid frågor eller funderingar besök <a href="tojj.se/vanliga-fragor">tojj.se/vanliga-fragor</a>
+                
+              </p>
             </div>
             <div className="box-container border-top party-payment no-print">
               <div className="box swish-holder">
