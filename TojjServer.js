@@ -42,7 +42,7 @@ module.exports = class Server {
       products: require('./models/Product'),
       fundraisers: require('./models/Fundraiser'),
       qnas: require('./models/Qna')
-    };
+    }
 
     global.models = models
 

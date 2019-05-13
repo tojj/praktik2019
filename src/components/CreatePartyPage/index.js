@@ -43,7 +43,6 @@ class CreatePartyPage extends React.Component {
       swish: {
         number: "0709629276",
         amount: this.props.swishMoney,
-        image: "http://betalamedswish.se/API/Get/?n=0709629276&a=" + this.props.swishMoney + "&m=" + link + "&la=true&lm=true&s=500",
         color: "#4762b7"
       },
       donate: this.props.fundraiser.donate,
