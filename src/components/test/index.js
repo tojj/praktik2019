@@ -1,80 +1,55 @@
 import React from 'react'
+import REST from '../../REST'
+
+class Event extends REST {}
 
 class Test extends React.Component {
-  constructor(props) {
+  constructor(props){
     super(props)
     this.state = {
-      name: '',
-      email: '',
-      msg: `<div style="padding:50px; text-align:center">
-        <h2 style="color:#4762b7; font-size:2rem;">Jessika, du är bjuden på kalas!</h2>
-        <p>Tojj vill bjuda in dig på sitt kalas: klicka på <a style="text-decoration:none;color:#4762b7" href="https://tojj.se/kalas/TO2qK4">här</a> för att komma direkt till kalaset eller scanna QR-koden nedan.</p>
-        <p><img width="200px" height="200px" src="http://qr-generator.qrcode.studio/tmp/892f11780f0ef9c7cee281ac3ac184a0.svg?1557480020820" alt="qr-kod"/></p>
-        <p style="font-style:italic;">Obs. Detta meddelande har genererats från en server och går inte att svara på.</p>
-      </div>`,
-      sent: this.status
+      party: ''
     }
-    this.status = ''
-    this.sendEmail = this.sendEmail.bind(this)
+    this.renderData()
+    this.renderData = this.renderData.bind(this)
   }
-clickHandler = () => {
-  console.log(this.state.sent);
-  
-  this.sendEmail(this.state.name, this.state.email, this.state.msg)
-}
-changeHandler = (e) => {
-  if (e.target.id === 'name'){
-    this.setState({name: e.target.value})
-    console.log(this.state.name);
-  }
-  if (e.target.id === 'email'){
-    this.setState({email: e.target.value})
-    console.log(this.state.email);
-  }
-  if (e.target.id === 'msg'){
-    this.setState({msg: e.target.value})
-    console.log(this.state.msg);
-  }
-}
-
-sendEmail (name, email, message) {
-  fetch('/json/send', {
-    method: 'POST',
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-      name: name,
-      email: email,
-      message: message
-    })
-  })
-  .then((res) => res.json())
-  .then((res) => {
-    console.log('here is the response: ', res);
-    this.status = 'sent'
-    console.log(this.state.sent);
+  async renderData(){
+    const party = await Event.find('5cd175cafb2eb85975f38b03')
+    this.setState({party: party})
     
-  })
-  .catch((err) => {
-    console.error('here is the error: ', err);
-  })
- }
+  }
   render() {
+    const party = this.state.party
+    let date = new Date(party.date).toLocaleDateString("sv-SE", {
+      weekday: "short",
+      day: "numeric",
+      month: "long",
+      hour: 'numeric',
+      minute: 'numeric'
+    })
+    date = date.split(' ')
+    console.log(date);
+    
+     
     return (
-      <div style={{width: '50vw', margin: '50px auto', background: 'white', padding: '20px'}}>
-        <h2>TESTMAIL</h2>
-        Namn:
-        <input onChange={this.changeHandler} type="text" className="w-100" id="name" />
-        Email:
-        <input onChange={this.changeHandler} type="email" className="w-100" id="email" />
-        Msg:
-        <input onChange={this.changeHandler} type="text" className="w-100" id="msg" />
-        {this.state.sent ? null
-        : <button onClick={this.clickHandler}>Skicka</button>}
+      <div style={{padding: '30px 0 0', width: '100%', minHeight: '80vh', background: party.image }}>
+        <div style={{padding: '30px 50px 50px', textAlign: 'center', background: '#fff', width: '600px', margin: '0 auto 10px', boxShadow: '0 0 5px 0px rgba(0,0,0,0.4)' }}>
+          {/* <div style={{width: '600px', height: '50px'}}>
+            <h1 style={{fontSize: '36px', color: '#4763b7', fontWeight: '800', fontFamily: 'Arial Black'}}>Tojj</h1>
+          </div> */}
+          <img src="http://i.imgur.com/0aOsg8B.png" style={{width: '80%', height: 'auto'}} />
+          <h2 style={{fontWeight: 'bold', textTransform: 'uppercase'}}>{date[0]} {date[1]} {date[2]}</h2>
+          <h3 style={{fontWeight: 'bold', marginBottom: '20px', textTransform: 'uppercase'}}>Kl {date[3]} {date[4]}</h3>
+          <h5 style={{fontWeight: 'bold', marginBottom: '50px'}}> {party.child} ska ha kalas och du är bjuden! Klicka på länken nedan för att svara på om du kommer.</h5>
+          <a href={"tojj.se/kalas/" + party.link} style={{textDecoration: 'none', background: '#4762b7', color: '#fff', padding: '10px 20px', borderRadius: '100px', opacity: 0.8, margin: '20px 0'}}>TILL KALASET</a>
+        </div>
+        <div style={{padding: '20px 50px', background: '#fff', width: '600px', margin: '0 auto', boxShadow: '0 0 5px 0px rgba(0,0,0,0.4)' }}>
+          <h5 style={{fontWeight: 'bold'}}>Vad är Tojj?</h5>
+          <p style={{fontSize: '.8rem'}}>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede.</p>
+          <a href="tojj.se" style={{fontSize: '.8rem'}}>Läs mer ></a>
+        </div>
       </div>
     )
+  
   }
 }
 
