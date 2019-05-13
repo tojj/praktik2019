@@ -17,7 +17,7 @@ class CreatePartyPage extends React.Component {
     this.createEvent = this.createEvent.bind(this)
     this.schemaPartyEvent = {
       title: Joi.string().min(2).max(20).required(),
-      child: Joi.string().min(2).max(20).required(),
+      name: Joi.string().min(2).max(20).required(),
       age: Joi.number().integer().required()
     }
     // this.schemaPartyImage = {
@@ -42,29 +42,40 @@ class CreatePartyPage extends React.Component {
       email: Joi.string().email({ minDomainSegments: 2 }),
       password: Joi.string().regex(/^[a-zA-Z0-9]{3,30}$/)
     }
+
+    
   }
 
-  validateBirthdayEvent() {
+  validateBirthdayEvent = () => {
+    const result = Joi.validate(this.props.birthdayEvent, this.schemaPartyEvent, {
+      abortEarly: false
+    })
 
+    if(!result.error) return null
+    
+
+    const errors = {}
+    for (let item of result.error.details) {
+      errors[item.path[0]] = item.message
+    }
+    console.log(errors)
   }
+
+
   validateGuestUser = () => {
     const options = { abortEarly: false }
     const result = Joi.validate(this.props.guestUser, this.schemaGuestUser, options)
-    const result2 = Joi.validate(this.props.birthdayEvent, this.schemaPartyEvent, options)
     console.log(result, "validation")
 
     if (!result.error) return null
-    if (!result2.error) return null
-    this.createEvent()
+    
 
 
     const errors = {}
     for (let item of result.error.details) {
       errors[item.path[0]] = item.message
     }
-    for (let item of result2.error.details) {
-      errors[item.path[0]] = item.message
-    }
+    
     console.log(errors, "these are errors")
     return errors
 
@@ -187,7 +198,7 @@ class CreatePartyPage extends React.Component {
     return (
       <div className="createpartypage-wrapper">
         <FormContainer />
-        <Buttons createEvent={this.validateGuestUser} />
+        <Buttons createEvent={this.validateBirthdayEvent} />
       </div>
     )
   }
