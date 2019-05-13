@@ -225,9 +225,9 @@
     }
   }
   .party-bg {
-    height: 1400px !important;
+    height: 800px !important;
     .party-card{
-      height: 1270px !important;
+      height: 700px !important;
       overflow: hidden;
     .party-payment, .party-attending {
       margin: -80px 0 0 !important;
@@ -243,7 +243,7 @@
     border: 0 !important;
     padding: 0 !important;
   }
-  .party-location, .party-info, .print-me {
+  .party-location, .party-info {
     border-top: 1px solid rgba(0, 0, 0, 0.1) !important;
   }
   .location-holder, .date-holder {
