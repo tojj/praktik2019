@@ -7,7 +7,7 @@ import {
 } from 'reactstrap'
 import staticData from '../../../../../staticData'
 import REST from '../../../../../REST'
-
+import Joi from 'joi-browser'
 
 class User extends REST { }
 
@@ -25,8 +25,35 @@ class RegisterComponent extends React.Component {
         email: "",
         password: "",
         passwordRepeat: ""
-      }
+      },
+      errors: {}
     }
+    this.schema = {
+      firstName: Joi.string().min(2).max(20).required(),
+      lastName: Joi.string().min(2).max(20).required(),
+      address: Joi.string().alphanum().min(3).max(30).required(),
+      zipCode: Joi.number().integer().required(),
+      city: Joi.string().min(2).max(20).required(),
+      phoneNumber: Joi.number().integer().required(),
+      email: Joi.string().email({ minDomainSegments: 2 }),
+      password: Joi.string().regex(/^[a-zA-Z0-9]{3,30}$/)
+    }
+  }
+
+  validate = () => {
+    const options = { abortEarly: false }
+    const result = Joi.validate(this.state.data, this.schema, options)
+    console.log(result, "validation")
+
+    if (!result.error) return null
+
+    const errors = {}
+    for (let item of result.error.details) {
+      errors[item.path[0]] = item.message
+    }
+    console.log(errors, "these are errors")
+    return errors
+
   }
 
 
@@ -39,6 +66,7 @@ class RegisterComponent extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault()
+    this.validate()
     this.getUserData()
 
   }
@@ -67,7 +95,6 @@ class RegisterComponent extends React.Component {
     })
 
 
-
     let user = await User.find(`.find({email: '${newUser.email}'})`)
     if (user.length === 0 && newUser.password !== newUser.passwordRepeat) {
       alert("Passwords must match!")
@@ -80,7 +107,7 @@ class RegisterComponent extends React.Component {
       alert("Password has to be at least 7 characters")
       console.log("Password has to be at least 7 characters")
       errors.push({ msg: "Password has to be at least 7 characters" })
-      console.log(errors, "errors");
+      console.log(errors, "errors")
     }
     else if (user.length === 0) {
       if (newUser.password === newUser.passwordRepeat) {
