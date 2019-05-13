@@ -1,4 +1,10 @@
 import React from 'react'
+import {
+  Gift,
+  Heart,
+  Clipboard,
+  HelpCircle
+} from 'react-feather'
 import QuestionAndAnswer from '../FAQ/QuestionAndAnswer'
 import REST from '../../REST'
 import Categories from './Categories'
@@ -21,6 +27,32 @@ class FAQ extends React.Component {
     this.getAllQnaAndMount = this.getAllQnaAndMount.bind(this)
     this.renderCategoryContent = this.renderCategoryContent.bind(this)
     this.pushCounts = this.pushCounts.bind(this)
+    this.categories = [
+      {
+        "icon": <Gift />,
+        "name": 'presenter',
+        "active": false,
+        "styling": {backgroundColor: '#4762b7', color: 'white'}
+      },
+      {
+        "icon": <Heart />,
+        "name": 'välgörenhet',
+        "active": false,
+        "styling": {backgroundColor: '#F66E9F', color: 'white'}
+      },
+      {
+        "icon": <Clipboard />,
+        "name": 'avtal',
+        "active": false,
+        "styling": {backgroundColor: '#FFC263', color: 'white'}
+      },
+      {
+        "icon": <HelpCircle />,
+        "name": 'kontakt',
+        "active": false,
+        "styling": {backgroundColor: '#008A64', color: 'white'}
+      }
+    ]
   }
   componentDidMount(){
     let Link = this.props.match.params.link
@@ -73,7 +105,7 @@ class FAQ extends React.Component {
         {this.state.qnaContent.length === this.state.totalAmount ? null :
           <button type="button" className="mt-3 btn btn-outline-dark" onClick={this.getAllQnaAndMount}>Läs in fler</button>
         }
-        <Categories name={this.props.match.params.link} clickHandler={this.renderCategoryContent} />
+        <Categories categories={this.categories} name={this.props.match.params.link} clickHandler={this.renderCategoryContent} />
         {this.state.categoryContent}
        
 
