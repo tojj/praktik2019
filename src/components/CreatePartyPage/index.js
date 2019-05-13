@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import FormContainer from './Form/index'
 import REST from '../../REST'
 import Buttons from './Buttons/index'
+import Joi from 'joi-browser'
 
 class Event extends REST { }
 
@@ -14,35 +15,89 @@ class CreatePartyPage extends React.Component {
     }
     this.errors = []
     this.createEvent = this.createEvent.bind(this)
+    this.schemaPartyEvent = {
+      title: Joi.string().min(2).max(20).required(),
+      child: Joi.string().min(2).max(20).required(),
+      age: Joi.number().integer().required()
+    }
+    // this.schemaPartyImage = {
+    //   image: Joi.validate().required()
+    // }
+    // this.schemaTimeAndPlace = {
+    //   desc: this.props.birthdayTimeAndPlace.description,
+    //   date: date,
+    //   rsvp: new Date(this.props.birthdayTimeAndPlace.deadline).getTime(),
+
+    //   street: this.props.birthdayTimeAndPlace.street,
+    //   zipcode: this.props.birthdayTimeAndPlace.zip,
+    //   city: this.props.birthdayTimeAndPlace.city
+    // }
+    this.schemaGuestUser = {
+      firstName: Joi.string().min(2).max(20).required(),
+      lastName: Joi.string().min(2).max(20).required(),
+      address: Joi.string().alphanum().min(3).max(30).required(),
+      zipCode: Joi.number().integer().required(),
+      city: Joi.string().min(2).max(20).required(),
+      phoneNumber: Joi.number().integer().required(),
+      email: Joi.string().email({ minDomainSegments: 2 }),
+      password: Joi.string().regex(/^[a-zA-Z0-9]{3,30}$/)
+    }
+  }
+
+  validateBirthdayEvent() {
+
+  }
+  validateGuestUser = () => {
+    const options = { abortEarly: false }
+    const result = Joi.validate(this.props.guestUser, this.schemaGuestUser, options)
+    const result2 = Joi.validate(this.props.birthdayEvent, this.schemaPartyEvent, options)
+    console.log(result, "validation")
+
+    if (!result.error) return null
+    if (!result2.error) return null
+    this.createEvent()
+
+
+    const errors = {}
+    for (let item of result.error.details) {
+      errors[item.path[0]] = item.message
+    }
+    for (let item of result2.error.details) {
+      errors[item.path[0]] = item.message
+    }
+    console.log(errors, "these are errors")
+    return errors
+
+
   }
 
   redirectTo = (target) => {
     this.props.history.push(target)
   }
 
-  validateFirstName = () => {
-    if (this.propbs.guestUser.firstName < 2) {
-      this.errors.push({msg: 'Förnamnet måste inhålla minst två tecken'})
-      console.log(this.errors)
-    } else {
-      return
-    }
-  }
+  // validateFirstName = () => {
+  //   if (this.propbs.guestUser.firstName < 2) {
+  //     this.errors.push({ msg: 'Förnamnet måste inhålla minst två tecken' })
+  //     console.log(this.errors)
+  //   } else {
+  //     return
+  //   }
+  // }
 
-  validateLastName = () => {
-    if (this.propbs.guestUser.lastName < 2) {
-      this.errors.push({msg: 'Förnamnet måste inhålla minst två tecken'})
-      console.log(this.errors)
-    } else {
-      return
-    }
-  }
+  // validateLastName = () => {
+  //   if (this.propbs.guestUser.lastName < 2) {
+  //     this.errors.push({ msg: 'Förnamnet måste inhålla minst två tecken' })
+  //     console.log(this.errors)
+  //   } else {
+  //     return
+  //   }
+  // }
 
-  validateEmail = () => {
-    
-  }
+  // validateEmail = () => {
 
-  
+  // }
+
+
 
 
   async createEvent() {
@@ -77,7 +132,7 @@ class CreatePartyPage extends React.Component {
       attending: [],
       product: this.props.present.id,
       link: link,
-    
+
       guestUser: {
         firstName: this.props.guestUser.firstName,
         lastName: this.props.guestUser.lastName,
@@ -90,7 +145,7 @@ class CreatePartyPage extends React.Component {
       }
 
     })
-    
+
     await newEvent.save().then(data => {
       if (!data.name) {
         const target = "/kalas/" + link + "/bekräftelse"
@@ -132,7 +187,7 @@ class CreatePartyPage extends React.Component {
     return (
       <div className="createpartypage-wrapper">
         <FormContainer />
-        <Buttons createEvent={this.createEvent} />
+        <Buttons createEvent={this.validateGuestUser} />
       </div>
     )
   }
