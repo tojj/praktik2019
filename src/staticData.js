@@ -36,21 +36,21 @@ export const convincerData = [
   {
     header: "Present",
     text:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris blandit maximus nulla eget viverra. Nam porta id urna eget vestibulum.",
+      "Önska en hållbar present! Alla leksaker kommer från hållbara producenter som är måna om klimatet. Leksakerna håller länge och kan dessutom inredas med.",
     img: "/images/convincer4.jpg",
     id: 1
   },
   {
     header: "Bidra",
     text:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris blandit maximus nulla eget viverra. Nam porta id urna eget vestibulum.",
+      "Som gäst till kalaset kan man bidra till den önskade presenten. Det sparar inte bara tid utan det är också hållbart, så slipper man massa leksaker som kanske inte håller lika länge.",
     img: "/images/convincer5.jpg",
     id: 2
   },
   {
     header: "Karma",
     text:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris blandit maximus nulla eget viverra. Nam porta id urna eget vestibulum.",
+      "Ge till dem som behöver! Varför begränsa sig till en present? Skicka vidare budskapet och bidra till att någon annan får det lite bättre också.",
     img: "/images/convincer3.jpg",
     id: 3
   }
