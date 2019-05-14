@@ -19,7 +19,7 @@ module.exports = class Server {
 
   connectToDb() {
     return new Promise((resolve, reject) => {
-      mongoose.connect(process.env.MY_MONGOAPI, { useNewUrlParser: true })
+      mongoose.connect(supersecret, { useNewUrlParser: true })
       global.db = mongoose.connection
       db.on("error", () => reject("Could not connect to DB"))
       db.once("open", () => resolve("Connected to DB"))
