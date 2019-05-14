@@ -147,9 +147,6 @@ class ConfirmationPage extends React.Component {
           {this.state.emailsSent ? null : <button onClick={this.sendInvites} className="link-party-page send-button">Skicka</button>}
           <button onClick={this.redirectToYourParty} className="link-party-page conf-button">Tryck här för att komma till kalaset!</button>
         </div>
-        <div style={{ margin: '200px 0' }}>
-          {this.state.content}
-        </div>
       </div>
     )
   }

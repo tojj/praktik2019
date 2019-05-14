@@ -19,9 +19,9 @@ class DataEditor extends React.Component {
       entry[0] === 'location' || 
       entry[0] === 'swish' || 
       entry[0] === 'attending') {
-
+        return null
       } else {
-        object[entry[0]] = document.getElementById(entry[0]).value
+        return object[entry[0]] = document.getElementById(entry[0]).value
       }
     })
     if (document.getElementById('street') ||
