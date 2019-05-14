@@ -66,7 +66,7 @@ module.exports = class Server {
       
       const mailOptions = {
         from: `"Tojj" <tojjinfo@gmail.com>`,
-        bcc: `${req.body.email}`,
+        to: `${req.body.email}`,
         subject: `${req.body.subject}`,
         html: `${req.body.message}`
       }

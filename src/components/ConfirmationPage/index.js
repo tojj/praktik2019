@@ -15,6 +15,7 @@ class ConfirmationPage extends React.Component {
       emailsSent: false,
       party: '',
       content: '',
+      link: ''
     }
     this.findMatchingEvent()
     this.findMatchingEvent = this.findMatchingEvent.bind(this)
@@ -51,7 +52,10 @@ class ConfirmationPage extends React.Component {
         <a href="https://tojj.se/" style="text-decoration: none; color: #4762b7">Läs mer ></a>
       </div>
     </body>`
-    this.setState({ content: emailTemplate })
+    this.setState({ 
+      content: emailTemplate,
+      subject: party.link
+     })
   }
 
 
@@ -92,11 +96,17 @@ class ConfirmationPage extends React.Component {
       return emailList.push(email.text)
     })
     console.log(emailList);
-
-    this.sendEmail(emailList, this.state.content)
-
+    if (emailList.length > 1) {
+      for(let email of emailList) {
+        this.sendEmail(email, this.state.content, this.state.link )
+        console.log('sending to: ', email);
+        
+      }
+    } else {
+      this.sendEmail(emailList, this.state.content, this.state.link )
+    }
   }
-  sendEmail = (email, message) => {
+  sendEmail = (email, message, subject) => {
     fetch('/json/send', {
       method: 'POST',
       headers: {
@@ -105,7 +115,7 @@ class ConfirmationPage extends React.Component {
       },
       body: JSON.stringify({
         email: email,
-        subject: 'Du är bjuden!',
+        subject: 'Komsi komsi... ' + subject,
         message: message
       })
     })
