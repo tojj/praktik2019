@@ -24,7 +24,8 @@ export default {
       name: '',
       image: '',
       link: '',
-      donate: false
+      donate: false,
+      buttonSelected: false
     },
 
     present: {

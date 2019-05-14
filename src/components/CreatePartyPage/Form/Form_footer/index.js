@@ -22,8 +22,18 @@ class Form_footer extends React.Component {
     this.selectedFundraiser = ""
   }
 
-  charityToggle = () => {
-    this.setState({ charitySelected: !this.state.charitySelected })
+  selected = (e) => {
+    this.setState({ charitySelected: true })
+    this.props.updateSelectedFundraiser(
+      { buttonSelected: true })
+    console.log(e.target.id, "you clicked n")
+  }
+
+  notSelected = (e) => {
+    this.setState({ charitySelected: false })
+    this.props.updateSelectedFundraiser(
+      { buttonSelected: true })
+    console.log(e.target.id, "you clicked n")
   }
 
   async loadFundraisersAndMount() {
@@ -54,6 +64,7 @@ class Form_footer extends React.Component {
     const selectedId = e.target.id
     this.fundraiserId = selectedId
     this.getSelectedFundraiser()
+
   }
 
   /**
@@ -128,7 +139,7 @@ class Form_footer extends React.Component {
                   name="radioCharity"
                   type="radio"
                   onClick={
-                    !this.state.charitySelected ? this.charityToggle : null
+                    this.selected
                   }
                 />
                 <label className="radio-label" htmlFor="radio1">
@@ -142,7 +153,7 @@ class Form_footer extends React.Component {
                   name="radioCharity"
                   type="radio"
                   onClick={
-                    this.state.charitySelected ? this.charityToggle : null
+                    this.notSelected
                   }
                 />
                 <label className="radio-label" htmlFor="radio2">

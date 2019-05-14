@@ -11,7 +11,7 @@ class CreatePartyPage extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      eventLink: '',
+      eventLink: ''
     }
     this.errors = []
     this.createEvent = this.createEvent.bind(this)
@@ -23,93 +23,111 @@ class CreatePartyPage extends React.Component {
     // this.schemaPartyImage = {
     //   image: Joi.validate().required()
     // }
-    // this.schemaTimeAndPlace = {
-    //   desc: this.props.birthdayTimeAndPlace.description,
-    //   date: date,
-    //   rsvp: new Date(this.props.birthdayTimeAndPlace.deadline).getTime(),
+    this.schemaTimeAndPlace = {
+      description: Joi.string().min(2).max(40).required(),
+      date: Joi.date().required(),
+      deadline: Joi.date().required(),
+      street: Joi.string().min(3).max(30).required(),
+      zip: Joi.string().min(3).max(30).required(),
+      city: Joi.string().min(2).max(40).required(),
+    }
 
-    //   street: this.props.birthdayTimeAndPlace.street,
-    //   zipcode: this.props.birthdayTimeAndPlace.zip,
-    //   city: this.props.birthdayTimeAndPlace.city
-    // }
     this.schemaGuestUser = {
       firstName: Joi.string().min(2).max(20).required(),
       lastName: Joi.string().min(2).max(20).required(),
-      address: Joi.string().alphanum().min(3).max(30).required(),
+      address: Joi.string().min(3).max(30).required(),
       zipCode: Joi.number().integer().required(),
       city: Joi.string().min(2).max(20).required(),
       phoneNumber: Joi.number().integer().required(),
       email: Joi.string().email({ minDomainSegments: 2 }),
       password: Joi.string().regex(/^[a-zA-Z0-9]{3,30}$/)
     }
-
-    
   }
 
   validateBirthdayEvent = () => {
     const result = Joi.validate(this.props.birthdayEvent, this.schemaPartyEvent, {
       abortEarly: false
     })
-
-    if(!result.error) return null
-    
-
+    if (!result.error) return null
     const errors = {}
     for (let item of result.error.details) {
       errors[item.path[0]] = item.message
     }
+    this.errors.push(errors)
     console.log(errors)
   }
 
+  validateTimeAndPlace = () => {
+    const result = Joi.validate(this.props.birthdayTimeAndPlace, this.schemaTimeAndPlace, {
+      abortEarly: false
+    })
+    if (!result.error) return null
+    const errors = {}
+    for (let item of result.error.details) {
+      errors[item.path[0]] = item.message
+    }
+    this.errors.push(errors)
+    console.log(errors)
+    console.log(this.errors, "goin to constructor");
+  }
+
+
+  validatePresent = () => {
+    let selectedPresent = this.props.present.id
+    if (selectedPresent) {
+      console.log("validation passed", selectedPresent)
+    } else {
+      console.log("validation for present failed")
+      this.errors.push({ "present": "Present not selected." })
+    }
+  }
+
+
+  validateFundraiser = () => {
+    let isFundraiserSelected = this.props.fundraiser.buttonSelected
+    if (isFundraiserSelected === true) {
+      console.log("validation passed", isFundraiserSelected)
+    }
+    else {
+      console.log("validation failed for FUNDRAISER")
+      this.errors.push({ "fundraiser": "Fundraiser not selected." })
+    }
+  }
 
   validateGuestUser = () => {
     const options = { abortEarly: false }
     const result = Joi.validate(this.props.guestUser, this.schemaGuestUser, options)
     console.log(result, "validation")
-
     if (!result.error) return null
-    
-
-
-    const errors = {}
+    const errors = []
     for (let item of result.error.details) {
       errors[item.path[0]] = item.message
     }
-    
+    this.errors.push(errors)
     console.log(errors, "these are errors")
     return errors
+  }
 
-
+  validateAll = () => {
+    this.errors = []
+    this.validateBirthdayEvent()
+    this.validateTimeAndPlace()
+    this.validatePresent()
+    this.validateFundraiser()
+    this.validateGuestUser()
+    if (this.errors.length > 0) {
+      alert("validate!!!")
+      console.log(this.errors, "validation failed, here are the errors");
+    }
+    else {
+      this.createEvent()
+      console.log("validation passed");
+    }
   }
 
   redirectTo = (target) => {
     this.props.history.push(target)
   }
-
-  // validateFirstName = () => {
-  //   if (this.propbs.guestUser.firstName < 2) {
-  //     this.errors.push({ msg: 'Förnamnet måste inhålla minst två tecken' })
-  //     console.log(this.errors)
-  //   } else {
-  //     return
-  //   }
-  // }
-
-  // validateLastName = () => {
-  //   if (this.propbs.guestUser.lastName < 2) {
-  //     this.errors.push({ msg: 'Förnamnet måste inhålla minst två tecken' })
-  //     console.log(this.errors)
-  //   } else {
-  //     return
-  //   }
-  // }
-
-  // validateEmail = () => {
-
-  // }
-
-
-
 
   async createEvent() {
     const link = await this.generateLink()
@@ -198,7 +216,7 @@ class CreatePartyPage extends React.Component {
     return (
       <div className="createpartypage-wrapper">
         <FormContainer />
-        <Buttons createEvent={this.validateBirthdayEvent} />
+        <Buttons createEvent={this.validateAll} />
       </div>
     )
   }
