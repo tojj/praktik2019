@@ -1,5 +1,5 @@
 import React from 'react'
-import { Minus } from 'react-feather'
+import { Send } from 'react-feather'
 import BirthdayInvite from '../BirthdayInvite'
 import BirthdayInviteList from '../BirthdayInviteList'
 import REST from '../../REST'
@@ -52,13 +52,15 @@ class ConfirmationPage extends React.Component {
         <a href="https://tojj.se/" style="text-decoration: none; color: #4762b7">Läs mer ></a>
       </div>
     </body>`
-    this.setState({ 
+    this.setState({
       content: emailTemplate,
       subject: party.link
-     })
+    })
   }
 
-
+  componentDidMount() {
+    document.getElementById('email-input').focus()
+  }
   handleInput = e => {
     const emailText = e.target.value
     const currentEmail = { text: emailText, key: Date.now() }
@@ -76,6 +78,7 @@ class ConfirmationPage extends React.Component {
         emails: emails,
         currentEmail: { text: '', key: '' },
       })
+      document.getElementById('email-input').focus();
     }
   }
   deleteEmail = key => {
@@ -97,13 +100,13 @@ class ConfirmationPage extends React.Component {
     })
     console.log(emailList);
     if (emailList.length > 1) {
-      for(let email of emailList) {
-        this.sendEmail(email, this.state.content, this.state.link )
+      for (let email of emailList) {
+        this.sendEmail(email, this.state.content, this.state.link)
         console.log('sending to: ', email);
-        
+
       }
     } else {
-      this.sendEmail(emailList, this.state.content, this.state.link )
+      this.sendEmail(emailList, this.state.content, this.state.link)
     }
   }
   sendEmail = (email, message, subject) => {
@@ -131,12 +134,10 @@ class ConfirmationPage extends React.Component {
 
   render() {
     return (
-      <div>
-        <div className="conf-wrapper bg-white">
+      <div className="conf-wrapper">
+        <div className="invite-container">
           <h1 className="conf-headline">Grattis ditt kalas är skapat!</h1>
-          <p className="conf-info"><Minus className="delete-invite" />Nedanstående kan du bjuda in personer till kalaset, detta är givetvis valfritt. </p>
-        </div>
-        <div className="bday-invite-wrapper bg-white">
+          <p className="conf-info">Fyll i de epostadresser du vill skicka en inbjudan till.</p>
           <BirthdayInvite
             addEmail={this.addEmail}
             inputElement={this.inputElement}
@@ -144,8 +145,10 @@ class ConfirmationPage extends React.Component {
             currentEmail={this.state.currentEmail}
           />
           <BirthdayInviteList entries={this.state.emails} deleteEmail={this.deleteEmail} />
-          {this.state.emailsSent ? null : <button onClick={this.sendInvites} className="link-party-page send-button">Skicka</button>}
-          <button onClick={this.redirectToYourParty} className="link-party-page conf-button">Tryck här för att komma till kalaset!</button>
+          {this.state.emailsSent ? null : <button onClick={this.sendInvites} className="link-party-page send-button btn btn-success"><Send /> Skicka</button>}
+        </div>
+        <div className="msg-container">
+          <button onClick={this.redirectToYourParty} className="link-party-page btn btn-primary">Till kalaset!</button>
         </div>
       </div>
     )
