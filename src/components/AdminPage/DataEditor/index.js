@@ -18,7 +18,8 @@ class DataEditor extends React.Component {
       if (entry[0] === '_id' || 
       entry[0] === 'location' || 
       entry[0] === 'swish' || 
-      entry[0] === 'attending') {
+      entry[0] === 'attending' ||
+      entry[0] === 'invited') {
         return null
       } else {
         return object[entry[0]] = document.getElementById(entry[0]).value
@@ -58,6 +59,7 @@ class DataEditor extends React.Component {
             && entry[0] !== 'attending'
             && entry[0] !== 'location'
             && entry[0] !== 'swish'
+            && entry[0] !== 'invited'
             ? <div>
               <p className="object-key">{entry[0]}</p>
               {entry[0] === 'category' && this.props.newObj
