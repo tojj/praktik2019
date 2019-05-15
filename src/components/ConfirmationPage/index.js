@@ -17,13 +17,26 @@ class ConfirmationPage extends React.Component {
       content: '',
       link: ''
     }
-    this.findMatchingEvent()
     this.findMatchingEvent = this.findMatchingEvent.bind(this)
+    this.clickHandler = this.clickHandler.bind(this)
+    this.sendInvites = this.sendInvites.bind(this)
+  }
+  componentWillMount() {
+    this.findMatchingEvent()
+  }
+  componentWillUpdate() {
+      console.log(this.state.emails, 'state-emails');
+      
+  }
+  componentDidMount() {
+    document.getElementById('email-input').focus()
   }
   async findMatchingEvent() {
     const eventLink = this.props.match.params.link
     const party = await Event.find(`.find({link:"${eventLink}"}).exec()`)
-    this.setState({ party: party[0] })
+    this.setState({
+      party: party[0]
+    })
     this.updateContent(party[0])
 
   }
@@ -58,9 +71,6 @@ class ConfirmationPage extends React.Component {
     })
   }
 
-  componentDidMount() {
-    document.getElementById('email-input').focus()
-  }
   handleInput = e => {
     const emailText = e.target.value
     const currentEmail = { text: emailText, key: Date.now() }
@@ -77,10 +87,12 @@ class ConfirmationPage extends React.Component {
       this.setState({
         emails: emails,
         currentEmail: { text: '', key: '' },
+        emailsSent: false
       })
       document.getElementById('email-input').focus();
     }
   }
+
   deleteEmail = key => {
     const filteredEmails = this.state.emails.filter(email => {
       return email.key !== key
@@ -89,26 +101,31 @@ class ConfirmationPage extends React.Component {
       emails: filteredEmails
     })
   }
+  
   redirectToYourParty = () => {
     let url = window.location.pathname.split("/")
     this.props.history.push("/kalas/" + url[2])
   }
-  sendInvites = () => {
+  async clickHandler() {
+    await this.sendInvites()
+    this.setState({ emailsSent: true })
+  }
+  async sendInvites() {
     let emailList = []
     this.state.emails.map(email => {
       return emailList.push(email.text)
     })
     console.log(emailList);
-    if (emailList.length > 1) {
-      for (let email of emailList) {
-        this.sendEmail(email, this.state.content, this.state.link)
-        console.log('sending to: ', email);
-
+    for (let email of emailList) {
+      this.sendEmail(email, this.state.content, this.state.link)
+      if (!this.state.party.invited.includes(email)) {
+        this.state.party.invited.push(email)
+        await this.state.party.save()
+        this.setState({emails: []})
       }
-    } else {
-      this.sendEmail(emailList, this.state.content, this.state.link)
     }
   }
+
   sendEmail = (email, message, subject) => {
     fetch('/json/send', {
       method: 'POST',
@@ -125,17 +142,19 @@ class ConfirmationPage extends React.Component {
       .then((res) => res.json())
       .then((res) => {
         console.log('here is the response: ', res)
-        this.setState({ emailsSent: true })
       })
       .catch((err) => {
         console.error('here is the error: ', err)
       })
   }
-
+  componentDidUpdate() {
+    console.log(this.state.emailsSent);
+  }
   render() {
     return (
       <div className="conf-wrapper">
         <div className="invite-container">
+          <div className="invite-confirmation" style={this.state.emailsSent ? { display: 'block' } : { display: 'none' }} />
           <h1 className="conf-headline">Grattis ditt kalas är skapat!</h1>
           <p className="conf-info">Fyll i de epostadresser du vill skicka en inbjudan till.</p>
           <BirthdayInvite
@@ -143,12 +162,31 @@ class ConfirmationPage extends React.Component {
             inputElement={this.inputElement}
             handleInput={this.handleInput}
             currentEmail={this.state.currentEmail}
+            sent={this.state.emailsSent}
           />
-          <BirthdayInviteList entries={this.state.emails} deleteEmail={this.deleteEmail} />
-          {this.state.emailsSent ? null : <button onClick={this.sendInvites} className="link-party-page send-button btn btn-success"><Send /> Skicka</button>}
+          <BirthdayInviteList
+            entries={this.state.emails}
+            deleteEmail={this.deleteEmail}
+            invitedList={this.state.party.invited}
+          /> 
+          {this.state.emailsSent
+            ? "SKICKAT"
+            : this.state.emails < 1
+              ? <button disabled className="send-button disabled btn btn-success"><Send /> Skicka</button>
+              : <button onClick={this.clickHandler} className="send-button btn btn-success"><Send /> Skicka</button>
+          }
+          {this.state.emails < 1 && !this.state.emailsSent ? <p style={{ fontStyle: 'italic', fontSize: '.8rem', color: '#555', marginTop: '10px' }}>Lägg till minst en epost för att skicka inbjudan.</p> : null}
         </div>
         <div className="msg-container">
-          <button onClick={this.redirectToYourParty} className="link-party-page btn btn-primary">Till kalaset!</button>
+          <div className="msg-text">
+            <p>
+              Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede.
+            </p>
+            <p>
+              Vi hoppas att {this.state.party.child} får en underbar dag!
+            </p>
+            <button onClick={this.redirectToYourParty} className="party-button btn btn-info">Till kalaset!</button>
+          </div>
         </div>
       </div>
     )

@@ -23,6 +23,7 @@ let eventSchema = new Schema({
   },
   donate:     { type: Boolean },
   attending:  { type: Array },
+  invited:    { type: Array },
   product:    { type: Schema.Types.ObjectId, ref: 'Product' },
   fundraiser: { type: Schema.Types.ObjectId, ref: 'Fundraiser' },
   user:       { type: Schema.Types.ObjectId, ref: 'User' },

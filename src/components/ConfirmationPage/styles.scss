@@ -3,89 +3,118 @@
   text-align: center;
   .msg-container,
   .invite-container {
+    max-width: 1000px;
     background: #fff;
     width: 100%;
-    padding: 2rem .2rem;
+    padding: 2rem 0.2rem;
     margin: 0 auto 20px;
     @include media-breakpoint-up(md) {
       width: 80%;
       padding: 2rem;
     }
     border-radius: 5px;
-    // width: 80%;
-    // margin: 50px auto;
-    // border-radius: 5px;
-    // display: flex;
-    // justify-content: center;
-    // text-align: center;
-    // flex-direction: column;
-
-    // .conf-headline {
-    //   color: #4762b7;
-    //   margin: 2rem 0 2rem 0;
-    //   font-family: "Montserrat", sans-serif;
-    //   font-weight: 800;
-    //   font-size: 2.5rem;
-    // }
   }
   .conf-headline {
     font-family: $big-text;
     font-weight: 800;
     color: $primary;
+    margin: 2rem 0;
   }
   .invite-container {
+    position: relative;
     .email-form {
       margin: 20px auto;
       width: 100%;
-      @include media-breakpoint-up(sm){
-        width: 80%
+      @include media-breakpoint-up(sm) {
+        width: 80%;
       }
-      @include media-breakpoint-up(xl){
-        width: 50%
-      }
+      // @include media-breakpoint-up(xl) {
+      //   width: 50%;
+      // }
       .email-input {
         height: 38px;
-        border: 1px solid rgba(0,0,0,0.1);
+        border: 1px solid rgba(0, 0, 0, 0.1);
         border-top-left-radius: 4px;
         border-bottom-left-radius: 4px;
         border-right: 0;
         padding: 4px;
         min-width: 70%;
         max-width: 80%;
+        @media screen and (max-width:300px){
+          min-width: 30%;
+          max-width: 50%;
+        }
       }
       .submit-email {
         vertical-align: baseline;
         border-top-left-radius: 0;
         border-bottom-left-radius: 0;
+      }
+    }
+    .email-list-wrapper {
+      background: #eee;
+      margin: 20px auto;
+      border: 1px solid rgba(0, 0, 0, 0.1) !important;
+      border-radius: 4px;
+      height: 500px;
+      overflow-y: scroll;
+      width: calc(70% + 82.69px);
+      @include media-breakpoint-up(sm) {
+        width: calc(56% + 82.69px);
+      }
+      // @include media-breakpoint-up(xl) {
+      //   width: calc(35% + 82.69px);
+      // }
+      .email-item {
+        position: relative;
+        min-height: 75px;
+        background: white;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        text-transform: lowercase;
+        transition: all 1s;
+        .email-text {
+          position: absolute;
+          top: 33%;
+          left: 20px;
+        }
+        .sent-button{
+          position: absolute;
+          top: 33%;
+          right: 20px;
+        }
+        .delete-button {
+          position: absolute;
+          top: 33%;
+          right: 20px;
+          transition: all 0.2s;
+          &:hover {
+            color: red;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+  .msg-container {
+    .msg-text {
+      text-align: left;
 
+      h2 {
+        margin: 1rem 0;
+        font-family: $big-text;
+        font-weight: 400;
+        text-align: center;
+      }
+      p {
+        max-width: 800px;
+        margin: 0 auto 1rem;
+        padding: 0 20px;
+      }
+      .party-button {
+        display: block;
+        text-align: center;
+        margin: 2rem auto 1rem;
       }
     }
   }
 }
-
-// .bday-invite-wrapper {
-//   width: 80%;
-//   margin: 50px auto;
-//   border-radius: 5px;
-//   display: flex;
-//   justify-content: center;
-//   text-align: center;
-//   flex-direction: column;
-// }
-
-// .conf-button {
-//   margin: auto auto 40px auto;
-//   min-width: 50% !important;
-// }
-
-// .send-button {
-//   width: 50% !important;
-//   margin: 25px auto 4px auto;
-//   color: $primary;
-//   border-color: $primary;
-
-//   &:hover {
-//     background: $primary !important;
-//     color: white;
-//   }
-// }
