@@ -16,13 +16,11 @@ class CreatePartyPage extends React.Component {
     this.errors = []
     this.createEvent = this.createEvent.bind(this)
     this.schemaPartyEvent = {
-      title: Joi.string().min(2).max(20).required(),
-      name: Joi.string().min(2).max(20).required(),
-      age: Joi.number().integer().required()
+      formHeaderDataTitle: Joi.string().min(2).max(20).required(),
+      formHeaderDataName: Joi.string().min(2).max(20).required(),
+      formHeaderDataAge: Joi.number().integer().required()
     }
-    // this.schemaPartyImage = {
-    //   image: Joi.validate().required()
-    // }
+
     this.schemaTimeAndPlace = {
       description: Joi.string().min(2).max(40).required(),
       date: Joi.date().required(),
@@ -36,13 +34,17 @@ class CreatePartyPage extends React.Component {
       firstName: Joi.string().min(2).max(20).required(),
       lastName: Joi.string().min(2).max(20).required(),
       address: Joi.string().min(3).max(30).required(),
-      zipCode: Joi.number().integer().required(),
+      zipcode: Joi.number().integer().required(),
       city: Joi.string().min(2).max(20).required(),
       phoneNumber: Joi.number().integer().required(),
       email: Joi.string().email({ minDomainSegments: 2 }),
       password: Joi.string().regex(/^[a-zA-Z0-9]{3,30}$/)
     }
   }
+
+  /**
+     *Validating all inputs
+     */
 
   validateBirthdayEvent = () => {
     const result = Joi.validate(this.props.birthdayEvent, this.schemaPartyEvent, {
@@ -52,9 +54,47 @@ class CreatePartyPage extends React.Component {
     const errors = {}
     for (let item of result.error.details) {
       errors[item.path[0]] = item.message
+      let id = item.path[0]
+      console.log(item.path[0], "this is the path")
+      console.log(id, "this is the id")
+      let element = document.getElementById(id)
+      element.classList.add("invalid")
+      // document.getElementById(id).onchange = this.functiontoTest(e)
+
+      // element.addEventListener("change", this.functiontoTest(id))
+      // console.log(element, "this is interesting nowwww")
+
+
+      console.log(element.value, "the element")
     }
     this.errors.push(errors)
     console.log(errors)
+    this.functiontoTest()
+
+  }
+
+  functiontoTest = (event) => {
+    let sth = event.target.value;
+    console.log(sth, "evenet");
+  }
+  //   let element = document.getElementById(id)
+  //   console.log(element.value, "the valueeeeeeeee");
+
+  //   if (element.value.length > 2) {
+  //     element.classList.add("valid")
+  //   }
+
+  // }
+
+
+
+  vaildateImageHandler = () => {
+    let selectedImage = this.props.birthdayImage
+    if (selectedImage) {
+    } else {
+      this.errors.push({ "image": "image not chosen." })
+    }
+
   }
 
   validateTimeAndPlace = () => {
@@ -67,17 +107,13 @@ class CreatePartyPage extends React.Component {
       errors[item.path[0]] = item.message
     }
     this.errors.push(errors)
-    console.log(errors)
-    console.log(this.errors, "goin to constructor");
   }
 
 
   validatePresent = () => {
     let selectedPresent = this.props.present.id
     if (selectedPresent) {
-      console.log("validation passed", selectedPresent)
     } else {
-      console.log("validation for present failed")
       this.errors.push({ "present": "Present not selected." })
     }
   }
@@ -86,10 +122,8 @@ class CreatePartyPage extends React.Component {
   validateFundraiser = () => {
     let isFundraiserSelected = this.props.fundraiser.buttonSelected
     if (isFundraiserSelected === true) {
-      console.log("validation passed", isFundraiserSelected)
     }
     else {
-      console.log("validation failed for FUNDRAISER")
       this.errors.push({ "fundraiser": "Fundraiser not selected." })
     }
   }
@@ -97,20 +131,19 @@ class CreatePartyPage extends React.Component {
   validateGuestUser = () => {
     const options = { abortEarly: false }
     const result = Joi.validate(this.props.guestUser, this.schemaGuestUser, options)
-    console.log(result, "validation")
     if (!result.error) return null
     const errors = []
     for (let item of result.error.details) {
       errors[item.path[0]] = item.message
     }
     this.errors.push(errors)
-    console.log(errors, "these are errors")
     return errors
   }
 
   validateAll = () => {
     this.errors = []
     this.validateBirthdayEvent()
+    this.vaildateImageHandler()
     this.validateTimeAndPlace()
     this.validatePresent()
     this.validateFundraiser()

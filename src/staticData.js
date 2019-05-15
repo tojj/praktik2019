@@ -70,23 +70,23 @@ export const productData = [
 ]
 
 export const formHeaderData = {
-  title: {
+  formHeaderDataTitle: {
     className: " input100 form-control",
     defaultValue: "Dunderkalas med hoppborg!",
     text: "Vad vill du ha som rubrik?",
-    id: 1
+    id: "formHeaderDataTitle"
   },
-  name: {
+  formHeaderDataName: {
     className: " input50 form-control",
     defaultValue: "Kent",
     text: "Vem är kalaset för?",
-    id: 2
+    id: "formHeaderDataName"
   },
-  age: {
+  formHeaderDataAge: {
     className: "input25 form-control",
     defaultValue: "6",
     text: "Hur mycket fylls?",
-    id: 3
+    id: "formHeaderDataAge"
   }
 }
 

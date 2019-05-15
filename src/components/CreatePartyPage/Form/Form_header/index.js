@@ -10,6 +10,7 @@ import {
 } from 'reactstrap'
 
 
+
 class Form_header extends Component {
 
   /**
@@ -19,7 +20,7 @@ class Form_header extends Component {
   simpleAction = (event) => {
     this.props.updateBday(event.target.value)
   }
-      
+
   /**
    * Rendering my input fields here, so all three are shows
    * I am doing this using Object.keys and map
@@ -31,16 +32,19 @@ class Form_header extends Component {
 
 
   renderInput = key => (
-    <FormGroup key={key}>
+    <FormGroup key={key} >
       <Label className="birthday-label">
         {formHeaderData[key].text}
       </Label>
       <Input
+        id={formHeaderData[key].id}
         className={formHeaderData[key].className}
         keyVal={key}
         val={this.props.birthdayEvent[key]}
         callback={this.callback}
         placeholder={formHeaderData[key].defaultValue}
+
+
       />
     </FormGroup>
   )

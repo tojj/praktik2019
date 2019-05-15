@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Input = ({ val, callback, keyVal, placeholder, className }) => {
+const Input = ({ val, callback, keyVal, placeholder, className, id }) => {
   /**
    * Handles onChange
    * @param value
@@ -18,6 +18,7 @@ const Input = ({ val, callback, keyVal, placeholder, className }) => {
       value={val}
       placeholder={placeholder}
       className={className}
+      id={id}
     />
   )
 }
