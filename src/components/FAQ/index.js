@@ -83,7 +83,6 @@ class FAQ extends React.Component {
   async renderCategoryContent(category) {
     if(category === 'kontakt'){
       this.setState({ categoryContent: <ContactForm />})
-      return
     }
     const allCategoryQnaData = await Qna.find(`.find({ category: "${category}" }).sort({counter: -1}).exec()`)
     
