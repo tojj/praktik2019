@@ -10,7 +10,8 @@ class BirthdayInviteList extends Component {
   }
   createTasks = email => {
     if (email instanceof Object) {
-
+      console.log('adding new email');
+      
       return (
         <div className="email-item" key={email.key}>
           <p className="email-text">{email.text} </p>
@@ -19,6 +20,8 @@ class BirthdayInviteList extends Component {
       )
     }
     else {
+      console.log('adding old email');
+
       return (
         <div className="email-item" key={email}>
           <p className="email-text">{email}</p>
@@ -27,17 +30,21 @@ class BirthdayInviteList extends Component {
       )
     }
   }
-
+  
   componentWillReceiveProps() {
     if (this.props.invitedList) {
       const listInvited = this.props.invitedList.map(this.createTasks)
+      console.log(listInvited, 'list');
+      console.log(this.props.invitedList, 'props');
+      
+      
       this.invited = listInvited
     }
   }
   render() {
     const todoEntries = this.props.entries
     const listEmails = todoEntries.map(this.createTasks)
-
+  
 
     return (
       <div className="email-list-wrapper">

@@ -5,14 +5,15 @@ class BirthdayInvite extends React.Component {
     super(props)
     this.state = {
       emailError: false,
-      invited: this.props.invitedList
+      invited: ''
     }
   }
   submitForm = (e) => {
     e.preventDefault()
     const email = document.getElementById('email-input').value
-    const emailList = this.props.invitedList.push(email)
-    this.setState({ invited: emailList })
+    const emailList = this.props.invitedList.concat() // concat prevents mutation of original array
+    const newEmailList = emailList.push(email)
+    this.setState({ invited: newEmailList })
     this.props.addEmail(e)
   }
   onEnterPress = (e) => {
