@@ -1,7 +1,7 @@
 import React from 'react'
 import { Send } from 'react-feather'
-import BirthdayInvite from '../BirthdayInvite'
-import BirthdayInviteList from '../BirthdayInviteList'
+import BirthdayInvite from './BirthdayInvite/index'
+import BirthdayInviteList from './BirthdayInviteList/index'
 import REST from '../../REST'
 
 class Event extends REST { }
@@ -23,10 +23,6 @@ class ConfirmationPage extends React.Component {
   }
   componentWillMount() {
     this.findMatchingEvent()
-  }
-  componentWillUpdate() {
-      console.log(this.state.emails, 'state-emails');
-      
   }
   componentDidMount() {
     document.getElementById('email-input').focus()
@@ -76,7 +72,7 @@ class ConfirmationPage extends React.Component {
     const currentEmail = { text: emailText, key: Date.now() }
     this.setState({
       currentEmail
-    })
+    })    
   }
 
   addEmail = e => {
@@ -147,9 +143,6 @@ class ConfirmationPage extends React.Component {
         console.error('here is the error: ', err)
       })
   }
-  componentDidUpdate() {
-    console.log(this.state.emailsSent);
-  }
   render() {
     return (
       <div className="conf-wrapper">
@@ -163,6 +156,7 @@ class ConfirmationPage extends React.Component {
             handleInput={this.handleInput}
             currentEmail={this.state.currentEmail}
             sent={this.state.emailsSent}
+            invitedList={this.state.party.invited}
           />
           <BirthdayInviteList
             entries={this.state.emails}

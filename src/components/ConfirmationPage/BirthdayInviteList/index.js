@@ -6,14 +6,11 @@ class BirthdayInviteList extends Component {
     super(props)
 
     this.invited = []
-    console.log(this.invited);
 
   }
   createTasks = email => {
     if (email instanceof Object) {
-      console.log(this.invited);
 
-      console.log('im an object', email);
       return (
         <div className="email-item" key={email.key}>
           <p className="email-text">{email.text} </p>
@@ -22,7 +19,6 @@ class BirthdayInviteList extends Component {
       )
     }
     else {
-      console.log('NOT an object', email);
       return (
         <div className="email-item" key={email}>
           <p className="email-text">{email}</p>
@@ -46,8 +42,8 @@ class BirthdayInviteList extends Component {
     return (
       <div className="email-list-wrapper">
         <div className="email-list-container">
-          {this.invited}
           {listEmails}
+          {this.invited}
         </div>
       </div>
     )

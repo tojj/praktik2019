@@ -23,14 +23,11 @@
   .invite-container {
     position: relative;
     .email-form {
-      margin: 20px auto;
+      margin: 40px auto 20px;
       width: 100%;
       @include media-breakpoint-up(sm) {
         width: 80%;
       }
-      // @include media-breakpoint-up(xl) {
-      //   width: 50%;
-      // }
       .email-input {
         height: 38px;
         border: 1px solid rgba(0, 0, 0, 0.1);
@@ -62,9 +59,6 @@
       @include media-breakpoint-up(sm) {
         width: calc(56% + 82.69px);
       }
-      // @include media-breakpoint-up(xl) {
-      //   width: calc(35% + 82.69px);
-      // }
       .email-item {
         position: relative;
         min-height: 75px;
