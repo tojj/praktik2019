@@ -23,6 +23,10 @@
       "route": "/"
     },
     {
+      "name": "Hjälp",
+      "route": "/vanliga-fragor"
+    },
+    {
       "name": "Kontakt",
       "route": "contact-us"
     }
