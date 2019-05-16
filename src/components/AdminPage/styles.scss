@@ -1,4 +1,5 @@
 .admin-wrapper {
+  max-width: 1000px;
   width: 100%;
   padding: 0.5rem;
   @include media-breakpoint-up(md) {
@@ -9,8 +10,10 @@
   border-radius: 5px;
   background: #fff;
   h2 {
-    text-align: center;
+    margin: 2rem 0 6rem;
     font-family: $big-text;
+    font-weight: 400;
+    text-align: center;
   }
   .category-holder {
     width: 100%;
@@ -100,7 +103,7 @@
     padding: 5px;
     margin: 10px 0;
     text-align: left;
-    &:hover{
+    &:hover {
       background: $primary !important;
       color: #fff;
       cursor: pointer;
