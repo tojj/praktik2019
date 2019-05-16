@@ -111,7 +111,6 @@ class ConfirmationPage extends React.Component {
     this.state.emails.map(email => {
       return emailList.push(email.text)
     })
-    console.log(emailList);
     for (let email of emailList) {
       this.sendEmail(email, this.state.content, this.state.link)
       if (!this.state.party.invited.includes(email)) {

@@ -10,7 +10,6 @@ class BirthdayInviteList extends Component {
   }
   createTasks = email => {
     if (email instanceof Object) {
-      console.log('adding new email');
       
       return (
         <div className="email-item" key={email.key}>
@@ -20,7 +19,6 @@ class BirthdayInviteList extends Component {
       )
     }
     else {
-      console.log('adding old email');
 
       return (
         <div className="email-item" key={email}>
@@ -33,10 +31,7 @@ class BirthdayInviteList extends Component {
   
   componentWillReceiveProps() {
     if (this.props.invitedList) {
-      const listInvited = this.props.invitedList.map(this.createTasks)
-      console.log(listInvited, 'list');
-      console.log(this.props.invitedList, 'props');
-      
+      const listInvited = this.props.invitedList.map(this.createTasks)      
       
       this.invited = listInvited
     }
