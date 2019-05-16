@@ -1,23 +1,28 @@
 export const aboutData = [
   {
     text:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipisicing elit.Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
+      "Är det så enkelt? Ja, absolut! Dagens livsstil förutsätter att så mycket som möjligt ska hinnas med och gärna samtidigt. TOJJ finns för att underlätta för föräldrar som ska planera barnkalas.",
     id: 1
   },
   {
     text:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "På vår sida kan du enkelt skapa en digital kalasinbjudan och dessutom lägga in en present till födelsedagsbarnet. Tillsammans med våra samarbetspartners erbjuder vi ett leksakssortiment som är klimatsmart och hållbart - för barnens skull.",
     id: 2
   },
   {
     text:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem dolor. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "Men det är bara början på enkhelheten. Gästerna ska ju också kunna ta del av den och på TOJJ kan man bjuda in gästerna via e-post när kalasinbjudan har skapats. Med den inbjudan kan gästerna förutom att svara också bidra till den utvalda presenten till kalaset.",
     id: 3
   },
   {
     text:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem dolor sed do eiusmod. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "Förutom att ta hand om vår planet genom att göra hållbara val, så får vi inte glömma att ta hand om varandra också. Därför uppmuntras det att bidra till välgörenhet och chansen att göra det bättre för andra barn.",
     id: 4
+  },
+  {
+    text:
+      "Genom TOJJ sparar alla tid så man kan fokusera på annat, som att skapa fina minnen och ge vidare till välgörenhet. En win-win helt enkelt! ",
+    id: 5
   }
 ]
 
