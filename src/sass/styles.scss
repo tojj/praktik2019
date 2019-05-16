@@ -10,27 +10,27 @@
 
 // Import all our sass-files
 // HEADER
-@import "../Components/Header/styles";
-@import "../Components/Header/Navbar/styles";
+@import "../components/Header/styles";
+@import "../components/Header/Navbar/styles";
 
 // STARTPAGE
 @import "../components/StartPage/styles";
 @import "../components/StartPage/EyeCatcher/styles";
-@import "../Components/StartPage/ProductInfo/styles";
+@import "../components/StartPage/ProductInfo/styles";
 @import "../components/StartPage/Convincer/styles";
-@import "../Components/StartPage/about_us/styles";
+@import "../components/StartPage/about_us/styles";
 
 // CREATEPARTYPAGE
 @import "../components/CreatePartyPage/styles";
 @import "../components/CreatePartyPage/Form/styles";
-@import "../components/CreatePartyPage/form/Form_header/styles";
-@import "../components/CreatePartyPage/form/Form_header/ImageHandler/styles";
+@import "../components/CreatePartyPage/Form/Form_header/styles";
+@import "../components/CreatePartyPage/Form/Form_header/ImageHandler/styles";
 @import "../components/CreatePartyPage/Form/Form_body/styles";
 @import "../components/CreatePartyPage/Form/Form_body/Event_input/styles";
-@import "../components/CreatePartyPage/form/Form_body/SwishQR/styles";
-@import "../components/CreatePartyPage/form/Form_footer/styles";
+@import "../components/CreatePartyPage/Form/Form_body/SwishQR/styles";
+@import "../components/CreatePartyPage/Form/Form_footer/styles";
 @import "../components/CreatePartyPage/Form/Form_footer/Checkout/styles";
-@import "../components/CreatePartyPage/form/Web_shop/style";
+@import "../components/CreatePartyPage/Form/Web_shop/style";
 
 // PARTYPAGE
 @import "../components/PartyPage/styles";
@@ -51,4 +51,4 @@
 @import "../components/ConfirmationPage/styles";
 
 // FOOTER
-@import "../Components/Footer/styles";
+@import "../components/Footer/styles";

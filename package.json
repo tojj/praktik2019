@@ -2,6 +2,10 @@
   "name": "tojj",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": "10.9.0",
+    "npm": "6.x"
+  },
   "dependencies": {
     "axios": "^0.18.0",
     "bcryptjs": "^2.4.3",
@@ -35,7 +39,8 @@
     "redux-logger": "^3.0.6",
     "redux-saga": "^1.0.2",
     "redux-thunk": "^2.3.0",
-    "slick-carousel": "^1.8.1"
+    "slick-carousel": "^1.8.1",
+    "redux-devtools-extension": "^2.13.8"
   },
   "scripts": {
     "start": "concurrently \"react-scripts start\" \"nodemon index\"",
