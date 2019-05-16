@@ -10,6 +10,7 @@
     "classnames": "^2.2.6",
     "concurrently": "^4.1.0",
     "connect-mongo": "^2.0.3",
+    "dotenv": "^8.0.0",
     "express": "^4.16.4",
     "express-session": "^1.15.6",
     "http-proxy-middleware": "^0.19.1",
@@ -36,8 +37,9 @@
     "slick-carousel": "^1.8.1"
   },
   "scripts": {
-    "start": "concurrently \"react-scripts start\" \"nodemon index\"",
+    "start": "concurrently \"react-scripts start\" \"nodemon server\"",
     "build": "react-scripts build",
+    "prod": "npm run build && node server.js",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

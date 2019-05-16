@@ -2,39 +2,34 @@ const express = require('express')
 const mongoose = require('mongoose')
 const http = require('http')
 const bodyParser = require('body-parser')
-const supersecret = require('./supersecret')
 const CreateRestRoutes = require('./CreateRestRoutes')
+const { db_host, port } = require('./config/keys');
 
-
-
-module.exports = class Server {
+class Server {
   constructor() {
     this.start()
   }
 
   async start() {
-    await this.connectToDb()
     await this.startWebServer()
   }
 
-  connectToDb() {
-    return new Promise((resolve, reject) => {
-      mongoose.connect(supersecret, { useNewUrlParser: true })
-      global.db = mongoose.connection
-      db.on("error", () => reject("Could not connect to DB"))
-      db.once("open", () => resolve("Connected to DB"))
-    })
-  }
-
   /**
-   * Startar webbservern åt oss. 
+   * Startar webbservern åt oss.
    */
-
   startWebServer() {
 
     const app = express()
+    app.use(express.static(`${__dirname}/build`));
 
     app.use(bodyParser.json())
+
+   // Connect to DB.
+   mongoose.connect(db_host, { useNewUrlParser: true })
+      .then(() => console.log('MongoDB connected'))
+      .catch(err => console.log(err));
+
+   global.db = mongoose.connection
 
     const models = {
       users: require('./models/User'),
@@ -52,8 +47,9 @@ module.exports = class Server {
     })
 
     const server = http.Server(app)
-    server.listen(3001, () => console.log('Tojj Server is on port 3001'))
-
+    server.listen(port, () => console.log(`Tojj Server is on port ${port}`))
   }
 
 }
+
+new Server()

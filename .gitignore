@@ -63,5 +63,5 @@ typings/
 # CSS
 *.css
 
-# DB Connection / data imports to db
-supersecret.js
+# production
+/build
