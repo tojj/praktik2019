@@ -68,3 +68,6 @@ supersecret.js
 
 # Mailserver API key
 secretmail.js
+
+#
+.env
