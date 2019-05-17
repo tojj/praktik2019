@@ -21,8 +21,13 @@ export const aboutData = [
   },
   {
     text:
-      "Genom TOJJ sparar alla tid så man kan fokusera på annat, som att skapa fina minnen och ge vidare till välgörenhet. En win-win helt enkelt! ",
+      "Genom TOJJ sparar alla tid så man kan fokusera på annat, som att skapa fina minnen och ge vidare till välgörenhet.  ",
     id: 5
+  },
+  {
+    text:
+      "En win-win helt enkelt!",
+    id: 6
   }
 ]
 
