@@ -7,7 +7,6 @@ const bodyParser = require('body-parser')
 const CreateRestRoutes = require('./CreateRestRoutes')
 const nodemailer = require('nodemailer')
 const path = require('path');
-const {mongodb} = require('./config/keys')
 require('dotenv').config()
 
 
