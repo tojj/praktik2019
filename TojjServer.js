@@ -2,10 +2,14 @@ const express = require('express')
 const mongoose = require('mongoose')
 const http = require('http')
 const bodyParser = require('body-parser')
-const supersecret = require('./supersecret')
-const secretmail = require('./secretmail')
+// const supersecret = require('./supersecret')
+// const secretmail = require('./secretmail')
 const CreateRestRoutes = require('./CreateRestRoutes')
 const nodemailer = require('nodemailer')
+const path = require('path');
+const {mongodb} = require('./config/keys')
+require('dotenv').config()
+
 
 module.exports = class Server {
   constructor() {
@@ -18,8 +22,8 @@ module.exports = class Server {
   }
 
   connectToDb() {
-    return new Promise((resolve, reject) => {
-      mongoose.connect(supersecret, { useNewUrlParser: true })
+    return new Promise((resolve, reject) => {      
+      mongoose.connect(process.env.MONGO_API, { useNewUrlParser: true })
       global.db = mongoose.connection
       db.on("error", () => reject("Could not connect to DB"))
       db.once("open", () => resolve("Connected to DB"))
@@ -35,6 +39,8 @@ module.exports = class Server {
     const app = express()
 
     app.use(bodyParser.json())
+    
+    // app.use(express.static(path.join(__dirname, 'build')));
 
     const models = {
       users: require('./models/User'),
@@ -48,29 +54,29 @@ module.exports = class Server {
 
     new CreateRestRoutes(app, global.db, models)
 
-   
 
-    app.post('/json/send', function(req, res, next) {        
+
+    app.post('/json/send', function (req, res, next) {
       const transporter = nodemailer.createTransport({
         host: "smtp.sendgrid.net",
         port: 465,
         secure: true,
         auth: {
           user: 'apikey',
-          pass: secretmail
+          pass: process.env.MAIL_API
         },
         tls: {
           rejectUnauthorized: false
         }
       })
-      
+
       const mailOptions = {
         from: `"Tojj" <tojjinfo@gmail.com>`,
         to: `${req.body.email}`,
         subject: `${req.body.subject}`,
         html: `${req.body.message}`
       }
-      transporter.sendMail(mailOptions, function(err, res) {
+      transporter.sendMail(mailOptions, function (err, res) {
         if (err) {
           console.error('there was an error: ', err);
         } else {
@@ -81,6 +87,7 @@ module.exports = class Server {
     app.all('/json/*', (req, res) => {
       res.json({ url: req.url, ok: true })
     })
+    
     const server = http.Server(app)
     server.listen(3001, () => console.log('Tojj Server is on port 3001'))
 
