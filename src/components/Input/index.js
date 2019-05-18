@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Input = ({ val, callback, keyVal, placeholder, className, id }) => {
+const Input = ({ val, callback, keyVal, placeholder, className, id, validateThis }) => {
   /**
    * Handles onChange
    * @param value

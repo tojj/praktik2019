@@ -15,6 +15,7 @@ export const UPDATE_FUNDRAISER = 'UPDATE_FUNDRAISER'
 export const UPDATE_GUEST_USER_DETAILS = 'UPDATE_GUEST_USER_DETAILS'
 export const UPDATE_IMAGE = 'UPDATE_IMAGE'
 export const UPDATE_PRODUCT_INFO = 'UPDATE_PRODUCT_INFO'
+export const UPDATE_VALIDATION = "UPDATE_VALIDATION"
 
 
 
@@ -88,5 +89,11 @@ export const updateGuestDetails = data => ({
 
 export const doUpdateGuestDetails = data => ({
   type: UPDATE_GUEST_USER_DETAILS,
+  data
+})
+
+
+export const doUpdateValidation = data => ({
+  type: UPDATE_VALIDATION,
   data
 })

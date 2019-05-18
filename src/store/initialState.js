@@ -5,6 +5,11 @@ export default {
       formHeaderDataTitle: '',
       formHeaderDataName: '',
       formHeaderDataAge: '',
+
+    },
+    input: {
+      isValid: false,
+      notValidatedYet: false
     },
 
     birthdayTimeAndPlace: {

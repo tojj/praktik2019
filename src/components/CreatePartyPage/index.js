@@ -45,43 +45,70 @@ class CreatePartyPage extends React.Component {
   /**
      *Validating all inputs
      */
+  basicValidation = () => {
+    if (this.props.input.isValid) {
+      console.log("props shows it's invalid");
+    }
+  }
 
   validateBirthdayEvent = () => {
     const result = Joi.validate(this.props.birthdayEvent, this.schemaPartyEvent, {
       abortEarly: false
     })
+
     if (!result.error) return null
+
+    //if there are errors:
+
     const errors = {}
     for (let item of result.error.details) {
       errors[item.path[0]] = item.message
       let id = item.path[0]
       console.log(item.path[0], "this is the path")
       console.log(id, "this is the id")
+
+
       let element = document.getElementById(id)
-      element.classList.add("invalid")
-      // document.getElementById(id).onchange = this.functiontoTest(e)
+      console.log(element, id);
+      element.addEventListener("change", function () {
+        console.log('imchanging');
 
-      // element.addEventListener("change", this.functiontoTest(id))
-      // console.log(element, "this is interesting nowwww")
+      })
+
+      // if (this.props.input.isValid === false) {
+
+      //   element.classList.add("invalid")
+      // }
 
 
-      console.log(element.value, "the element")
+
     }
+
+
     this.errors.push(errors)
     console.log(errors)
-    this.functiontoTest()
+
 
   }
 
-  functiontoTest = (event) => {
-    let sth = event.target.value;
-    console.log(sth, "evenet");
-  }
-  //   let element = document.getElementById(id)
-  //   console.log(element.value, "the valueeeeeeeee");
+  // addColor(element) {
 
-  //   if (element.value.length > 2) {
+  //   if (this.props.birthdayEvent.id === undefined) {
+
+  //     console.log("in the function");
+  //   }
+  //   else {
   //     element.classList.add("valid")
+  //   }
+  // }
+
+  // functiontoTest = (e) => {
+  //   console.log('im changing');
+
+  //   // console.log(e.target.value, "the valueeeeeeeee");
+  //   if (e.value.length > 2) {
+  //     e.classList.remove("invalid")
+
   //   }
 
   // }
@@ -149,8 +176,8 @@ class CreatePartyPage extends React.Component {
     this.validateFundraiser()
     this.validateGuestUser()
     if (this.errors.length > 0) {
-      alert("validate!!!")
-      console.log(this.errors, "validation failed, here are the errors");
+      // alert("validate!!!")
+      console.log(this.errors.length, "validation failed, here are the errors");
     }
     else {
       this.createEvent()
@@ -220,7 +247,10 @@ class CreatePartyPage extends React.Component {
 
 
   }
+  test = (e) => {
+    console.log('Im changing:', e.value);
 
+  }
   /**
    * Link will be equal to the first 2 letters of the 
    * birthday child's name, uppercased. Followed by the age 
@@ -248,8 +278,9 @@ class CreatePartyPage extends React.Component {
   render() {
     return (
       <div className="createpartypage-wrapper">
-        <FormContainer />
+        <FormContainer test={this.test} />
         <Buttons createEvent={this.validateAll} />
+        {this.errors.length > 6 ? <p> There are mistakes</p> : ""}
       </div>
     )
   }
@@ -264,6 +295,7 @@ const mapStateToProps = state => {
     present: state.birthday.present,
     swishMoney: state.swish.swishMoney,
     guestUser: state.birthday.guestUser,
+    input: state.birthday.input
   }
 }
 
