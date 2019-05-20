@@ -108,7 +108,7 @@ class PartyPage extends React.Component {
               </div>
             </div>
             <div className="print-me">
-              <p className="help-text">Tojj.se är ett verktyg för att anordna kalas och inbjudningar. Vid frågor eller funderingar besök <a href="tojj.se/vanliga-fragor">tojj.se/vanliga-fragor</a>
+              <p className="help-text">Tojj.se är ett verktyg för att anordna kalas och inbjudningar. Vid frågor eller funderingar besök <a href="https://tojj.se/vanliga-fragor">https://tojj.se/vanliga-fragor</a>
                 
               </p>
             </div>
@@ -126,8 +126,7 @@ class PartyPage extends React.Component {
                 </div>
                 <p>Swish</p>
                 <p>
-                  Skanna koden ovan med hjälp av swish-appen för att betala
-                  {party.swish.amount} kronor av presenten
+                  Skanna koden ovan med hjälp av swish-appen för att betala {party.swish.amount} kronor av presenten.
                 </p>
                 <a
                   href="/vanliga-fragor/avtal"
@@ -147,8 +146,7 @@ class PartyPage extends React.Component {
                 </div>
                 <p>Present</p>
                 <p>
-                  Pengarna som samlas in kommer att gå till att köpa
-                  {party.product.name} som {party.child} önskar sig.
+                  Pengarna som samlas in kommer att gå till att köpa {party.product.name} som {party.child} önskar sig.
                 </p>
                 <a
                   href={party.product.link}
@@ -169,8 +167,7 @@ class PartyPage extends React.Component {
                   </div>
                   <p>Överskott</p>
                   <p>
-                    Eventuellt överskott har vi valt att skänka direkt till
-                    {party.fundraiser.name}. Om du vill veta mer om
+                    Eventuellt överskott har vi valt att skänka direkt till {party.fundraiser.name}. Om du vill veta mer om
                     organisationen kan du klicka nedan.
                   </p>
                   <a
