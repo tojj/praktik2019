@@ -24,7 +24,7 @@ class BirthdayInvite extends React.Component {
   }
   onChange = (e) => {
     this.props.handleInput(e)
-    if (this.props.invitedList.includes(e.target.value)) {
+    if (this.props.invitedList && this.props.invitedList.includes(e.target.value)) {
       this.setState({ emailError: true })
     } else {
       this.setState({ emailError: false })
@@ -50,9 +50,9 @@ class BirthdayInvite extends React.Component {
             type="email"
             style={this.state.emailError ? { background: 'rgba(255,200,200,0.5' } : {}}
           />
-          {this.state.emailError
-            ? <button type="submit" id="submit-email" disabled className="submit-email btn disabled btn-outline-info">Lägg till</button>
-            : <button type="submit" id="submit-email" className="submit-email btn btn-outline-info">Lägg till</button>
+          {this.state.emailError || (document.getElementById('email-input') && document.getElementById('email-input').value.length < 1)
+            ? <button type="submit" id="submit-email" disabled className="submit-email btn disabled btn-outline-info">Bjud in</button>
+            : <button type="submit" id="submit-email" className="submit-email btn btn-outline-info">Bjud in</button>
           }
 
         </form>

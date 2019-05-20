@@ -57,7 +57,7 @@ class ConfirmationPage extends React.Component {
       </div>
       <div style="padding: 20px 50px; background: #fff; max-width: 600px; margin: 0 auto; box-shadow: 0 0 5px 0px rgba(0,0,0,0.4)">
         <h4 style="font-weight: bold">Vad är Tojj?</h4>
-        <p>Lorem ipsum dolor sit amet; consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh; viverra non; semper suscipit; posuere a; pede.</p>
+        <p>Ingen mer stress kopplad till kalasfirande! Hos Tojj kan man skapa en digital kalasinbjudan och låta de inbjudna gästerna bidra till en bestämd present till födelsedagsbarnet. Enkelt för alla och som grädde på moset kan man välja att bidra till en välgörenhet.</p>
         <a href="https://tojj.se/" style="text-decoration: none; color: #4762b7">Läs mer ></a>
       </div>
     </body>`
@@ -130,7 +130,7 @@ class ConfirmationPage extends React.Component {
       },
       body: JSON.stringify({
         email: email,
-        subject: 'Komsi komsi... ' + subject,
+        subject: `Inbjudan till kalas ${subject}`,
         message: message
       })
     })
@@ -146,8 +146,9 @@ class ConfirmationPage extends React.Component {
     return (
       <div className="conf-wrapper">
         <div className="invite-container">
-          <div className="invite-confirmation" style={this.state.emailsSent ? { display: 'block' } : { display: 'none' }} />
           <h1 className="conf-headline">Grattis ditt kalas är skapat!</h1>
+          <p className="conf-info my-4">En bekräftelse har skickats till den den mail du angav i förra steget.</p>
+
           <p className="conf-info">Fyll i de epostadresser du vill skicka en inbjudan till.</p>
           <BirthdayInvite
             addEmail={this.addEmail}
