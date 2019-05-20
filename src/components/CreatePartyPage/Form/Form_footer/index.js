@@ -1,8 +1,12 @@
 import React from "react"
 import Slider from "react-slick"
+import Checkout from "../Form_footer/Checkout/index"
 import REST from "../../../../REST"
+import { connect } from 'react-redux'
+import { doUpdateFundraiser } from '../../../../store/Birthday/BirthdayActions'
 
-class Fundraiser extends REST {}
+
+class Fundraiser extends REST { }
 
 class Form_footer extends React.Component {
   constructor(props) {
@@ -14,8 +18,10 @@ class Form_footer extends React.Component {
     this.allFundraisersData = []
     this.allFundraisers = []
     this.loadFundraisersAndMount()
+    this.fundraiserId = ""
+    this.selectedFundraiser = ""
   }
-  
+
   charityToggle = () => {
     this.setState({ charitySelected: !this.state.charitySelected })
   }
@@ -24,19 +30,52 @@ class Form_footer extends React.Component {
     this.allFundraisersData = await Fundraiser.find()
     this.allFundraisers = this.allFundraisersData.map((fundraiser, i) => {
       return (
-        <div className="slider-div" key={"fundraiser_" + i} id={fundraiser._id}>
+        <div className="slider-div" key={"fundraiser_" + i}>
           <div className="charity-overlay" />
           <div className="charity-checkmark" />
           <img
             className="charImg"
             src={fundraiser.image}
             alt={fundraiser.name}
+            id={fundraiser._id}
+            onClick={this.findFundraisersId}
           />
         </div>
       )
     })
     this.setState({ sliderContent: this.allFundraisers })
   }
+
+  /**
+  * Getting selected Fundraiser
+  */
+
+  findFundraisersId = (e) => {
+    const selectedId = e.target.id
+    this.fundraiserId = selectedId
+    this.getSelectedFundraiser()
+  }
+
+  /**
+   * Searching for the selected Fundraiser in the
+   * database and updating Redux state
+   */
+
+  async getSelectedFundraiser() {
+    this.selectedFundraiser = await Fundraiser.find(`.find({_id: '${this.fundraiserId}'})`)
+    let fundraiser = {
+      id: this.selectedFundraiser[0]._id,
+      name: this.selectedFundraiser[0].name,
+      image: this.selectedFundraiser[0].image,
+      link: this.selectedFundraiser[0].link,
+      donate: true
+    }
+    this.props.updateSelectedFundraiser(
+      fundraiser
+    )
+  }
+
+
   render() {
     const settings = {
       dots: true,
@@ -86,7 +125,7 @@ class Form_footer extends React.Component {
                 <input
                   className="radio-input"
                   id="radio1"
-                  name="radio"
+                  name="radioCharity"
                   type="radio"
                   onClick={
                     !this.state.charitySelected ? this.charityToggle : null
@@ -100,7 +139,7 @@ class Form_footer extends React.Component {
                 <input
                   className="radio-input"
                   id="radio2"
-                  name="radio"
+                  name="radioCharity"
                   type="radio"
                   onClick={
                     this.state.charitySelected ? this.charityToggle : null
@@ -125,9 +164,26 @@ class Form_footer extends React.Component {
             </div>
           </div>
         ) : null}
+        <Checkout />
       </div>
     )
   }
 }
 
-export default Form_footer
+const mapStateToProps = state => {
+  return {
+    fundraiser: state.birthday.fundraiser
+  }
+}
+
+const mapDispatchToProps = dispatch => ({
+  updateSelectedFundraiser: (data) => dispatch(doUpdateFundraiser(data))
+})
+
+
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Form_footer)
+
+
+

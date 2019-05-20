@@ -54,7 +54,7 @@ class Form_header extends Component {
   render() {
     return (
       <div className="form-header-container">
-        <div className="box-container force-top">
+        <div className="box-container" style={{zIndex:'30'}}>
           <div className="box text-left">
             <h2 className="form-headline">Skapa Kalas</h2>
             <div>

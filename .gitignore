@@ -63,5 +63,7 @@ typings/
 # CSS
 *.css
 
+#
+.env
 # production
 /build

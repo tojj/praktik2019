@@ -1,0 +1,177 @@
+.box-details-container {
+  display: flex;
+  flex-direction: column;
+  padding: 8vh 0;
+
+  @include media-breakpoint-up(lg) {
+    flex-direction: column;
+    //padding: 5vw 0 !important;
+  }
+  position: relative;
+  width: 100%;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+
+  .box {
+    width: 100%;
+
+    .iconFeather {
+      width: 12px;
+      position: absolute;
+      top: 0;
+    }
+
+    .user-form-links {
+      text-decoration: none;
+    }
+
+    .form-header {
+      text-align: center;
+      color: $primary;
+      padding-bottom: 2vh;
+      font-weight: 700;
+      font-family: $big-text;
+      padding-bottom: 5vh;
+    }
+
+    .registration-text-log-in {
+      font-size: 14px !important;
+      margin-top: 2%;
+      @include media-breakpoint-up(lg) {
+        padding-top: 1%;
+        font-size: 13px !important;
+        width: 35%;
+        margin: 0 auto;
+        margin-bottom: 3%;
+        .login-link {
+          color: $primary;
+          cursor: pointer;
+          &:hover {
+            opacity: 1;
+          }
+        }
+      }
+    }
+    .registration-text-password {
+      text-align: center;
+      font-size: 14px !important;
+      @include media-breakpoint-up(lg) {
+        font-size: 12px !important;
+        width: 80%;
+        margin: 0 auto;
+        text-align: center;
+        margin-bottom: 3%;
+      }
+    }
+    @include media-breakpoint-up(lg) {
+      .input27 {
+        width: 28.8%;
+        display: inline-block;
+      }
+    }
+  }
+
+  .registration-buttons {
+    text-align: center;
+  }
+}
+
+.login-container {
+  width: 100%;
+  height: 100%;
+  align-content: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+  padding: 5vw 5vw 0 !important;
+
+  .login-content {
+    max-width: 100%;
+    margin: 0 auto 0 auto;
+
+    .item-level {
+      text-align: left;
+      .registration-text {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        font-size: 14px !important;
+        @include media-breakpoint-up(lg) {
+          width: 50%;
+          margin: 0 auto;
+        }
+      }
+    }
+    .login-item {
+      text-align: center;
+    }
+
+    .registration-text-log-in {
+      font-size: 14px !important;
+      margin-top: 2%;
+      @include media-breakpoint-up(lg) {
+        padding-top: 1%;
+        font-size: 15px !important;
+        width: 35%;
+        margin: 0 auto;
+        margin-bottom: 3%;
+        .login-link {
+          color: $primary;
+          cursor: pointer;
+          &:hover {
+            opacity: 1;
+          }
+        }
+      }
+    }
+
+    .form-header {
+      color: $primary;
+      padding-bottom: 2vh;
+      font-weight: 700;
+      font-family: "Montserrat", sans-serif;
+    }
+
+    @include media-breakpoint-up(lg) {
+      .registration-form {
+        width: 50% !important;
+        margin: 0 auto;
+      }
+    }
+  }
+}
+
+.button-for-register {
+  display: block;
+}
+
+.set-width {
+  width: 100%;
+  @include media-breakpoint-up(lg) {
+    width: 100%;
+    margin: 0 auto;
+  }
+}
+
+.set-width-registration {
+  width: 100%;
+  @include media-breakpoint-up(lg) {
+    width: 75% !important;
+    margin: 0 auto;
+  }
+}
+
+.display-inline {
+  display: inline-block;
+}
+@include media-breakpoint-up(lg) {
+  .account-container {
+    padding-top: 0 !important;
+  }
+}
+
+.box-details-container .box-container .box .form-header {
+  color: $primary;
+  padding-bottom: 5vh;
+  margin-top: 0;
+}
