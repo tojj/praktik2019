@@ -72,7 +72,7 @@ class ConfirmationPage extends React.Component {
     const currentEmail = { text: emailText, key: Date.now() }
     this.setState({
       currentEmail
-    })    
+    })
   }
 
   addEmail = e => {
@@ -97,7 +97,7 @@ class ConfirmationPage extends React.Component {
       emails: filteredEmails
     })
   }
-  
+
   redirectToYourParty = () => {
     let url = window.location.pathname.split("/")
     this.props.history.push("/kalas/" + url[2])
@@ -116,7 +116,7 @@ class ConfirmationPage extends React.Component {
       if (!this.state.party.invited.includes(email)) {
         this.state.party.invited.push(email)
         await this.state.party.save()
-        this.setState({emails: []})
+        this.setState({ emails: [] })
       }
     }
   }
@@ -147,8 +147,6 @@ class ConfirmationPage extends React.Component {
       <div className="conf-wrapper">
         <div className="invite-container">
           <h1 className="conf-headline">Grattis ditt kalas är skapat!</h1>
-          <p className="conf-info my-4">En bekräftelse har skickats till den den mail du angav i förra steget.</p>
-
           <p className="conf-info">Fyll i de epostadresser du vill skicka en inbjudan till.</p>
           <BirthdayInvite
             addEmail={this.addEmail}
@@ -162,7 +160,7 @@ class ConfirmationPage extends React.Component {
             entries={this.state.emails}
             deleteEmail={this.deleteEmail}
             invitedList={this.state.party.invited}
-          /> 
+          />
           {this.state.emailsSent
             ? "SKICKAT"
             : this.state.emails < 1
@@ -173,12 +171,14 @@ class ConfirmationPage extends React.Component {
         </div>
         <div className="msg-container">
           <div className="msg-text">
-            <p>
-              Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede.
-            </p>
-            <p>
-              Vi hoppas att {this.state.party.child} får en underbar dag!
-            </p>
+            <p className="my-4 text-center">En bekräftelse har skickats till den den mail du angav i förra steget.</p>
+            <ul>
+              <li>När presentens summa är uppnådd kommer ett kommer ett mail till dig.</li>
+              <li>Presenten skickas så fort summan är nådd, bra va?</li>
+              <li>Du kan alltid skicka ut fler inbjudningar vid ett senare tillfälle om du råkar glömma någon.</li>
+              <li>Undrar du något? Skriv till oss <a href="/vanliga-fragor/kontakt">här</a>!</li>
+            </ul>
+            <p className="mt-5 mb-3 text-center">Vi hoppas att {this.state.party.child} får en underbar dag!</p>
             <button onClick={this.redirectToYourParty} className="party-button btn btn-info">Till kalaset!</button>
           </div>
         </div>
