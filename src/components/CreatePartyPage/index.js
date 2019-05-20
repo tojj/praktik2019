@@ -74,48 +74,14 @@ class CreatePartyPage extends React.Component {
         console.log('imchanging');
 
       })
-
-      // if (this.props.input.isValid === false) {
-
-      //   element.classList.add("invalid")
-      // }
-
-
-
     }
-
 
     this.errors.push(errors)
     console.log(errors)
 
-
   }
 
-  // addColor(element) {
-
-  //   if (this.props.birthdayEvent.id === undefined) {
-
-  //     console.log("in the function");
-  //   }
-  //   else {
-  //     element.classList.add("valid")
-  //   }
-  // }
-
-  // functiontoTest = (e) => {
-  //   console.log('im changing');
-
-  //   // console.log(e.target.value, "the valueeeeeeeee");
-  //   if (e.value.length > 2) {
-  //     e.classList.remove("invalid")
-
-  //   }
-
-  // }
-
-
-
-  vaildateImageHandler = () => {
+  validateImageHandler = () => {
     let selectedImage = this.props.birthdayImage
     if (selectedImage) {
     } else {
@@ -170,7 +136,7 @@ class CreatePartyPage extends React.Component {
   validateAll = () => {
     this.errors = []
     this.validateBirthdayEvent()
-    this.vaildateImageHandler()
+    this.validateImageHandler()
     this.validateTimeAndPlace()
     this.validatePresent()
     this.validateFundraiser()
@@ -247,10 +213,7 @@ class CreatePartyPage extends React.Component {
 
 
   }
-  test = (e) => {
-    console.log('Im changing:', e.value);
 
-  }
   /**
    * Link will be equal to the first 2 letters of the 
    * birthday child's name, uppercased. Followed by the age 
@@ -275,6 +238,7 @@ class CreatePartyPage extends React.Component {
     this.setState({ eventLink: link })
     return link
   }
+
   render() {
     return (
       <div className="createpartypage-wrapper">
@@ -295,7 +259,6 @@ const mapStateToProps = state => {
     present: state.birthday.present,
     swishMoney: state.swish.swishMoney,
     guestUser: state.birthday.guestUser,
-    input: state.birthday.input
   }
 }
 
