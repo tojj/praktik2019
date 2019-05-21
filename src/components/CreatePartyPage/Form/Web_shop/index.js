@@ -20,6 +20,8 @@ class Web_shop extends Component {
   async loadData() {
     this.allProductsData = await Product.find()
     this.setState({ allProductsData: this.allProductsData })
+    console.log(this.allProductsData);
+    
   }
 
   toggleSelectOverlay(id) {

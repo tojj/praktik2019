@@ -4,5 +4,5 @@ dotenv.config();
 module.exports = {
    db_host: process.env.DB_HOST,
    mail: process.env.MAIL_SECRET,
-   port: process.env.PORT
+   port: process.env.SERVER_PORT
 };

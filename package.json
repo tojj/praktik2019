@@ -41,6 +41,7 @@
     "redux-logger": "^3.0.6",
     "redux-saga": "^1.0.2",
     "redux-thunk": "^2.3.0",
+    "serve": "^11.0.0",
     "slick-carousel": "^1.8.1"
   },
   "scripts": {
@@ -48,8 +49,7 @@
     "build": "react-scripts build",
     "prod": "npm run build && node server.js",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "prod": "npm run build && node Index.js"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": "react-app"
