@@ -5,6 +5,8 @@
 export default class REST {
 
   static get baseRoute() {
+    console.log(this.name);
+    
     return this.name.toLowerCase() + 's/';
   }
 
