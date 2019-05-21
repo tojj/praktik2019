@@ -23,11 +23,7 @@ class CreatePartyPage extends React.Component {
   async createEvent() {
     const link = await this.generateLink()
     let date = this.props.birthdayTimeAndPlace.date + ' ' + this.props.birthdayTimeAndPlace.time
-    console.log(this.props.birthdayTimeAndPlace.date, '.DATE')
-    console.log(this.props.birthdayTimeAndPlace.time, 'TIME')
-    console.log(date, 'DATE')
     date = new Date(date).getTime()
-    console.log(date, 'DATE')
     const newEvent = new Event({
       title: this.props.birthdayEvent.title,
       child: this.props.birthdayEvent.name,
@@ -72,7 +68,6 @@ class CreatePartyPage extends React.Component {
     await this.setContentAndSendEmail(eventFromDb)
   }
   setContentAndSendEmail = (event) => {
-    console.log(event)
     const date = new Date(event.date).toLocaleDateString("sv-SE", {
       weekday: "short",
       day: "numeric",
@@ -126,9 +121,7 @@ class CreatePartyPage extends React.Component {
 
     this.sendEmail('jesper.asplund95@gmail.com'/* ska vara mailadressen som angetts i CPP form, typ. newEvent.user.email  */, content, event.link)
   }
-  sendEmail = (email, message, subject) => {
-    console.log(message);
-    
+  sendEmail = (email, message, subject) => {    
     fetch('/json/send', {
       method: 'POST',
       headers: {
