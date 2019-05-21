@@ -10,13 +10,18 @@ import { Link } from 'react-router-dom'
 import Categories from '../FAQ/Categories'
 import DataItem from './DataItem/index'
 import DataEditor from './DataEditor/index'
-import REST from '../../REST'
+
+import PRODUCT from '../../REST/PRODUCT'
+import FUNDRAISER from '../../REST/FUNDRAISER'
+import QNA from '../../REST/QNA'
+import EVENT from '../../REST/EVENT'
+
 import MissingPage from '../../components/MissingPage/index'
 
-class Product extends REST { }
-class Fundraiser extends REST { }
-class Qna extends REST { }
-class Event extends REST { }
+class Product extends PRODUCT { }
+class Fundraiser extends FUNDRAISER { }
+class Qna extends QNA { }
+class Event extends EVENT { }
 
 
 class AdminPage extends React.Component {

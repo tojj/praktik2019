@@ -6,11 +6,11 @@ import {
   HelpCircle
 } from 'react-feather'
 import QuestionAndAnswer from '../FAQ/QuestionAndAnswer'
-import REST from '../../REST'
+import QNA from '../../REST/QNA'
 import Categories from './Categories'
 import ContactForm from './ContactForm'
 
-class Qna extends REST { }
+class Qna extends QNA { }
 
 class FAQ extends React.Component {
   constructor(props) {

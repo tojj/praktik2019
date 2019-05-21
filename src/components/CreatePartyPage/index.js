@@ -1,10 +1,10 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import FormContainer from './Form/index'
-import REST from '../../REST'
+import EVENT from '../../REST/EVENT'
 import Buttons from './Buttons/index'
 
-class Event extends REST { }
+class Event extends EVENT { }
 
 class CreatePartyPage extends React.Component {
   constructor(props) {

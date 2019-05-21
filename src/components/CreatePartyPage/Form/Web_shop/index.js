@@ -1,9 +1,9 @@
 import React, { Component } from "react"
-import REST from "../../../../REST"
+import PRODUCT from "../../../../REST/PRODUCT"
 import { connect } from "react-redux"
 import { doUpdateProductInfo } from "../../../../store/Birthday/BirthdayActions"
 
-class Product extends REST {}
+class Product extends PRODUCT {}
 class Web_shop extends Component {
   constructor(props) {
     super(props)
@@ -19,9 +19,7 @@ class Web_shop extends Component {
 
   async loadData() {
     this.allProductsData = await Product.find()
-    this.setState({ allProductsData: this.allProductsData })
-    console.log(this.allProductsData);
-    
+    this.setState({ allProductsData: this.allProductsData })    
   }
 
   toggleSelectOverlay(id) {

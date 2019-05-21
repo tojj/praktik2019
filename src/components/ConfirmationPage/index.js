@@ -2,9 +2,9 @@ import React from 'react'
 import { Send } from 'react-feather'
 import BirthdayInvite from './BirthdayInvite/index'
 import BirthdayInviteList from './BirthdayInviteList/index'
-import REST from '../../REST'
+import EVENT from '../../REST/EVENT'
 
-class Event extends REST { }
+class Event extends EVENT { }
 
 class ConfirmationPage extends React.Component {
   constructor(props) {
