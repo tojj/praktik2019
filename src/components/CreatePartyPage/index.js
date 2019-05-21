@@ -66,7 +66,7 @@ class CreatePartyPage extends React.Component {
     })
   }
   async findNewEventAndSendConfirmation (eventLink) {
-    let eventFromDb = await Event.find(`.find({ link: "${link}" }).populate('product').populate('fundraiser').populate('user').exec()`)
+    let eventFromDb = await Event.find(`.find({ link: "${eventLink}" }).populate('product').populate('fundraiser').populate('user').exec()`)
     eventFromDb = eventFromDb[0]
     
     await this.setContentAndSendEmail(eventFromDb)
