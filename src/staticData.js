@@ -215,7 +215,8 @@ export const eventInputData = {
     text: "Skriv några ord till de inbjudna",
     type: "textarea",
     placeholder: "",
-    className: "textarea-label form-input"
+    className: "textarea-label form-input",
+    id: "description"
   },
   date: {
     classNameFormGroup: "input50",
@@ -224,7 +225,8 @@ export const eventInputData = {
     text: "När är kalaset?",
     type: "date",
     placeholder: "12:00",
-    className: "form-input"
+    className: "form-input",
+    id: "date"
   },
   time: {
     classNameFormGroup: "input25",
@@ -233,7 +235,8 @@ export const eventInputData = {
     text: "",
     type: "time",
     placeholder: "12:00",
-    className: "form-input mt-2 mt-lg-0 ml-lg-2"
+    className: "form-input mt-2 mt-lg-0 ml-lg-2",
+    id: "time"
   },
   street: {
     classNameFormGroup: "input100",
@@ -242,7 +245,8 @@ export const eventInputData = {
     text: "Plats",
     type: "text",
     placeholder: "Gatuadress",
-    className: "form-input"
+    className: "form-input",
+    id: "street"
   },
   zip: {
     classNameFormGroup: "input25",
@@ -251,7 +255,8 @@ export const eventInputData = {
     text: "",
     type: "text",
     placeholder: "Postnr",
-    className: "form-input mt-2"
+    className: "form-input mt-2",
+    id: "zip"
   },
   city: {
     classNameFormGroup: "input50",
@@ -260,7 +265,8 @@ export const eventInputData = {
     text: "",
     type: "text",
     placeholder: "Stad",
-    className: "form-input mt-2 ml-lg-2"
+    className: "form-input mt-2 ml-lg-2",
+    id: "city"
   },
   deadline: {
     classNameFormGroup: "",
@@ -269,7 +275,8 @@ export const eventInputData = {
     text: "När vill du senast ha svar om vem som kommer?",
     type: "date",
     placeholder: "",
-    className: "form-input input50"
+    className: "form-input input50",
+    id: "deadline"
   }
 }
 

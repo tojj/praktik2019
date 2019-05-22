@@ -75,6 +75,9 @@ class CreatePartyPage extends React.Component {
     }
 
     this.errors.push(errors)
+    console.log(errors)
+    this.functiontoTest()
+
     this.setState({ errors: this.errors })
   }
 
