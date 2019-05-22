@@ -177,13 +177,7 @@ class CreatePartyPage extends React.Component {
   }
 
   async createEvent() {
-
     let link = await this.generateLink()
-    let isLinkAlreadyUsed = await Event.find(`find({link: '${link}'}).exec()`)
-    while (isLinkAlreadyUsed){
-      link = await this.generateLink()
-      isLinkAlreadyUsed = await Event.find(`find({link: '${link}'}).exec()`)
-    }
     let date = this.props.birthdayTimeAndPlace.date + ' ' + this.props.birthdayTimeAndPlace.time
     console.log(this.props.birthdayTimeAndPlace.date, '.DATE')
     console.log(this.props.birthdayTimeAndPlace.time, 'TIME')
