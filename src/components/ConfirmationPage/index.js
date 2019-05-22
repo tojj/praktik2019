@@ -164,8 +164,8 @@ class ConfirmationPage extends React.Component {
           {this.state.emailsSent
             ? "SKICKAT"
             : this.state.emails < 1
-              ? <button disabled className="send-button disabled btn btn-success"><Send /> Skicka</button>
-              : <button onClick={this.clickHandler} className="send-button btn btn-success"><Send /> Skicka</button>
+              ? <button disabled className="send-button disabled btn btn-info"><Send /> Skicka</button>
+              : <button onClick={this.clickHandler} className="send-button btn btn-info"><Send /> Skicka</button>
           }
           {this.state.emails < 1 && !this.state.emailsSent ? <p style={{ fontStyle: 'italic', fontSize: '.8rem', color: '#555', marginTop: '10px' }}>Lägg till minst en epost för att skicka inbjudan.</p> : null}
         </div>
