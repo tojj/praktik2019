@@ -48,7 +48,7 @@ class Navbar extends React.Component {
     })
 
     const smallNav = (
-      <div>
+      <div className="naver">
         <NavLink
           to={navItems.smallNav[0].route}
           onClick={this.state.burgerOpen ? this.toggle : null}
@@ -56,15 +56,22 @@ class Navbar extends React.Component {
         >
           {navItems.smallNav[0].name}
         </NavLink>
-        <Link
-          spy={true}
-          smooth={true}
-          duration={500}
+        <NavLink
           to={navItems.smallNav[1].route}
           onClick={this.state.burgerOpen ? this.toggle : null}
           className="link-item"
         >
           {navItems.smallNav[1].name}
+        </NavLink>
+        <Link
+          spy={true}
+          smooth={true}
+          duration={500}
+          to={navItems.smallNav[2].route}
+          onClick={this.state.burgerOpen ? this.toggle : null}
+          className="link-item"
+        >
+          {navItems.smallNav[2].name}
         </Link>
       </div>
     )
@@ -84,6 +91,15 @@ class Navbar extends React.Component {
         >
           <div className="burger-holder" />
           {this.props.showFull ? startPageNav : smallNav}
+          {this.props.showFull
+            ? <NavLink
+              to={navItems.smallNav[1].route}
+              onClick={this.state.burgerOpen ? this.toggle : null}
+              className="link-item"
+            >
+              {navItems.smallNav[1].name}
+            </NavLink>
+            : null}
         </div>
       </nav>
     )

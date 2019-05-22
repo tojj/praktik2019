@@ -25,7 +25,7 @@ class AttendingsList extends React.Component {
       joined: new Date().getTime()
     }
 
-    let event = await Event.find(this.props.event);
+    let event = await Event.find(this.props.event)
     event.attending.push(newAttendee)
 
     await event.save()

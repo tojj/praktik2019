@@ -4,21 +4,24 @@ import MissingPage from "../MissingPage/index"
 import MapsGen from "./MapsGen/index"
 import AttendingsList from "./AttendingsList/index"
 
-class Event extends REST {}
+class Event extends REST { }
 
 class PartyPage extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      event: null
+      event: null,
+      loaded: false
     }
+    this.swishImage = ''
   }
 
   componentDidMount() {
     const eventLink = this.props.match.params.link
     this.findEventAndMatchWithDB(eventLink).then(data => {
       this.setState({
-        event: data
+        event: data,
+        loaded: true
       })
     })
   }
@@ -35,7 +38,14 @@ class PartyPage extends React.Component {
 
   render() {
     let content = ""
-    if (!this.state.event) {
+    if (!this.state.loaded) {
+      content = (
+        <div className="spinner-border" role="status">
+          <span className="sr-only">Loading...</span>
+        </div>
+      )
+    }
+    if (!this.state.event && this.state.loaded) {
       content = (
         <MissingPage
           link="/skapa-kalas"
@@ -43,9 +53,9 @@ class PartyPage extends React.Component {
           title="Kalaset finns inte"
         />
       )
-    } else {
+    } else if (this.state.event && this.state.loaded) {
       let party = this.state.event
-
+      this.swishImage = "http://betalamedswish.se/API/Get/?n=0709629276&a=" + party.swish.amount + "&m=" + party.link + "&la=true&lm=true&s=500"
       /**
        * Joining all the address information to the right format in order to send the correct props to MapsGen
        */
@@ -79,7 +89,7 @@ class PartyPage extends React.Component {
               </div>
             </div>
             <div className="box-container party-info border-top">
-              <div className="box">
+              <div className="box no-print">
                 <p className="party-child-age">
                   {party.child} fyller {party.age} år!
                 </p>
@@ -92,16 +102,15 @@ class PartyPage extends React.Component {
                 </p>
                 <p className="party-time">kl {date[3]}</p>
               </div>
+              <div className="box print-me">
+                <p>Scanna koden för att komma direkt till kalaset. Glöm inte att meddela om du kommer!</p><br />
+                <img src={"http://chart.apis.google.com/chart?cht=qr&chs=500x500&chl=tojj.se/kalas/" + party.link + "&chld=H|0"} className="party-qr" alt="qr link to party"/>
+              </div>
             </div>
-            <div className="box-container border-top print-me">
-              <div className="box">
-                <img src="/images/card.png" alt="" />
-                <p>Ta gärna med ett fint kort!</p>
-              </div>
-              <div className="box">
-                <img src="/images/card.png" alt="" />
-                <p>Skanna denna koden för att komma till kalaset.</p>
-              </div>
+            <div className="print-me">
+              <p className="help-text">Tojj.se är ett verktyg för att anordna kalas och inbjudningar. Vid frågor eller funderingar besök <a href="https://tojj.se/vanliga-fragor">https://tojj.se/vanliga-fragor</a>
+                
+              </p>
             </div>
             <div className="box-container border-top party-payment no-print">
               <div className="box swish-holder">
@@ -110,18 +119,17 @@ class PartyPage extends React.Component {
                   style={{ background: party.swish.color }}
                 >
                   <img
-                    src={party.swish.image}
+                    src={this.swishImage}
                     className="img-fluid"
                     alt="qr-code"
                   />
                 </div>
                 <p>Swish</p>
                 <p>
-                  Skanna koden ovan med hjälp av swish-appen för att betala{" "}
-                  {party.swish.amount} kronor av presenten
+                  Skanna koden ovan med hjälp av swish-appen för att betala {party.swish.amount} kronor av presenten.
                 </p>
                 <a
-                  href="/fragor-och-svar#betalningar"
+                  href="/vanliga-fragor/avtal"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -138,8 +146,7 @@ class PartyPage extends React.Component {
                 </div>
                 <p>Present</p>
                 <p>
-                  Pengarna som samlas in kommer att gå till att köpa{" "}
-                  {party.product.name} som {party.child} önskar sig.
+                  Pengarna som samlas in kommer att gå till att köpa {party.product.name} som {party.child} önskar sig.
                 </p>
                 <a
                   href={party.product.link}
@@ -160,8 +167,7 @@ class PartyPage extends React.Component {
                   </div>
                   <p>Överskott</p>
                   <p>
-                    Eventuellt överskott har vi valt att skänka direkt till{" "}
-                    {party.fundraiser.name}. Om du vill veta mer om
+                    Eventuellt överskott har vi valt att skänka direkt till {party.fundraiser.name}. Om du vill veta mer om
                     organisationen kan du klicka nedan.
                   </p>
                   <a
@@ -177,12 +183,10 @@ class PartyPage extends React.Component {
             <div className="box-container party-congratulation border-top no-print">
               <div className="box">
                 <p>
-                  Egna presenter undanbedes i första hand på grund av miljön.
-                  Men {party.child} hade verkligen uppskattat om man tog med sig
-                  ett fint grattis-kort på denna speciella dag!
+                  Tänk på miljön - tänk på andra. Undvik att ta med en egen present men skänk gärna till en välgörenhet eller ta med ett eget grattis-kort till {party.child}. Det finaste man kan ge är ju trots allt till andra.
                 </p>
                 <a
-                  href="/fragor-och-svar#egna-presenter"
+                  href="/vanliga-fragor/presenter"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -205,7 +209,7 @@ class PartyPage extends React.Component {
                 <AttendingsList attendees={party.attending} event={party._id} />
               </div>
             </div>
-            <div className="box-container border-top party-location">
+            <div className="box-container border-top party-location no-print">
               <div className="box maps-holder">
                 <MapsGen query={address} />
               </div>
