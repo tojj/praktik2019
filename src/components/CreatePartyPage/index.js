@@ -4,7 +4,7 @@ import FormContainer from './Form/index'
 import REST from '../../REST'
 import Buttons from './Buttons/index'
 import Joi from 'joi-browser'
-import Modal from '../CreatePartyPage/Modal/index'
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
 class Event extends REST { }
 
@@ -13,7 +13,7 @@ class CreatePartyPage extends React.Component {
     super(props)
     this.state = {
       eventLink: '',
-      modalShow: false,
+      modal: false,
       errors: []
     }
     this.errors = []
@@ -22,19 +22,59 @@ class CreatePartyPage extends React.Component {
     this.createEvent = this.createEvent.bind(this)
     this.validateAll = this.validateAll.bind(this)
     this.schemaPartyEvent = {
-      title: Joi.string().min(2).max(20).required(),
-      name: Joi.string().min(2).max(20).required(),
-      age: Joi.number().integer().required()
+      title: Joi.string().min(2).max(20).required().error(errors => {
+        return {
+          message: "Glöm inte skriva en rubrik till ditt kalas!"
+        }
+      }),
+      name: Joi.string().min(2).max(20).required().error(errors => {
+        return {
+          message: "Skriv namn på vem kalaset är till! Namnet måset vara större än en bokstav. "
+        }
+      }),
+      age: Joi.number().integer().required().error(errors => {
+        return {
+          message: "Ålder måste vara mellan 1-20"
+        }
+      }),
     }
 
     this.schemaTimeAndPlace = {
-      description: Joi.string().min(2).max(40).required(),
-      date: Joi.date().required(),
-      time: Joi.required(),
-      deadline: Joi.date().required(),
-      street: Joi.string().min(3).max(30).required(),
-      zip: Joi.string().min(3).max(30).required(),
-      city: Joi.string().min(2).max(40).required(),
+      description: Joi.string().min(2).max(40).required().error(errors => {
+        return {
+          message: "Skriv minst 5-10 tecken information till de inbjudna!"
+        }
+      }),
+      date: Joi.date().required().error(errors => {
+        return {
+          message: "Välj datum till kalas, datumet måste vara en vecka framåt från dagens datum"
+        }
+      }),
+      time: Joi.required().error(errors => {
+        return {
+          message: "Fyll i vilken tid du vill att kalaset ska börja"
+        }
+      }),
+      deadline: Joi.date().required().error(errors => {
+        return {
+          message: "Skriv när du senast vill ha svar om folk kan komma. Detta måste vara senast en dag innan kalaset"
+        }
+      }),
+      street: Joi.string().min(3).max(30).required().error(errors => {
+        return {
+          message: "Skriv din adress där kalaset ska vara"
+        }
+      }),
+      zip: Joi.string().min(3).max(30).required().error(errors => {
+        return {
+          message: "Fyll i postnumret"
+        }
+      }),
+      city: Joi.string().min(2).max(40).required().error(errors => {
+        return {
+          message: "Fyll i vilken stad kalaset ska vara i"
+        }
+      })
     }
 
     this.schemaGuestUser = {
@@ -69,13 +109,11 @@ class CreatePartyPage extends React.Component {
 
     //if there are errors:
 
-    const errors = {}
+    const errors = []
     for (let item of result.error.details) {
       errors[item.path[0]] = item.message
+      this.errors.push(item.message)
     }
-
-    this.errors.push(errors)
-    console.log(errors)
 
     this.setState({ errors: this.errors })
   }
@@ -85,7 +123,7 @@ class CreatePartyPage extends React.Component {
     let selectedImage = this.props.birthdayImage
     if (selectedImage) {
     } else {
-      this.errors.push({ "image": "image not chosen." })
+      this.errors.push(["Välj bakgrundsbild till kalaset!"])
       this.setState({ errors: this.errors })
     }
 
@@ -96,11 +134,11 @@ class CreatePartyPage extends React.Component {
       abortEarly: false
     })
     if (!result.error) return null
-    const errors = {}
+    const errors = []
     for (let item of result.error.details) {
       errors[item.path[0]] = item.message
+      this.errors.push(item.message)
     }
-    this.errors.push(errors)
     this.setState({ errors: this.errors })
   }
 
@@ -109,7 +147,7 @@ class CreatePartyPage extends React.Component {
     let selectedPresent = this.props.present.id
     if (selectedPresent) {
     } else {
-      this.errors.push({ "present": "Present not selected." })
+      this.errors.push(["Glöm inte att välja present!"])
       this.setState({ errors: this.errors })
     }
   }
@@ -120,7 +158,7 @@ class CreatePartyPage extends React.Component {
     if (isFundraiserSelected === true) {
     }
     else {
-      this.errors.push({ "fundraiser": "Fundraiser not selected." })
+      this.errors.push(["Välj om du vill stötta en välgörenhet eller inte."])
       this.setState({ errors: this.errors })
     }
   }
@@ -143,11 +181,6 @@ class CreatePartyPage extends React.Component {
  * modal (if validation did not pass) or proceeding to 
  * Confirmation page
  */
-  // toggleModal = () => {
-  //   this.setState(prevState => ({
-  //     modalShow: !prevState.modalShow
-  //   }));
-  // }
 
   async validateAll() {
     this.errors = []
@@ -158,16 +191,11 @@ class CreatePartyPage extends React.Component {
     this.validateFundraiser()
     this.validateGuestUser()
     if (this.errors.length > 0) {
-      // this.toggleModal()
-      // alert("validate!!!")
-      console.log(this.errors, "thisis array")
+      this.toggle()
       await this.setState({ errors: this.errors })
-      console.log("errorrrrrrrrrrrrrstate", this.state.errors)
-      console.log(this.errors.length, "validation failed, here are the errors");
     }
     else {
       this.createEvent()
-      console.log("validation passed");
     }
   }
 
@@ -260,12 +288,38 @@ class CreatePartyPage extends React.Component {
     return link
   }
 
+  toggle = () => {
+    this.setState(prevState => ({
+      modal: !prevState.modal
+    }));
+  }
+
+  superModal = () => {
+    const { errors } = this.state
+    const allErrors = errors.map((error) => <p key={error}>{error}</p>)
+
+    return (
+      <div>
+        <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
+          <ModalHeader className="modalH" toggle={this.toggle}>Fel har uppstått</ModalHeader>
+          <ModalBody className="modalB">
+            {allErrors}
+          </ModalBody>
+          <ModalFooter className="modalF">
+            <Button color="secondary" onClick={this.toggle}>Stäng</Button>
+          </ModalFooter>
+        </Modal>
+      </div>
+    )
+  }
+
   render() {
     return (
       <div className="createpartypage-wrapper">
         <FormContainer test={this.test} />
         <Buttons createEvent={this.validateAll} />
         {this.modalShow ? <Modal /> : ""}
+        {this.superModal()}
       </div>
     )
   }
