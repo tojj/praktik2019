@@ -38,7 +38,7 @@ const App = props => {
           <Route exact path="/skapa-kalas" component={CreatePartyPage} />
           <Route exact path="/kalas/:link" component={PartyPage} />          
           <Route exact path="/kalas-förhandsvisning" component={PreviewPage} />
-          <Route exact path="/bekräftelse/:link" component={ConfirmationPage} />
+          <Route exact path="/bekraftelse/:link" component={ConfirmationPage} />
           <Route exact path="/vanliga-fragor" component={Faq} />
           <Route exact path="/vanliga-fragor/:link" component={Faq} />
           {/* <Route exact path="/admin" component={AdminPage} /> */}
