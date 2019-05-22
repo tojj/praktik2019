@@ -4,6 +4,7 @@ import FormContainer from './Form/index'
 import REST from '../../REST'
 import Buttons from './Buttons/index'
 import Joi from 'joi-browser'
+import Modal from '../CreatePartyPage/Modal/index'
 
 class Event extends REST { }
 
@@ -11,10 +12,15 @@ class CreatePartyPage extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      eventLink: ''
+      eventLink: '',
+      modalShow: false,
+      errors: []
     }
     this.errors = []
+    this.invalidForm = false
+    // this.toggleModal = this.toggleModal.bind(this);
     this.createEvent = this.createEvent.bind(this)
+    this.validateAll = this.validateAll.bind(this)
     this.schemaPartyEvent = {
       formHeaderDataTitle: Joi.string().min(2).max(20).required(),
       formHeaderDataName: Joi.string().min(2).max(20).required(),
@@ -24,6 +30,7 @@ class CreatePartyPage extends React.Component {
     this.schemaTimeAndPlace = {
       description: Joi.string().min(2).max(40).required(),
       date: Joi.date().required(),
+      time: Joi.required(),
       deadline: Joi.date().required(),
       street: Joi.string().min(3).max(30).required(),
       zip: Joi.string().min(3).max(30).required(),
@@ -45,11 +52,13 @@ class CreatePartyPage extends React.Component {
   /**
      *Validating all inputs
      */
-  basicValidation = () => {
-    if (this.props.input.isValid) {
-      console.log("props shows it's invalid");
-    }
-  }
+
+  // basicValidation = () => {
+  //   if (this.props.input.isValid) {
+  //     console.log("props shows it's invalid");
+  //   }
+  // }
+
 
   validateBirthdayEvent = () => {
     const result = Joi.validate(this.props.birthdayEvent, this.schemaPartyEvent, {
@@ -63,29 +72,19 @@ class CreatePartyPage extends React.Component {
     const errors = {}
     for (let item of result.error.details) {
       errors[item.path[0]] = item.message
-      let id = item.path[0]
-      console.log(item.path[0], "this is the path")
-      console.log(id, "this is the id")
-
-
-      let element = document.getElementById(id)
-      console.log(element, id);
-      element.addEventListener("change", function () {
-        console.log('imchanging');
-
-      })
     }
 
     this.errors.push(errors)
-    console.log(errors)
-
+    this.setState({ errors: this.errors })
   }
+
 
   validateImageHandler = () => {
     let selectedImage = this.props.birthdayImage
     if (selectedImage) {
     } else {
       this.errors.push({ "image": "image not chosen." })
+      this.setState({ errors: this.errors })
     }
 
   }
@@ -100,6 +99,7 @@ class CreatePartyPage extends React.Component {
       errors[item.path[0]] = item.message
     }
     this.errors.push(errors)
+    this.setState({ errors: this.errors })
   }
 
 
@@ -108,6 +108,7 @@ class CreatePartyPage extends React.Component {
     if (selectedPresent) {
     } else {
       this.errors.push({ "present": "Present not selected." })
+      this.setState({ errors: this.errors })
     }
   }
 
@@ -118,6 +119,7 @@ class CreatePartyPage extends React.Component {
     }
     else {
       this.errors.push({ "fundraiser": "Fundraiser not selected." })
+      this.setState({ errors: this.errors })
     }
   }
 
@@ -130,10 +132,22 @@ class CreatePartyPage extends React.Component {
       errors[item.path[0]] = item.message
     }
     this.errors.push(errors)
+    this.setState({ errors: this.errors })
     return errors
   }
 
-  validateAll = () => {
+  /**
+ * VChecking all validation functions and showing a
+ * modal (if validation did not pass) or proceeding to 
+ * Confirmation page
+ */
+  // toggleModal = () => {
+  //   this.setState(prevState => ({
+  //     modalShow: !prevState.modalShow
+  //   }));
+  // }
+
+  async validateAll() {
     this.errors = []
     this.validateBirthdayEvent()
     this.validateImageHandler()
@@ -142,7 +156,11 @@ class CreatePartyPage extends React.Component {
     this.validateFundraiser()
     this.validateGuestUser()
     if (this.errors.length > 0) {
+      // this.toggleModal()
       // alert("validate!!!")
+      console.log(this.errors, "thisis array")
+      await this.setState({ errors: this.errors })
+      console.log("errorrrrrrrrrrrrrstate", this.state.errors)
       console.log(this.errors.length, "validation failed, here are the errors");
     }
     else {
@@ -150,6 +168,7 @@ class CreatePartyPage extends React.Component {
       console.log("validation passed");
     }
   }
+
 
   redirectTo = (target) => {
     this.props.history.push(target)
@@ -244,7 +263,7 @@ class CreatePartyPage extends React.Component {
       <div className="createpartypage-wrapper">
         <FormContainer test={this.test} />
         <Buttons createEvent={this.validateAll} />
-        {this.errors.length > 6 ? <p> There are mistakes</p> : ""}
+        {this.modalShow ? <Modal /> : ""}
       </div>
     )
   }

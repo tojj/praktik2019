@@ -18,6 +18,8 @@ class Form_footer extends React.Component {
     this.allFundraisersData = []
     this.allFundraisers = []
     this.loadFundraisersAndMount()
+    this.setDefaultFundraiser = this.setDefaultFundraiser.bind(this)
+    this.setDefaultFundraiser()
     this.fundraiserId = ""
     this.selectedFundraiser = ""
   }
@@ -25,14 +27,36 @@ class Form_footer extends React.Component {
   selected = (e) => {
     this.setState({ charitySelected: true })
     this.props.updateSelectedFundraiser(
-      { buttonSelected: true })
+      {
+        buttonSelected: true,
+        donate: true
+      })
+
     console.log(e.target.id, "you clicked n")
+  }
+
+  async setDefaultFundraiser() {
+    const firstFundraiser = await Fundraiser.find(`.find().limit(1).exec()`)
+
+    const fundraiser = {
+      id: firstFundraiser[0]._id,
+      name: firstFundraiser[0].name,
+      image: firstFundraiser[0].image,
+      link: firstFundraiser[0].link,
+
+    }
+    this.props.updateSelectedFundraiser(
+      fundraiser
+    )
   }
 
   notSelected = (e) => {
     this.setState({ charitySelected: false })
     this.props.updateSelectedFundraiser(
-      { buttonSelected: true })
+      {
+        buttonSelected: true,
+        donate: false
+      })
     console.log(e.target.id, "you clicked n")
   }
 
@@ -73,7 +97,7 @@ class Form_footer extends React.Component {
    */
 
   async getSelectedFundraiser() {
-    this.selectedFundraiser = await Fundraiser.find(`.find({_id: '${this.fundraiserId}'})`)
+    this.selectedFundraiser = await Fundraiser.find(`.find({ _id: '${this.fundraiserId}' })`)
     let fundraiser = {
       id: this.selectedFundraiser[0]._id,
       name: this.selectedFundraiser[0].name,
