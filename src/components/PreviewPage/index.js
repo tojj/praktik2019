@@ -5,7 +5,7 @@ import { Link } from "react-router-dom"
 
 class PreviewPage extends Component {
   componentWillMount() {
-    if (!this.props.birthdayEvent.title) {
+    if (!this.props.birthdayEvent.formHeaderDataTitle) {
       window.location.pathname = "/skapa-kalas"
     } else {
       return

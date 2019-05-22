@@ -9,7 +9,13 @@ import {
 } from 'reactstrap'
 
 class EventInput extends Component {
+  constructor(props) {
+    super(props)
 
+    this.time = ''
+    this.deadline = ''
+
+  }
   /**
    * Passing value from input
    */
@@ -29,7 +35,11 @@ class EventInput extends Component {
 
   renderInput = key => (
     <FormGroup key={key} className={eventInputData[key].classNameFormGroup}>
-      <Label htmlFor={eventInputData[key].name} className={eventInputData[key].classNameLabel}>{eventInputData[key].text}</Label>
+      <Label
+        htmlFor={eventInputData[key].name}
+        className={eventInputData[key].classNameLabel}>
+        {eventInputData[key].text} 
+        </Label>
       <InputEvent
         name={eventInputData[key].name}
         keyVal={key}
@@ -38,6 +48,7 @@ class EventInput extends Component {
         placeholder={eventInputData[key].placeholder}
         className={eventInputData[key].className}
         callback={this.callback}
+        id={eventInputData[key].id}
       />
     </FormGroup>
   )
@@ -46,8 +57,66 @@ class EventInput extends Component {
  * Callback function handling values from inputs
  */
 
-  callback = (value, key) => this.props.updateTimeAndPlace({ [key]: value })
+  callback = (value, key) => {
+    this.props.updateTimeAndPlace({ [key]: value })
 
+    let week = Date.now() + 604800000
+
+
+    if (key === "date") {
+      this.time = new Date(value)
+      if (this.time.getTime() < week) {
+        let id = key;
+        let element = document.getElementById(id)
+        element.classList.add("invalid")
+      } else {
+        let id = key;
+        let element = document.getElementById(id)
+        element.classList.remove("invalid")
+      }
+
+    }
+
+    if (value.length > 1 && key === "street") {
+      let id = key;
+      let element = document.getElementById(id)
+      element.classList.remove("invalid")
+    } else if (key === "street") {
+      let id = key;
+      let element = document.getElementById(id)
+      element.classList.add("invalid")
+    }
+
+    if (key === "deadline" && this.time) {
+      this.deadline = new Date(value)
+      if (this.deadline.getTime() < this.time.getTime() && this.deadline.getTime() > Date.now()) {
+        let id = key;
+        let element = document.getElementById(id)
+        element.classList.remove("invalid")
+      } else {
+        let id = key;
+        let element = document.getElementById(id)
+        element.classList.add("invalid")
+
+
+      }
+
+      if(value > 1 && value < 250 && key === "description"){
+        let id = key;
+        let element = document.getElementById(id)
+        element.classList.remove("invalid")
+      } else if(value > 250 && key === "description"){
+        let id = key;
+        let element = document.getElementById(id)
+        element.classList.add("invalid")
+      }
+
+    }
+
+
+
+
+  }
 
   render() {
     return (

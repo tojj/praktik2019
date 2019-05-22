@@ -13,6 +13,12 @@ import {
 
 
 class Form_header extends Component {
+  constructor(){
+    super()
+    this.state = {
+      invalidInput: false
+    }
+  }
 
 
   /**
@@ -46,6 +52,8 @@ class Form_header extends Component {
         val={this.props.birthdayEvent[key]}
         callback={this.callback}
         placeholder={formHeaderData[key].defaultValue}
+    
+
       />
     </FormGroup>
   )
@@ -71,20 +79,38 @@ class Form_header extends Component {
 
   callback = (value, key) => {
     this.props.updateBday({ [key]: value })
-    // let obj = this.props.birthdayEvent
-    console.log("v", this.props.birthdayEvent)
-    let element = document.getElementById(key)
-    if (key === "formHeaderDataTitle" && value.length < 2) {
-
-      element.classList.add("invalid")
-    } else if (key === "formHeaderDataName" && value.length < 2) {
-      element.classList.add("invalid")
-    } else if (key === "formHeaderDataAge" && value.length < 2) {
-      element.classList.add("invalid")
-
-    } else {
+    if (value.length > 2 && key === 'formHeaderDataTitle') {
+      let id = key;
+      let element = document.getElementById(id)
       element.classList.remove("invalid")
+    } else if (value.length < 2 && key === 'formHeaderDataTitle') {
+      let id = key;
+      let element = document.getElementById(id)
+      element.classList.add("invalid")
     }
+
+    if (value.length > 1 && key === 'formHeaderDataName') {
+      console.log(key)
+      let id = key;
+      let element = document.getElementById(id)
+      element.classList.remove("invalid")
+    } else if (value.length < 2 && key === 'formHeaderDataName') {
+      let id = key;
+      let element = document.getElementById(id)
+      element.classList.add("invalid")
+    }
+
+    if(/^\d*$/.test(value) && (value === "" || parseInt(value) <= 20) && key === 'formHeaderDataAge'){
+      console.log(value)
+      let id = key;
+      let element = document.getElementById(id)
+      element.classList.remove("invalid")
+    } else if(key === 'formHeaderDataAge') {
+      let id = 'formHeaderDataAge'
+      let element = document.getElementById(id)
+      element.classList.add("invalid")
+    }
+
   }
 
   render() {
