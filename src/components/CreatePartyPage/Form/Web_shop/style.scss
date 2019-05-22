@@ -146,10 +146,13 @@
 
 .more-info-label {
   z-index: 100;
-  font-size: 32px;
   position: absolute;
-  font-family: $small-text;
-  font-weight: bold;
   left: 100%;
-  color: $primary;
+  img {
+    transition: all .3s;
+    &:hover {
+      cursor: pointer;
+      transform: scale(1.2) translate(6px);
+    }
+  }
 }

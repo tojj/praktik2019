@@ -1,11 +1,13 @@
 header {
-  background: $primary;
+  &, nav, .nav-wrapper {
+    z-index: 35
+  }
+  background: #4761b7CC; // $primary with .8 opacity
   .header-wrapper {
     position: relative;
     min-height: 10vh;
     width: 100%;
-    z-index: 15;
-    //padding-bottom: 10px;
+    z-index: 35;
     .arrow-img {
       width: 75px;
       height: auto;
@@ -19,7 +21,6 @@ header {
       -ms-transform: translateY(-50%);
       transform: translateY(-50%);
       left: 1rem;
-      width: 30%;
       z-index: 50;
       margin: 0 auto;
       padding: 0;
@@ -32,24 +33,14 @@ header {
         text-decoration: none;
         color: #fff;
       }
-      //.logo-img {
-      //  width: 100%;
-      //  height: auto;
-      // }
     }
     @include media-breakpoint-up(md) {
       position: relative;
       width: 88.7vw;
       margin: 0 auto;
       .logo-holder {
-        //padding: 1%;
         position: absolute;
-        width: 20%;
-        //max-height: 10vh;
-        //bottom: 0;
         left: 0;
-        //top: initial;
-        //margin-bottom: 1.1vh;
         top: 50% !important;
         -ms-transform: translateY(-50%);
         transform: translateY(-50%);
@@ -57,7 +48,6 @@ header {
       .nav-wrapper {
         // absolute given in navbar/styles
         width: 80%;
-        //bottom: 0;
         right: 0;
       }
     }

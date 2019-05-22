@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 
 /**
  * Takes "link" & "linkName" as props to render extra navigation help.
- * Can also take an optional Title message
+ * Can also take an optional "Title"-message
  */
 
 class MissingPage extends Component {
