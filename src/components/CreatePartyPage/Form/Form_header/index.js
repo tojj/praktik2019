@@ -13,7 +13,7 @@ import {
 
 
 class Form_header extends Component {
-  constructor(){
+  constructor() {
     super()
     this.state = {
       invalidInput: false
@@ -52,7 +52,7 @@ class Form_header extends Component {
         val={this.props.birthdayEvent[key]}
         callback={this.callback}
         placeholder={formHeaderData[key].defaultValue}
-    
+
 
       />
     </FormGroup>
@@ -79,34 +79,34 @@ class Form_header extends Component {
 
   callback = (value, key) => {
     this.props.updateBday({ [key]: value })
-    if (value.length > 2 && key === 'formHeaderDataTitle') {
+    if (value.length > 2 && key === 'title') {
       let id = key;
       let element = document.getElementById(id)
       element.classList.remove("invalid")
-    } else if (value.length < 2 && key === 'formHeaderDataTitle') {
+    } else if (value.length < 2 && key === 'title') {
       let id = key;
       let element = document.getElementById(id)
       element.classList.add("invalid")
     }
 
-    if (value.length > 1 && key === 'formHeaderDataName') {
+    if (value.length > 1 && key === 'name') {
       console.log(key)
       let id = key;
       let element = document.getElementById(id)
       element.classList.remove("invalid")
-    } else if (value.length < 2 && key === 'formHeaderDataName') {
+    } else if (value.length < 2 && key === 'name') {
       let id = key;
       let element = document.getElementById(id)
       element.classList.add("invalid")
     }
 
-    if(/^\d*$/.test(value) && (value === "" || parseInt(value) <= 20) && key === 'formHeaderDataAge'){
+    if (/^\d*$/.test(value) && (value === "" || parseInt(value) <= 20) && key === 'age') {
       console.log(value)
       let id = key;
       let element = document.getElementById(id)
       element.classList.remove("invalid")
-    } else if(key === 'formHeaderDataAge') {
-      let id = 'formHeaderDataAge'
+    } else if (key === 'age') {
+      let id = 'age'
       let element = document.getElementById(id)
       element.classList.add("invalid")
     }

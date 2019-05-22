@@ -22,9 +22,9 @@ class CreatePartyPage extends React.Component {
     this.createEvent = this.createEvent.bind(this)
     this.validateAll = this.validateAll.bind(this)
     this.schemaPartyEvent = {
-      formHeaderDataTitle: Joi.string().min(2).max(20).required(),
-      formHeaderDataName: Joi.string().min(2).max(20).required(),
-      formHeaderDataAge: Joi.number().integer().required()
+      title: Joi.string().min(2).max(20).required(),
+      name: Joi.string().min(2).max(20).required(),
+      age: Joi.number().integer().required()
     }
 
     this.schemaTimeAndPlace = {
@@ -76,7 +76,6 @@ class CreatePartyPage extends React.Component {
 
     this.errors.push(errors)
     console.log(errors)
-    this.functiontoTest()
 
     this.setState({ errors: this.errors })
   }

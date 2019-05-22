@@ -2,9 +2,9 @@ export default {
   birthday: {
 
     birthdayEvent: {
-      formHeaderDataTitle: '',
-      formHeaderDataName: '',
-      formHeaderDataAge: '',
+      title: '',
+      name: '',
+      age: '',
 
     },
     input: {
