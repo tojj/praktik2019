@@ -62,9 +62,9 @@ class Server {
 
       const mailOptions = {
         from: `"Tojj" <tojjinfo@gmail.com>`,
-        to: `${req.body.email}`,
-        subject: `${req.body.subject}`,
-        html: `${req.body.message}`
+        to: req.body.email,
+        subject: req.body.subject,
+        html: req.body.message
       }
       transporter.sendMail(mailOptions, function (err, res) {
         if (err) {

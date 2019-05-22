@@ -13,6 +13,7 @@ class CreatePartyPage extends React.Component {
       eventLink: ''
     }
     this.createEvent = this.createEvent.bind(this)
+    this.findNewEventAndSendConfirmation = this.findNewEventAndSendConfirmation.bind(this)
   }
 
   redirectTo = (target) => {
@@ -22,11 +23,7 @@ class CreatePartyPage extends React.Component {
   async createEvent() {
     const link = await this.generateLink()
     let date = this.props.birthdayTimeAndPlace.date + ' ' + this.props.birthdayTimeAndPlace.time
-    console.log(this.props.birthdayTimeAndPlace.date, '.DATE')
-    console.log(this.props.birthdayTimeAndPlace.time, 'TIME')
-    console.log(date, 'DATE')
     date = new Date(date).getTime()
-    console.log(date, 'DATE')
     const newEvent = new Event({
       title: this.props.birthdayEvent.title,
       child: this.props.birthdayEvent.name,
@@ -64,14 +61,55 @@ class CreatePartyPage extends React.Component {
       }
     })
   }
+  async findNewEventAndSendConfirmation (eventLink) {
+    let eventFromDb = await Event.find(`.find({ link: "${eventLink}" }).populate('product').populate('fundraiser').populate('user').exec()`)
+    eventFromDb = eventFromDb[0]
+    
+    await this.setContentAndSendEmail(eventFromDb)
+  }
   setContentAndSendEmail = (event) => {
-    this.setState({
-      content: `<body style="margin: 0; padding: 30px 0; width: 100%; background-color: #fbf7ee; background-image: ${event.image}">
+    const date = new Date(event.date).toLocaleDateString("sv-SE", {
+      weekday: "short",
+      day: "numeric",
+      month: "long",
+      hour: 'numeric',
+      minute: 'numeric'
+    })
+    const rsvp = new Date(event.rsvp).toLocaleDateString("sv-SE", {
+      weekday: "short",
+      day: "numeric",
+      month: "long"
+    })
+    const content= `<body style="margin: 0; padding: 30px 0; width: 100%; background-color: #fbf7ee; background-image: ${event.image}">
         <div style="padding: 30px 50px 50px; text-align: center; background: #fff; max-width: 600px; margin: 0 auto 15px; box-shadow: 0 0 5px 0px rgba(0,0,0,0.4)">
           <img src="http://i.imgur.com/Rkdv6ca.png" alt="Välkommen på kalas" style="width: 80%; height: auto" />
           <h1 style="font-weight: bold; color: #4762b7; text-transform: uppercase">Grattis, ditt kalas ${event.link} är nu skapat!</h1>
           <h4 style="font-weight: bold; margin-bottom: 50px">Klicka på knappen nedan för att gå direkt till kalaset eller klicka <a href="https://tojj.se/bekraftelse/${event.link}">här</a> för att bjuda in gästerna.</h4>
           <a href="https://tojj.se/kalas/${event.link}" style="word-wrap: none; text-decoration: none; font-size: 16px; font-weight: bold; background: #4762b7; color: #fff; padding: 15px 30px; border-radius: 100px; opacity: 0.8; margin: 20px 0">TILL KALASET</a>
+        </div>
+        <div style="padding: 20px 50px; background: #fff; max-width: 600px; margin: 0 auto 15px; box-shadow: 0 0 5px 0px rgba(0,0,0,0.4)">
+          <h3 style="font-weight: bold; margin-bottom: 36px;">Sammanfattning</h3>
+          <h4 style="font-weight: bold">Kalas</h4>
+          <p>Rubrik: <span style="font-weight: bold;">${event.title}</span></p>
+          <p>Födelsedagsbarn: <span style="font-weight: bold;">${event.child}</span></p>
+          <p>Fyller: <span style="font-weight: bold;">${event.age}</span> år</p>
+          <p>Beskrivning: <span style="font-weight: bold;">${event.desc}</span></p>
+          <p>Datum & tid: <span style="font-weight: bold;">${date}</span></p>
+          <p>OSA: <span style="font-weight: bold;">${rsvp}</span></p>
+          <h4 style="font-weight: bold: margin-top: 36px;">Plats</h4>
+          <p>Gata/plats: <span style="font-weight: bold;">${event.location.street}</span></p>
+          <p>Postkod: <span style="font-weight: bold;">${event.location.zipcode}</span></p>
+          <p>Stad: <span style="font-weight: bold;">${event.location.city}</span></p>
+          <h4 style="font-weight: bold: margin-top: 36px;">Present</h4>
+          <p>Present: <span style="font-weight: bold;">${event.product.name}</span></p>
+          <p>Pris: <span style="font-weight: bold;">${event.product.price}</span></p>
+          <p>Swishbelopp: <span style="font-weight: bold;">${event.swish.amount}</span></p>
+          <p>Info: <span style="font-weight: bold;">${event.product.desc}</span></p>
+          ${event.donate 
+          ?`<h4 style="font-weight: bold: margin-top: 36px;">Karma</h4>
+          <p>Organisation: <span style="font-weight: bold;">${event.fundraiser.name}</span></p>
+          <p>Info: <span style="font-weight: bold;">${event.fundraiser.desc}</span></p>`
+          :''}
         </div>
         <div style="padding: 20px 50px; background: #fff; max-width: 600px; margin: 0 auto; box-shadow: 0 0 5px 0px rgba(0,0,0,0.4)">
           <h4 style="font-weight: bold">Vad är Tojj?</h4>
@@ -79,11 +117,11 @@ class CreatePartyPage extends React.Component {
           <a href="https://tojj.se/" style="text-decoration: none; color: #4762b7">Läs mer ></a>
         </div>
       </body>`
-    })
+    
 
-    this.sendEmail('jesper.asplund95@gmail.com'/* ska vara mailadressen som angetts i CPP form, typ. newEvent.user.email  */, this.state.content, event.link)
+    this.sendEmail('jesper.asplund95@gmail.com'/* ska vara mailadressen som angetts i CPP form, typ. newEvent.user.email  */, content, event.link)
   }
-  sendEmail = (email, message, subject) => {
+  sendEmail = (email, message, subject) => {    
     fetch('/json/send', {
       method: 'POST',
       headers: {
@@ -92,7 +130,7 @@ class CreatePartyPage extends React.Component {
       },
       body: JSON.stringify({
         email: email,
-        subject: 'Bekräftelse för kalas:' + subject,
+        subject: `Bekräftelse för kalas: ${subject}`,
         message: message
       })
     })

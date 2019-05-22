@@ -31,7 +31,8 @@ class ConfirmationPage extends React.Component {
     const eventLink = this.props.match.params.link
     const party = await Event.find(`.find({link:"${eventLink}"}).exec()`)
     this.setState({
-      party: party[0]
+      party: party[0],
+      link: party[0].link
     })
     this.updateContent(party[0])
 
