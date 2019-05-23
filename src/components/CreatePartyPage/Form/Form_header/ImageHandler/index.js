@@ -46,7 +46,7 @@ class ImageHandler extends React.Component {
 
   updateImg = (imgUrl) => () => {
     this.props.updateImg(imgUrl)
-
+    
   }
 
   renderImages = ({ id, img, imgClass, dropdownClass }) => {

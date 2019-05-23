@@ -2,9 +2,11 @@ const express = require('express')
 const mongoose = require('mongoose')
 const http = require('http')
 const bodyParser = require('body-parser')
-// const supersecret = require('./supersecret')
-// const secretmail = require('./secretmail')
+const session = require('express-session')
+const MongoStore = require('connect-mongo')(session);
+const settings = require('./settings.json');
 const CreateRestRoutes = require('./CreateRestRoutes')
+const LoginHandler = require('./LoginHandler')
 const nodemailer = require('nodemailer')
 const path = require('path');
 require('dotenv').config()
@@ -24,6 +26,7 @@ module.exports = class Server {
     return new Promise((resolve, reject) => {      
       mongoose.connect(process.env.MONGO_API, { useNewUrlParser: true })
       global.db = mongoose.connection
+      global.passwordSalt = settings.passwordSalt;
       db.on("error", () => reject("Could not connect to DB"))
       db.once("open", () => resolve("Connected to DB"))
     })
@@ -41,6 +44,16 @@ module.exports = class Server {
     
     // app.use(express.static(path.join(__dirname, 'build')));
 
+
+    app.use(session({
+      secret: settings.cookieSecret,
+      resave: true,
+      saveUninitialized: true,
+      store: new MongoStore({
+        mongooseConnection: global.db
+      })
+    }));
+
     const models = {
       users: require('./models/User'),
       events: require('./models/Event'),
@@ -51,7 +64,10 @@ module.exports = class Server {
 
     global.models = models
 
+
     new CreateRestRoutes(app, global.db, models)
+
+    new LoginHandler(app, models.users);
 
 
 

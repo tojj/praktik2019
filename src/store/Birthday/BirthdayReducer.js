@@ -6,7 +6,8 @@ import {
   UPDATE_TIMEANDPLACE,
   UPDATE_FUNDRAISER,
   UPDATE_PRODUCT_INFO,
-  UPDATE_GUEST_USER_DETAILS
+  UPDATE_GUEST_USER_DETAILS,
+  UPDATE_VALIDATION
 
 } from './BirthdayActions'
 
@@ -32,6 +33,8 @@ export default function (state = initialState.birthday, action) {
     case UPDATE_GUEST_USER_DETAILS:
       return { ...state, guestUser: { ...state.guestUser, ...action.data } }
 
+    case UPDATE_VALIDATION:
+      return { ...state, input: { ...state.input, ...action.data } }
     default:
       return state
 

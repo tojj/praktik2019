@@ -1,8 +1,7 @@
 import React from "react"
-import { Button, FormGroup, Label } from "reactstrap"
+import {  FormGroup, Label } from "reactstrap"
 import { doUpdateGuestDetails } from "../../../../../store/Birthday/BirthdayActions"
 import RegisterComponent from "../Checkout/RegisterComponent"
-import LoginComponent from "../Checkout/LoginComponent"
 import { connect } from "react-redux"
 import { HelpCircle } from "react-feather"
 import InputEvent from "../../Form_body/Event_input/InputEvent"
@@ -21,10 +20,9 @@ class Checkout extends React.Component {
   /**
    * Toggling between Login Component, Register Component and Guest User Component
    */
-
   loginToggle = () => {
     this.setState({
-      loginOption: true,
+      loginOption: !this.state.loginOption,
       noRegisterOption: false,
       userLogin: false
     })
@@ -32,7 +30,7 @@ class Checkout extends React.Component {
 
   registerToggle = () => {
     this.setState({
-      noRegisterOption: true,
+      noRegisterOption: !this.state.noRegisterOption,
       loginOption: false,
       userLogin: false
     })
@@ -45,7 +43,6 @@ class Checkout extends React.Component {
       noRegisterOption: false
     })
   }
-
   /**
    * Getting input value and rendering inputs
    */
@@ -108,7 +105,7 @@ class Checkout extends React.Component {
 
   render() {
     return (
-      <div className="box-details-container" id="checkout-container">
+      <div className="box-details-container" id="checkout-container" >
         <div className="box align-left">
           <div className="form">
             <h2 className="form-headline text-center">Slutför</h2>
@@ -121,7 +118,7 @@ class Checkout extends React.Component {
                 onClick={this.userLoginToggle}
               />
               <label className="radio-label" htmlFor="radio3">
-                Fortsätt som inloggad användare
+                Skapa konto
               </label>
             </div>
             <div className="input-group">
@@ -133,43 +130,30 @@ class Checkout extends React.Component {
                 onClick={this.registerToggle}
               />
               <label className="radio-label" htmlFor="radio4">
-                Fortsätt utan inloggning
+                Fortsätt som gäst
               </label>
             </div>
           </div>
         </div>
 
         {this.state.userLogin ? (
-          <LoginComponent
-            userLoginToggle={this.userLoginToggle}
-            loginToggle={this.loginToggle}
-          />
-        ) : null}
-
-        {this.state.loginOption ? (
           <RegisterComponent
             loginToggle={this.loginToggle}
             userLoginToggle={this.userLoginToggle}
           />
-        ) : null}
+        ) : null
+        }
 
         {this.state.noRegisterOption ? (
           <div className="box-container set-width-registration">
             <div className="box align-left">
               <h4 className="form-header">Fortsätt som gästanvändare</h4>
               {this.renderInputs()}
-
-              <Button
-                color="primary"
-                type="button"
-                className="button-for-register"
-              >
-                Slutför
-              </Button>
             </div>
           </div>
-        ) : null}
-      </div>
+        ) : null
+        }
+      </div >
     )
   }
 }

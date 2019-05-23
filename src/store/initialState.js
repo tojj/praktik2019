@@ -5,6 +5,11 @@ export default {
       title: '',
       name: '',
       age: '',
+
+    },
+    input: {
+      isValid: false,
+      notValidatedYet: false
     },
 
     birthdayTimeAndPlace: {
@@ -20,11 +25,12 @@ export default {
     birthdayImage: '',
 
     fundraiser: {
-      id: null,
-      name: null,
-      image: null,
-      link: null,
-      donate: false
+      id: '',
+      name: '',
+      image: '',
+      link: '',
+      donate: false,
+      buttonSelected: false
     },
 
     present: {
