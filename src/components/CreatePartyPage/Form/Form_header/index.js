@@ -10,7 +10,16 @@ import {
 } from 'reactstrap'
 
 
+
+
 class Form_header extends Component {
+  constructor() {
+    super()
+    this.state = {
+      invalidInput: false
+    }
+  }
+
 
   /**
    * An advanced simple action
@@ -19,7 +28,8 @@ class Form_header extends Component {
   simpleAction = (event) => {
     this.props.updateBday(event.target.value)
   }
-      
+
+
   /**
    * Rendering my input fields here, so all three are shows
    * I am doing this using Object.keys and map
@@ -31,16 +41,19 @@ class Form_header extends Component {
 
 
   renderInput = key => (
-    <FormGroup key={key}>
+    <FormGroup key={key} >
       <Label className="birthday-label">
         {formHeaderData[key].text}
       </Label>
       <Input
+        id={formHeaderData[key].id}
         className={formHeaderData[key].className}
         keyVal={key}
         val={this.props.birthdayEvent[key]}
         callback={this.callback}
         placeholder={formHeaderData[key].defaultValue}
+
+
       />
     </FormGroup>
   )
@@ -49,12 +62,45 @@ class Form_header extends Component {
    * My callback function
    */
 
-  callback = (value, key) => this.props.updateBday({ [key]: value })
+
+  callback = (value, key) => {
+    this.props.updateBday({ [key]: value })
+    if (value.length > 2 && key === 'title') {
+      let id = key
+      let element = document.getElementById(id)
+      element.classList.remove("invalid")
+    } else if (value.length < 2 && key === 'title') {
+      let id = key
+      let element = document.getElementById(id)
+      element.classList.add("invalid")
+    }
+
+    if (value.length > 1 && key === 'name') {
+      let id = key
+      let element = document.getElementById(id)
+      element.classList.remove("invalid")
+    } else if (value.length < 2 && key === 'name') {
+      let id = key
+      let element = document.getElementById(id)
+      element.classList.add("invalid")
+    }
+
+    if (/^\d*$/.test(value) && (value === "" || parseInt(value) <= 20) && key === 'age') {
+      let id = key
+      let element = document.getElementById(id)
+      element.classList.remove("invalid")
+    } else if (key === 'age') {
+      let id = 'age'
+      let element = document.getElementById(id)
+      element.classList.add("invalid")
+    }
+
+  }
 
   render() {
     return (
       <div className="form-header-container">
-        <div className="box-container force-top">
+        <div className="box-container" style={{ zIndex: '30' }}>
           <div className="box text-left">
             <h2 className="form-headline">Skapa Kalas</h2>
             <div>
@@ -70,9 +116,13 @@ class Form_header extends Component {
   }
 }
 
+
+
+
+
 const mapStateToProps = state => {
   return {
-    birthdayEvent: state.birthday.birthdayEvent,
+    birthdayEvent: state.birthday.birthdayEvent
   }
 }
 

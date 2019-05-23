@@ -19,8 +19,8 @@
 .shop-item {
   position: relative;
   width: 320px;
-  height: 200px;
-  margin: 10px 10px;
+  height: 320px;
+  margin: 10px 20px;
   cursor: pointer;
   border-style: solid;
   border-color: #4761b7;
@@ -35,10 +35,11 @@
   }
 }
 
+/*
 .shop-item-x {
   position: relative;
   width: 320px;
-  height: 200px;
+  height: 410px;
   margin: 10px 10px;
   cursor: pointer;
   border-style: solid;
@@ -57,12 +58,13 @@
     transition: border-width 0.2s;
   }
 }
+*/
 
 .shop-item-border {
   position: relative;
   width: 320px;
-  height: 200px;
-  margin: 10px 10px;
+  height: 320px;
+  margin: 10px 20px;
   cursor: pointer;
   border-radius: 10px;
   border-style: solid;
@@ -85,6 +87,7 @@
 .shop-item-checkmark {
   background-image: url("data:image/svg+xml,%3Csvg width='264' height='264' viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5.414 11L4 12.414l5.414 5.414L20.828 6.414 19.414 5l-10 10z' fill='%23008A64' fill-rule='nonzero'/%3E%3C/svg%3E ");
   background-position-x: 110%;
+  background-position-y: 100%;
   z-index: 10 !important;
   position: absolute;
   width: 100%;
@@ -99,18 +102,21 @@
 .shop-img {
   position: relative;
   width: 100%;
-  height: 60%;
+  height: 80%;
   box-sizing: border-box;
   z-index: 0 !important;
+  border-radius: 10px;
 }
 
 .shop-info {
   position: relative;
   width: 100%;
-  height: 40%;
+  height: 20%;
   font-family: $small-text;
   font-weight: bold;
   color: $dark;
+  background-color: #f2f2f2;
+  border-radius: 10px;
 }
 
 .placeholder-div {
@@ -134,17 +140,22 @@
   z-index: 20;
 }
 
-.test-container {
+.content-container {
   width: 100%;
   height: 100%;
+  background-color: #f2f2f2;
+  border-radius: 10px;
 }
 
 .more-info-label {
   z-index: 100;
-  font-size: 32px;
   position: absolute;
-  font-family: $small-text;
-  font-weight: bold;
   left: 100%;
-  color: $primary;
+  img {
+    transition: all 0.3s;
+    &:hover {
+      cursor: pointer;
+      transform: scale(1.2) translate(6px);
+    }
+  }
 }

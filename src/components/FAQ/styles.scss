@@ -1,0 +1,98 @@
+.faq-wrapper {
+  width: 100%;
+  padding: 0.5rem;
+  @include media-breakpoint-up(md) {
+    width: 80%;
+    padding: 2rem;
+  }
+  max-width: 1000px;
+  margin: 50px auto;
+  border-radius: 5px;
+  transition: all 3s;
+  .category-holder {
+    width: 100%;
+    margin: 3rem 0;
+    min-height: 100px;
+    max-height: 500px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    text-align: center;
+    justify-content: space-between;
+    .category-item:nth-child(1):hover {
+      background: $primary !important;
+    }
+    .category-item:nth-child(2):hover {
+      background: $pink !important;
+    }
+    .category-item:nth-child(3):hover {
+      background: $orange !important;
+    }
+    .category-item:nth-child(4):hover {
+      background: $success !important;
+    }
+    .category-item {
+      cursor: pointer;
+      color: $dark;
+      text-align: center;
+      flex: 1;
+      margin: 15px 0;
+      max-width: 24%;
+      padding: 15px;
+      border: 1px solid rgba(0, 0, 0, 0.3);
+      border-radius: 5px;
+      transition: all 0.3s;
+      &:hover {
+        color: $light;
+      }
+      svg {
+        width: 32px;
+      }
+      .category-name {
+        font-size: 0.75rem;
+        margin: 0;
+        text-transform: capitalize;
+      }
+      @include media-breakpoint-up(sm) {
+        padding: 20px;
+        svg {
+          width: 48px;
+          height: 48px;
+        }
+        .category-name {
+          font-size: 1rem;
+        }
+      }
+      @include media-breakpoint-up(md) {
+        max-width: 24%;
+        padding: 30px;
+        .category-name {
+          font-size: 0.7rem;
+        }
+      }
+      @include media-breakpoint-up(lg) {
+        svg {
+          width: 72px;
+          height: 72px;
+        }
+        .category-name {
+          font-size: 1.5rem;
+        }
+      }
+      @include media-breakpoint-up(xl) {
+        max-width: 20%;
+      }
+    }
+  }
+  h2 {
+    margin: 2rem 0 6rem;
+    font-family: $big-text;
+    font-weight: 400;
+    text-align: center;
+  }
+  .qna-item {
+    transition: all 2s;
+    margin-top: 1rem;
+    font-family: $big-text;
+  }
+}

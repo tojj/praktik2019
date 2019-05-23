@@ -1,7 +1,7 @@
 import React from "react"
 import { Input } from "reactstrap"
 
-const InputEvent = ({ name, type, callback, placeholder, value, className, onChange, keyVal }) => {
+const InputEvent = ({ name, type, callback, placeholder, value, className, keyVal, id }) => {
 
   /**
    * Handling input from the user
@@ -19,13 +19,11 @@ const InputEvent = ({ name, type, callback, placeholder, value, className, onCha
       placeholder={placeholder}
       className={className}
       onChange={_onChange}
+      id={id}
     />
   )
 }
 
 
-/**
- * onChange method needs to be added
- */
 
 export default InputEvent
