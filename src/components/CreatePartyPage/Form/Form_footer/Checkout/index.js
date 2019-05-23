@@ -2,7 +2,6 @@ import React from "react"
 import {  FormGroup, Label } from "reactstrap"
 import { doUpdateGuestDetails } from "../../../../../store/Birthday/BirthdayActions"
 import RegisterComponent from "../Checkout/RegisterComponent"
-import LoginComponent from "../Checkout/LoginComponent"
 import { connect } from "react-redux"
 import { HelpCircle } from "react-feather"
 import InputEvent from "../../Form_body/Event_input/InputEvent"
@@ -143,15 +142,6 @@ class Checkout extends React.Component {
             userLoginToggle={this.userLoginToggle}
           />
         ) : null
-        }
-
-        {
-          this.state.loginOption ? (
-            <LoginComponent
-              loginToggle={this.loginToggle}
-              userLoginToggle={this.userLoginToggle} />
-          )
-            : null
         }
 
         {this.state.noRegisterOption ? (
