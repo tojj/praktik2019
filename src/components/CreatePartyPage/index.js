@@ -275,21 +275,17 @@ class CreatePartyPage extends React.Component {
 
     await newEvent.save().then(data => {
       if (!data.name) {
-        this.setContentAndSendEmail(newEvent)
+        this.findNewEventAndSendConfirmation(link)
         
-        const target = "/bekraftelse/" + link
-
-        this.redirectTo(target)
+        this.redirectTo("/bekraftelse/" + link)
       } else {
-        alert('ERROR:' + data.message)
+        alert('ERROR:' + data.message, 'please try again')
       }
     })
   }
-  async findNewEventAndSendConfirmation (eventLink) {
-    let eventFromDb = await Event.find(`.find({ link: "${eventLink}" }).populate('product').populate('fundraiser').populate('user').exec()`)
-    eventFromDb = eventFromDb[0]
-    
-    await this.setContentAndSendEmail(eventFromDb)
+  async findNewEventAndSendConfirmation(eventLink) {
+    let eventFromDb = await Event.find(`.find({ link: "${eventLink}" }).populate('product').populate('fundraiser').populate('user').exec()`)    
+    await this.setContentAndSendEmail(eventFromDb[0])
   }
   setContentAndSendEmail = (event) => {
     const date = new Date(event.date).toLocaleDateString("sv-SE", {
@@ -307,9 +303,9 @@ class CreatePartyPage extends React.Component {
     const content= `<body style="margin: 0; padding: 30px 0; width: 100%; background-color: #fbf7ee; background-image: ${event.image}">
         <div style="padding: 30px 50px 50px; text-align: center; background: #fff; max-width: 600px; margin: 0 auto 15px; box-shadow: 0 0 5px 0px rgba(0,0,0,0.4)">
           <img src="http://i.imgur.com/Rkdv6ca.png" alt="Välkommen på kalas" style="width: 80%; height: auto" />
-          <h1 style="font-weight: bold; color: #4762b7; text-transform: uppercase">Grattis, ditt kalas ${event.link} är nu skapat!</h1>
-          <h4 style="font-weight: bold; margin-bottom: 50px">Klicka på knappen nedan för att gå direkt till kalaset eller klicka <a href="https://tojj.se/bekraftelse/${event.link}">här</a> för att bjuda in gästerna.</h4>
-          <a href="https://tojj.se/kalas/${event.link}" style="word-wrap: none; text-decoration: none; font-size: 16px; font-weight: bold; background: #4762b7; color: #fff; padding: 15px 30px; border-radius: 100px; opacity: 0.8; margin: 20px 0">TILL KALASET</a>
+          <h1 style="font-weight: bold; color: #4762b7; text-transform: uppercase">Hurra, ditt kalas <span style="text-transform: none;">${event.link}</span> är nu skapat!</h1>
+          <h4 style="font-weight: bold; margin-bottom: 50px">Klicka på knappen nedan för att gå direkt till kalaset eller klicka <a href="https://tojj.herokuapp.com/bekraftelse/${event.link}">här</a> för att bjuda in gästerna.</h4>
+          <a href="https://tojj.herokuapp.com/kalas/${event.link}" style="word-wrap: none; text-decoration: none; font-size: 16px; font-weight: bold; background: #4762b7; color: #fff; padding: 15px 30px; border-radius: 100px; opacity: 0.8; margin: 20px 0">TILL KALASET</a>
         </div>
         <div style="padding: 20px 50px; background: #fff; max-width: 600px; margin: 0 auto 15px; box-shadow: 0 0 5px 0px rgba(0,0,0,0.4)">
           <h3 style="font-weight: bold; margin-bottom: 36px;">Sammanfattning</h3>
@@ -338,12 +334,12 @@ class CreatePartyPage extends React.Component {
         <div style="padding: 20px 50px; background: #fff; max-width: 600px; margin: 0 auto; box-shadow: 0 0 5px 0px rgba(0,0,0,0.4)">
           <h4 style="font-weight: bold">Vad är Tojj?</h4>
           <p>Ingen mer stress kopplad till kalasfirande! Hos Tojj kan man skapa en digital kalasinbjudan och låta de inbjudna gästerna bidra till en bestämd present till födelsedagsbarnet. Enkelt för alla och som grädde på moset kan man välja att bidra till en välgörenhet.</p>
-          <a href="https://tojj.se/" style="text-decoration: none; color: #4762b7">Läs mer ></a>
+          <a href="https://tojj.herokuapp.com" style="text-decoration: none; color: #4762b7">Läs mer ></a>
         </div>
       </body>`
     
 
-    this.sendEmail('jesper.asplund95@gmail.com'/* ska vara mailadressen som angetts i CPP form, typ. newEvent.user.email  */, content, event.link)
+    this.sendEmail(event.guestUser.email, content, event.link)
   }
   sendEmail = (email, message, subject) => {    
     fetch('/json/send', {
