@@ -19,12 +19,12 @@ class SwishQR extends React.Component {
   }
   
   handleChange = e => {
-    const val = e.target.value
+    const val = e.target.value || 50
     const max = 151
     const maxLength = max - 1
     const newVal = val < max ? val : maxLength
     this.setState({ value: newVal })
-    this.props.updateSwishAmount(e.target.value)
+    this.props.updateSwishAmount(newVal)
   }
 
   render() {

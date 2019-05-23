@@ -26,8 +26,18 @@ let eventSchema = new Schema({
   invited:    { type: Array },
   product:    { type: Schema.Types.ObjectId, ref: 'Product' },
   fundraiser: { type: Schema.Types.ObjectId, ref: 'Fundraiser' },
-  user:       { type: Schema.Types.ObjectId, ref: 'User' },
-  link:       { type: String, unique: true, required: true }
+  user: { type: Schema.Types.ObjectId, ref: 'User' },
+  link: { type: String, unique: true, required: true },
+
+  guestUser: {
+    firstName:   { type: String, required: true},
+    lastName:    { type: String, required: true},
+    email:       { type: String, required: true},
+    phoneNumber: { type: String},
+    address:      { type: String, required: true},
+    zipcode:     { type: String, required: true},
+    city:        { type: String, required: true},
+  }
 })
 
 module.exports = global.db.model("Event", eventSchema)

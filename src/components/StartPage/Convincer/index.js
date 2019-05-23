@@ -1,6 +1,5 @@
 import React from "react"
 import staticData from "../../../staticData"
-import Fade from "react-reveal/Fade"
 
 const Convincer = props => (
   <div className="box-container convincer-container">
@@ -11,7 +10,7 @@ const Convincer = props => (
 const renderConvincerText = ({ header, text, id, img }) => {
   return (
     <div className="box convincer-box" key={id}>
-      <Fade bottom delay={id * 200}>
+      <div>
         <div className="convincer-image-container">
           <img
             className="box-img convincer-image"
@@ -19,11 +18,11 @@ const renderConvincerText = ({ header, text, id, img }) => {
             alt="Birthday present"
           />
         </div>
-        <div className="convincer-info-container">
+        <div className="convincer-info-container" style={{minHeight: '260px'}}>
           <h4>{header}</h4>
           <p>{text}</p>
         </div>
-      </Fade>
+      </div>
     </div>
   )
 }

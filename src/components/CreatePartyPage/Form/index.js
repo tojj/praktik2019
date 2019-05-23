@@ -7,7 +7,7 @@ import { Form } from "reactstrap"
 
 const FormContainer = props => (
   <Form className="form-container">
-    <FormHeader />
+    <FormHeader test={props.test} />
     <FormBody />
     <WebShop />
     <FormFooter />

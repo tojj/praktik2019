@@ -1,5 +1,5 @@
 import React from "react"
-import { FormGroup, Label } from "reactstrap"
+import {  FormGroup, Label } from "reactstrap"
 import { doUpdateGuestDetails } from "../../../../../store/Birthday/BirthdayActions"
 import { connect } from "react-redux"
 import { HelpCircle } from "react-feather"
@@ -19,10 +19,9 @@ class Checkout extends React.Component {
   /**
    * Toggling between Login Component, Register Component and Guest User Component
    */
-
   loginToggle = () => {
     this.setState({
-      loginOption: true,
+      loginOption: !this.state.loginOption,
       noRegisterOption: false,
       userLogin: false
     })
@@ -30,7 +29,7 @@ class Checkout extends React.Component {
 
   registerToggle = () => {
     this.setState({
-      noRegisterOption: true,
+      noRegisterOption: !this.state.noRegisterOption,
       loginOption: false,
       userLogin: false
     })
@@ -43,7 +42,6 @@ class Checkout extends React.Component {
       noRegisterOption: false
     })
   }
-
   /**
    * Getting input value and rendering inputs
    */
@@ -106,7 +104,6 @@ class Checkout extends React.Component {
 
   render() {
     return (
-
       <div className="box-container set-width-registration">
         <div className="box align-left">
           <h2 className="form-header form-headline">Ange personuppgifter</h2>

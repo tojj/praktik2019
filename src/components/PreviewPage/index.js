@@ -4,13 +4,6 @@ import MapsGen from "../PartyPage/MapsGen/index"
 import { Link } from "react-router-dom"
 
 class PreviewPage extends Component {
-  componentWillMount() {
-    if (!this.props.birthdayEvent.title) {
-      window.location.pathname = "/skapa-kalas"
-    } else {
-      return
-    }
-  }
 
   render() {
     let date =
@@ -94,7 +87,7 @@ class PreviewPage extends Component {
               </a>
             </div>
 
-            <div className="box karma-holder">
+            {this.props.fundraiser.image ? <div className="box karma-holder">
               <div className="box-img">
                 <img src={this.props.fundraiser.image} className="img-fluid" alt="fundraiser" />
               </div>
@@ -110,7 +103,7 @@ class PreviewPage extends Component {
               >
                 Läs mer...
                 </a>
-            </div>
+            </div> : null }
 
           </div>
           <div className="box-container party-attending border-top no-print">
