@@ -11,7 +11,6 @@ import Categories from '../FAQ/Categories'
 import DataItem from './DataItem/index'
 import DataEditor from './DataEditor/index'
 import REST from '../../REST'
-import MissingPage from '../../components/MissingPage/index'
 import LoginComponent from './LoginComponent'
 
 class Login extends REST {
