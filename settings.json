@@ -1,5 +1,4 @@
 {
-  "dbName": "userlogin",
   "passwordSalt": "@&veryhardtoguess$%",
   "cookieSecret": "veryunusal#ö"
 }

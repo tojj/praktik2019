@@ -1,8 +1,7 @@
 const mongoose = require('mongoose')
-const supersecret = require('./supersecret')
+const { db_host } = require('./config/keys');
 
-
-mongoose.connect(supersecret, { useNewUrlParser: true })
+mongoose.connect(db_host, { useNewUrlParser: true })
 global.db = mongoose.connection
 db.on("error", () => reject("Could not connect to DB"))
 db.once("open", () => {

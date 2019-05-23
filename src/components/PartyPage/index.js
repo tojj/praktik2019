@@ -1,10 +1,10 @@
 import React from "react"
-import REST from "../../REST"
+import EVENT from '../../REST/EVENT'
 import MissingPage from "../MissingPage/index"
 import MapsGen from "./MapsGen/index"
 import AttendingsList from "./AttendingsList/index"
 
-class Event extends REST { }
+class Event extends EVENT { }
 
 class PartyPage extends React.Component {
   constructor(props) {

@@ -63,11 +63,7 @@ typings/
 # CSS
 *.css
 
-# DB Connection / data imports to db
-supersecret.js
-
-# Mailserver API key
-secretmail.js
-
 #
 .env
+# production
+/build

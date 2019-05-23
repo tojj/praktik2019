@@ -1,8 +1,8 @@
 import React from 'react'
 import Attendee from './Attendee/index'
-import REST from '../../../REST'
+import EVENT from '../../../REST/EVENT'
 
-class Event extends REST { }
+class Event extends EVENT { }
 
 class AttendingsList extends React.Component {
   constructor(props) {

@@ -2,9 +2,9 @@ import React from 'react'
 import { Send } from 'react-feather'
 import BirthdayInvite from './BirthdayInvite/index'
 import BirthdayInviteList from './BirthdayInviteList/index'
-import REST from '../../REST'
+import EVENT from '../../REST/EVENT'
 
-class Event extends REST { }
+class Event extends EVENT { }
 
 class ConfirmationPage extends React.Component {
   constructor(props) {
@@ -31,7 +31,8 @@ class ConfirmationPage extends React.Component {
     const eventLink = this.props.match.params.link
     const party = await Event.find(`.find({link:"${eventLink}"}).exec()`)
     this.setState({
-      party: party[0]
+      party: party[0],
+      link: party[0].link
     })
     this.updateContent(party[0])
 
@@ -164,14 +165,14 @@ class ConfirmationPage extends React.Component {
           {this.state.emailsSent
             ? "SKICKAT"
             : this.state.emails < 1
-              ? <button disabled className="send-button disabled btn btn-success"><Send /> Skicka</button>
-              : <button onClick={this.clickHandler} className="send-button btn btn-success"><Send /> Skicka</button>
+              ? <button disabled className="send-button disabled btn btn-info"><Send /> Skicka</button>
+              : <button onClick={this.clickHandler} className="send-button btn btn-info"><Send /> Skicka</button>
           }
           {this.state.emails < 1 && !this.state.emailsSent ? <p style={{ fontStyle: 'italic', fontSize: '.8rem', color: '#555', marginTop: '10px' }}>Lägg till minst en epost för att skicka inbjudan.</p> : null}
         </div>
         <div className="msg-container">
           <div className="msg-text">
-            <p className="my-4 text-center">En bekräftelse har skickats till den den mail du angav i förra steget.</p>
+            <p className="my-4 text-center">En bekräftelse har skickats till Jespers mail. Säg förlåt när du ser honom.</p>
             <ul>
               <li>När presentens summa är uppnådd kommer ett kommer ett mail till dig.</li>
               <li>Presenten skickas så fort summan är nådd, bra va?</li>

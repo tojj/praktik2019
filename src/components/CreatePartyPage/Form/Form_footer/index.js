@@ -1,12 +1,12 @@
 import React from "react"
 import Slider from "react-slick"
 import Checkout from "../Form_footer/Checkout/index"
-import REST from "../../../../REST"
+import FUNDRAISER from "../../../../REST/FUNDRAISER"
 import { connect } from 'react-redux'
 import { doUpdateFundraiser } from '../../../../store/Birthday/BirthdayActions'
 
 
-class Fundraiser extends REST { }
+class Fundraiser extends FUNDRAISER { }
 
 class Form_footer extends React.Component {
   constructor(props) {

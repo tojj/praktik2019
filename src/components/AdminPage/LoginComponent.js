@@ -6,10 +6,10 @@ import {
   Label
 } from 'reactstrap'
 import staticData from '../../staticData'
-import REST from '../../REST'
+import LOGIN from '../../REST/LOGIN'
 
 
-class Login extends REST {
+class Login extends LOGIN {
   async delete() {
     this._id = 1
     return super.delete();

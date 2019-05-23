@@ -2,49 +2,53 @@ const express = require('express')
 const mongoose = require('mongoose')
 const http = require('http')
 const bodyParser = require('body-parser')
+const path = require('path')
 const session = require('express-session')
 const MongoStore = require('connect-mongo')(session);
+
 const settings = require('./settings.json');
+const nodemailer = require('nodemailer')
+
 const CreateRestRoutes = require('./CreateRestRoutes')
 const LoginHandler = require('./LoginHandler')
-const nodemailer = require('nodemailer')
-const path = require('path');
-require('dotenv').config()
+const { db_host, port, mail } = require('./config/keys')
 
-
-module.exports = class Server {
+class Server {
   constructor() {
     this.start()
   }
 
   async start() {
-    await this.connectToDb()
     await this.startWebServer()
   }
 
-  connectToDb() {
-    return new Promise((resolve, reject) => {      
-      mongoose.connect(process.env.MONGO_API, { useNewUrlParser: true })
-      global.db = mongoose.connection
-      global.passwordSalt = settings.passwordSalt;
-      db.on("error", () => reject("Could not connect to DB"))
-      db.once("open", () => resolve("Connected to DB"))
-    })
-  }
-
   /**
-   * Startar webbservern åt oss. 
+   * Startar webbservern åt oss.
    */
-
   startWebServer() {
 
     const app = express()
+    // app.use(express.static(`${__dirname}/build`));
 
     app.use(bodyParser.json())
-    
-    // app.use(express.static(path.join(__dirname, 'build')));
+
+   
 
 
+    // Connect to DB.
+    mongoose.connect(db_host, { useNewUrlParser: true })
+      .then(() => console.log('MongoDB connected'))
+      .catch(err => console.log(err));
+
+    global.db = mongoose.connection
+    global.passwordSalt = settings.passwordSalt
+    const models = {
+      users: require('./models/User'),
+      events: require('./models/Event'),
+      products: require('./models/Product'),
+      fundraisers: require('./models/Fundraiser'),
+      qnas: require('./models/Qna')
+    };
     app.use(session({
       secret: settings.cookieSecret,
       resave: true,
@@ -52,24 +56,11 @@ module.exports = class Server {
       store: new MongoStore({
         mongooseConnection: global.db
       })
-    }));
-
-    const models = {
-      users: require('./models/User'),
-      events: require('./models/Event'),
-      products: require('./models/Product'),
-      fundraisers: require('./models/Fundraiser'),
-      qnas: require('./models/Qna')
-    }
-
+    }))
     global.models = models
 
-
     new CreateRestRoutes(app, global.db, models)
-
-    new LoginHandler(app, models.users);
-
-
+    new LoginHandler(app, models.users)
 
     app.post('/json/send', function (req, res, next) {
       const transporter = nodemailer.createTransport({
@@ -78,7 +69,7 @@ module.exports = class Server {
         secure: true,
         auth: {
           user: 'apikey',
-          pass: process.env.MAIL_API
+          pass: mail
         },
         tls: {
           rejectUnauthorized: false
@@ -87,9 +78,9 @@ module.exports = class Server {
 
       const mailOptions = {
         from: `"Tojj" <tojjinfo@gmail.com>`,
-        to: `${req.body.email}`,
-        subject: `${req.body.subject}`,
-        html: `${req.body.message}`
+        to: req.body.email,
+        subject: req.body.subject,
+        html: req.body.message
       }
       transporter.sendMail(mailOptions, function (err, res) {
         if (err) {
@@ -99,13 +90,20 @@ module.exports = class Server {
         }
       })
     })
+
+    app.use(express.static(path.join(__dirname, 'build')));
+
     app.all('/json/*', (req, res) => {
       res.json({ url: req.url, ok: true })
     })
     
+    app.get('*', function (req, res) {
+      res.sendFile(path.join(__dirname, 'build', 'index.html'));
+    });
     const server = http.Server(app)
-    server.listen(3001, () => console.log('Tojj Server is on port 3001'))
-
+    server.listen(port, () => console.log(`Tojj Server is on port ${port}`))
   }
 
 }
+
+new Server()
