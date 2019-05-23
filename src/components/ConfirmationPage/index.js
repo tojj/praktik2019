@@ -54,12 +54,12 @@ class ConfirmationPage extends React.Component {
         <h2 style="font-weight: bold; text-transform: uppercase">${date[0]} ${date[1]} ${date[2]}</h2>
         <h3 style="font-weight: bold; margin-bottom: 20px; text-transform: uppercase">Kl ${date[3]}</h3>
         <h4 style="font-weight: bold; margin-bottom: 50px"> ${party.child} ska ha kalas och du är bjuden! Klicka på länken nedan för att svara på om du kommer.</h4>
-        <a href="https://tojj.se/kalas/${party.link}" style="word-wrap: none; text-decoration: none; font-size: 16px; font-weight: bold; background: #4762b7; color: #fff; padding: 15px 30px; border-radius: 100px; opacity: 0.8; margin: 20px 0">TILL KALASET</a>
+        <a href="https://tojj.herokuapp.com/kalas/${party.link}" style="word-wrap: none; text-decoration: none; font-size: 16px; font-weight: bold; background: #4762b7; color: #fff; padding: 15px 30px; border-radius: 100px; opacity: 0.8; margin: 20px 0">TILL KALASET</a>
       </div>
       <div style="padding: 20px 50px; background: #fff; max-width: 600px; margin: 0 auto; box-shadow: 0 0 5px 0px rgba(0,0,0,0.4)">
         <h4 style="font-weight: bold">Vad är Tojj?</h4>
         <p>Ingen mer stress kopplad till kalasfirande! Hos Tojj kan man skapa en digital kalasinbjudan och låta de inbjudna gästerna bidra till en bestämd present till födelsedagsbarnet. Enkelt för alla och som grädde på moset kan man välja att bidra till en välgörenhet.</p>
-        <a href="https://tojj.se/" style="text-decoration: none; color: #4762b7">Läs mer ></a>
+        <a href="https://tojj.herokuapp.com/" style="text-decoration: none; color: #4762b7">Läs mer ></a>
       </div>
     </body>`
     this.setState({

@@ -2,7 +2,7 @@
 // that are front end representations
 // of Mongoose models
 
-export default class REST {
+export default class USER {
 
   constructor(settings) {
     Object.assign(this, settings)    
