@@ -77,11 +77,11 @@ class Web_shop extends Component {
         </label>
 
         {this.state.showInfo === id ? (
-          <div className="test-container">
+          <div className="content-container">
             <p>{desc}</p>
           </div>
         ) : (
-          <div className="test-container">
+          <div className="content-container">
             <img
               className="shop-img"
               src={img}
@@ -114,11 +114,11 @@ class Web_shop extends Component {
           </label>
 
           {this.state.showInfo === product._id ? (
-            <div className="test-container">
+            <div className="content-container">
               <p>{product.desc}</p>
             </div>
           ) : (
-            <div className="test-container">
+            <div className="content-container">
               <img
                 className="shop-img"
                 src={product.image}
