@@ -48,6 +48,7 @@
   },
   "scripts": {
     "start": "node server.js",
+    "dev": "concurrently \"react-scripts start\" \"nodemon server\" ",
     "build": "react-scripts build",
     "prod": "npm run build && node server.js",
     "test": "react-scripts test",

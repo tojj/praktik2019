@@ -5,7 +5,7 @@ import StartPage from './components/StartPage/index'
 import PreviewPage from './components/PreviewPage/index'
 import CreatePartyPage from './components/CreatePartyPage/index'
 import PartyPage from './components/PartyPage/index'
-// import AdminPage from './components/AdminPage/index'
+import AdminPage from './components/AdminPage/index'
 import Faq from "./components/FAQ/index"
 import Footer from './components/Footer/index'
 import MissingPage from "./components/MissingPage/index"
@@ -41,7 +41,7 @@ const App = props => {
           <Route exact path="/bekraftelse/:link" component={ConfirmationPage} />
           <Route exact path="/vanliga-fragor" component={Faq} />
           <Route exact path="/vanliga-fragor/:link" component={Faq} />
-          {/* <Route exact path="/admin" component={AdminPage} /> */}
+          <Route exact path="/admin" component={AdminPage} />
           <Route exact path="/test" component={Test} />
           <Route component={MissingPage} />
         </Switch>

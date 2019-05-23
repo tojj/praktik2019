@@ -199,7 +199,7 @@ class Form_footer extends React.Component {
             </div>
           </div>
         ) : null}
-        {/* <Checkout /> */}
+        <Checkout />
       </div>
     )
   }
