@@ -328,33 +328,35 @@ export const guestUserData = {
     type: "text",
     className: "form-input ml-lg-2"
   },
-  address: {
+  city: {
     classNameFormGroup: "input50",
-    id: "address-input",
-    name: "address",
-    classNameLabel: "",
-    label: "Adress",
+    id: "city-input",
+    name: "city",
+    classNameLabel: "ml-lg-2",
+    label: "Stad",
     type: "text",
-    className: "form-input"
+    className: "form-input ml-lg-2"
   },
+  
   zipcode: {
     classNameFormGroup: "input50 display-inline",
     id: "zipcode-input",
     name: "zipcode",
-    classNameLabel: "ml-lg-2",
+    classNameLabel: "",
     label: "Postnr",
     type: "text",
-    className: "form-input ml-lg-2"
+    className: "form-input"
   },
-  city: {
+  
+  address: {
     classNameFormGroup: "input27",
-    id: "city-input",
-    name: "city",
+    id: "address-input",
+    name: "address",
     classNameLabel: "",
-    label: "Stad",
+    label: "Gata",
     type: "text",
     className: "form-input MQC"
-  }
+  },
 }
 
 
