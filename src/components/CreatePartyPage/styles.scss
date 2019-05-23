@@ -111,13 +111,20 @@
       }
     }
 
+    .invalid {
+      border-color: red;
+    }
+    .valid {
+      border: none;
+    }
+
     .box {
       z-index: 10;
       flex: 1;
       padding: 0;
       text-align: center;
       width: 100%;
-      
+
       .box-img {
         width: 100%;
         height: auto;
@@ -173,4 +180,23 @@
       margin-bottom: 2rem;
     }
   }
+}
+
+.modalHeader {
+  background: #4761b7cc;
+  color: #fff;
+  font-family: $big-text;
+}
+
+.modalBody {
+  background: $secondary;
+  font-family: "Open Sans", sans-serif;
+}
+
+.modalFooter {
+  background: #4761b7cc;
+}
+
+.validation-modal span {
+  color: #fbf7ee;
 }

@@ -36,7 +36,7 @@ const App = props => {
         <Switch>
           <Route exact path="/" component={StartPage} />
           <Route exact path="/skapa-kalas" component={CreatePartyPage} />
-          <Route exact path="/kalas/:link" component={PartyPage} />          
+          <Route exact path="/kalas/:link" component={PartyPage} />
           <Route exact path="/kalas-förhandsvisning" component={PreviewPage} />
           <Route exact path="/bekraftelse/:link" component={ConfirmationPage} />
           <Route exact path="/vanliga-fragor" component={Faq} />

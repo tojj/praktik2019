@@ -16,12 +16,6 @@
   .box {
     width: 100%;
 
-    .iconFeather {
-      width: 12px;
-      position: absolute;
-      top: 0;
-    }
-
     .user-form-links {
       text-decoration: none;
     }
@@ -174,4 +168,15 @@
   color: $primary;
   padding-bottom: 5vh;
   margin-top: 0;
+}
+
+
+@include media-breakpoint-up(lg){
+  .MQC {
+    width: calc(100% + 0.5rem) !important;
+  }
+}
+
+.iconFeather {
+  margin-left: 0.25rem;
 }

@@ -1,10 +1,7 @@
 import React from "react"
-import { Button, FormGroup, Label } from "reactstrap"
+import { FormGroup, Label } from "reactstrap"
 import { doUpdateGuestDetails } from "../../../../../store/Birthday/BirthdayActions"
-import RegisterComponent from "../Checkout/RegisterComponent"
-import LoginComponent from "../Checkout/LoginComponent"
 import { connect } from "react-redux"
-import { HelpCircle } from "react-feather"
 import InputEvent from "../../Form_body/Event_input/InputEvent"
 import { guestUserData } from "../../../../../staticData"
 
@@ -21,10 +18,9 @@ class Checkout extends React.Component {
   /**
    * Toggling between Login Component, Register Component and Guest User Component
    */
-
   loginToggle = () => {
     this.setState({
-      loginOption: true,
+      loginOption: !this.state.loginOption,
       noRegisterOption: false,
       userLogin: false
     })
@@ -32,7 +28,7 @@ class Checkout extends React.Component {
 
   registerToggle = () => {
     this.setState({
-      noRegisterOption: true,
+      noRegisterOption: !this.state.noRegisterOption,
       loginOption: false,
       userLogin: false
     })
@@ -45,7 +41,6 @@ class Checkout extends React.Component {
       noRegisterOption: false
     })
   }
-
   /**
    * Getting input value and rendering inputs
    */
@@ -60,29 +55,6 @@ class Checkout extends React.Component {
       : null
 
   renderInput = key => {
-    if (key === "phoneNumber") {
-      return (
-        <FormGroup key="phoneNumber" className="input50">
-          <Label
-            htmlFor="phoneNumber-input"
-            className="position-relative ml-lg-2"
-            title="Ange ditt telefonnummer om du vill få sms aviseringar"
-          >
-            Telefonnummer
-            <HelpCircle className="iconFeather" />
-          </Label>
-          <InputEvent
-            name={guestUserData[key].name}
-            keyVal={key}
-            value={this.props.guestUser[key]}
-            type={guestUserData[key].type}
-            placeholder={guestUserData[key].label}
-            className={guestUserData[key].className}
-            callback={this.callback}
-          />
-        </FormGroup>
-      )
-    }
     return (
       <FormGroup key={key} className={guestUserData[key].classNameFormGroup}>
         <Label
@@ -108,67 +80,11 @@ class Checkout extends React.Component {
 
   render() {
     return (
-      <div className="box-details-container" id="checkout-container">
+      <div className="box-container set-width-registration">
         <div className="box align-left">
-          <div className="form">
-            <h2 className="form-headline text-center">Slutför</h2>
-            <div className="input-group">
-              <input
-                className="radio-input"
-                id="radio3"
-                name="radioUser"
-                type="radio"
-                onClick={this.userLoginToggle}
-              />
-              <label className="radio-label" htmlFor="radio3">
-                Fortsätt som inloggad användare
-              </label>
-            </div>
-            <div className="input-group">
-              <input
-                className="radio-input"
-                id="radio4"
-                name="radioUser"
-                type="radio"
-                onClick={this.registerToggle}
-              />
-              <label className="radio-label" htmlFor="radio4">
-                Fortsätt utan inloggning
-              </label>
-            </div>
-          </div>
+          <h2 className="form-header form-headline">Ange personuppgifter</h2>
+          {this.renderInputs()}
         </div>
-
-        {this.state.userLogin ? (
-          <LoginComponent
-            userLoginToggle={this.userLoginToggle}
-            loginToggle={this.loginToggle}
-          />
-        ) : null}
-
-        {this.state.loginOption ? (
-          <RegisterComponent
-            loginToggle={this.loginToggle}
-            userLoginToggle={this.userLoginToggle}
-          />
-        ) : null}
-
-        {this.state.noRegisterOption ? (
-          <div className="box-container set-width-registration">
-            <div className="box align-left">
-              <h4 className="form-header">Fortsätt som gästanvändare</h4>
-              {this.renderInputs()}
-
-              <Button
-                color="primary"
-                type="button"
-                className="button-for-register"
-              >
-                Slutför
-              </Button>
-            </div>
-          </div>
-        ) : null}
       </div>
     )
   }

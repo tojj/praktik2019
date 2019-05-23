@@ -3,6 +3,14 @@ import { connect } from 'react-redux'
 import FormContainer from './Form/index'
 import EVENT from '../../REST/EVENT'
 import Buttons from './Buttons/index'
+import Joi from 'joi-browser'
+import {
+  Button,
+  Modal,
+  ModalHeader,
+  ModalBody,
+  ModalFooter
+} from 'reactstrap'
 
 class Event extends EVENT { }
 
@@ -10,18 +18,222 @@ class CreatePartyPage extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      eventLink: ''
+      eventLink: '',
+      modal: false,
+      errors: []
     }
+    this.errors = []
+    this.invalidForm = false
     this.createEvent = this.createEvent.bind(this)
     this.findNewEventAndSendConfirmation = this.findNewEventAndSendConfirmation.bind(this)
+    this.validateAll = this.validateAll.bind(this)
+
+    this.schemaPartyEvent = {
+      title: Joi.string().min(2).max(50).required().error(errors => {
+        return {
+          message: "Rubrik saknas"
+        }
+      }),
+      name: Joi.string().min(2).max(20).required().error(errors => {
+        return {
+          message: "Namn måste innehålla minst 2 tecken"
+        }
+      }),
+      age: Joi.number().integer().required().error(errors => {
+        return {
+          message: "Ålder måste vara mellan 1 och 20"
+        }
+      }),
+    }
+
+    this.schemaTimeAndPlace = {
+      description: Joi.string().min(2).max(40).required().error(errors => {
+        return {
+          message: "Information till de inbjudna måste innehålla minst 5 tecken"
+        }
+      }),
+      date: Joi.date().required().error(errors => {
+        return {
+          message: "Ange datum för kalas - datumet måste vara en vecka framåt från dagens datum"
+        }
+      }),
+      time: Joi.required().error(errors => {
+        return {
+          message: "Tid för kalaset saknas"
+        }
+      }),
+      deadline: Joi.date().required().error(errors => {
+        return {
+          message: "Ange OSA - skriv när du senast vill ha svar om folk kan komma. Detta måste vara senast en dag innan kalaset"
+        }
+      }),
+      street: Joi.string().min(3).max(30).required().error(errors => {
+        return {
+          message: "Adress för kalaset saknas"
+        }
+      }),
+      zip: Joi.string().min(3).max(30).required().error(errors => {
+        return {
+          message: "Postnumret för kalaset saknas"
+        }
+      }),
+      city: Joi.string().min(2).max(40).required().error(errors => {
+        return {
+          message: "Stad för kalaset saknas"
+        }
+      })
+    }
+
+    this.schemaGuestUser = {
+      firstName: Joi.string().min(2).max(20).required().error(errors => {
+        return {
+          message: "Ange ditt förnamn"
+        }
+      }),
+      lastName: Joi.string().min(2).max(20).required().error(errors => {
+        return {
+          message: "Ange ditt efternamn"
+        }
+      }),
+      address: Joi.string().min(3).max(30).required().error(errors => {
+        return {
+          message: "Ange din adress"
+        }
+      }),
+      zipcode: Joi.number().integer().required().error(errors => {
+        return {
+          message: "Ange ditt postnummer"
+        }
+      }),
+      phoneNumber: Joi.number().integer().required().error(errors => {
+        return {
+          message: "Ange ditt telefonnummer"
+        }
+      }),
+      city: Joi.string().min(2).max(20).required().error(errors => {
+        return {
+          message: "Ange stad du bor i"
+        }
+      }),
+      email: Joi.string().email({ minDomainSegments: 2 }).error(errors => {
+        return {
+          message: "Ange din e-postadress"
+        }
+      })
+    }
   }
+
+  /**
+     *Validating all inputs
+  */
+
+
+  validateBirthdayEvent = () => {
+    const result = Joi.validate(this.props.birthdayEvent, this.schemaPartyEvent, {
+      abortEarly: false
+    })
+
+    if (!result.error) return null
+
+    //if there are errors:
+
+    const errors = []
+    for (let item of result.error.details) {
+      errors[item.path[0]] = item.message
+      this.errors.push(item.message)
+    }
+    this.setState({ errors: this.errors })
+  }
+
+
+  validateImageHandler = () => {
+    let selectedImage = this.props.birthdayImage
+    if (selectedImage) {
+    } else {
+      this.errors.push(["Välj bakgrundsbild till kalaset"])
+      this.setState({ errors: this.errors })
+    }
+
+  }
+
+  validateTimeAndPlace = () => {
+    const result = Joi.validate(this.props.birthdayTimeAndPlace, this.schemaTimeAndPlace, {
+      abortEarly: false
+    })
+    if (!result.error) return null
+    const errors = []
+    for (let item of result.error.details) {
+      errors[item.path[0]] = item.message
+      this.errors.push(item.message)
+    }
+    this.setState({ errors: this.errors })
+  }
+
+
+  validatePresent = () => {
+    let selectedPresent = this.props.present.id
+    if (selectedPresent) {
+    } else {
+      this.errors.push(["Välj present"])
+      this.setState({ errors: this.errors })
+    }
+  }
+
+
+  validateFundraiser = () => {
+    let isFundraiserSelected = this.props.fundraiser.buttonSelected
+    if (isFundraiserSelected === true) {
+    }
+    else {
+      this.errors.push(["Välj om du vill stötta en välgörenhet"])
+      this.setState({ errors: this.errors })
+    }
+  }
+
+
+  validateGuestUser = () => {
+    const options = { abortEarly: false }
+    const result = Joi.validate(this.props.guestUser, this.schemaGuestUser, options)
+    if (!result.error) return null
+    const errors = []
+    for (let item of result.error.details) {
+      errors[item.path[0]] = item.message
+      this.errors.push(item.message)
+    }
+    this.setState({ errors: this.errors })
+    return errors
+  }
+
+  /**
+   * Checking all validation functions and showing a
+   * modal (if validation did not pass) or proceeding to 
+   * Confirmation page
+   */
+
+  async validateAll() {
+    this.errors = []
+    this.validateBirthdayEvent()
+    this.validateImageHandler()
+    this.validateTimeAndPlace()
+    this.validatePresent()
+    this.validateFundraiser()
+    this.validateGuestUser()
+    if (this.errors.length > 0) {
+      this.toggle()
+      await this.setState({ errors: this.errors })
+    }
+    else {
+      this.createEvent()
+    }
+  }
+
 
   redirectTo = (target) => {
     this.props.history.push(target)
   }
 
   async createEvent() {
-    const link = await this.generateLink()
+    let link = await this.generateLink()
     let date = this.props.birthdayTimeAndPlace.date + ' ' + this.props.birthdayTimeAndPlace.time
     date = new Date(date).getTime()
     const newEvent = new Event({
@@ -46,7 +258,19 @@ class CreatePartyPage extends React.Component {
       fundraiser: this.props.fundraiser.id,
       attending: [],
       product: this.props.present.id,
-      link: link
+      link: link,
+
+      guestUser: {
+        firstName: this.props.guestUser.firstName,
+        lastName: this.props.guestUser.lastName,
+        email: this.props.guestUser.email,
+        phoneNumber: this.props.guestUser.phoneNumber,
+        address: this.props.guestUser.address,
+        zipcode: this.props.guestUser.zipcode,
+        city: this.props.guestUser.city
+
+      }
+
     })
 
     await newEvent.save().then(data => {
@@ -166,11 +390,42 @@ class CreatePartyPage extends React.Component {
     this.setState({ eventLink: link })
     return link
   }
+
+  toggle = () => {
+    this.setState(prevState => ({
+      modal: !prevState.modal
+    }));
+  }
+
+  superModal = () => {
+    const { errors } = this.state
+    const allErrors = errors.map((error) =>
+      <ul>
+        <li key={error}>{error}</li>
+      </ul>)
+
+    return (
+      <div>
+        <Modal isOpen={this.state.modal} toggle={this.toggle} className="validation-modal">
+          <ModalHeader className="modalHeader" toggle={this.toggle}>Fel har uppstått</ModalHeader>
+          <ModalBody className="modalBody">
+            {allErrors}
+          </ModalBody>
+          <ModalFooter className="modalFooter">
+            <Button className="link-preview-page" color="secondary" onClick={this.toggle}>Stäng</Button>
+          </ModalFooter>
+        </Modal>
+      </div>
+    )
+  }
+
   render() {
     return (
       <div className="createpartypage-wrapper">
-        <FormContainer />
-        <Buttons createEvent={this.createEvent} />
+        <FormContainer test={this.test} />
+        <Buttons createEvent={this.validateAll} />
+        {this.modalShow ? <Modal /> : ""}
+        {this.superModal()}
       </div>
     )
   }
@@ -183,7 +438,8 @@ const mapStateToProps = state => {
     birthdayTimeAndPlace: state.birthday.birthdayTimeAndPlace,
     fundraiser: state.birthday.fundraiser,
     present: state.birthday.present,
-    swishMoney: state.swish.swishMoney
+    swishMoney: state.swish.swishMoney,
+    guestUser: state.birthday.guestUser,
   }
 }
 

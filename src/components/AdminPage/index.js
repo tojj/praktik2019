@@ -10,6 +10,7 @@ import { Link } from 'react-router-dom'
 import Categories from '../FAQ/Categories'
 import DataItem from './DataItem/index'
 import DataEditor from './DataEditor/index'
+import LoginComponent from './LoginComponent'
 
 import PRODUCT from '../../REST/PRODUCT'
 import FUNDRAISER from '../../REST/FUNDRAISER'
@@ -18,6 +19,15 @@ import EVENT from '../../REST/EVENT'
 
 import MissingPage from '../../components/MissingPage/index'
 
+class Login extends REST {
+  async delete() {
+    this._id = 1
+    return super.delete();
+  }
+  static get baseRoute() {
+    return "login/"
+  }
+}
 class Product extends PRODUCT { }
 class Fundraiser extends FUNDRAISER { }
 class Qna extends QNA { }
@@ -28,7 +38,7 @@ class AdminPage extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      loggedId: true,
+      loggedIn: false,
       currentColl: '',
       editObject: '',
       content: <p style={{minHeight: '30vh'}}>Välj en av kategorierna ovan för att redigera objekt.</p>
@@ -59,10 +69,29 @@ class AdminPage extends React.Component {
         "styling": { backgroundColor: '#008A64', color: 'white' }
       }
     ]
+    this.checkIfLoggedIn()
+    this.checkIfLoggedIn = this.checkIfLoggedIn.bind(this)
+    this.logout = this.logout.bind(this)
     this.editNewObject = this.editNewObject.bind(this)
     this.deleteObject = this.deleteObject.bind(this)
     this.saveObject = this.saveObject.bind(this)
   }
+  async checkIfLoggedIn() {
+    const loggedInUser = await Login.find()
+    if (!loggedInUser.error){      
+      this.setState({loggedIn: true})
+      return true
+    } else {
+      return false
+    }
+  }
+  async logout(){
+    const loggedinUser = await Login.find()
+    await loggedinUser.delete()
+    this.setState({loggedIn: false})    
+  }
+
+
   renderCategoryContent = (category) => {
     if (category === 'produkter') {
       this.renderContentFromDb(Product)
@@ -124,10 +153,11 @@ class AdminPage extends React.Component {
   }
 
   render() {
-    if (this.state.loggedId) {
+    if (this.state.loggedIn) {
       return (
         <div className="admin-wrapper">
           <h2>Admin - Hantering</h2>
+          <button className="btn btn-info"onClick={this.logout}>Logga ut</button>
           <Categories categories={this.categories} name={this.props.match.params.link} clickHandler={this.renderCategoryContent} />
           <div className="data-editor">
             {this.state.editObject}
@@ -140,7 +170,7 @@ class AdminPage extends React.Component {
         </div>
       )
     } else {
-      return <MissingPage />
+      return <LoginComponent login={this.checkIfLoggedIn} />
     }
     
   }
