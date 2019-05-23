@@ -1,7 +1,6 @@
 import React from "react"
 import {  FormGroup, Label } from "reactstrap"
 import { doUpdateGuestDetails } from "../../../../../store/Birthday/BirthdayActions"
-import RegisterComponent from "../Checkout/RegisterComponent"
 import { connect } from "react-redux"
 import { HelpCircle } from "react-feather"
 import InputEvent from "../../Form_body/Event_input/InputEvent"
@@ -66,7 +65,7 @@ class Checkout extends React.Component {
             title="Ange ditt telefonnummer om du vill få sms aviseringar"
           >
             Telefonnummer
-            <HelpCircle className="iconFeather" />
+            <HelpCircle size={16} className="iconFeather" />
           </Label>
           <InputEvent
             name={guestUserData[key].name}
@@ -105,55 +104,12 @@ class Checkout extends React.Component {
 
   render() {
     return (
-      <div className="box-details-container" id="checkout-container" >
+      <div className="box-container set-width-registration">
         <div className="box align-left">
-          <div className="form">
-            <h2 className="form-headline text-center">Slutför</h2>
-            <div className="input-group">
-              <input
-                className="radio-input"
-                id="radio3"
-                name="radioUser"
-                type="radio"
-                onClick={this.userLoginToggle}
-              />
-              <label className="radio-label" htmlFor="radio3">
-                Skapa konto
-              </label>
-            </div>
-            <div className="input-group">
-              <input
-                className="radio-input"
-                id="radio4"
-                name="radioUser"
-                type="radio"
-                onClick={this.registerToggle}
-              />
-              <label className="radio-label" htmlFor="radio4">
-                Fortsätt som gäst
-              </label>
-            </div>
-          </div>
+          <h2 className="form-header form-headline">Ange personuppgifter</h2>
+          {this.renderInputs()}
         </div>
-
-        {this.state.userLogin ? (
-          <RegisterComponent
-            loginToggle={this.loginToggle}
-            userLoginToggle={this.userLoginToggle}
-          />
-        ) : null
-        }
-
-        {this.state.noRegisterOption ? (
-          <div className="box-container set-width-registration">
-            <div className="box align-left">
-              <h4 className="form-header">Fortsätt som gästanvändare</h4>
-              {this.renderInputs()}
-            </div>
-          </div>
-        ) : null
-        }
-      </div >
+      </div>
     )
   }
 }

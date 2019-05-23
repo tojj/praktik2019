@@ -338,7 +338,7 @@ export const guestUserData = {
     className: "form-input"
   },
   zipcode: {
-    classNameFormGroup: "input20 display-inline",
+    classNameFormGroup: "input50 display-inline",
     id: "zipcode-input",
     name: "zipcode",
     classNameLabel: "ml-lg-2",
@@ -350,10 +350,10 @@ export const guestUserData = {
     classNameFormGroup: "input27",
     id: "city-input",
     name: "city",
-    classNameLabel: "ml-lg-3",
+    classNameLabel: "",
     label: "Stad",
     type: "text",
-    className: "form-input ml-lg-3"
+    className: "form-input MQC"
   }
 }
 

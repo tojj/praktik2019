@@ -38,7 +38,7 @@ class QuestionAndAnswer extends React.Component {
     return (
       <div className="qna-item border-bottom" >
         <div onClick={this.toggle} style={{cursor: 'pointer'}}>
-          <p style={{fontWeight: 'bold'}}>{this.props.question}, {this.props.count} {this.state.arrow}</p>
+          <p style={{fontWeight: 'bold'}}>{this.props.question} {this.state.arrow}</p>
         </div>
         {this.state.toggle
           ? <div>

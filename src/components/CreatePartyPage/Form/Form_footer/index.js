@@ -181,7 +181,7 @@ class Form_footer extends React.Component {
                   }
                 />
                 <label className="radio-label" htmlFor="radio2">
-                  Nej tack, inte intresserad
+                  Nej tack
                 </label>
               </div>
             </div>
