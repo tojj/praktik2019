@@ -87,7 +87,7 @@ class PreviewPage extends Component {
               </a>
             </div>
 
-            {this.props.fundraiser.image ? <div className="box karma-holder">
+            {this.props.fundraiser.donate ? <div className="box karma-holder">
               <div className="box-img">
                 <img src={this.props.fundraiser.image} className="img-fluid" alt="fundraiser" />
               </div>
