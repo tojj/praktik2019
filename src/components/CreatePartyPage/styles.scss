@@ -124,7 +124,7 @@
       padding: 0;
       text-align: center;
       width: 100%;
-      
+
       .box-img {
         width: 100%;
         height: auto;
@@ -182,14 +182,17 @@
   }
 }
 
-.modalH {
+.modalHeader {
   background: #4761b7cc;
+  color: #fff;
+  font-family: $big-text;
 }
 
-.modalB {
+.modalBody {
   background: $secondary;
+  font-family: "Open Sans", sans-serif;
 }
 
-.modalF {
+.modalFooter {
   background: #4761b7cc;
 }

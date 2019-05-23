@@ -343,7 +343,7 @@ export const guestUserData = {
     name: "zipcode",
     classNameLabel: "ml-lg-2",
     label: "Postnr",
-    type: "number",
+    type: "text",
     className: "form-input ml-lg-2"
   },
   city: {

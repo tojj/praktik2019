@@ -62,47 +62,31 @@ class Form_header extends Component {
    * My callback function
    */
 
-  // validateThis() {
-  //   let obj = this.props.birthdayEvent
-  //   console.log("v", this.props.birthdayEvent);
-  //   console.log("functioning");
-  //   for (let key in obj) {
-  //     if (key.length < 2) {
-  //       this.props.validate({ isValid: false })
-  //     } else {
-
-  //       this.props.validate({ isValid: true })
-  //     }
-  //   }
-
-  // }
 
   callback = (value, key) => {
     this.props.updateBday({ [key]: value })
     if (value.length > 2 && key === 'title') {
-      let id = key;
+      let id = key
       let element = document.getElementById(id)
       element.classList.remove("invalid")
     } else if (value.length < 2 && key === 'title') {
-      let id = key;
+      let id = key
       let element = document.getElementById(id)
       element.classList.add("invalid")
     }
 
     if (value.length > 1 && key === 'name') {
-      console.log(key)
-      let id = key;
+      let id = key
       let element = document.getElementById(id)
       element.classList.remove("invalid")
     } else if (value.length < 2 && key === 'name') {
-      let id = key;
+      let id = key
       let element = document.getElementById(id)
       element.classList.add("invalid")
     }
 
     if (/^\d*$/.test(value) && (value === "" || parseInt(value) <= 20) && key === 'age') {
-      console.log(value)
-      let id = key;
+      let id = key
       let element = document.getElementById(id)
       element.classList.remove("invalid")
     } else if (key === 'age') {
@@ -116,7 +100,7 @@ class Form_header extends Component {
   render() {
     return (
       <div className="form-header-container">
-        <div className="box-container" style={{zIndex:'30'}}>
+        <div className="box-container" style={{ zIndex: '30' }}>
           <div className="box text-left">
             <h2 className="form-headline">Skapa Kalas</h2>
             <div>

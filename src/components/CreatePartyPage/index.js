@@ -4,7 +4,13 @@ import FormContainer from './Form/index'
 import REST from '../../REST'
 import Buttons from './Buttons/index'
 import Joi from 'joi-browser'
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import {
+  Button,
+  Modal,
+  ModalHeader,
+  ModalBody,
+  ModalFooter
+} from 'reactstrap'
 
 class Event extends REST { }
 
@@ -18,23 +24,23 @@ class CreatePartyPage extends React.Component {
     }
     this.errors = []
     this.invalidForm = false
-    // this.toggleModal = this.toggleModal.bind(this);
     this.createEvent = this.createEvent.bind(this)
     this.validateAll = this.validateAll.bind(this)
+
     this.schemaPartyEvent = {
-      title: Joi.string().min(2).max(20).required().error(errors => {
+      title: Joi.string().min(2).max(50).required().error(errors => {
         return {
-          message: "Glöm inte skriva en rubrik till ditt kalas!"
+          message: "Rubrik saknas"
         }
       }),
       name: Joi.string().min(2).max(20).required().error(errors => {
         return {
-          message: "Skriv namn på vem kalaset är till! Namnet måset vara större än en bokstav. "
+          message: "Namn måste innehålla minst 2 tecken"
         }
       }),
       age: Joi.number().integer().required().error(errors => {
         return {
-          message: "Ålder måste vara mellan 1-20"
+          message: "Ålder måste vara mellan 1 och 20"
         }
       }),
     }
@@ -42,62 +48,83 @@ class CreatePartyPage extends React.Component {
     this.schemaTimeAndPlace = {
       description: Joi.string().min(2).max(40).required().error(errors => {
         return {
-          message: "Skriv minst 5-10 tecken information till de inbjudna!"
+          message: "Information till de inbjudna måste innehålla minst 5 tecken"
         }
       }),
       date: Joi.date().required().error(errors => {
         return {
-          message: "Välj datum till kalas, datumet måste vara en vecka framåt från dagens datum"
+          message: "Ange datum för kalas - datumet måste vara en vecka framåt från dagens datum"
         }
       }),
       time: Joi.required().error(errors => {
         return {
-          message: "Fyll i vilken tid du vill att kalaset ska börja"
+          message: "Tid för kalaset saknas"
         }
       }),
       deadline: Joi.date().required().error(errors => {
         return {
-          message: "Skriv när du senast vill ha svar om folk kan komma. Detta måste vara senast en dag innan kalaset"
+          message: "Ange OSA - skriv när du senast vill ha svar om folk kan komma. Detta måste vara senast en dag innan kalaset"
         }
       }),
       street: Joi.string().min(3).max(30).required().error(errors => {
         return {
-          message: "Skriv din adress där kalaset ska vara"
+          message: "Adress för kalaset saknas"
         }
       }),
       zip: Joi.string().min(3).max(30).required().error(errors => {
         return {
-          message: "Fyll i postnumret"
+          message: "Postnumret för kalaset saknas"
         }
       }),
       city: Joi.string().min(2).max(40).required().error(errors => {
         return {
-          message: "Fyll i vilken stad kalaset ska vara i"
+          message: "Stad för kalaset saknas"
         }
       })
     }
 
     this.schemaGuestUser = {
-      firstName: Joi.string().min(2).max(20).required(),
-      lastName: Joi.string().min(2).max(20).required(),
-      address: Joi.string().min(3).max(30).required(),
-      zipcode: Joi.number().integer().required(),
-      city: Joi.string().min(2).max(20).required(),
-      phoneNumber: Joi.number().integer().required(),
-      email: Joi.string().email({ minDomainSegments: 2 }),
-      password: Joi.string().regex(/^[a-zA-Z0-9]{3,30}$/)
+      firstName: Joi.string().min(2).max(20).required().error(errors => {
+        return {
+          message: "Ange ditt förnamn"
+        }
+      }),
+      lastName: Joi.string().min(2).max(20).required().error(errors => {
+        return {
+          message: "Ange ditt efternamn"
+        }
+      }),
+      address: Joi.string().min(3).max(30).required().error(errors => {
+        return {
+          message: "Ange din adress"
+        }
+      }),
+      zipcode: Joi.number().integer().required().error(errors => {
+        return {
+          message: "Ange ditt postnummer"
+        }
+      }),
+      phoneNumber: Joi.number().integer().required().error(errors => {
+        return {
+          message: "Ange ditt telefonnummer"
+        }
+      }),
+      city: Joi.string().min(2).max(20).required().error(errors => {
+        return {
+          message: "Ange stad du bor i"
+        }
+      }),
+      email: Joi.string().email({ minDomainSegments: 2 }).error(errors => {
+        return {
+          message: "Ange din e-postadress"
+        }
+      })
     }
   }
 
   /**
      *Validating all inputs
-     */
-
-  // basicValidation = () => {
-  //   if (this.props.input.isValid) {
-  //     console.log("props shows it's invalid");
-  //   }
-  // }
+  */
 
 
   validateBirthdayEvent = () => {
@@ -114,7 +141,6 @@ class CreatePartyPage extends React.Component {
       errors[item.path[0]] = item.message
       this.errors.push(item.message)
     }
-
     this.setState({ errors: this.errors })
   }
 
@@ -123,7 +149,7 @@ class CreatePartyPage extends React.Component {
     let selectedImage = this.props.birthdayImage
     if (selectedImage) {
     } else {
-      this.errors.push(["Välj bakgrundsbild till kalaset!"])
+      this.errors.push(["Välj bakgrundsbild till kalaset"])
       this.setState({ errors: this.errors })
     }
 
@@ -147,7 +173,7 @@ class CreatePartyPage extends React.Component {
     let selectedPresent = this.props.present.id
     if (selectedPresent) {
     } else {
-      this.errors.push(["Glöm inte att välja present!"])
+      this.errors.push(["Välj present"])
       this.setState({ errors: this.errors })
     }
   }
@@ -158,10 +184,11 @@ class CreatePartyPage extends React.Component {
     if (isFundraiserSelected === true) {
     }
     else {
-      this.errors.push(["Välj om du vill stötta en välgörenhet eller inte."])
+      this.errors.push(["Välj om du vill stötta en välgörenhet"])
       this.setState({ errors: this.errors })
     }
   }
+
 
   validateGuestUser = () => {
     const options = { abortEarly: false }
@@ -170,17 +197,17 @@ class CreatePartyPage extends React.Component {
     const errors = []
     for (let item of result.error.details) {
       errors[item.path[0]] = item.message
+      this.errors.push(item.message)
     }
-    this.errors.push(errors)
     this.setState({ errors: this.errors })
     return errors
   }
 
   /**
- * VChecking all validation functions and showing a
- * modal (if validation did not pass) or proceeding to 
- * Confirmation page
- */
+   * Checking all validation functions and showing a
+   * modal (if validation did not pass) or proceeding to 
+   * Confirmation page
+   */
 
   async validateAll() {
     this.errors = []
@@ -207,11 +234,7 @@ class CreatePartyPage extends React.Component {
   async createEvent() {
     let link = await this.generateLink()
     let date = this.props.birthdayTimeAndPlace.date + ' ' + this.props.birthdayTimeAndPlace.time
-    console.log(this.props.birthdayTimeAndPlace.date, '.DATE')
-    console.log(this.props.birthdayTimeAndPlace.time, 'TIME')
-    console.log(date, 'DATE')
     date = new Date(date).getTime()
-    console.log(date, 'DATE')
     const newEvent = new Event({
       title: this.props.birthdayEvent.title,
       child: this.props.birthdayEvent.name,
@@ -252,7 +275,7 @@ class CreatePartyPage extends React.Component {
     await newEvent.save().then(data => {
       if (!data.name) {
         this.setContentAndSendEmail(newEvent)
-        
+
         const target = "/bekräftelse/" + link
 
         this.redirectTo(target)
@@ -334,17 +357,20 @@ class CreatePartyPage extends React.Component {
 
   superModal = () => {
     const { errors } = this.state
-    const allErrors = errors.map((error) => <p key={error}>{error}</p>)
+    const allErrors = errors.map((error) =>
+      <ul>
+        <li key={error}>{error}</li>
+      </ul>)
 
     return (
       <div>
-        <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
-          <ModalHeader className="modalH" toggle={this.toggle}>Fel har uppstått</ModalHeader>
-          <ModalBody className="modalB">
+        <Modal isOpen={this.state.modal} toggle={this.toggle}>
+          <ModalHeader className="modalHeader" toggle={this.toggle}>Fel har uppstått</ModalHeader>
+          <ModalBody className="modalBody">
             {allErrors}
           </ModalBody>
-          <ModalFooter className="modalF">
-            <Button color="secondary" onClick={this.toggle}>Stäng</Button>
+          <ModalFooter className="modalFooter">
+            <Button className="link-preview-page" color="secondary" onClick={this.toggle}>Stäng</Button>
           </ModalFooter>
         </Modal>
       </div>
