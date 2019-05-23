@@ -16,10 +16,9 @@ import PRODUCT from '../../REST/PRODUCT'
 import FUNDRAISER from '../../REST/FUNDRAISER'
 import QNA from '../../REST/QNA'
 import EVENT from '../../REST/EVENT'
+import LOGIN from '../../REST/LOGIN'
 
-import MissingPage from '../../components/MissingPage/index'
-
-class Login extends REST {
+class Login extends LOGIN {
   async delete() {
     this._id = 1
     return super.delete();

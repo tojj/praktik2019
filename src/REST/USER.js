@@ -4,18 +4,12 @@
 
 export default class REST {
 
-  static get baseRoute() {
-    console.log(this.name);
-    
-    return this.name.toLowerCase() + 's/';
-  }
-
   constructor(settings) {
-    Object.assign(this, settings);
+    Object.assign(this, settings)    
   }
 
   async save() {
-    let response = await fetch('/json/' + this.constructor.baseRoute + (this._id ? this._id : ''), {
+    let response = await fetch('/json/users/' + (this._id ? this._id : ''), {
       // if _id exists update/put otherwise create/post
       method: this._id ? 'PUT' : 'POST',
       headers: {
@@ -23,50 +17,49 @@ export default class REST {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(this)
-    });
-    let saved = await response.json();
-    Object.assign(this, saved);
-    return this;
+    })
+    let saved = await response.json()
+    Object.assign(this, saved)
+    return this
   }
 
   async delete() {
     if (!this._id) {
-      throw (new Error('Can not delete because no _id!'));
+      throw (new Error('Can not delete because no _id!'))
     }
-    let response = await fetch('/json/' + this.constructor.baseRoute + this._id, {
+    let response = await fetch('/json/users/' + this._id, {
       method: "DELETE",
       headers: {
         'Content-Type': 'application/json'
       }
-    });
-    return await response.json();
+    })
+    return await response.json()
   }
 
-  static async find(query = '') {
-    let response = await fetch('/json/' + this.baseRoute + query, {
+  static async find(query = '') {        
+    let response = await fetch('/json/users/' + query, {
       method: "GET",
       headers: {
         'Content-Type': 'application/json'
       }
-    });
-
-    let found = await response.json();
-    let wrapped = false;
+    })
+    let found = await response.json()
+    let wrapped = false
     if (!found) {
-      return found; // probably null
+      return found // probably null
     }
     if (found.constructor !== Array) {
       // found is not an array so wrap it in array
-      found = [found];
-      wrapped = true;
+      found = [found]
+      wrapped = true
     }
     // convert from raw generic object to instance of current class
-    let result = found.map(item => new this(item));
+    let result = found.map(item => new this(item))
     if (wrapped) {
       // unwrap things that weren't arrays from the beginning
-      result = result[0];
+      result = result[0]
     }
-    return result;
+    return result
   }
 
 }

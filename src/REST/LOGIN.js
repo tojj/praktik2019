@@ -2,14 +2,14 @@
 // that are front end representations
 // of Mongoose models
 
-export default class REST {
+export default class LOGIN {
 
   constructor(settings) {
     Object.assign(this, settings)
   }
 
   async save() {
-    let response = await fetch('/json/products' + (this._id ? this._id : ''), {
+    let response = await fetch('/json/login/' + (this._id ? this._id : ''), {
       // if _id exists update/put otherwise create/post
       method: this._id ? 'PUT' : 'POST',
       headers: {
@@ -27,7 +27,7 @@ export default class REST {
     if (!this._id) {
       throw (new Error('Can not delete because no _id!'))
     }
-    let response = await fetch('/json/products' + this._id, {
+    let response = await fetch('/json/login/' + this._id, {
       method: "DELETE",
       headers: {
         'Content-Type': 'application/json'
@@ -37,7 +37,7 @@ export default class REST {
   }
 
   static async find(query = '') {        
-    let response = await fetch('/json/products' + query, {
+    let response = await fetch('/json/login/' + query, {
       method: "GET",
       headers: {
         'Content-Type': 'application/json'

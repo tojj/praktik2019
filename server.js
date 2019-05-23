@@ -3,9 +3,14 @@ const mongoose = require('mongoose')
 const http = require('http')
 const bodyParser = require('body-parser')
 const path = require('path')
+const session = require('express-session')
+const MongoStore = require('connect-mongo')(session);
+
+const settings = require('./settings.json');
 const nodemailer = require('nodemailer')
 
 const CreateRestRoutes = require('./CreateRestRoutes')
+const LoginHandler = require('./LoginHandler')
 const { db_host, port, mail } = require('./config/keys')
 
 class Server {
@@ -27,13 +32,16 @@ class Server {
 
     app.use(bodyParser.json())
 
+   
+
+
     // Connect to DB.
     mongoose.connect(db_host, { useNewUrlParser: true })
       .then(() => console.log('MongoDB connected'))
       .catch(err => console.log(err));
 
     global.db = mongoose.connection
-
+    global.passwordSalt = settings.passwordSalt
     const models = {
       users: require('./models/User'),
       events: require('./models/Event'),
@@ -41,11 +49,19 @@ class Server {
       fundraisers: require('./models/Fundraiser'),
       qnas: require('./models/Qna')
     };
-
+    app.use(session({
+      secret: settings.cookieSecret,
+      resave: true,
+      saveUninitialized: true,
+      store: new MongoStore({
+        mongooseConnection: global.db
+      })
+    }))
     global.models = models
 
     new CreateRestRoutes(app, global.db, models)
-    
+    new LoginHandler(app, models.users)
+
     app.post('/json/send', function (req, res, next) {
       const transporter = nodemailer.createTransport({
         host: "smtp.sendgrid.net",
@@ -85,7 +101,7 @@ class Server {
       res.sendFile(path.join(__dirname, 'build', 'index.html'));
     });
     const server = http.Server(app)
-    server.listen(3001, () => console.log(`Tojj Server is on port ${3001}`))
+    server.listen(port, () => console.log(`Tojj Server is on port ${port}`))
   }
 
 }
