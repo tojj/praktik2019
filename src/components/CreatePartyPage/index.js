@@ -364,7 +364,7 @@ class CreatePartyPage extends React.Component {
 
     return (
       <div>
-        <Modal isOpen={this.state.modal} toggle={this.toggle}>
+        <Modal isOpen={this.state.modal} toggle={this.toggle} className="validation-modal">
           <ModalHeader className="modalHeader" toggle={this.toggle}>Fel har uppstått</ModalHeader>
           <ModalBody className="modalBody">
             {allErrors}
