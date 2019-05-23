@@ -1,5 +1,5 @@
 import React from "react"
-import {  FormGroup, Label } from "reactstrap"
+import { FormGroup, Label } from "reactstrap"
 import { doUpdateGuestDetails } from "../../../../../store/Birthday/BirthdayActions"
 import { connect } from "react-redux"
 import { HelpCircle } from "react-feather"
@@ -56,29 +56,6 @@ class Checkout extends React.Component {
       : null
 
   renderInput = key => {
-    if (key === "phoneNumber") {
-      return (
-        <FormGroup key="phoneNumber" className="input50">
-          <Label
-            htmlFor="phoneNumber-input"
-            className="position-relative ml-lg-2"
-            title="Ange ditt telefonnummer om du vill få sms aviseringar"
-          >
-            Telefonnummer
-            <HelpCircle size={16} className="iconFeather" />
-          </Label>
-          <InputEvent
-            name={guestUserData[key].name}
-            keyVal={key}
-            value={this.props.guestUser[key]}
-            type={guestUserData[key].type}
-            placeholder={guestUserData[key].label}
-            className={guestUserData[key].className}
-            callback={this.callback}
-          />
-        </FormGroup>
-      )
-    }
     return (
       <FormGroup key={key} className={guestUserData[key].classNameFormGroup}>
         <Label
