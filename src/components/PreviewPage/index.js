@@ -64,8 +64,8 @@ class PreviewPage extends Component {
           </div>
           <div className="box-container border-top party-payment no-print">
             <div className="box swish-holder">
-              <div className="qr-code box-img">
-                <img src={""} className="img-fluid" alt="qr-code" />
+              <div className="qr-code box-img" style={{background: '#4762b7'}}>
+                <img src={"http://betalamedswish.se/API/Get/?n=0709629276&a=1337&m=FÖRHANDSVISNING&la=true&lm=true&s=500"} className="img-fluid" alt="qr-code" />
               </div>
               <p>Swish</p>
               <p>
