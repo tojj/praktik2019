@@ -43,7 +43,6 @@ class RegisterComponent extends React.Component {
   validate = () => {
     const options = { abortEarly: false }
     const result = Joi.validate(this.state.data, this.schema, options)
-    console.log(result, "validation")
 
     if (!result.error) return null
 
@@ -51,7 +50,6 @@ class RegisterComponent extends React.Component {
     for (let item of result.error.details) {
       errors[item.path[0]] = item.message
     }
-    console.log(errors, "these are errors")
     return errors
 
   }
@@ -98,26 +96,21 @@ class RegisterComponent extends React.Component {
     let user = await User.find(`.find({email: '${newUser.email}'})`)
     if (user.length === 0 && newUser.password !== newUser.passwordRepeat) {
       alert("Passwords must match!")
-      console.log(("Passwords must match!"))
       errors.push({ msg: "Passwords must match!" })
       this.resetPasswordFields()
 
     }
     else if (user.length === 0 && newUser.password.length < 7) {
       alert("Password has to be at least 7 characters")
-      console.log("Password has to be at least 7 characters")
       errors.push({ msg: "Password has to be at least 7 characters" })
-      console.log(errors, "errors")
     }
     else if (user.length === 0) {
       if (newUser.password === newUser.passwordRepeat) {
         newUser.save()
-        console.log("User registered!", newUser)
         this.resetForm()
       }
     }
     else {
-      console.log("User already exists")
       alert("User exists! Choose another email.")
     }
   }
