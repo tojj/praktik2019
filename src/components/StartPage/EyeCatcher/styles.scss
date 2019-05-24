@@ -1,11 +1,51 @@
 .eye-catcher {
-  .box-1 {
+  background: url(/images/eyecatcher1.jpg);
+  background-size: cover;
+  background-position: top left;
+  position: relative;
+  width: 100%;
+  min-height: 90vh;
+  text-align: center;
+  h2 {
+    font-family: $big-text;
+    font-weight: 800;
+    font-size: 2.5rem;
+  }
+  p {
+    font-family: $small-text;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
     color: $primary;
-    @include media-breakpoint-up(lg) {
-      text-align: left !important;
+    font-weight: bold;
+  }
+  .box-1 {
+    max-width: 100%;
+    position: absolute;
+    top: 27%;
+    padding: 0 5vw;
+    @include media-breakpoint-up(md) {
+      padding: 10vw;
+      h2 {
+        font-size: 4.5rem;
+      }
     }
+    @include media-breakpoint-up(lg) {
+      max-width: 50%;
+      padding: 0 10vh;
+      text-align: left !important;
+      p {
+        font-size: 1.2rem !important;
+      }
+    }
+    @include media-breakpoint-up(xl) {
+      p {
+        font-size: 1.5rem !important;
+      }
+    }
+    color: $primary;
+
     .link-eye-catcher {
-      background: #B164B8;
+      background: #b164b8;
       color: $secondary;
       font-family: $big-text;
       font-weight: 800;
