@@ -29,7 +29,7 @@ jobs: # a collection of steps
       - checkout
       - run:
           name: Deply to test env
-          command: rsync -az --force --delete -e 'ssh' ./ root@oddnode.se:/mnt/persist/www/tojj
+          command: rsync -az --force --delete --exclude-from=.rsyncignore -e 'ssh' ./ root@oddnode.se:/mnt/persist/www/tojj
           # See https://circleci.com/docs/2.0/deployment-integrations/ for deploy examples
 
 workflows:
@@ -42,4 +42,4 @@ workflows:
             - build
           filters:
             branches:
-              only: develop
+              only: master
