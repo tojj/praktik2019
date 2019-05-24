@@ -3,6 +3,7 @@ import EVENT from '../../REST/EVENT'
 import MissingPage from "../MissingPage/index"
 import MapsGen from "./MapsGen/index"
 import AttendingsList from "./AttendingsList/index"
+import { Printer } from 'react-feather'
 
 class Event extends EVENT { }
 
@@ -83,6 +84,7 @@ class PartyPage extends React.Component {
       content = (
         <div style={{ background: party.image }} className="party-bg">
           <div className="party-card">
+            <p className="no-print" onClick={window.print} style={{display: 'inline-block', margin: '5px', cursor: 'pointer'}}><Printer/></p>
             <div className="box-container party-title">
               <div className="box">
                 <p>{party.title}</p>
@@ -104,11 +106,11 @@ class PartyPage extends React.Component {
               </div>
               <div className="box print-me">
                 <p>Scanna koden för att komma direkt till kalaset. Glöm inte att meddela om du kommer!</p><br />
-                <img src={"http://chart.apis.google.com/chart?cht=qr&chs=500x500&chl=tojj.se/kalas/" + party.link + "&chld=H|0"} className="party-qr" alt="qr link to party"/>
+                <img src={"http://chart.apis.google.com/chart?cht=qr&chs=500x500&chl=https://tojj.herokuapp.com/kalas/" + party.link + "&chld=H|0"} className="party-qr" alt="qr link to party"/>
               </div>
             </div>
             <div className="print-me">
-              <p className="help-text">Tojj.se är ett verktyg för att anordna kalas och inbjudningar. Vid frågor eller funderingar besök <a href="https://tojj.se/vanliga-fragor">https://tojj.se/vanliga-fragor</a>
+              <p className="help-text">Tojj.se är ett verktyg för att anordna kalas och inbjudningar. Vid frågor eller funderingar besök <a href="https://tojj.herokuapp.com/vanliga-fragor">https://tojj.herokuapp.com/vanliga-fragor</a>
                 
               </p>
             </div>

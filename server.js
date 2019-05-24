@@ -32,7 +32,7 @@ class Server {
 
     app.use(bodyParser.json())
 
-   
+
 
 
     // Connect to DB.
@@ -96,12 +96,12 @@ class Server {
     app.all('/json/*', (req, res) => {
       res.json({ url: req.url, ok: true })
     })
-    
+
     app.get('*', function (req, res) {
       res.sendFile(path.join(__dirname, 'build', 'index.html'));
     });
     const server = http.Server(app)
-    server.listen(port, () => console.log(`Tojj Server is on port ${port}`))
+    server.listen(3001, () => console.log(`Tojj Server is on port ${3001}`))
   }
 
 }

@@ -2,8 +2,8 @@ import React from "react"
 import { Link } from "react-router-dom"
 
 const EyeCatcher = props => (
-  <div className="box-container eye-catcher" id="eye-catcher">
-    <div className="box box-1">
+  <div className="eye-catcher" id="eye-catcher">
+    <div className="box-1">
       <h2 className="main-heading" id="eye-catcher-heading">
         BÄSTA PRESENTEN
       </h2>
@@ -15,14 +15,7 @@ const EyeCatcher = props => (
         Skapa kalas
       </Link>
     </div>
-    <div className="box box-2 box-img-right">
-      <img
-        className="eye-catcher-img box-img"
-        id="small-eye-catcher"
-        src="/images/eye-catcher-img.png"
-        alt="Birthday card"
-      />
-    </div>
+
   </div>
 )
 
