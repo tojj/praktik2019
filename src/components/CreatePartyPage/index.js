@@ -29,7 +29,7 @@ class CreatePartyPage extends React.Component {
     this.validateAll = this.validateAll.bind(this)
 
     this.schemaPartyEvent = {
-      title: Joi.string().min(2).max(50).required().error(errors => {
+      title: Joi.string().required().error(errors => {
         return {
           message: "Rubrik saknas"
         }
@@ -100,7 +100,7 @@ class CreatePartyPage extends React.Component {
           message: "Ange din adress"
         }
       }),
-      zipcode: Joi.number().integer().required().error(errors => {
+      zipcode: Joi.string().min(2).max(20).required().error(errors => {
         return {
           message: "Ange ditt postnummer"
         }
@@ -276,7 +276,7 @@ class CreatePartyPage extends React.Component {
     await newEvent.save().then(data => {
       if (!data.name) {
         this.findNewEventAndSendConfirmation(link)
-        
+
         this.redirectTo("/bekraftelse/" + link)
       } else {
         alert('ERROR:' + data.message, 'please try again')
@@ -284,7 +284,7 @@ class CreatePartyPage extends React.Component {
     })
   }
   async findNewEventAndSendConfirmation(eventLink) {
-    let eventFromDb = await Event.find(`.find({ link: "${eventLink}" }).populate('product').populate('fundraiser').populate('user').exec()`)    
+    let eventFromDb = await Event.find(`.find({ link: "${eventLink}" }).populate('product').populate('fundraiser').populate('user').exec()`)
     await this.setContentAndSendEmail(eventFromDb[0])
   }
   setContentAndSendEmail = (event) => {
@@ -300,7 +300,7 @@ class CreatePartyPage extends React.Component {
       day: "numeric",
       month: "long"
     })
-    const content= `<body style="margin: 0; padding: 30px 0; width: 100%; background-color: #fbf7ee; background-image: ${event.image}">
+    const content = `<body style="margin: 0; padding: 30px 0; width: 100%; background-color: #fbf7ee; background-image: ${event.image}">
         <div style="padding: 30px 50px 50px; text-align: center; background: #fff; max-width: 600px; margin: 0 auto 15px; box-shadow: 0 0 5px 0px rgba(0,0,0,0.4)">
           <img src="http://i.imgur.com/Rkdv6ca.png" alt="Välkommen på kalas" style="width: 80%; height: auto" />
           <h1 style="font-weight: bold; color: #4762b7; text-transform: uppercase">Hurra, ditt kalas <span style="text-transform: none;">${event.link}</span> är nu skapat!</h1>
@@ -325,11 +325,11 @@ class CreatePartyPage extends React.Component {
           <p>Pris: <span style="font-weight: bold;">${event.product.price}</span></p>
           <p>Swishbelopp: <span style="font-weight: bold;">${event.swish.amount}</span></p>
           <p>Info: <span style="font-weight: bold;">${event.product.desc}</span></p>
-          ${event.donate 
-          ?`<h4 style="font-weight: bold: margin-top: 36px;">Karma</h4>
+          ${event.donate
+        ? `<h4 style="font-weight: bold: margin-top: 36px;">Karma</h4>
           <p>Organisation: <span style="font-weight: bold;">${event.fundraiser.name}</span></p>
           <p>Info: <span style="font-weight: bold;">${event.fundraiser.desc}</span></p>`
-          :''}
+        : ''}
         </div>
         <div style="padding: 20px 50px; background: #fff; max-width: 600px; margin: 0 auto; box-shadow: 0 0 5px 0px rgba(0,0,0,0.4)">
           <h4 style="font-weight: bold">Vad är Tojj?</h4>
@@ -337,11 +337,11 @@ class CreatePartyPage extends React.Component {
           <a href="https://tojj.herokuapp.com" style="text-decoration: none; color: #4762b7">Läs mer ></a>
         </div>
       </body>`
-    
+
 
     this.sendEmail(event.guestUser.email, content, event.link)
   }
-  sendEmail = (email, message, subject) => {    
+  sendEmail = (email, message, subject) => {
     fetch('/json/send', {
       method: 'POST',
       headers: {

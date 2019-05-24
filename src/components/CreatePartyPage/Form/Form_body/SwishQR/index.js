@@ -1,9 +1,9 @@
 import React from "react"
 
-import { 
+import {
   Input,
-  FormGroup, 
-  Label 
+  FormGroup,
+  Label
 } from "reactstrap"
 
 import { connect } from 'react-redux'
@@ -14,17 +14,24 @@ class SwishQR extends React.Component {
     super(props)
     this.state = {
       imgEl: "",
-      value: 50
+      value: ""
     }
   }
-  
+
   handleChange = e => {
-    const val = e.target.value || 50
+    const val = e.target.value
     const max = 151
     const maxLength = max - 1
-    const newVal = val < max ? val : maxLength
-    this.setState({ value: newVal })
-    this.props.updateSwishAmount(newVal)
+    if (val < max) {
+      this.setState({ value: val })
+      this.props.updateSwishAmount(val)
+
+    } else if (val > max) {
+      this.setState({ value: maxLength })
+      this.props.updateSwishAmount(maxLength)
+
+    }
+
   }
 
   render() {
