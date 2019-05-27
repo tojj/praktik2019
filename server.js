@@ -101,7 +101,7 @@ class Server {
       res.sendFile(path.join(__dirname, 'build', 'index.html'));
     });
     const server = http.Server(app)
-    server.listen(3001, () => console.log(`Tojj Server is on port ${3001}`))
+    server.listen(port, () => console.log(`Tojj Server is on port ${port}`))
   }
 
 }
