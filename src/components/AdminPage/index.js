@@ -75,6 +75,8 @@ class AdminPage extends React.Component {
     this.deleteObject = this.deleteObject.bind(this)
     this.saveObject = this.saveObject.bind(this)
   }
+  componentDidMount() {
+  }
   async checkIfLoggedIn() {
     const loggedInUser = await Login.find()
     if (!loggedInUser.error){      
@@ -153,6 +155,8 @@ class AdminPage extends React.Component {
 
   render() {
     if (this.state.loggedIn) {
+      document.title = "Tojj - Admin"
+
       return (
         <div className="admin-wrapper">
           <h2>Admin - Hantering</h2>
@@ -169,6 +173,7 @@ class AdminPage extends React.Component {
         </div>
       )
     } else {
+      document.title = "Tojj - Logga in"
       return <LoginComponent login={this.checkIfLoggedIn} />
     }
     

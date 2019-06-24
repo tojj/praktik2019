@@ -57,7 +57,7 @@ class FAQ extends React.Component {
   componentDidMount(){
     let Link = this.props.match.params.link
     this.renderCategoryContent(Link)
-
+    document.title = "Tojj - Vanliga frågor"
   }
   async pushCounts(id) {
     let qna = await Qna.find(id)

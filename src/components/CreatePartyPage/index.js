@@ -226,8 +226,9 @@ class CreatePartyPage extends React.Component {
       this.createEvent()
     }
   }
-
-
+  componentDidMount() {
+    document.title = "Tojj - Skapa kalas"
+  }
   redirectTo = (target) => {
     this.props.history.push(target)
   }

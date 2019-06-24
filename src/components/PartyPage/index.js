@@ -24,6 +24,8 @@ class PartyPage extends React.Component {
         event: data,
         loaded: true
       })
+      document.title = `Tojj - ${data.title}`
+      
     })
   }
 
@@ -143,7 +145,7 @@ class PartyPage extends React.Component {
                   <img
                     src={party.product.image}
                     className="img-fluid"
-                    alt="qr-code"
+                    alt="present bild"
                   />
                 </div>
                 <p>Present</p>
