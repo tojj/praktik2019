@@ -28,12 +28,7 @@ class Server {
   startWebServer() {
 
     const app = express()
-    // app.use(express.static(`${__dirname}/build`));
-
     app.use(bodyParser.json())
-
-
-
 
     // Connect to DB.
     mongoose.connect(db_host, { useNewUrlParser: true })

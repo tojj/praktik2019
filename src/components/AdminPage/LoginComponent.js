@@ -32,10 +32,6 @@ class LoginComponent extends React.Component {
 
   }
 
-
-
-
-
   handleChange = ({ currentTarget: input }) => {
 
     const data = { ...this.state.data }
@@ -63,21 +59,14 @@ class LoginComponent extends React.Component {
       result.error === "Not logged in!" ||
       result.error === "No such user!"
     ) {
-      console.log("Wrong password")
     } else if (result.loggedIn === true) {
-      this.props.login()
-      console.log('login true');
-      
+      this.props.login()  
     }
   }
 
-
   async checkIfLoggedIn() {
     this.loggedinUser = await Login.find()
-    console.log(this.loggedinUser, "this one is logged in");
   }
-
-
 
   renderLoginData = ({
     id,

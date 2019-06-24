@@ -1,7 +1,7 @@
 import React from "react"
 import { Link } from "react-router-dom"
 
-const EyeCatcher = props => (
+const EyeCatcher = () => (
   <div className="eye-catcher" id="eye-catcher">
     <div className="box-1">
       <h2 className="main-heading" id="eye-catcher-heading">
