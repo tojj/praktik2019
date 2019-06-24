@@ -25,7 +25,7 @@ nav {
         width: 100%;
         font-family: $big-text;
         font-weight: 800;
-        color: $secondary !important;
+        color: #fff !important;
         margin: 0 0 1rem;
         text-decoration: none;
         cursor: pointer;
@@ -45,13 +45,15 @@ nav {
         display: inline-block;
         font-family: $big-text;
         font-weight: 800;
-        color: $secondary;
+        color: #fff;
+        opacity: 0.80;
         margin-left: 4rem;
         //margin-bottom: 2.75vh;
         &:hover {
           cursor: pointer;
           text-decoration: none;
-          color: #ffffff !important;
+          color: #fff !important;
+          opacity: 1;
         }
         @include media-breakpoint-up(lg) {
           font-size: 1.3rem;

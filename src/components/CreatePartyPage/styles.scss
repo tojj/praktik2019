@@ -30,10 +30,10 @@
         font-family: $big-text;
         font-weight: 800;
         font-size: 20px;
-        padding: 5px 5px;
+        padding: 5px 7px;
         margin: 5px 0 5px 5px;
         transition: all 0.3s;
-        border: 1px solid #007e50;
+        border: none;
         &:hover {
           color: $secondary;
           background-color: #009b62;
