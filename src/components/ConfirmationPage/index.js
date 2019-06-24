@@ -172,7 +172,7 @@ class ConfirmationPage extends React.Component {
         </div>
         <div className="msg-container">
           <div className="msg-text">
-            <p className="my-4 text-center">En bekräftelse har skickats till Jespers mail. Säg förlåt när du ser honom.</p>
+            <p className="my-4 text-center">En bekräftelse har skickats till den mail du angett.</p>
             <ul>
               <li>När presentens summa är uppnådd kommer ett kommer ett mail till dig.</li>
               <li>Presenten skickas så fort summan är nådd, bra va?</li>
