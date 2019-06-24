@@ -60,6 +60,11 @@ class Form_footer extends React.Component {
     console.log(e.target.id, "you clicked n")
   }
 
+  testing = (e) => { 
+    let test = document.getElementById('val').offsetWidth;
+    console.log(Math.round(test/518*100))
+  }
+
   async loadFundraisersAndMount() {
     this.allFundraisersData = await Fundraiser.find()
     this.allFundraisers = this.allFundraisersData.map((fundraiser, i) => {
@@ -154,7 +159,7 @@ class Form_footer extends React.Component {
           <div className="box align-left">
             <div className="form">
               <h2 className="form-headline text-center">
-                Vill du stödja en välgörenhet?
+                Vad vill du göra med överskott?
               </h2>
               <div className="input-group">
                 <input
@@ -167,7 +172,7 @@ class Form_footer extends React.Component {
                   }
                 />
                 <label className="radio-label" htmlFor="radio1">
-                  Ja, det vill jag
+                  Ge till välgörenhet
                 </label>
               </div>
               <div className="input-group">
@@ -181,8 +186,27 @@ class Form_footer extends React.Component {
                   }
                 />
                 <label className="radio-label" htmlFor="radio2">
-                  Nej tack
+                  Sätta in på sparkonto
                 </label>
+              </div>
+              <div className="input-group">
+                <input
+                  className="radio-input"
+                  id="radio3"
+                  name="radioCharity"
+                  type="radio"
+                  onClick={
+                    this.selected
+                  }
+                />
+                <label className="radio-label" htmlFor="radio3">
+                  Båda
+                </label>
+              </div>
+              <div className="select-slider">
+                <div className="select-slider-div" id="val">
+                  <div className="cursor-div" onClick={this.testing}></div>
+                </div>
               </div>
             </div>
           </div>

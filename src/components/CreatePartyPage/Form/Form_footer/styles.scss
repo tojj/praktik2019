@@ -208,7 +208,40 @@
     padding: 0 5vw;
     margin-top: 2rem;
   }
+  .select-slider {
+    width: 100%;
+    height: 52px;
+    margin: 10px auto;
+    background-color: $primary;
+    
+    .select-slider-div {
+      width: 15px;
+      height: 100%;
+      max-width: 518px;
+      resize: horizontal;
+      // border-right: solid 1px #ccc;
+      box-sizing: border-box;
+      overflow: auto;
+      position: relative;
+      background-color: #22C197;
+      
+      &::after { 
+        width: 15px;
+        position: absolute;
+        height: 100%;
+        background: white;
+        cursor: col-resize;
+      }
+      .cursor-div{
+        width: 15px;
+        height: 100%;
+        background-color: white; 
+        margin-left: auto;
+      }
+    }
+  }
 }
+
 .slick-current {
   .charity-overlay {
     justify-content: center;
