@@ -250,7 +250,7 @@ class CreatePartyPage extends React.Component {
         city: this.props.birthdayTimeAndPlace.city
       },
       swish: {
-        number: "0709629276",
+        number: "0708358158",
         amount: this.props.swishMoney,
         color: "#4762b7"
       },
