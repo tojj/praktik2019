@@ -137,10 +137,8 @@ class ConfirmationPage extends React.Component {
     })
       .then((res) => res.json())
       .then((res) => {
-        console.log('here is the response: ', res)
       })
       .catch((err) => {
-        console.error('here is the error: ', err)
       })
   }
   render() {

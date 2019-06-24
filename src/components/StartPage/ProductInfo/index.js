@@ -1,7 +1,7 @@
 import React from "react"
 import staticData from "../../../staticData"
 
-const ProductInfo = props => (
+const ProductInfo = () => (
   <div className="box-container prodinfo-container" id="prodinfo-container">
     <div className="box box-1 box-img-left">
       <img className="box-img" src="/images/bd-boy.jpg" alt="child superhero" />

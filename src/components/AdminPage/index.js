@@ -106,8 +106,8 @@ class AdminPage extends React.Component {
     }
   }
   /**
-   * Ja du Pontus, läs vad funktionerna heter och gilla läget.
-   * Titta inte i dem.
+   * Renders Object to Edit.
+   * 
    */
   renderObjectToEdit = (obj, newObj = false) => {
     if (!this.state.editObject) {
