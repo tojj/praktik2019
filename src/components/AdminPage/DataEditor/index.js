@@ -6,7 +6,9 @@ class DataEditor extends React.Component {
     this.entriesData = Object.entries(this.props.object)
   }
   deleteObject = () => {
-    this.props.delete(this.props.object)
+    if(window.confirm(`Är du säker på att du vill ta bort: ${this.props.object._id}`)){
+      this.props.delete(this.props.object)
+    }
   }
   saveObject = () => {
     const newObject = this.createObject()
@@ -113,8 +115,8 @@ class DataEditor extends React.Component {
           </div>
           : null
         }
-        <button onClick={this.deleteObject} className="btn btn-danger mt-5 float-right">Ta bort</button>
-        <button onClick={this.saveObject} className="btn btn-success mt-5">Spara</button>
+        <button onClick={this.saveObject} className="btn btn-success mt-3 float-right">Spara</button>
+        { !this.props.newObj ? <button onClick={this.deleteObject} className="btn btn-danger mt-3">Ta bort</button> : null}
       </div>
     )
   }
