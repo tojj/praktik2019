@@ -51,7 +51,9 @@ class Navbar extends React.Component {
       <div className="naver">
         <NavLink
           to={navItems.smallNav[0].route}
+          exact
           onClick={this.state.burgerOpen ? this.toggle : null}
+          activeStyle={{opacity: 1}}
           className="link-item"
         >
           {navItems.smallNav[0].name}
@@ -59,6 +61,7 @@ class Navbar extends React.Component {
         <NavLink
           to={navItems.smallNav[1].route}
           onClick={this.state.burgerOpen ? this.toggle : null}
+          activeStyle={{opacity: 1}}
           className="link-item"
         >
           {navItems.smallNav[1].name}
@@ -95,6 +98,7 @@ class Navbar extends React.Component {
             ? <NavLink
               to={navItems.smallNav[1].route}
               onClick={this.state.burgerOpen ? this.toggle : null}
+              activeStyle={{opacity: 1}}
               className="link-item"
             >
               {navItems.smallNav[1].name}
