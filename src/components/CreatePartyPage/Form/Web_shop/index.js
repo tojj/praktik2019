@@ -2,6 +2,7 @@ import React, { Component } from "react"
 import PRODUCT from "../../../../REST/PRODUCT"
 import { connect } from "react-redux"
 import { doUpdateProductInfo } from "../../../../store/Birthday/BirthdayActions"
+import SwishQR from "../Form_body/SwishQR";
 
 class Product extends PRODUCT {}
 class Web_shop extends Component {
@@ -146,6 +147,7 @@ class Web_shop extends Component {
             Välj present
           </h2>
           <div className="shop-item-container">{this.renderProducts()}</div>
+          <SwishQR />
         </div>
       )
     }

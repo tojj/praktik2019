@@ -419,7 +419,7 @@ class CreatePartyPage extends React.Component {
   render() {
     return (
       <div className="createpartypage-wrapper">      
-        <FormContainer test={this.test} />
+        <FormContainer />
         <Buttons createEvent={this.validateAll} />
         {this.modalShow ? <Modal /> : ""}
         {this.superModal()}
