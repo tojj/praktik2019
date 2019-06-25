@@ -13,7 +13,8 @@ class Form_footer extends React.Component {
     super(props)
     this.state = {
       charitySelected: false,
-      sliderContent: ""
+      sliderContent: "",
+      sliderVal: 0
     }
     this.allFundraisersData = []
     this.allFundraisers = []
@@ -61,8 +62,9 @@ class Form_footer extends React.Component {
   }
 
   testing = (e) => { 
-    let test = document.getElementById('val').offsetWidth;
-    console.log(Math.round(test/518*100))
+    let val = document.getElementById('val').offsetWidth;
+    let percentage = Math.round(val / 518 * 100)
+    this.setState({sliderVal: percentage})
   }
 
   async loadFundraisersAndMount() {
@@ -204,10 +206,12 @@ class Form_footer extends React.Component {
                 </label>
               </div>
               <div className="select-slider">
-                <div className="select-slider-div" id="val">
-                  <div className="cursor-div" onClick={this.testing}></div>
+                <div className="select-slider-div" id="val" onMouseMove={this.testing}>
+                  <div className="cursor-div"></div>
                 </div>
               </div>
+              <label>{this.state.sliderVal}</label>
+              <label className="float-right">{100-this.state.sliderVal}</label>
             </div>
           </div>
         </div>
