@@ -47,9 +47,9 @@ class CreatePartyPage extends React.Component {
     }
 
     this.schemaTimeAndPlace = {
-      description: Joi.string().min(2).max(40).required().error(errors => {
+      description: Joi.string().min(2).max(280).required().error(errors => {
         return {
-          message: "Information till de inbjudna måste innehålla minst 5 tecken"
+          message: "Information till de inbjudna måste innehålla 2-280 tecken."
         }
       }),
       date: Joi.date().required().error(errors => {
