@@ -200,7 +200,7 @@ class PartyPage extends React.Component {
               <div className="box">
                 <figure>
                   <img
-                    className="box-img"
+                    style={{width: '80%', height: 'auto'}}
                     src="/images/card.png"
                     alt="birthday-card"
                   />
