@@ -213,7 +213,7 @@
     height: 52px;
     margin: 10px auto;
     background-color: $primary;
-    
+
     .select-slider-div {
       width: 15px;
       height: 100%;
@@ -223,26 +223,26 @@
       box-sizing: border-box;
       overflow: auto;
       position: relative;
-      background-color: #22C197;
-      
-      &::after { 
+      background-color: #22c197;
+
+      &::after {
         width: 15px;
         position: absolute;
         height: 100%;
         background: white;
         cursor: col-resize;
       }
-      .cursor-div{
+      .cursor-div {
         width: 15px;
         height: 100%;
-        background-color: white; 
+        background-color: white;
         margin-left: auto;
       }
     }
   }
 }
 
-.float-right{
+.float-right {
   float: right;
 }
 
@@ -271,4 +271,14 @@
     transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
     z-index: 1000;
   }
+}
+
+.MuiSlider-root {
+  margin-top: 50px;
+  color: #4762b7;
+  -webkit-tap-highlight-color: #22c197;
+}
+
+.MuiSlider-rail {
+  color: #22c197;
 }

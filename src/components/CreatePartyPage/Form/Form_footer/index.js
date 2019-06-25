@@ -2,11 +2,13 @@ import React from "react"
 import Slider from "react-slick"
 import Checkout from "../Form_footer/Checkout/index"
 import FUNDRAISER from "../../../../REST/FUNDRAISER"
-import { connect } from 'react-redux'
-import { doUpdateFundraiser } from '../../../../store/Birthday/BirthdayActions'
+import { connect } from "react-redux"
+import { doUpdateFundraiser } from "../../../../store/Birthday/BirthdayActions"
+import axios from "axios"
+import { withStyles, makeStyles } from "@material-ui/core/styles"
+import Slider2 from "@material-ui/lab/Slider"
 
-
-class Fundraiser extends FUNDRAISER { }
+class Fundraiser extends FUNDRAISER {}
 
 class Form_footer extends React.Component {
   constructor(props) {
@@ -23,15 +25,23 @@ class Form_footer extends React.Component {
     this.setDefaultFundraiser()
     this.fundraiserId = ""
     this.selectedFundraiser = ""
+    this.test2 = this.test2.bind(this)
   }
 
-  selected = (e) => {
+  async test2() {
+    await axios.get("http://localhost:5000/api/users")
+  }
+
+  componentDidMount() {
+    this.test2()
+  }
+
+  selected = e => {
     this.setState({ charitySelected: true })
-    this.props.updateSelectedFundraiser(
-      {
-        buttonSelected: true,
-        donate: true
-      })
+    this.props.updateSelectedFundraiser({
+      buttonSelected: true,
+      donate: true
+    })
 
     console.log(e.target.id, "you clicked n")
   }
@@ -43,28 +53,24 @@ class Form_footer extends React.Component {
       id: firstFundraiser[0]._id,
       name: firstFundraiser[0].name,
       image: firstFundraiser[0].image,
-      link: firstFundraiser[0].link,
-
+      link: firstFundraiser[0].link
     }
-    this.props.updateSelectedFundraiser(
-      fundraiser
-    )
+    this.props.updateSelectedFundraiser(fundraiser)
   }
 
-  notSelected = (e) => {
+  notSelected = e => {
     this.setState({ charitySelected: false })
-    this.props.updateSelectedFundraiser(
-      {
-        buttonSelected: true,
-        donate: false
-      })
+    this.props.updateSelectedFundraiser({
+      buttonSelected: true,
+      donate: false
+    })
     console.log(e.target.id, "you clicked n")
   }
 
-  testing = (e) => { 
-    let val = document.getElementById('val').offsetWidth;
-    let percentage = Math.round(val / 518 * 100)
-    this.setState({sliderVal: percentage})
+  testing = e => {
+    let val = document.getElementById("val").offsetWidth
+    let percentage = Math.round((val / 518) * 100)
+    this.setState({ sliderVal: percentage })
   }
 
   async loadFundraisersAndMount() {
@@ -88,14 +94,13 @@ class Form_footer extends React.Component {
   }
 
   /**
-  * Getting selected Fundraiser
-  */
+   * Getting selected Fundraiser
+   */
 
-  findFundraisersId = (e) => {
+  findFundraisersId = e => {
     const selectedId = e.target.id
     this.fundraiserId = selectedId
     this.getSelectedFundraiser()
-
   }
 
   /**
@@ -104,7 +109,9 @@ class Form_footer extends React.Component {
    */
 
   async getSelectedFundraiser() {
-    this.selectedFundraiser = await Fundraiser.find(`.find({ _id: '${this.fundraiserId}' })`)
+    this.selectedFundraiser = await Fundraiser.find(
+      `.find({ _id: '${this.fundraiserId}' })`
+    )
     let fundraiser = {
       id: this.selectedFundraiser[0]._id,
       name: this.selectedFundraiser[0].name,
@@ -112,11 +119,8 @@ class Form_footer extends React.Component {
       link: this.selectedFundraiser[0].link,
       donate: true
     }
-    this.props.updateSelectedFundraiser(
-      fundraiser
-    )
+    this.props.updateSelectedFundraiser(fundraiser)
   }
-
 
   render() {
     const settings = {
@@ -155,6 +159,36 @@ class Form_footer extends React.Component {
       ]
     }
 
+    const PrettoSlider = withStyles({
+      root: {
+        color: "#52af77",
+        height: 8
+      },
+      thumb: {
+        height: 24,
+        width: 24,
+        backgroundColor: "#fff",
+        border: "2px solid currentColor",
+        marginTop: -8,
+        marginLeft: -12,
+        "&:focus,&:hover,&$active": {
+          boxShadow: "inherit"
+        }
+      },
+      active: {},
+      valueLabel: {
+        left: "calc(-50% + 4px)"
+      },
+      track: {
+        height: 8,
+        borderRadius: 4
+      },
+      rail: {
+        height: 8,
+        borderRadius: 4
+      }
+    })(Slider)
+
     return (
       <div className="form-footer-container">
         <div className="box-container">
@@ -169,9 +203,7 @@ class Form_footer extends React.Component {
                   id="radio1"
                   name="radioCharity"
                   type="radio"
-                  onClick={
-                    this.selected
-                  }
+                  onClick={this.selected}
                 />
                 <label className="radio-label" htmlFor="radio1">
                   Ge till välgörenhet
@@ -183,9 +215,7 @@ class Form_footer extends React.Component {
                   id="radio2"
                   name="radioCharity"
                   type="radio"
-                  onClick={
-                    this.notSelected
-                  }
+                  onClick={this.notSelected}
                 />
                 <label className="radio-label" htmlFor="radio2">
                   Sätta in på sparkonto
@@ -197,21 +227,31 @@ class Form_footer extends React.Component {
                   id="radio3"
                   name="radioCharity"
                   type="radio"
-                  onClick={
-                    this.selected
-                  }
+                  onClick={this.selected}
                 />
                 <label className="radio-label" htmlFor="radio3">
                   Båda
                 </label>
               </div>
               <div className="select-slider">
-                <div className="select-slider-div" id="val" onMouseMove={this.testing}>
-                  <div className="cursor-div"></div>
+                <div
+                  className="select-slider-div"
+                  id="val"
+                  onMouseMove={this.testing}
+                >
+                  <div className="cursor-div" />
                 </div>
               </div>
               <label>{this.state.sliderVal}</label>
-              <label className="float-right">{100-this.state.sliderVal}</label>
+              <label className="float-right">
+                {100 - this.state.sliderVal}
+              </label>
+              <Slider2 id="val2" valueLabelDisplay="on" />
+              <PrettoSlider
+                valueLabelDisplay="auto"
+                aria-label="Pretto slider"
+                defaultValue={20}
+              />
             </div>
           </div>
         </div>
@@ -240,13 +280,10 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = dispatch => ({
-  updateSelectedFundraiser: (data) => dispatch(doUpdateFundraiser(data))
+  updateSelectedFundraiser: data => dispatch(doUpdateFundraiser(data))
 })
 
-
-
-
-export default connect(mapStateToProps, mapDispatchToProps)(Form_footer)
-
-
-
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Form_footer)
