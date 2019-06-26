@@ -7,8 +7,9 @@ class DataEditor extends React.Component {
   }
   deleteObject = () => {
     if(window.confirm(`Är du säker på att du vill ta bort: ${this.props.object._id}`)){
-      this.props.delete(this.props.object)
+      this.props.delete(this.props.object._id, this.props.collection)
     }
+    
   }
   saveObject = () => {
     const newObject = this.createObject()
@@ -93,7 +94,7 @@ class DataEditor extends React.Component {
         {entries}
         {this.props.object.location ?
           <div>
-            <p>Location</p>
+            <p><strong>Location</strong></p>
             <p>Street</p>
             <input className="w-100" type="text" defaultValue={this.props.object.location.street} id="street" />
             <p>Zipcode</p>
@@ -105,7 +106,7 @@ class DataEditor extends React.Component {
         }
         {this.props.object.swish ?
           <div>
-            <p>Swish</p>
+            <p className="mt-3"><strong>Swish</strong></p>
             <p>Amount</p>
             <input className="w-100" type="text" defaultValue={this.props.object.swish.amount} id="amount" />
             <p>Color</p>

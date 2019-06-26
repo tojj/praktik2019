@@ -7,6 +7,9 @@ import { Link } from "react-router-dom"
  */
 
 class MissingPage extends Component {
+  componentDidMount() {
+    document.title = "Tojj - Sidan saknas"
+  }
   render() {
     return (
       <div className="mp-container">
