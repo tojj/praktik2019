@@ -9,6 +9,7 @@ import { withStyles, makeStyles } from "@material-ui/core/styles"
 import Slider2 from "@material-ui/lab/Slider"
 import Slider3, { Range } from "rc-slider"
 import "rc-slider/assets/index.css"
+import Tooltip from "rc-tooltip"
 
 class Fundraiser extends FUNDRAISER {}
 
@@ -161,35 +162,24 @@ class Form_footer extends React.Component {
       ]
     }
 
-    const PrettoSlider = withStyles({
-      root: {
-        color: "#52af77",
-        height: 8
-      },
-      thumb: {
-        height: 24,
-        width: 24,
-        backgroundColor: "#fff",
-        border: "2px solid currentColor",
-        marginTop: -8,
-        marginLeft: -12,
-        "&:focus,&:hover,&$active": {
-          boxShadow: "inherit"
-        }
-      },
-      active: {},
-      valueLabel: {
-        left: "calc(-50% + 4px)"
-      },
-      track: {
-        height: 8,
-        borderRadius: 4
-      },
-      rail: {
-        height: 8,
-        borderRadius: 4
-      }
-    })(Slider)
+    const createSliderWithTooltip = Slider3.createSliderWithTooltip
+    const Range = createSliderWithTooltip(Slider3.Range)
+    const Handle = Slider3.Handle
+
+    const handle = props => {
+      const { value, dragging, index, ...restProps } = props
+      return (
+        <Tooltip
+          prefixCls="rc-slider-tooltip"
+          overlay={value}
+          visible={dragging}
+          placement="top"
+          key={index}
+        >
+          <Handle value={value} {...restProps} />
+        </Tooltip>
+      )
+    }
 
     return (
       <div className="form-footer-container">
@@ -252,8 +242,8 @@ class Form_footer extends React.Component {
               <div>
                 <Slider3 />
               </div>
-              <div className="mt-3">
-                <Range pushable="5" defaultValue={[0, 5, 10]} />
+              <div className="mt-5">
+                <Range pushable="5" defaultValue={[0, 5, 10]} handle={handle} />
               </div>
             </div>
           </div>
