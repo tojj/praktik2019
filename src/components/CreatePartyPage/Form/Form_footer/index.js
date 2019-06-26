@@ -7,6 +7,8 @@ import { doUpdateFundraiser } from "../../../../store/Birthday/BirthdayActions"
 import axios from "axios"
 import { withStyles, makeStyles } from "@material-ui/core/styles"
 import Slider2 from "@material-ui/lab/Slider"
+import Slider3, { Range } from "rc-slider"
+import "rc-slider/assets/index.css"
 
 class Fundraiser extends FUNDRAISER {}
 
@@ -247,11 +249,12 @@ class Form_footer extends React.Component {
                 {100 - this.state.sliderVal}
               </label>
               <Slider2 id="val2" valueLabelDisplay="on" />
-              <PrettoSlider
-                valueLabelDisplay="auto"
-                aria-label="Pretto slider"
-                defaultValue={20}
-              />
+              <div>
+                <Slider3 />
+              </div>
+              <div className="mt-3">
+                <Range pushable="5" defaultValue={[0, 5, 10]} />
+              </div>
             </div>
           </div>
         </div>
