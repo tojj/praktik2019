@@ -145,6 +145,14 @@
       h2 {
         font-size: 2.5rem;
       }
+
+      @include media-breakpoint-down(sm) {
+        padding: 0;
+        h2 {
+          font-size: 2rem;
+        }
+      }
+
       h4 {
         margin: 5vh 0 0;
         font-size: 1.8rem;
@@ -154,6 +162,7 @@
         font-size: 1.5rem;
       }
     }
+
     @include media-breakpoint-up(md) {
       padding: 0;
       h2 {

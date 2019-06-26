@@ -82,7 +82,7 @@ class Checkout extends React.Component {
     return (
       <div className="box-container set-width-registration">
         <div className="box align-left">
-          <h2 className="form-header form-headline">Kundinfo</h2>
+          <h2 className="form-header form-headline">Ange personuppgifter</h2>
           {this.renderInputs()}
         </div>
       </div>
