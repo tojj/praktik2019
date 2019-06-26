@@ -11,7 +11,7 @@ const EyeCatcher = () => (
         id="background-video"
         loop
         autoPlay
-        muted="true"
+        muted={true}
         preload="auto"
       >
         <source src={videoURL} type="video/mp4" />
