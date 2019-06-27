@@ -1,7 +1,7 @@
 import React from "react"
 import { Link } from "react-router-dom"
 
-const videoURL = "/images/rain.mp4"
+const videoURL = "/images/bg-vid.mp4"
 
 const EyeCatcher = () => (
   <div className="eye-catcher" id="eye-catcher">
@@ -16,6 +16,7 @@ const EyeCatcher = () => (
       >
         <source src={videoURL} type="video/mp4" />
       </video>
+      <div className="bg-overlay" />
     </div>
     <div className="box-1">
       <h2 className="main-heading" id="eye-catcher-heading">
