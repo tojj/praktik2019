@@ -1,12 +1,9 @@
 import React from "react"
+import axios from 'axios'
 import Slider from "react-slick"
 import Checkout from "../Form_footer/Checkout/index"
-import FUNDRAISER from "../../../../REST/FUNDRAISER"
 import { connect } from 'react-redux'
 import { doUpdateFundraiser } from '../../../../store/Birthday/BirthdayActions'
-
-
-class Fundraiser extends FUNDRAISER { }
 
 class Form_footer extends React.Component {
   constructor(props) {
@@ -31,18 +28,19 @@ class Form_footer extends React.Component {
         buttonSelected: true,
         donate: true
       })
-
-    console.log(e.target.id, "you clicked n")
   }
 
   async setDefaultFundraiser() {
-    const firstFundraiser = await Fundraiser.find(`.find().limit(1).exec()`)
-
+    let firstFundraiser = await axios({
+      method: 'get',
+      url: '/api/fundraisers/first'
+    })
+    firstFundraiser = firstFundraiser.data
     const fundraiser = {
-      id: firstFundraiser[0]._id,
-      name: firstFundraiser[0].name,
-      image: firstFundraiser[0].image,
-      link: firstFundraiser[0].link,
+      id: firstFundraiser._id,
+      name: firstFundraiser.name,
+      image: firstFundraiser.image,
+      link: firstFundraiser.link,
 
     }
     this.props.updateSelectedFundraiser(
@@ -57,12 +55,14 @@ class Form_footer extends React.Component {
         buttonSelected: true,
         donate: false
       })
-    console.log(e.target.id, "you clicked n")
   }
 
   async loadFundraisersAndMount() {
-    this.allFundraisersData = await Fundraiser.find()
-    this.allFundraisers = this.allFundraisersData.map((fundraiser, i) => {
+    this.allFundraisersData = await axios({
+      method: 'get',
+      url: '/api/fundraisers'
+    })
+    this.allFundraisers = this.allFundraisersData.data.map((fundraiser, i) => {
       return (
         <div className="slider-div" key={"fundraiser_" + i}>
           <div className="charity-overlay" />
@@ -97,12 +97,18 @@ class Form_footer extends React.Component {
    */
 
   async getSelectedFundraiser() {
-    this.selectedFundraiser = await Fundraiser.find(`.find({ _id: '${this.fundraiserId}' })`)
+    this.selectedFundraiser = await axios({
+      method: 'get',
+      url: `/api/fundraisers/id/${this.fundraiserId}`
+    })
+
+    this.selectedFundraiser = this.selectedFundraiser.data
+
     let fundraiser = {
-      id: this.selectedFundraiser[0]._id,
-      name: this.selectedFundraiser[0].name,
-      image: this.selectedFundraiser[0].image,
-      link: this.selectedFundraiser[0].link,
+      id: this.selectedFundraiser._id,
+      name: this.selectedFundraiser.name,
+      image: this.selectedFundraiser.image,
+      link: this.selectedFundraiser.link,
       donate: true
     }
     this.props.updateSelectedFundraiser(

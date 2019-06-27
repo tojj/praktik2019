@@ -1,11 +1,9 @@
 import React from "react"
-import EVENT from '../../REST/EVENT'
+import axios from "axios";
+import { Printer } from 'react-feather'
 import MissingPage from "../MissingPage/index"
 import MapsGen from "./MapsGen/index"
 import AttendingsList from "./AttendingsList/index"
-import { Printer } from 'react-feather'
-
-class Event extends EVENT { }
 
 class PartyPage extends React.Component {
   constructor(props) {
@@ -24,16 +22,17 @@ class PartyPage extends React.Component {
         event: data,
         loaded: true
       })
-      document.title = `Tojj - ${data.title}`
-      
+      document.title = `Tojj - ${data ? data.title : 'Sidan saknas'}`
     })
   }
 
   async findEventAndMatchWithDB(eventLink) {
-    const events = await Event.find(
-      `.find().populate('product').populate('fundraiser').populate('user').exec()`
-    )
-    const found = await events.find(event => {
+    const events = await axios({
+      method: 'get',
+      url: '/api/events/populated'
+    })
+
+    const found = await events.data.find(event => {
       return event.link === eventLink
     })
     return found
@@ -86,7 +85,7 @@ class PartyPage extends React.Component {
       content = (
         <div style={{ background: party.image }} className="party-bg">
           <div className="party-card">
-            <p className="no-print" onClick={window.print} style={{display: 'inline-block', margin: '5px', cursor: 'pointer'}}><Printer/></p>
+            <p className="no-print" onClick={window.print} style={{ display: 'inline-block', margin: '5px', cursor: 'pointer' }}><Printer /></p>
             <div className="box-container party-title">
               <div className="box">
                 <p>{party.title}</p>
@@ -108,12 +107,12 @@ class PartyPage extends React.Component {
               </div>
               <div className="box print-me">
                 <p>Scanna koden för att komma direkt till kalaset. Glöm inte att meddela om du kommer!</p><br />
-                <img src={"http://chart.apis.google.com/chart?cht=qr&chs=500x500&chl=https://tojj.herokuapp.com/kalas/" + party.link + "&chld=H|0"} className="party-qr" alt="qr link to party"/>
+                <img src={"http://chart.apis.google.com/chart?cht=qr&chs=500x500&chl=https://tojj.herokuapp.com/kalas/" + party.link + "&chld=H|0"} className="party-qr" alt="qr link to party" />
               </div>
             </div>
             <div className="print-me">
               <p className="help-text">Tojj.se är ett verktyg för att anordna kalas och inbjudningar. Vid frågor eller funderingar besök <a href="https://tojj.herokuapp.com/vanliga-fragor">https://tojj.herokuapp.com/vanliga-fragor</a>
-                
+
               </p>
             </div>
             <div className="box-container border-top party-payment no-print">
@@ -200,7 +199,7 @@ class PartyPage extends React.Component {
               <div className="box">
                 <figure>
                   <img
-                    style={{width: '80%', height: 'auto'}}
+                    style={{ width: '80%', height: 'auto' }}
                     src="/images/card.png"
                     alt="birthday-card"
                   />

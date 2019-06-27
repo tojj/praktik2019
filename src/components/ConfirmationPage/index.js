@@ -2,9 +2,7 @@ import React from 'react'
 import { Send } from 'react-feather'
 import BirthdayInvite from './BirthdayInvite/index'
 import BirthdayInviteList from './BirthdayInviteList/index'
-import EVENT from '../../REST/EVENT'
-
-class Event extends EVENT { }
+import axios from 'axios';
 
 class ConfirmationPage extends React.Component {
   constructor(props) {
@@ -29,12 +27,17 @@ class ConfirmationPage extends React.Component {
   }
   async findMatchingEvent() {
     const eventLink = this.props.match.params.link
-    const party = await Event.find(`.find({link:"${eventLink}"}).exec()`)
-    this.setState({
-      party: party[0],
-      link: party[0].link
+    let party = await axios({
+      method: 'get',
+      url: `/api/events/populated/${eventLink}`
     })
-    this.updateContent(party[0])
+    party = party.data
+    
+    this.setState({
+      party: party,
+      link: party.link
+    })
+    this.updateContent(party)
 
   }
   updateContent = (party) => {
@@ -116,14 +119,22 @@ class ConfirmationPage extends React.Component {
       this.sendEmail(email, this.state.content, this.state.link)
       if (!this.state.party.invited.includes(email)) {
         this.state.party.invited.push(email)
-        await this.state.party.save()
+
+        await axios({
+          method: 'put',
+          url: `/api/events/id/${this.state.party._id}/invites`,
+          data: {
+            invited: this.state.party.invited
+          }
+        })    
+
         this.setState({ emails: [] })
       }
     }
   }
 
   sendEmail = (email, message, subject) => {
-    fetch('/json/send', {
+    fetch('/api/send', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
