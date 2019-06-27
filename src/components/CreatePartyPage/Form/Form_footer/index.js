@@ -28,8 +28,6 @@ class Form_footer extends React.Component {
         buttonSelected: true,
         donate: true
       })
-
-    console.log(e.target.id, "you clicked n")
   }
 
   async setDefaultFundraiser() {
@@ -57,7 +55,6 @@ class Form_footer extends React.Component {
         buttonSelected: true,
         donate: false
       })
-    console.log(e.target.id, "you clicked n")
   }
 
   async loadFundraisersAndMount() {
@@ -100,7 +97,6 @@ class Form_footer extends React.Component {
    */
 
   async getSelectedFundraiser() {
-    console.log(this.fundraiserId)
     this.selectedFundraiser = await axios({
       method: 'get',
       url: `/api/fundraisers/id/${this.fundraiserId}`

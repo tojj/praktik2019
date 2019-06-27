@@ -291,9 +291,7 @@ class CreatePartyPage extends React.Component {
     })
     await this.setContentAndSendEmail(eventFromDb.data)
   }
-  setContentAndSendEmail = (event) => {
-    console.log(event);
-    
+  setContentAndSendEmail = (event) => {    
     const date = new Date(event.date).toLocaleDateString("sv-SE", {
       weekday: "short",
       day: "numeric",

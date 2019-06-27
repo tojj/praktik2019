@@ -13,20 +13,6 @@ import DataItem from './DataItem/index'
 import DataEditor from './DataEditor/index'
 import LoginComponent from './LoginComponent'
 
-import LOGIN from '../../REST/LOGIN'
-
-class Login extends LOGIN {
-  async delete() {
-    this._id = 1
-    return super.delete();
-  }
-  static get baseRoute() {
-    return "login/"
-  }
-}
-
-
-
 class AdminPage extends React.Component {
   constructor(props) {
     super(props)
@@ -76,7 +62,8 @@ class AdminPage extends React.Component {
       method: 'get',
       url: '/api/login'
     })
-    if (!loggedInUser.error){      
+    
+    if (!loggedInUser.data.error){      
       this.setState({loggedIn: true})
       return true
     } else {
@@ -84,11 +71,12 @@ class AdminPage extends React.Component {
     }
   }
   async logout(){
-    const loggedinUser = await Login.find()
-    await loggedinUser.delete()
+    const loggedinUser = await axios({
+      method: 'delete',
+      url: '/api/login/d'
+    })
     this.setState({loggedIn: false})    
   }
-
 
   renderCategoryContent = (category) => {
     if (category === 'produkter') {

@@ -7,18 +7,6 @@ import {
   Label
 } from 'reactstrap'
 import staticData from '../../staticData'
-import LOGIN from '../../REST/LOGIN'
-
-
-class Login extends LOGIN {
-  async delete() {
-    this._id = 1
-    return super.delete();
-  }
-  static get baseRoute() {
-    return "login/"
-  }
-}
 
 class LoginComponent extends React.Component {
   constructor(props) {
@@ -61,12 +49,9 @@ class LoginComponent extends React.Component {
         data: newLogin
       }
     })
-    if (result.error && result.error === "The password does not match!") {
-    } else if (
-      result.error === "Not logged in!" ||
-      result.error === "No such user!"
-    ) {
-    } else if (result.loggedIn === true) {
+    if (result.data.error) {
+      this.setState({loginFailed: true})
+    } else if (result.data.loggedIn === true) {
       this.props.login()  
     }
   }
@@ -106,6 +91,7 @@ class LoginComponent extends React.Component {
         <div className="login-content">
           {staticData.loginData.map(this.renderLoginData)}
           <Button color="primary" type="button" className="ml-lg-2" onClick={this.handleSubmit}>Logga in</Button>
+          {this.state.loginFailed ? <p style={{textAlign: 'center', color: 'red', fontSize: '.8rem', marginTop: '20px', fontStyle: 'italic'}}>Inloggningen misslyckades</p> : null}
         </div >
       </div>
     )
