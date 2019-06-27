@@ -5,6 +5,6 @@ module.exports = function (app) {
     return pathname.startsWith('/api')
   }
 
-  app.use(proxy(filter, { target: 'http://192.168.2.105:5000/' }))
+  app.use(proxy(filter, { target: 'http://127.0.0.1:5000' }))
 }
 
