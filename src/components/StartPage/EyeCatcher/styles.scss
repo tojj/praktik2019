@@ -1,11 +1,42 @@
 .eye-catcher {
-  background: url(/images/eyecatcher1.jpg);
+  background: url(/images/bg-img2.png);
   background-size: cover;
-  background-position: top left;
+  background-position: center;
+  //background-position-y: -25px;
   position: relative;
+  text-align: center;
   width: 100%;
   min-height: 90vh;
-  text-align: center;
+
+  .bg-overlay {
+    background-color: rgba(0, 0, 0, 0.2);
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  .video-container {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    .bg-video {
+      min-width: 100%;
+      min-height: 100%;
+      width: auto;
+      height: auto;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+
   h2 {
     font-family: $big-text;
     font-weight: 800;
@@ -15,7 +46,7 @@
     font-family: $small-text;
     font-size: 1.5rem;
     margin-bottom: 1.5rem;
-    color: $primary;
+    color: white;
     font-weight: bold;
   }
   .box-1 {
@@ -42,7 +73,7 @@
         font-size: 1.5rem !important;
       }
     }
-    color: $primary;
+    color: white;
 
     .link-eye-catcher {
       background: #b164b8;
