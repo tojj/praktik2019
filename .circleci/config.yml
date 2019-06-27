@@ -37,7 +37,7 @@ jobs:
       - run: npm run build
       - deploy/ssh:
           hostname: oddnode.se
-          local-path: build
+          local-path: build/
           remote-path: /mnt/persist/www/tojj-app
           user: root
 
