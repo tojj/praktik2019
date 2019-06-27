@@ -195,21 +195,53 @@
   }
 }
 
-.modalHeader {
-  background: #4761b7cc;
-  color: #fff;
-  font-family: $big-text;
+.modal-content {
+  border-radius: 12px;
 }
 
-.modalBody {
+.modal-header {
+  background: $primary;
+  color: $secondary;
+  font-family: $big-text;
+  font-weight: bold;
+  border-top-right-radius: 8px;
+  border-top-left-radius: 8px;
+  border-bottom: none;
+  width: 100.1%;
+}
+
+.modal-body {
   background: $secondary;
   font-family: "Open Sans", sans-serif;
+  ul {
+    border-bottom: 1px solid #4761b744;
+    //padding: 0 10px 0 10px;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    font-weight: bold;
+    color: #444655;
+  }
 }
 
-.modalFooter {
-  background: #4761b7cc;
+.modal-footer {
+  background: $secondary;
+  border-bottom-right-radius: 8px;
+  border-bottom-left-radius: 8px;
+  border-top: none;
 }
 
 .validation-modal span {
-  color: #fbf7ee;
+  color: $secondary;
+}
+
+.cpp-modal-button {
+  color: #4761b7cc;
+  font-weight: bold;
+  &:hover {
+    transition: all 0.3s;
+    color: $primary;
+    font-weight: bold;
+    background-color: $secondary;
+    border-color: $secondary;
+  }
 }
