@@ -1,7 +1,7 @@
 import React from "react"
 import { Link } from "react-router-dom"
 
-const videoURL = "/images/bg-vid.mp4"
+const videoURL = "/images/bg-vid2.mp4"
 
 const EyeCatcher = () => (
   <div className="eye-catcher" id="eye-catcher">
