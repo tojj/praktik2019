@@ -5,6 +5,9 @@
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
+  padding: 15vw 5vw 0 !important;
+    @include media-breakpoint-up(lg) {
+      padding: 5vw 5vw 0 !important;
 }
 
 .shop-item-container {
@@ -158,4 +161,5 @@
       transform: scale(1.2) translate(6px);
     }
   }
+}
 }

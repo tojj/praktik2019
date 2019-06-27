@@ -71,9 +71,9 @@ class AdminPage extends React.Component {
     }
   }
   async logout(){
-    const loggedinUser = await axios({
+    await axios({
       method: 'delete',
-      url: '/api/login/d'
+      url: '/api/login/delete'
     })
     this.setState({loggedIn: false})    
   }
