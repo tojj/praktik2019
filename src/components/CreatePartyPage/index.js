@@ -1,7 +1,7 @@
 import React from 'react'
+import axios from 'axios';
 import { connect } from 'react-redux'
 import FormContainer from './Form/index'
-import EVENT from '../../REST/EVENT'
 import Buttons from './Buttons/index'
 import Joi from 'joi-browser'
 import {
@@ -11,8 +11,6 @@ import {
   ModalBody,
   ModalFooter
 } from 'reactstrap'
-
-class Event extends EVENT { }
 
 class CreatePartyPage extends React.Component {
   constructor(props) {
@@ -237,44 +235,46 @@ class CreatePartyPage extends React.Component {
     let link = await this.generateLink()
     let date = this.props.birthdayTimeAndPlace.date + ' ' + this.props.birthdayTimeAndPlace.time
     date = new Date(date).getTime()
-    const newEvent = new Event({
-      title: this.props.birthdayEvent.title,
-      child: this.props.birthdayEvent.name,
-      age: this.props.birthdayEvent.age,
-      image: "url('" + this.props.birthdayImage + "')",
-      desc: this.props.birthdayTimeAndPlace.description,
-      date: date,
-      rsvp: new Date(this.props.birthdayTimeAndPlace.deadline).getTime(),
-      location: {
-        street: this.props.birthdayTimeAndPlace.street,
-        zipcode: this.props.birthdayTimeAndPlace.zip,
-        city: this.props.birthdayTimeAndPlace.city
-      },
-      swish: {
-        number: "0708358158",
-        amount: this.props.swishMoney,
-        color: "#4762b7"
-      },
-      donate: this.props.fundraiser.donate,
-      fundraiser: this.props.fundraiser.id,
-      attending: [],
-      product: this.props.present.id,
-      link: link,
 
-      guestUser: {
-        firstName: this.props.guestUser.firstName,
-        lastName: this.props.guestUser.lastName,
-        email: this.props.guestUser.email,
-        phoneNumber: this.props.guestUser.phoneNumber,
-        address: this.props.guestUser.address,
-        zipcode: this.props.guestUser.zipcode,
-        city: this.props.guestUser.city
+    await axios({
+      method: 'post',
+      url: '/api/events',
+      data: {
+        title: this.props.birthdayEvent.title,
+        child: this.props.birthdayEvent.name,
+        age: this.props.birthdayEvent.age,
+        image: "url('" + this.props.birthdayImage + "')",
+        desc: this.props.birthdayTimeAndPlace.description,
+        date: date,
+        rsvp: new Date(this.props.birthdayTimeAndPlace.deadline).getTime(),
+        location: {
+          street: this.props.birthdayTimeAndPlace.street,
+          zipcode: this.props.birthdayTimeAndPlace.zip,
+          city: this.props.birthdayTimeAndPlace.city
+        },
+        swish: {
+          number: "0708358158",
+          amount: this.props.swishMoney,
+          color: "#4762b7"
+        },
+        donate: this.props.fundraiser.donate,
+        fundraiser: this.props.fundraiser.id,
+        attending: [],
+        product: this.props.present.id,
+        link: link,
 
+        guestUser: {
+          firstName: this.props.guestUser.firstName,
+          lastName: this.props.guestUser.lastName,
+          email: this.props.guestUser.email,
+          phoneNumber: this.props.guestUser.phoneNumber,
+          address: this.props.guestUser.address,
+          zipcode: this.props.guestUser.zipcode,
+          city: this.props.guestUser.city
+        }
       }
-
     })
-
-    await newEvent.save().then(data => {
+    .then(data => {
       if (!data.name) {
         this.findNewEventAndSendConfirmation(link)
 
@@ -285,10 +285,15 @@ class CreatePartyPage extends React.Component {
     })
   }
   async findNewEventAndSendConfirmation(eventLink) {
-    let eventFromDb = await Event.find(`.find({ link: "${eventLink}" }).populate('product').populate('fundraiser').populate('user').exec()`)
-    await this.setContentAndSendEmail(eventFromDb[0])
+    let eventFromDb = await axios({
+      method: 'get',
+      url: `/api/events/populated/${eventLink}`
+    })
+    await this.setContentAndSendEmail(eventFromDb.data)
   }
   setContentAndSendEmail = (event) => {
+    console.log(event);
+    
     const date = new Date(event.date).toLocaleDateString("sv-SE", {
       weekday: "short",
       day: "numeric",
@@ -343,7 +348,7 @@ class CreatePartyPage extends React.Component {
     this.sendEmail(event.guestUser.email, content, event.link)
   }
   sendEmail = (email, message, subject) => {
-    fetch('/json/send', {
+    fetch('/api/send', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
@@ -418,7 +423,7 @@ class CreatePartyPage extends React.Component {
 
   render() {
     return (
-      <div className="createpartypage-wrapper">      
+      <div className="createpartypage-wrapper">
         <FormContainer />
         <Buttons createEvent={this.validateAll} />
         {this.modalShow ? <Modal /> : ""}

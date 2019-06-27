@@ -31,7 +31,7 @@ class AdminPage extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      loggedIn: true,
+      loggedIn: false,
       currentColl: '',
       editObject: '',
       content: <p style={{ minHeight: '30vh' }}>Välj en av kategorierna ovan för att redigera objekt.</p>
@@ -62,29 +62,32 @@ class AdminPage extends React.Component {
         "styling": { backgroundColor: '#008A64', color: 'white' }
       }
     ]
-    // this.checkIfLoggedIn()
-    // this.checkIfLoggedIn = this.checkIfLoggedIn.bind(this)
-    // this.logout = this.logout.bind(this)
+    this.checkIfLoggedIn()
+    this.checkIfLoggedIn = this.checkIfLoggedIn.bind(this)
+    this.logout = this.logout.bind(this)
     this.editNewObject = this.editNewObject.bind(this)
     this.deleteObject = this.deleteObject.bind(this)
     this.saveObject = this.saveObject.bind(this)
   }
   componentDidMount() {
   }
-  // async checkIfLoggedIn() {
-  //   const loggedInUser = await Login.find()
-  //   if (!loggedInUser.error){      
-  //     this.setState({loggedIn: true})
-  //     return true
-  //   } else {
-  //     return false
-  //   }
-  // }
-  // async logout(){
-  //   const loggedinUser = await Login.find()
-  //   await loggedinUser.delete()
-  //   this.setState({loggedIn: false})    
-  // }
+  async checkIfLoggedIn() {
+    const loggedInUser = await axios({
+      method: 'get',
+      url: '/api/login'
+    })
+    if (!loggedInUser.error){      
+      this.setState({loggedIn: true})
+      return true
+    } else {
+      return false
+    }
+  }
+  async logout(){
+    const loggedinUser = await Login.find()
+    await loggedinUser.delete()
+    this.setState({loggedIn: false})    
+  }
 
 
   renderCategoryContent = (category) => {

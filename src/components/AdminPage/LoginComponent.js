@@ -1,4 +1,5 @@
-import React from "react"
+import React from 'react'
+import axios from 'axios'
 import {
   Button,
   Input,
@@ -48,12 +49,18 @@ class LoginComponent extends React.Component {
 
   async login() {
     const { data } = this.state
-    let newLogin = new Login({
+    let newLogin = {
       email: data.email,
       password: data.password
+    }
+    
+    let result = await axios({
+      method: 'post',
+      url: '/api/login',
+      data: {
+        data: newLogin
+      }
     })
-
-    let result = await newLogin.save()
     if (result.error && result.error === "The password does not match!") {
     } else if (
       result.error === "Not logged in!" ||
@@ -65,7 +72,10 @@ class LoginComponent extends React.Component {
   }
 
   async checkIfLoggedIn() {
-    this.loggedinUser = await Login.find()
+    this.loggedinUser = await axios({
+      method: 'get',
+      url: '/api/login'
+    })
   }
 
   renderLoginData = ({

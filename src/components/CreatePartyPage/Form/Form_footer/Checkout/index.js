@@ -1,7 +1,7 @@
 import React from "react"
 import { FormGroup, Label } from "reactstrap"
-import { doUpdateGuestDetails } from "../../../../../store/Birthday/BirthdayActions"
 import { connect } from "react-redux"
+import { doUpdateGuestDetails } from "../../../../../store/Birthday/BirthdayActions"
 import InputEvent from "../../Form_body/Event_input/InputEvent"
 import { guestUserData } from "../../../../../staticData"
 
