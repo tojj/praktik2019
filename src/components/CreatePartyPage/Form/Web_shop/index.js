@@ -129,7 +129,7 @@ class Web_shop extends Component {
             <div className="content-container">
               <img
                 className="shop-img"
-                src={product.image ? product.image : '/images/present.png'}
+                src={product.image}
                 alt="event"
                 onClick={this.toggleSelected}
               />
