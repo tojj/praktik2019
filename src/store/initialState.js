@@ -49,7 +49,8 @@ export default {
       phoneNumber: '',
       address: '',
       zipcode: '',
-      city: ''
+      city: '',
+      password: ''
     }
 
   },

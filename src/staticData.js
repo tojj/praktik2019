@@ -90,7 +90,7 @@ export const formHeaderData = {
     className: " input50 form-control",
     defaultValue: "Kent",
     text: "Vem är kalaset för?",
-    id: "name"
+    id: "child"
   },
   age: {
     className: "input25 form-control",
@@ -127,56 +127,6 @@ export const carouselData = [
   }
 ]
 
-export const shopData = [
-  {
-    img: "/images/elefant.png",
-    id: 1,
-    text: "Kay Bojesan Flodhäst Träleksak",
-    price: "1000kr",
-    desc:
-      "Kay Bojesens elefant designades 1955 och är ett av flera trädjur i Bojesens samling. Passar fint på byrån eller bokhyllan för såväl barnet som design-samlaren."
-  },
-  {
-    img: "/images/hippo.png",
-    id: 2,
-    text: "Kay Bojesan Flodhäst Träleksak",
-    price: "1000kr",
-    desc:
-      "Kay Bojesens elefant designades 1955 och är ett av flera trädjur i Bojesens samling. Passar fint på byrån eller bokhyllan för såväl barnet som design-samlaren."
-  },
-  {
-    img: "/images/zebra.png",
-    id: 3,
-    text: "Kay Bojesan Flodhäst Träleksak",
-    price: "1000kr",
-    desc:
-      "Kay Bojesens elefant designades 1955 och är ett av flera trädjur i Bojesens samling. Passar fint på byrån eller bokhyllan för såväl barnet som design-samlaren."
-  },
-  {
-    img: "/images/elefant.png",
-    id: 4,
-    text: "Kay Bojesan Flodhäst Träleksak",
-    price: "1000kr",
-    desc:
-      "Kay Bojesens elefant designades 1955 och är ett av flera trädjur i Bojesens samling. Passar fint på byrån eller bokhyllan för såväl barnet som design-samlaren."
-  },
-  {
-    img: "/images/hippo.png",
-    id: 5,
-    text: "Kay Bojesan Flodhäst Träleksak",
-    price: "1000kr",
-    desc:
-      "Kay Bojesens elefant designades 1955 och är ett av flera trädjur i Bojesens samling. Passar fint på byrån eller bokhyllan för såväl barnet som design-samlaren."
-  },
-  {
-    img: "/images/zebra.png",
-    id: 6,
-    text: "Kay Bojesan Flodhäst Träleksak",
-    price: "1000kr",
-    desc:
-      "Kay Bojesens elefant designades 1955 och är ett av flera trädjur i Bojesens samling. Passar fint på byrån eller bokhyllan för såväl barnet som design-samlaren."
-  }
-]
 
 export const imageHandlerData = [
   {
@@ -250,33 +200,33 @@ export const eventInputData = {
   },
   street: {
     classNameFormGroup: "input100",
-    name: "street",
+    name: "asv", //cryptic in order to avoid autofill
     classNameLabel: "birthday-label",
     text: "Plats",
     type: "text",
     placeholder: "Gatuadress",
     className: "form-input",
-    id: "street"
+    id: "asv" //cryptic in order to avoid autofill
   },
   zip: {
     classNameFormGroup: "input25",
-    name: "zip",
+    name: "asc", //cryptic in order to avoid autofill
     classNameLabel: "location-label inline-input",
     text: "",
     type: "text",
     placeholder: "Postnr",
     className: "form-input mt-2",
-    id: "zip"
+    id: "asc" //cryptic in order to avoid autofill
   },
   city: {
     classNameFormGroup: "input50",
-    name: "city",
+    name: "asd", //cryptic in order to avoid autofill
     classNameLabel: "location-label inline-input",
     text: "",
     type: "text",
     placeholder: "Stad",
     className: "form-input mt-2 ml-lg-2",
-    id: "city"
+    id: "asd" //cryptic in order to avoid autofill
   },
   deadline: {
     classNameFormGroup: "",
@@ -332,31 +282,43 @@ export const guestUserData = {
     classNameFormGroup: "input50",
     id: "city-input",
     name: "city",
-    classNameLabel: "ml-lg-2",
+    classNameLabel: "",
     label: "Stad",
+    type: "text",
+    className: "form-input "
+  },
+  
+  zipcode: {
+    classNameFormGroup: "input50 ",
+    id: "zipcode-input",
+    name: "zipcode",
+    classNameLabel: "ml-lg-2",
+    label: "Postnummer",
     type: "text",
     className: "form-input ml-lg-2"
   },
   
-  zipcode: {
-    classNameFormGroup: "input50 display-inline",
-    id: "zipcode-input",
-    name: "zipcode",
-    classNameLabel: "",
-    label: "Postnr",
-    type: "text",
-    className: "form-input"
-  },
   
   address: {
-    classNameFormGroup: "input27",
+    classNameFormGroup: "input50",
     id: "address-input",
     name: "address",
     classNameLabel: "",
     label: "Gata",
     type: "text",
-    className: "form-input MQC"
+    className: "form-input"
   },
+
+  password: {
+    classNameFormGroup: "input50",
+    id: "pw-input",
+    name: "pw",
+    classNameLabel: "ml-lg-2",
+    label: "Lösenord",
+    type: "password",
+    autocomplete: 'new-password',
+    className: "form-input ml-lg-2"
+  }
 }
 
 
@@ -502,5 +464,4 @@ export default {
   guestUserData,
   createAccountData,
   loginData,
-  shopData
 }

@@ -77,11 +77,11 @@ class EventInput extends Component {
 
     }
 
-    if (value.length > 1 && key === "street") {
+    if (value.length > 1 && key === "asv") {
       let id = key;
       let element = document.getElementById(id)
       element.classList.remove("invalid")
-    } else if (key === "street") {
+    } else if (key === "asv") {
       let id = key;
       let element = document.getElementById(id)
       element.classList.add("invalid")
