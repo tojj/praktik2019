@@ -1,8 +1,8 @@
 import React from 'react'
+import axios from 'axios';
 import { Send } from 'react-feather'
 import BirthdayInvite from './BirthdayInvite/index'
 import BirthdayInviteList from './BirthdayInviteList/index'
-import axios from 'axios';
 
 class ConfirmationPage extends React.Component {
   constructor(props) {
@@ -13,26 +13,35 @@ class ConfirmationPage extends React.Component {
       emailsSent: false,
       party: '',
       content: '',
-      link: ''
+      link: '',
     }
     this.findMatchingEvent = this.findMatchingEvent.bind(this)
     this.clickHandler = this.clickHandler.bind(this)
     this.sendInvites = this.sendInvites.bind(this)
   }
+  // componentDidUpdate() {
+  //   console.log(this.state.party);
+
+  // }
   componentWillMount() {
     this.findMatchingEvent()
   }
   componentDidMount() {
-    document.getElementById('email-input').focus()
+    if (document.getElementById('email-input')) {
+      document.getElementById('email-input').focus()
+    } else {
+      document.getElementById('pw-input').focus()
+    }
   }
+
   async findMatchingEvent() {
-    const eventLink = this.props.match.params.link
+    const eventLink = '12123tln'
     let party = await axios({
       method: 'get',
       url: `/api/events/populated/${eventLink}`
     })
     party = party.data
-    
+
     this.setState({
       party: party,
       link: party.link
@@ -103,8 +112,7 @@ class ConfirmationPage extends React.Component {
   }
 
   redirectToYourParty = () => {
-    let url = window.location.pathname.split("/")
-    this.props.history.push("/kalas/" + url[2])
+    this.props.history.push("/kalas/" + this.props.eventLink)
   }
   async clickHandler() {
     await this.sendInvites()
@@ -126,7 +134,7 @@ class ConfirmationPage extends React.Component {
           data: {
             invited: this.state.party.invited
           }
-        })    
+        })
 
         this.setState({ emails: [] })
       }
@@ -195,6 +203,8 @@ class ConfirmationPage extends React.Component {
       </div>
     )
   }
+
+
 }
 
 export default ConfirmationPage
