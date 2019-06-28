@@ -7,7 +7,6 @@ class PasswordInput extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      title: '',
       input: '',
       type: 'password',
       error: false,
@@ -32,8 +31,8 @@ class PasswordInput extends React.Component {
       this.setState({error: true})
     }
   }
-  componentDidUpdate() {
-    console.log(this.state.loggedIn);
+  componentDidMount() {
+    console.log(this.props);
     
   }
   onChangeHandler = (e) => {
@@ -60,7 +59,7 @@ class PasswordInput extends React.Component {
   }
   render() {
     if (this.state.loggedIn) {
-      return <ConfirmationPage eventLink={this.state.link}/>
+      return <ConfirmationPage history={this.props.history} eventLink={this.state.link}/>
     } else {
       return (
         <div style={{
@@ -80,7 +79,7 @@ class PasswordInput extends React.Component {
               padding: '50px 30px',
               borderRadius: '5px'
             }}>
-            <h4 style={{ fontFamily: 'Montserrat', fontWeight: '600', width: '100%' }}>{this.state.title}</h4>
+            <h4 style={{ fontFamily: 'Montserrat', fontWeight: '600', width: '100%' }}>Inloggning till kalas</h4>
             <div
               style={{
                 position: 'relative',
@@ -117,7 +116,7 @@ class PasswordInput extends React.Component {
             </div>
 
             {!this.state.error
-              ? <p style={{ marginTop: "1rem" }}>Skriv in lösenordet du fick i bekräftelsen på mailen du angett</p>
+              ? <p style={{ marginTop: "1rem" }}>Skriv in lösenordet du angett vid skapandet av kalaset</p>
               : <p style={{ marginTop: "1rem", color: 'red' }}>Fel</p>}
           </div>
         </div>
