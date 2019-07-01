@@ -73,7 +73,7 @@ class PasswordInput extends React.Component {
               borderTop: '8px solid #B164B8',
               backgroundColor: '#fff',
               textAlign: 'center',
-              margin: '150px auto 0',
+              margin: '50px auto',
               maxWidth: '600px',
               width: '90%',
               padding: '50px 30px',
