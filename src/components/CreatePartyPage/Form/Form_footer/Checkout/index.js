@@ -85,6 +85,30 @@ class Checkout extends React.Component {
         <div className="box align-left">
           <h2 className="form-header form-headline">Ange personuppgifter</h2>
           {this.renderInputs()}
+          <div className="checkbox-container">
+            <div className="input-group-check">
+              <input
+                className="check-input"
+                id="check1"
+                name="checkAgreement"
+                type="checkbox"
+              />
+              <label className="check-label" htmlFor="check1">
+                Jag godkänner Tojjs användaravtal och villkor
+              </label>
+            </div>
+            <div className="input-group-check">
+              <input
+                className="check-input"
+                id="check2"
+                name="checkGDPR"
+                type="checkbox"
+              />
+              <label className="check-label" htmlFor="check2">
+                Jag godkänner att Tojj hanterar mina personuppgifter
+              </label>
+            </div>
+          </div>
         </div>
       </div>
     )
