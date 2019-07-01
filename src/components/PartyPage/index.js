@@ -57,7 +57,7 @@ class PartyPage extends React.Component {
       )
     } else if (this.state.event && this.state.loaded) {
       let party = this.state.event
-      
+
       /**
        * Joining all the address information to the right format in order to send the correct props to MapsGen
        */
@@ -107,11 +107,11 @@ class PartyPage extends React.Component {
               </div>
               <div className="box print-me">
                 <p>Scanna koden för att komma direkt till kalaset. Glöm inte att meddela om du kommer!</p><br />
-                <img src={"http://chart.apis.google.com/chart?cht=qr&chs=500x500&chl=https://tojj.herokuapp.com/kalas/" + party.link + "&chld=H|0"} className="party-qr" alt="qr link to party" />
+                <img src={"http://chart.apis.google.com/chart?cht=qr&chs=500x500&chl=" + window.location.origin + "kalas/" + party.link + "&chld=H|0"} className="party-qr" alt="qr link to party" />
               </div>
             </div>
             <div className="print-me">
-              <p className="help-text">Tojj.se är ett verktyg för att anordna kalas och inbjudningar. Vid frågor eller funderingar besök <a href="https://tojj.herokuapp.com/vanliga-fragor">https://tojj.herokuapp.com/vanliga-fragor</a>
+              <p className="help-text">Tojj.se är ett verktyg för att anordna kalas och inbjudningar. Vid frågor eller funderingar besök <a href={window.location.origin + "/vanliga-fragor"}>/vanliga-fragor</a>
 
               </p>
             </div>
