@@ -182,7 +182,7 @@
 .checkbox-container {
   width: 100%;
   max-width: 610px;
-  margin: 3rem auto 0;
+  margin: 4rem auto 0;
   .input-group-check {
     display: block;
     margin: 10px auto;
@@ -190,8 +190,8 @@
     border-radius: 10px;
 
     .check-label {
-      margin-top: 1.5rem;
-      padding: 4px 40px;
+      margin-top: 2rem;
+      padding: 4px 0 4px 64px;
       ///width: 50%;
       //height: 32px;
       display: block;
@@ -218,7 +218,7 @@
         border-radius: 50%;
         z-index: 2;
         position: absolute;
-        left: 0;
+        left: 20px;
         top: 50%;
         transform: translateY(-50%);
         cursor: pointer;
