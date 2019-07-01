@@ -4,6 +4,7 @@ import { Printer } from 'react-feather'
 import MissingPage from "../MissingPage/index"
 import MapsGen from "./MapsGen/index"
 import AttendingsList from "./AttendingsList/index"
+import SwishCode from "../SwishCode"
 
 class PartyPage extends React.Component {
   constructor(props) {
@@ -12,7 +13,6 @@ class PartyPage extends React.Component {
       event: null,
       loaded: false
     }
-    this.swishImage = ''
   }
 
   componentDidMount() {
@@ -57,7 +57,7 @@ class PartyPage extends React.Component {
       )
     } else if (this.state.event && this.state.loaded) {
       let party = this.state.event
-      this.swishImage = "http://betalamedswish.se/API/Get/?n=0709629276&a=" + party.swish.amount + "&m=" + party.link + "&la=true&lm=true&s=500"
+      
       /**
        * Joining all the address information to the right format in order to send the correct props to MapsGen
        */
@@ -117,15 +117,8 @@ class PartyPage extends React.Component {
             </div>
             <div className="box-container border-top party-payment no-print">
               <div className="box swish-holder">
-                <div
-                  className="qr-code box-img"
-                  style={{ background: party.swish.color }}
-                >
-                  <img
-                    src={this.swishImage}
-                    className="img-fluid"
-                    alt="qr-code"
-                  />
+                <div className="qr-code box-img">
+                  <SwishCode payee={party.swish.number} amount={party.swish.amount} message={party.link} />
                 </div>
                 <p>Swish</p>
                 <p>
