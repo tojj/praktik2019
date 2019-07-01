@@ -1,4 +1,5 @@
 import React from 'react'
+import axios from 'axios'
 import {
   Gift,
   Heart,
@@ -12,27 +13,6 @@ import DataItem from './DataItem/index'
 import DataEditor from './DataEditor/index'
 import LoginComponent from './LoginComponent'
 
-import PRODUCT from '../../REST/PRODUCT'
-import FUNDRAISER from '../../REST/FUNDRAISER'
-import QNA from '../../REST/QNA'
-import EVENT from '../../REST/EVENT'
-import LOGIN from '../../REST/LOGIN'
-
-class Login extends LOGIN {
-  async delete() {
-    this._id = 1
-    return super.delete();
-  }
-  static get baseRoute() {
-    return "login/"
-  }
-}
-class Product extends PRODUCT { }
-class Fundraiser extends FUNDRAISER { }
-class Qna extends QNA { }
-class Event extends EVENT { }
-
-
 class AdminPage extends React.Component {
   constructor(props) {
     super(props)
@@ -40,7 +20,7 @@ class AdminPage extends React.Component {
       loggedIn: false,
       currentColl: '',
       editObject: '',
-      content: <p style={{minHeight: '30vh'}}>Välj en av kategorierna ovan för att redigera objekt.</p>
+      content: <p style={{ minHeight: '30vh' }}>Välj en av kategorierna ovan för att redigera objekt.</p>
     }
     this.categories = [
       {
@@ -75,9 +55,15 @@ class AdminPage extends React.Component {
     this.deleteObject = this.deleteObject.bind(this)
     this.saveObject = this.saveObject.bind(this)
   }
+  componentDidMount() {
+  }
   async checkIfLoggedIn() {
-    const loggedInUser = await Login.find()
-    if (!loggedInUser.error){      
+    const loggedInUser = await axios({
+      method: 'get',
+      url: '/api/login'
+    })
+    
+    if (!loggedInUser.data.error){      
       this.setState({loggedIn: true})
       return true
     } else {
@@ -85,29 +71,30 @@ class AdminPage extends React.Component {
     }
   }
   async logout(){
-    const loggedinUser = await Login.find()
-    await loggedinUser.delete()
+    await axios({
+      method: 'delete',
+      url: '/api/login/delete'
+    })
     this.setState({loggedIn: false})    
   }
 
-
   renderCategoryContent = (category) => {
     if (category === 'produkter') {
-      this.renderContentFromDb(Product)
+      this.renderContentFromDb('products')
     }
     else if (category === 'välgörenhet') {
-      this.renderContentFromDb(Fundraiser)
+      this.renderContentFromDb('fundraisers')
     }
     else if (category === 'frågor') {
-      this.renderContentFromDb(Qna)
+      this.renderContentFromDb('qna')
     }
     else if (category === 'event') {
-      this.renderContentFromDb(Event)
+      this.renderContentFromDb('events')
     }
   }
   /**
-   * Ja du Pontus, läs vad funktionerna heter och gilla läget.
-   * Titta inte i dem.
+   * Renders Object to Edit.
+   * 
    */
   renderObjectToEdit = (obj, newObj = false) => {
     if (!this.state.editObject) {
@@ -117,30 +104,65 @@ class AdminPage extends React.Component {
     }
   }
   async editNewObject() {
-    let object = await this.state.currentColl.find(`.find().limit(1).exec()`)
-    this.renderObjectToEdit(object[0], true)
+    const firstInColl = await axios({
+      method: 'get',
+      url: '/api/' + this.state.currentColl + '/first',
+      headers: {}
+    })
+    const found = firstInColl.data
+    this.renderObjectToEdit(found, true)
   }
-  async deleteObject(obj) {
-    await obj.delete()
+  async deleteObject(id, collection) {
+    const route = `/api/${collection}/id/${id}/delete`
+    await axios({
+      method: 'delete',
+      url: route,
+      headers: {}
+    })
+
     this.setState({ editObject: '' })
     this.renderContentFromDb(this.state.currentColl)
   }
   async saveObject(obj) {
-    if (this.state.currentColl === Qna && !obj.counter){
+    if (this.state.currentColl === 'qna' && !obj.counter) {
       obj.counter = 1
     }
-    await obj.save()    
+    if (obj._id) {
+      await axios({
+        method: 'put',
+        url: `/api/${this.state.currentColl}/id/${obj._id}/edit`,
+        headers: {},
+        data: {
+          content: obj
+        }  
+      })
+    } else {
+      await axios({
+        method: 'post',
+        url: `/api/${this.state.currentColl}`,
+        headers: {},
+        data: {
+          content: obj
+        }
+      })
+    }
+
     this.setState({ editObject: '' })
     this.renderContentFromDb(this.state.currentColl)
   }
   async renderContentFromDb(collection) {
-    const foundObjectsArr = await collection.find()
-    const foundObjects = foundObjectsArr.map((object, i) => {
+    const foundObjectsArr = await axios({
+      method: 'get',
+      url: '/api/' + collection,
+      headers: {}
+    })
+
+    const foundObjects = foundObjectsArr.data.map((object, i) => {
       return <DataItem object={object} key={i} index={i} clickHandler={this.renderObjectToEdit} />
     })
     this.setState({
       content: <div style={{ textAlign: 'right' }}>
-        {collection === Event
+        {collection === 'events'
           ? <Link className="btn btn-primary" to="/skapa-kalas">Lägg till <Plus /></Link>
           : <button onClick={this.editNewObject} className="btn btn-primary">Lägg till <Plus /></button>
         }
@@ -148,15 +170,17 @@ class AdminPage extends React.Component {
       </div>,
       currentColl: collection,
       editObject: ''
-    })
+    })    
   }
 
   render() {
     if (this.state.loggedIn) {
+      document.title = "Tojj - Admin"
+
       return (
         <div className="admin-wrapper">
           <h2>Admin - Hantering</h2>
-          <button className="btn btn-info"onClick={this.logout}>Logga ut</button>
+          <button className="btn btn-info" onClick={this.logout}>Logga ut</button>
           <Categories categories={this.categories} name={this.props.match.params.link} clickHandler={this.renderCategoryContent} />
           <div className="data-editor">
             {this.state.editObject}
@@ -169,9 +193,10 @@ class AdminPage extends React.Component {
         </div>
       )
     } else {
+      document.title = "Tojj - Logga in"
       return <LoginComponent login={this.checkIfLoggedIn} />
     }
-    
+
   }
 }
 

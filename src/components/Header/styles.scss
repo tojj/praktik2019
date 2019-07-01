@@ -12,7 +12,7 @@ header {
       width: 75px;
       height: auto;
       border-radius: 50%;
-      box-shadow: 2px 2px 10px $dark;
+      box-shadow: 2px 2px 5px $dark;
     }
     .logo-holder {
       display: block;
@@ -27,11 +27,12 @@ header {
       font-family: "Montserrat";
       font-size: 36px;
       font-weight: bold;
-      color: #fbf7ee;
+      color: #fff;
+      opacity: 0.8;
       transition: all 0.3s;
       &:hover {
         text-decoration: none;
-        color: #fff;
+        opacity: 1;
       }
     }
     @include media-breakpoint-up(md) {

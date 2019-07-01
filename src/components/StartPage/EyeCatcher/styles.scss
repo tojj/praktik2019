@@ -1,11 +1,81 @@
 .eye-catcher {
-  .box-1 {
-    color: $primary;
-    @include media-breakpoint-up(lg) {
-      text-align: left !important;
+  background: url(/images/bg-img2.png);
+  background-size: cover;
+  background-position: center;
+  //background-position-y: -25px;
+  position: relative;
+  text-align: center;
+  width: 100%;
+  min-height: 90vh;
+
+  .bg-overlay {
+    background-color: rgba(0, 0, 0, 0.2);
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  .video-container {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    .bg-video {
+      min-width: 100%;
+      min-height: 100%;
+      width: auto;
+      height: auto;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
     }
+  }
+
+  h2 {
+    font-family: $big-text;
+    font-weight: 800;
+    font-size: 2.5rem;
+  }
+  p {
+    font-family: $small-text;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: white;
+  }
+  .box-1 {
+    max-width: 100%;
+    position: absolute;
+    top: 27%;
+    padding: 0 5vw;
+    @include media-breakpoint-up(md) {
+      padding: 10vw;
+      h2 {
+        font-size: 4.5rem;
+      }
+    }
+    @include media-breakpoint-up(lg) {
+      max-width: 50%;
+      padding: 0 10vh;
+      text-align: left !important;
+      p {
+        font-size: 1.2rem !important;
+      }
+    }
+    @include media-breakpoint-up(xl) {
+      p {
+        font-size: 1.5rem !important;
+      }
+    }
+    color: white;
+
     .link-eye-catcher {
-      background: #B164B8;
+      background: #b164b8;
       color: $secondary;
       font-family: $big-text;
       font-weight: 800;

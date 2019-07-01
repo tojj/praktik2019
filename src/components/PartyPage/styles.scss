@@ -10,6 +10,8 @@
   color: $dark;
   // background is set from /partypage/index.js
   .party-card {
+    margin: 0 auto;
+    max-width: 1600px;
     font-family: $small-text;
     background-color: #fff;
     box-shadow: 2px 2px 5px #000;
@@ -97,11 +99,6 @@
           font-family: $big-text;
           font-weight: 800;
           margin-top: 1rem;
-        }
-      }
-      .swish-holder {
-        .qr-code {
-          padding: 10px; // Only used for the bg-color to work. Remove once SWISH API is in place.
         }
       }
     }
@@ -245,9 +242,11 @@
     margin: 100px auto 0;
   }
   .party-bg {
-    height: 800px !important;
+    -webkit-print-color-adjust: exact; 
+    color-adjust: exact;
+    height: 1000px !important;
     .party-card {
-      height: 700px !important;
+      height: 800px !important;
       overflow: hidden;
       .party-payment,
       .party-attending {

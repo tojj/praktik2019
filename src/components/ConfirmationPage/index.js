@@ -1,10 +1,8 @@
 import React from 'react'
+import axios from 'axios';
 import { Send } from 'react-feather'
 import BirthdayInvite from './BirthdayInvite/index'
 import BirthdayInviteList from './BirthdayInviteList/index'
-import EVENT from '../../REST/EVENT'
-
-class Event extends EVENT { }
 
 class ConfirmationPage extends React.Component {
   constructor(props) {
@@ -15,26 +13,38 @@ class ConfirmationPage extends React.Component {
       emailsSent: false,
       party: '',
       content: '',
-      link: ''
+      link: '',
     }
     this.findMatchingEvent = this.findMatchingEvent.bind(this)
     this.clickHandler = this.clickHandler.bind(this)
     this.sendInvites = this.sendInvites.bind(this)
   }
+  // componentDidUpdate() {
+  //   console.log(this.state.party);
+
+  // }
   componentWillMount() {
     this.findMatchingEvent()
   }
   componentDidMount() {
-    document.getElementById('email-input').focus()
+      console.log(this.props);
+      
+      document.getElementById('email-input').focus()
+      document.title = "Tojj - Bekräftelse"
   }
+
   async findMatchingEvent() {
-    const eventLink = this.props.match.params.link
-    const party = await Event.find(`.find({link:"${eventLink}"}).exec()`)
-    this.setState({
-      party: party[0],
-      link: party[0].link
+    let party = await axios({
+      method: 'get',
+      url: `/api/events/populated/${this.props.eventLink}`
     })
-    this.updateContent(party[0])
+    party = party.data
+
+    this.setState({
+      party: party,
+      link: party.link
+    })
+    this.updateContent(party)
 
   }
   updateContent = (party) => {
@@ -54,17 +64,17 @@ class ConfirmationPage extends React.Component {
         <h2 style="font-weight: bold; text-transform: uppercase">${date[0]} ${date[1]} ${date[2]}</h2>
         <h3 style="font-weight: bold; margin-bottom: 20px; text-transform: uppercase">Kl ${date[3]}</h3>
         <h4 style="font-weight: bold; margin-bottom: 50px"> ${party.child} ska ha kalas och du är bjuden! Klicka på länken nedan för att svara på om du kommer.</h4>
-        <a href="https://tojj.herokuapp.com/kalas/${party.link}" style="word-wrap: none; text-decoration: none; font-size: 16px; font-weight: bold; background: #4762b7; color: #fff; padding: 15px 30px; border-radius: 100px; opacity: 0.8; margin: 20px 0">TILL KALASET</a>
+        <a href="${window.location.origin + '/kalas/' + party.link}" style="word-wrap: none; text-decoration: none; font-size: 16px; font-weight: bold; background: #4762b7; color: #fff; padding: 15px 30px; border-radius: 100px; opacity: 0.8; margin: 20px 0">TILL KALASET</a>
       </div>
       <div style="padding: 20px 50px; background: #fff; max-width: 600px; margin: 0 auto; box-shadow: 0 0 5px 0px rgba(0,0,0,0.4)">
         <h4 style="font-weight: bold">Vad är Tojj?</h4>
-        <p>Ingen mer stress kopplad till kalasfirande! Hos Tojj kan man skapa en digital kalasinbjudan och låta de inbjudna gästerna bidra till en bestämd present till födelsedagsbarnet. Enkelt för alla och som grädde på moset kan man välja att bidra till en välgörenhet.</p>
-        <a href="https://tojj.herokuapp.com/" style="text-decoration: none; color: #4762b7">Läs mer ></a>
+        <p>Ingen mer stress kopplad till kalasfirande! Hos Tojj kan man skapa en digital kalasinbjudan och låta de inbjudna gästerna bidra till en bestämd present till födelsedagsbarnet genom Swish. Enkelt för alla och som grädde på moset kan man välja att bidra till en välgörenhet.</p>
+        <a href="${window.location.origin}" style="text-decoration: none; color: #4762b7">Läs mer ></a>
       </div>
     </body>`
     this.setState({
       content: emailTemplate,
-      subject: party.link
+      subject: party.title
     })
   }
 
@@ -100,8 +110,7 @@ class ConfirmationPage extends React.Component {
   }
 
   redirectToYourParty = () => {
-    let url = window.location.pathname.split("/")
-    this.props.history.push("/kalas/" + url[2])
+    this.props.history.push("/kalas/" + this.props.eventLink)
   }
   async clickHandler() {
     await this.sendInvites()
@@ -116,14 +125,22 @@ class ConfirmationPage extends React.Component {
       this.sendEmail(email, this.state.content, this.state.link)
       if (!this.state.party.invited.includes(email)) {
         this.state.party.invited.push(email)
-        await this.state.party.save()
+
+        await axios({
+          method: 'put',
+          url: `/api/events/id/${this.state.party._id}/invites`,
+          data: {
+            invited: this.state.party.invited
+          }
+        })
+
         this.setState({ emails: [] })
       }
     }
   }
 
   sendEmail = (email, message, subject) => {
-    fetch('/json/send', {
+    fetch('/api/send', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
@@ -137,10 +154,8 @@ class ConfirmationPage extends React.Component {
     })
       .then((res) => res.json())
       .then((res) => {
-        console.log('here is the response: ', res)
       })
       .catch((err) => {
-        console.error('here is the error: ', err)
       })
   }
   render() {
@@ -172,7 +187,7 @@ class ConfirmationPage extends React.Component {
         </div>
         <div className="msg-container">
           <div className="msg-text">
-            <p className="my-4 text-center">En bekräftelse har skickats till Jespers mail. Säg förlåt när du ser honom.</p>
+            <p className="my-4 text-center">En bekräftelse har skickats till den mail du angett.</p>
             <ul>
               <li>När presentens summa är uppnådd kommer ett kommer ett mail till dig.</li>
               <li>Presenten skickas så fort summan är nådd, bra va?</li>
@@ -186,6 +201,8 @@ class ConfirmationPage extends React.Component {
       </div>
     )
   }
+
+
 }
 
 export default ConfirmationPage

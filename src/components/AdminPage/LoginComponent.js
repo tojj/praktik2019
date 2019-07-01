@@ -1,4 +1,5 @@
-import React from "react"
+import React from 'react'
+import axios from 'axios'
 import {
   Button,
   Input,
@@ -6,18 +7,6 @@ import {
   Label
 } from 'reactstrap'
 import staticData from '../../staticData'
-import LOGIN from '../../REST/LOGIN'
-
-
-class Login extends LOGIN {
-  async delete() {
-    this._id = 1
-    return super.delete();
-  }
-  static get baseRoute() {
-    return "login/"
-  }
-}
 
 class LoginComponent extends React.Component {
   constructor(props) {
@@ -31,10 +20,6 @@ class LoginComponent extends React.Component {
     this.loggedinUser = ""
 
   }
-
-
-
-
 
   handleChange = ({ currentTarget: input }) => {
 
@@ -52,32 +37,31 @@ class LoginComponent extends React.Component {
 
   async login() {
     const { data } = this.state
-    let newLogin = new Login({
+    let newLogin = {
       email: data.email,
       password: data.password
+    }
+    
+    let result = await axios({
+      method: 'post',
+      url: '/api/login',
+      data: {
+        data: newLogin
+      }
     })
-
-    let result = await newLogin.save()
-    if (result.error && result.error === "The password does not match!") {
-    } else if (
-      result.error === "Not logged in!" ||
-      result.error === "No such user!"
-    ) {
-      console.log("Wrong password")
-    } else if (result.loggedIn === true) {
-      this.props.login()
-      console.log('login true');
-      
+    if (result.data.error) {
+      this.setState({loginFailed: true})
+    } else if (result.data.loggedIn === true) {
+      this.props.login()  
     }
   }
 
-
   async checkIfLoggedIn() {
-    this.loggedinUser = await Login.find()
-    console.log(this.loggedinUser, "this one is logged in");
+    this.loggedinUser = await axios({
+      method: 'get',
+      url: '/api/login'
+    })
   }
-
-
 
   renderLoginData = ({
     id,
@@ -107,6 +91,7 @@ class LoginComponent extends React.Component {
         <div className="login-content">
           {staticData.loginData.map(this.renderLoginData)}
           <Button color="primary" type="button" className="ml-lg-2" onClick={this.handleSubmit}>Logga in</Button>
+          {this.state.loginFailed ? <p style={{textAlign: 'center', color: 'red', fontSize: '.8rem', marginTop: '20px', fontStyle: 'italic'}}>Inloggningen misslyckades</p> : null}
         </div >
       </div>
     )

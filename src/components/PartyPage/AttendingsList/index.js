@@ -1,8 +1,6 @@
 import React from 'react'
+import axios from 'axios'
 import Attendee from './Attendee/index'
-import EVENT from '../../../REST/EVENT'
-
-class Event extends EVENT { }
 
 class AttendingsList extends React.Component {
   constructor(props) {
@@ -25,10 +23,20 @@ class AttendingsList extends React.Component {
       joined: new Date().getTime()
     }
 
-    let event = await Event.find(this.props.event)
+    let event = await axios({
+      method: 'get',
+      url: `/api/events/id/${this.props.event}`
+    })
+    event = event.data
     event.attending.push(newAttendee)
 
-    await event.save()
+    await axios({
+      method: 'put',
+      url: `/api/events/id/${this.props.event}/edit`,
+      data: {
+        content: event
+      }
+    })
     this.setState({ attendees: event.attending })
     this.clickHandler()
   }

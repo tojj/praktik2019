@@ -1,10 +1,10 @@
 import React from "react"
-import EVENT from '../../REST/EVENT'
+import axios from "axios";
+import { Printer } from 'react-feather'
 import MissingPage from "../MissingPage/index"
 import MapsGen from "./MapsGen/index"
 import AttendingsList from "./AttendingsList/index"
-
-class Event extends EVENT { }
+import SwishCode from "../SwishCode"
 
 class PartyPage extends React.Component {
   constructor(props) {
@@ -13,7 +13,6 @@ class PartyPage extends React.Component {
       event: null,
       loaded: false
     }
-    this.swishImage = ''
   }
 
   componentDidMount() {
@@ -23,14 +22,17 @@ class PartyPage extends React.Component {
         event: data,
         loaded: true
       })
+      document.title = `Tojj - ${data ? data.title : 'Sidan saknas'}`
     })
   }
 
   async findEventAndMatchWithDB(eventLink) {
-    const events = await Event.find(
-      `.find().populate('product').populate('fundraiser').populate('user').exec()`
-    )
-    const found = await events.find(event => {
+    const events = await axios({
+      method: 'get',
+      url: '/api/events/populated'
+    })
+
+    const found = await events.data.find(event => {
       return event.link === eventLink
     })
     return found
@@ -55,7 +57,7 @@ class PartyPage extends React.Component {
       )
     } else if (this.state.event && this.state.loaded) {
       let party = this.state.event
-      this.swishImage = "http://betalamedswish.se/API/Get/?n=0709629276&a=" + party.swish.amount + "&m=" + party.link + "&la=true&lm=true&s=500"
+
       /**
        * Joining all the address information to the right format in order to send the correct props to MapsGen
        */
@@ -83,6 +85,7 @@ class PartyPage extends React.Component {
       content = (
         <div style={{ background: party.image }} className="party-bg">
           <div className="party-card">
+            <p className="no-print" onClick={window.print} style={{ display: 'inline-block', margin: '5px', cursor: 'pointer' }}><Printer /> Klicka här för att skriva ut.</p>
             <div className="box-container party-title">
               <div className="box">
                 <p>{party.title}</p>
@@ -104,25 +107,18 @@ class PartyPage extends React.Component {
               </div>
               <div className="box print-me">
                 <p>Scanna koden för att komma direkt till kalaset. Glöm inte att meddela om du kommer!</p><br />
-                <img src={"http://chart.apis.google.com/chart?cht=qr&chs=500x500&chl=tojj.se/kalas/" + party.link + "&chld=H|0"} className="party-qr" alt="qr link to party"/>
+                <img src={"http://chart.apis.google.com/chart?cht=qr&chs=500x500&chl=" + window.location.origin + "kalas/" + party.link + "&chld=H|0"} className="party-qr" alt="qr link to party" />
               </div>
             </div>
             <div className="print-me">
-              <p className="help-text">Tojj.se är ett verktyg för att anordna kalas och inbjudningar. Vid frågor eller funderingar besök <a href="https://tojj.se/vanliga-fragor">https://tojj.se/vanliga-fragor</a>
-                
+              <p className="help-text">Tojj.se är ett verktyg för att anordna kalas och inbjudningar. Vid frågor eller funderingar besök <a href={window.location.origin + "/vanliga-fragor"}>/vanliga-fragor</a>
+
               </p>
             </div>
             <div className="box-container border-top party-payment no-print">
               <div className="box swish-holder">
-                <div
-                  className="qr-code box-img"
-                  style={{ background: party.swish.color }}
-                >
-                  <img
-                    src={this.swishImage}
-                    className="img-fluid"
-                    alt="qr-code"
-                  />
+                <div className="qr-code box-img">
+                  <SwishCode payee={party.swish.number} amount={party.swish.amount} message={party.link} />
                 </div>
                 <p>Swish</p>
                 <p>
@@ -141,7 +137,7 @@ class PartyPage extends React.Component {
                   <img
                     src={party.product.image}
                     className="img-fluid"
-                    alt="qr-code"
+                    alt="present bild"
                   />
                 </div>
                 <p>Present</p>
@@ -196,7 +192,7 @@ class PartyPage extends React.Component {
               <div className="box">
                 <figure>
                   <img
-                    className="box-img"
+                    style={{ width: '80%', height: 'auto' }}
                     src="/images/card.png"
                     alt="birthday-card"
                   />

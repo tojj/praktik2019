@@ -2,22 +2,15 @@
   @include media-breakpoint-up(lg) {
     .box-container {
       padding: 0 !important;
-      &.eye-catcher {
-        min-height: 0 !important;
-        height: 90vh !important;
-      }
     }
   }
   .box-container {
     display: flex;
     flex-direction: column;
     position: relative;
-
     width: 100%;
     min-height: 100vh;
-
     padding: 10vh 0;
-
     justify-content: center;
     align-content: center;
     align-items: center;
@@ -26,7 +19,7 @@
       flex: 1;
       padding: 5vw;
       text-align: center;
-      // width: 100%;
+      width: 100%;
       .box-img {
         width: 100%;
         height: auto;
@@ -35,7 +28,6 @@
           width: 75%;
         }
       }
-
       h2,
       h4 {
         font-family: $big-text;

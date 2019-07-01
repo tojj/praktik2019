@@ -10,7 +10,11 @@ const Header = props => {
         <img className="arrow-img" src="/images/arrow.png" alt="back to top" />
       </ScrollToTop>
       <Navbar showFull={props.startPage} />
-      <NavLink className="logo-holder" to="/">
+      <NavLink
+        className="logo-holder"
+        exact
+        to="/"
+        activeStyle={{ opacity: 1 }}>
         Tojj
       </NavLink>
     </div>

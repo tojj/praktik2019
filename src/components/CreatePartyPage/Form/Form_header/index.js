@@ -69,17 +69,17 @@ class Form_header extends Component {
       let id = key
       let element = document.getElementById(id)
       element.classList.remove("invalid")
-    } else if (value.length < 2 && key === 'title') {
+    } else if (value.length <= 2 && key === 'title') {
       let id = key
       let element = document.getElementById(id)
       element.classList.add("invalid")
     }
 
-    if (value.length > 1 && key === 'name') {
+    if (value.length > 1 && key === 'child') {
       let id = key
       let element = document.getElementById(id)
       element.classList.remove("invalid")
-    } else if (value.length < 2 && key === 'name') {
+    } else if (value.length < 2 && key === 'child') {
       let id = key
       let element = document.getElementById(id)
       element.classList.add("invalid")

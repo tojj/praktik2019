@@ -1,4 +1,5 @@
 import React from 'react'
+import axios from 'axios'
 import {
   Gift,
   Heart,
@@ -6,11 +7,8 @@ import {
   HelpCircle
 } from 'react-feather'
 import QuestionAndAnswer from '../FAQ/QuestionAndAnswer'
-import QNA from '../../REST/QNA'
 import Categories from './Categories'
 import ContactForm from './ContactForm'
-
-class Qna extends QNA { }
 
 class FAQ extends React.Component {
   constructor(props) {
@@ -26,7 +24,7 @@ class FAQ extends React.Component {
     this.getQnaAmountTotal = this.getQnaAmountTotal.bind(this)
     this.getAllQnaAndMount = this.getAllQnaAndMount.bind(this)
     this.renderCategoryContent = this.renderCategoryContent.bind(this)
-    this.pushCounts = this.pushCounts.bind(this)
+    this.increaseCountByOne = this.increaseCountByOne.bind(this)
     this.categories = [
       {
         "icon": <Gift />,
@@ -55,39 +53,49 @@ class FAQ extends React.Component {
     ]
   }
   componentDidMount(){
-    let Link = this.props.match.params.link
-    this.renderCategoryContent(Link)
-
+    document.title = "Tojj - Vanliga frågor"
   }
-  async pushCounts(id) {
-    let qna = await Qna.find(id)
-    qna.counter++
-    await qna.save()
+  async increaseCountByOne(id) {
+    await axios({
+      method: 'put',
+      url: `/api/qna/id/${id}/read`
+    })
   }
   async getQnaAmountTotal() {
-    const allQnasAmount = await Qna.find()
-    this.setState({ totalAmount: allQnasAmount.length })
+    const allQnasAmount = await axios({
+      method: 'get',
+      url: '/api/qna'
+    })
+    this.setState({ totalAmount: allQnasAmount.data.length })
   }
   async getAllQnaAndMount() {
-    const allQnaData = await Qna.find(`.find().limit(${this.state.amount}).sort({counter: -1}).exec()`)
-    const allQna = allQnaData.map((qna, i) => {
+    const allQnaData = await axios({
+      method: 'get',
+      url: `/api/qna/sorted?limit=${this.state.amount}`
+    })
+    
+
+    const allQna = allQnaData.data.map((qna, i) => {
       return (
-        <QuestionAndAnswer question={qna.question} answer={qna.answer} key={i} id={qna._id} count={qna.counter} clickHandler={this.pushCounts} />
+        <QuestionAndAnswer question={qna.question} answer={qna.answer} key={i} id={qna._id} count={qna.counter} clickHandler={this.increaseCountByOne} />
       )
     })
     this.setState({
       qnaContent: allQna,
       amount: this.state.amount + 5
-    })
+    })    
   }
   async renderCategoryContent(category) {
     if(category === 'kontakt'){
       this.setState({ categoryContent: <ContactForm />})
       return
     }
-    const allCategoryQnaData = await Qna.find(`.find({ category: "${category}" }).sort({counter: -1}).exec()`)
-    
-    const allCategoryQna = allCategoryQnaData.map((qna, i) => {
+    const allCategoryQnaData = await axios({
+      method: 'get',
+      url: `/api/qna/sorted?category=${category}`
+    })
+        
+    const allCategoryQna = allCategoryQnaData.data.map((qna, i) => {
       return (
         <QuestionAndAnswer question={qna.question} answer={qna.answer} key={i} id={qna._id} count={qna.counter} clickHandler={this.pushCounts} />
       )
@@ -107,8 +115,6 @@ class FAQ extends React.Component {
         }
         <Categories categories={this.categories} name={this.props.match.params.link} clickHandler={this.renderCategoryContent} />
         {this.state.categoryContent}
-       
-
       </div>
     )
   }

@@ -1,9 +1,9 @@
 import React, { Component } from "react"
-import PRODUCT from "../../../../REST/PRODUCT"
+import axios from 'axios'
 import { connect } from "react-redux"
 import { doUpdateProductInfo } from "../../../../store/Birthday/BirthdayActions"
+import SwishQR from "../Form_body/SwishQR";
 
-class Product extends PRODUCT {}
 class Web_shop extends Component {
   constructor(props) {
     super(props)
@@ -18,7 +18,11 @@ class Web_shop extends Component {
   }
 
   async loadData() {
-    this.allProductsData = await Product.find()
+    this.allProductsData = await axios({
+      method: 'get',
+      url: '/api/products'
+    })
+    this.allProductsData = this.allProductsData.data
     this.setState({ allProductsData: this.allProductsData })    
   }
 
@@ -53,7 +57,11 @@ class Web_shop extends Component {
   }
 
   async findProductInDb() {
-    let selectedProduct = await Product.find(`.findById('${this.productId}')`)
+    let selectedProduct = await axios({
+      method: 'get',
+      url: `/api/products/id/${this.productId}`
+    })
+    selectedProduct = selectedProduct.data
     let productToSave = {
       id: selectedProduct._id,
       name: selectedProduct.name,
@@ -146,6 +154,7 @@ class Web_shop extends Component {
             Välj present
           </h2>
           <div className="shop-item-container">{this.renderProducts()}</div>
+          <SwishQR />
         </div>
       )
     }
