@@ -15,7 +15,7 @@ const SwishCode = props => {
   return (
     <div style={{
       background: 'linear-gradient(to top right, #4BCF6D, #10BEDC)',
-      padding: '30px',
+      padding: '10%',
       filter: 'invert(1)'
     }}>
       <div style={{
