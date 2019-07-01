@@ -181,7 +181,7 @@
 }
 .checkbox-container {
   width: 100%;
-  max-width: 610px;
+  max-width: 464px;
   margin: 4rem auto 0;
   .input-group-check {
     display: block;
@@ -196,15 +196,15 @@
       //height: 32px;
       display: block;
       text-align: left;
-      color: #3c454c;
+      color: $dark;
       cursor: pointer;
       position: relative;
       z-index: 2;
       transition: color 200ms ease-in;
       overflow: hidden;
       border-radius: 10px;
-      font-family: $big-text;
-      font-size: 18px;
+      font-family: $small-text;
+      font-size: 16px;
 
       &:after {
         width: 32px;
