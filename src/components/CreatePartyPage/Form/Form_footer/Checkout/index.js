@@ -11,7 +11,9 @@ class Checkout extends React.Component {
     this.state = {
       loginOption: false,
       noRegisterOption: false,
-      userLogin: false
+      userLogin: false,
+      agreementToggled: false,
+      gdprToggled: false
     }
   }
 
@@ -39,6 +41,18 @@ class Checkout extends React.Component {
       userLogin: !this.state.userLogin,
       loginOption: false,
       noRegisterOption: false
+    })
+  }
+
+  gdprToggle = () => {
+    this.setState({
+      gdprToggled: !this.state.gdprToggled
+    })
+  }
+
+  agreementToggle = () => {
+    this.setState({
+      agreementToggled: !this.state.agreementToggled
     })
   }
   /**
@@ -92,6 +106,7 @@ class Checkout extends React.Component {
                 id="check1"
                 name="checkAgreement"
                 type="checkbox"
+                onClick={this.agreementToggle}
               />
               <label className="check-label" htmlFor="check1">
                 Jag godkänner Tojjs användaravtal och villkor
@@ -103,6 +118,7 @@ class Checkout extends React.Component {
                 id="check2"
                 name="checkGDPR"
                 type="checkbox"
+                onClick={this.gdprToggle}
               />
               <label className="check-label" htmlFor="check2">
                 Jag godkänner att Tojj hanterar mina personuppgifter
