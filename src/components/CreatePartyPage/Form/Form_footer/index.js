@@ -29,7 +29,6 @@ class Form_footer extends React.Component {
 
   clickedFundraiser(){
     if (this.props.fundraiser.id) {
-      console.log(this.props.fundraiser.donate)
       this.toggleSelected(this.props.fundraiser.id)
       this.toggleSelectBorder(this.props.fundraiser.id)
       this.toggleSelectOverlay(this.props.fundraiser.id)

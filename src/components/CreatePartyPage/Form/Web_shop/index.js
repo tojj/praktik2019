@@ -100,12 +100,11 @@ class Web_shop extends Component {
             <img src="/images/infoTab.png" alt="" />
           </label>
 
-          {this.state.showInfo === product._id ? (
-            <div className="content-container">
+          {this.state.showInfo === product._id 
+          ? <div className="content-container">
               <p>{product.desc}</p>
             </div>
-          ) : (
-            <div className="content-container">
+          : <div className="content-container">
               <img
                 className="shop-img"
                 src={product.image}
@@ -115,8 +114,9 @@ class Web_shop extends Component {
               <div className="shop-info">
                 <p>{product.name}</p>
                 <p>Pris: {product.price}</p>
-              </div>
-            )}
+                </div>
+                </div>
+          }
         </div>
       )
     })
