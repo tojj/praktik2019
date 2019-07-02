@@ -43,12 +43,12 @@ class Web_shop extends Component {
     const isItemSelected = this.state.selectedItem === id
     return isItemSelected
       ? "shop-item-overlay shop-item-checkmark"
-      : "placeholder-div"
+      : "placeholder-div shop-item-overlay-hover"
   }
 
   toggleSelectBorder(id) {
     const isItemSelected = this.state.selectedItem === id
-    return isItemSelected ? "shop-item-border" : "shop-item"
+    return isItemSelected ? "shop-item" : "shop-item"
   }
 
   toggleSelected(id) {
@@ -108,8 +108,7 @@ class Web_shop extends Component {
               onClick={this.toggleSelected}
             />
             <div className="shop-info">
-              <p>{product.name}</p>
-              <p>Pris: {product.price}</p>
+              <p className="shop-text">{product.name}</p>
             </div>
           </div>
         </div>
