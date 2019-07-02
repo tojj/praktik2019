@@ -105,17 +105,16 @@ class Web_shop extends Component {
               <p>{product.desc}</p>
             </div>
           ) : (
-              <div className="content-container">
-                <img
-                  className="shop-img"
-                  src={product.image ? product.image : '/images/present.png'}
-                  alt="event"
-                  onClick={this.toggleSelected}
-                />
-                <div className="shop-info">
-                  <p>{product.name}</p>
-                  <p>Pris: {product.price}</p>
-                </div>
+            <div className="content-container">
+              <img
+                className="shop-img"
+                src={product.image}
+                alt="event"
+                onClick={this.toggleSelected}
+              />
+              <div className="shop-info">
+                <p>{product.name}</p>
+                <p>Pris: {product.price}</p>
               </div>
             )}
         </div>

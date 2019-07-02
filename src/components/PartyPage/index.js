@@ -4,6 +4,7 @@ import { Printer } from 'react-feather'
 import MissingPage from "../MissingPage/index"
 import MapsGen from "./MapsGen/index"
 import AttendingsList from "./AttendingsList/index"
+import SwishCode from "../SwishCode"
 
 class PartyPage extends React.Component {
   constructor(props) {
@@ -12,7 +13,6 @@ class PartyPage extends React.Component {
       event: null,
       loaded: false
     }
-    this.swishImage = ''
   }
 
   componentDidMount() {
@@ -57,7 +57,7 @@ class PartyPage extends React.Component {
       )
     } else if (this.state.event && this.state.loaded) {
       let party = this.state.event
-      this.swishImage = "http://betalamedswish.se/API/Get/?n=0709629276&a=" + party.swish.amount + "&m=" + party.link + "&la=true&lm=true&s=500"
+
       /**
        * Joining all the address information to the right format in order to send the correct props to MapsGen
        */
@@ -85,7 +85,7 @@ class PartyPage extends React.Component {
       content = (
         <div style={{ background: party.image }} className="party-bg">
           <div className="party-card">
-            <p className="no-print" onClick={window.print} style={{ display: 'inline-block', margin: '5px', cursor: 'pointer' }}><Printer /></p>
+            <p className="no-print" onClick={window.print} style={{ display: 'inline-block', margin: '5px', cursor: 'pointer' }}><Printer /> Klicka här för att skriva ut.</p>
             <div className="box-container party-title">
               <div className="box">
                 <p>{party.title}</p>
@@ -107,25 +107,18 @@ class PartyPage extends React.Component {
               </div>
               <div className="box print-me">
                 <p>Scanna koden för att komma direkt till kalaset. Glöm inte att meddela om du kommer!</p><br />
-                <img src={"http://chart.apis.google.com/chart?cht=qr&chs=500x500&chl=https://tojj.herokuapp.com/kalas/" + party.link + "&chld=H|0"} className="party-qr" alt="qr link to party" />
+                <img src={"http://chart.apis.google.com/chart?cht=qr&chs=500x500&chl=" + window.location.origin + "kalas/" + party.link + "&chld=H|0"} className="party-qr" alt="qr link to party" />
               </div>
             </div>
             <div className="print-me">
-              <p className="help-text">Tojj.se är ett verktyg för att anordna kalas och inbjudningar. Vid frågor eller funderingar besök <a href="https://tojj.herokuapp.com/vanliga-fragor">https://tojj.herokuapp.com/vanliga-fragor</a>
+              <p className="help-text">Tojj.se är ett verktyg för att anordna kalas och inbjudningar. Vid frågor eller funderingar besök <a href={window.location.origin + "/vanliga-fragor"}>/vanliga-fragor</a>
 
               </p>
             </div>
             <div className="box-container border-top party-payment no-print">
               <div className="box swish-holder">
-                <div
-                  className="qr-code box-img"
-                  style={{ background: party.swish.color }}
-                >
-                  <img
-                    src={this.swishImage}
-                    className="img-fluid"
-                    alt="qr-code"
-                  />
+                <div className="qr-code box-img">
+                  <SwishCode payee={party.swish.number} amount={party.swish.amount} message={party.link} />
                 </div>
                 <p>Swish</p>
                 <p>

@@ -71,6 +71,7 @@ class Checkout extends React.Component {
           placeholder={guestUserData[key].label}
           className={guestUserData[key].className}
           callback={this.callback}
+          autocomplete={guestUserData[key].autocomplete}
         />
       </FormGroup>
     )

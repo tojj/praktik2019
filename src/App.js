@@ -9,7 +9,7 @@ import AdminPage from './components/AdminPage/index'
 import Faq from "./components/FAQ/index"
 import Footer from './components/Footer/index'
 import MissingPage from "./components/MissingPage/index"
-import ConfirmationPage from "./components/ConfirmationPage"
+import PasswordInput from "./components/PasswordInput/index"
 
 const App = props => {
   return (
@@ -37,7 +37,7 @@ const App = props => {
           <Route exact path="/skapa-kalas" component={CreatePartyPage} />
           <Route exact path="/kalas/:link" component={PartyPage} />
           <Route exact path="/kalas-förhandsvisning" component={PreviewPage} />
-          <Route exact path="/bekraftelse/:link" component={ConfirmationPage} />
+          <Route exact path="/bekraftelse/:link" component={PasswordInput} />
           <Route exact path="/vanliga-fragor" component={Faq} />
           <Route exact path="/vanliga-fragor/:link" component={Faq} />
           <Route exact path="/admin" component={AdminPage} />
