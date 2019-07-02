@@ -1,11 +1,9 @@
 export default {
   birthday: {
-
     birthdayEvent: {
-      title: '',
-      name: '',
-      age: '',
-
+      title: "",
+      name: "",
+      age: ""
     },
     input: {
       isValid: false,
@@ -13,53 +11,48 @@ export default {
     },
 
     birthdayTimeAndPlace: {
-      description: '',
-      date: '',
-      time: '',
-      street: '',
-      zip: '',
-      city: '',
-      deadline: ''
+      description: "",
+      date: "",
+      time: "",
+      street: "",
+      zip: "",
+      city: "",
+      deadline: ""
     },
 
-    birthdayImage: '',
+    birthdayImage: "",
 
     fundraiser: {
-      id: '',
-      name: '',
-      image: '',
-      link: '',
+      id: "",
+      name: "",
+      image: "",
+      link: "",
       donate: false,
       buttonSelected: false
     },
 
     present: {
-      id: '',
-      name: '',
-      desc: '',
-      image: '',
-      link: '',
-      price: ''
+      id: "",
+      name: "",
+      desc: "",
+      image: "",
+      link: "",
+      price: ""
     },
 
     guestUser: {
-      firstName: '',
-      lastName: '',
-      email: '',
-      phoneNumber: '',
-      address: '',
-      zipcode: '',
-      city: '',
-      password: ''
+      firstName: "",
+      lastName: "",
+      email: "",
+      phoneNumber: "",
+      address: "",
+      zipcode: "",
+      city: "",
+      password: ""
     }
-
   },
 
   swish: {
-
-    swishMoney: '50',
-
+    swishMoney: "50"
   }
-
-
 }
