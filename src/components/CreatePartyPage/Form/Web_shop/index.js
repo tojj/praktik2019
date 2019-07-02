@@ -17,13 +17,25 @@ class Web_shop extends Component {
     this.loadData()
   }
 
+  componentDidMount() {
+    this.isPresentPicked()
+  }
+
+  isPresentPicked() {
+    if (this.props.present.id) {
+      this.toggleSelected(this.props.present.id)
+      this.toggleSelectBorder(this.props.present.id)
+      this.toggleSelectOverlay(this.props.present.id)
+    }
+  }
+
   async loadData() {
     this.allProductsData = await axios({
       method: 'get',
       url: '/api/products'
     })
     this.allProductsData = this.allProductsData.data
-    this.setState({ allProductsData: this.allProductsData })    
+    this.setState({ allProductsData: this.allProductsData })
   }
 
   toggleSelectOverlay(id) {
@@ -73,39 +85,6 @@ class Web_shop extends Component {
     this.props.updateProduct(productToSave)
   }
 
-  renderShopProducts = ({ id, img, price, text, desc }) => {
-    return (
-      <div className={this.toggleSelectBorder(id)} key={id}>
-        <div
-          className={this.toggleSelectOverlay(id)}
-          onClick={() => this.toggleSelected(id)}
-        />
-        <label className="more-info-label" onClick={() => this.toggleInfo(id)}>
-          >
-        </label>
-
-        {this.state.showInfo === id ? (
-          <div className="content-container">
-            <p>{desc}</p>
-          </div>
-        ) : (
-          <div className="content-container">
-            <img
-              className="shop-img"
-              src={img}
-              alt="event"
-              onClick={this.toggleSelected}
-            />
-            <div className="shop-info">
-              <p>{text}</p>
-              <p>Pris: {price}</p>
-            </div>
-          </div>
-        )}
-      </div>
-    )
-  }
-
   renderProducts() {
     return this.allProductsData.map((product, id) => {
       return (
@@ -126,19 +105,19 @@ class Web_shop extends Component {
               <p>{product.desc}</p>
             </div>
           ) : (
-            <div className="content-container">
-              <img
-                className="shop-img"
-                src={product.image ? product.image : '/images/present.png'}
-                alt="event"
-                onClick={this.toggleSelected}
-              />
-              <div className="shop-info">
-                <p>{product.name}</p>
-                <p>Pris: {product.price}</p>
+              <div className="content-container">
+                <img
+                  className="shop-img"
+                  src={product.image ? product.image : '/images/present.png'}
+                  alt="event"
+                  onClick={this.toggleSelected}
+                />
+                <div className="shop-info">
+                  <p>{product.name}</p>
+                  <p>Pris: {product.price}</p>
+                </div>
               </div>
-            </div>
-          )}
+            )}
         </div>
       )
     })
