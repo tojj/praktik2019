@@ -1,8 +1,9 @@
 import React, { Component } from "react"
-import axios from 'axios'
+import axios from "axios"
 import { connect } from "react-redux"
 import { doUpdateProductInfo } from "../../../../store/Birthday/BirthdayActions"
-import SwishQR from "../Form_body/SwishQR";
+import SwishQR from "../Form_body/SwishQR"
+import { Info, ExternalLink } from "react-feather"
 
 class Web_shop extends Component {
   constructor(props) {
@@ -31,8 +32,8 @@ class Web_shop extends Component {
 
   async loadData() {
     this.allProductsData = await axios({
-      method: 'get',
-      url: '/api/products'
+      method: "get",
+      url: "/api/products"
     })
     this.allProductsData = this.allProductsData.data
     this.setState({ allProductsData: this.allProductsData })
@@ -70,7 +71,7 @@ class Web_shop extends Component {
 
   async findProductInDb() {
     let selectedProduct = await axios({
-      method: 'get',
+      method: "get",
       url: `/api/products/id/${this.productId}`
     })
     selectedProduct = selectedProduct.data
@@ -97,26 +98,20 @@ class Web_shop extends Component {
             className="more-info-label"
             onClick={() => this.toggleInfo(product._id)}
           >
-            <img src="/images/infoTab.png" alt="" />
+            <ExternalLink color="white" />
           </label>
-
-          {this.state.showInfo === product._id 
-          ? <div className="content-container">
-              <p>{product.desc}</p>
+          <div className="content-container">
+            <img
+              className="shop-img"
+              src={product.image}
+              alt="event"
+              onClick={this.toggleSelected}
+            />
+            <div className="shop-info">
+              <p>{product.name}</p>
+              <p>Pris: {product.price}</p>
             </div>
-          : <div className="content-container">
-              <img
-                className="shop-img"
-                src={product.image}
-                alt="event"
-                onClick={this.toggleSelected}
-              />
-              <div className="shop-info">
-                <p>{product.name}</p>
-                <p>Pris: {product.price}</p>
-                </div>
-                </div>
-          }
+          </div>
         </div>
       )
     })
