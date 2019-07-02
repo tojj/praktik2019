@@ -80,7 +80,7 @@ class PreviewPage extends Component {
               <p>Present</p>
               <p>
                 Pengarna som samlas in kommer att gå till att köpa {this.props.present.name} som{" "}
-                {"party.child"} önskar sig.
+                {this.props.birthdayEvent.name} önskar sig.
               </p>
               <a href={this.props.present.link} target="_blank" rel="noopener noreferrer">
                 Läs mer...
