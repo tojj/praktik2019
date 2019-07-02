@@ -145,7 +145,6 @@ class Checkout extends React.Component {
 }
 
 const mapStateToProps = state => {
-  console.log(state)
   return {
     guestUser: state.birthday.guestUser,
     agreement: state.agreement

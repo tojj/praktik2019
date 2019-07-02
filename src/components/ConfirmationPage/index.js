@@ -19,16 +19,10 @@ class ConfirmationPage extends React.Component {
     this.clickHandler = this.clickHandler.bind(this)
     this.sendInvites = this.sendInvites.bind(this)
   }
-  // componentDidUpdate() {
-  //   console.log(this.state.party);
-
-  // }
   componentWillMount() {
     this.findMatchingEvent()
   }
-  componentDidMount() {
-      console.log(this.props);
-      
+  componentDidMount() {      
       document.getElementById('email-input').focus()
       document.title = "Tojj - Bekräftelse"
   }

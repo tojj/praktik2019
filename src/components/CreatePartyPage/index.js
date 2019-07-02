@@ -508,8 +508,6 @@ class CreatePartyPage extends React.Component {
     this.sendEmail(event.guestUser.email, content, event.title)
   }
   sendEmail = (email, message, subject) => {
-    console.log(message)
-
     fetch("/api/send", {
       method: "POST",
       headers: {

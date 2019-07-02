@@ -1,6 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import { Eye } from 'react-feather'
+import { connect } from 'react-redux'
 import ConfirmationPage from '../ConfirmationPage/index'
 
 class PasswordInput extends React.Component {
@@ -23,17 +24,17 @@ class PasswordInput extends React.Component {
     })
     event = event.data
     if (input === event.password) {
-      console.log('success');
       this.setState({loggedIn: true })
-    } else {
-      console.log('mis match');
-      
+    } else {      
       this.setState({error: true})
     }
   }
   componentDidMount() {
-    console.log(this.props);
-    
+    if(this.props.guestUser.password){
+      this.validateInput(this.props.guestUser.password)
+    } else {
+      return
+    }
   }
   onChangeHandler = (e) => {
     this.setState({
@@ -125,4 +126,10 @@ class PasswordInput extends React.Component {
   }
 }
 
-export default PasswordInput
+const mapStateToProps = state => {
+  return {
+    guestUser: state.birthday.guestUser,
+  }
+}
+
+export default connect(mapStateToProps)(PasswordInput)
