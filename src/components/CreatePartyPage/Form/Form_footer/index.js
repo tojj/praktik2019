@@ -1,8 +1,8 @@
 import React from "react"
-import axios from 'axios'
+import axios from "axios"
 import Checkout from "../Form_footer/Checkout/index"
-import { connect } from 'react-redux'
-import { doUpdateFundraiser } from '../../../../store/Birthday/BirthdayActions'
+import { connect } from "react-redux"
+import { doUpdateFundraiser } from "../../../../store/Birthday/BirthdayActions"
 
 class Form_footer extends React.Component {
   constructor(props) {
@@ -11,8 +11,8 @@ class Form_footer extends React.Component {
       charitySelected: false,
       sliderContent: "",
       charityPicked: false,
-      selectedCharity: '',
-      allCharityData: '',
+      selectedCharity: "",
+      allCharityData: ""
     }
     this.allFundraisersData = []
     this.allFundraisers = []
@@ -24,10 +24,9 @@ class Form_footer extends React.Component {
   componentDidMount() {
     this.chosenFundRaiserField()
     this.clickedFundraiser()
-    
   }
 
-  clickedFundraiser(){
+  clickedFundraiser() {
     if (this.props.fundraiser.id) {
       this.toggleSelected(this.props.fundraiser.id)
       this.toggleSelectBorder(this.props.fundraiser.id)
@@ -37,8 +36,8 @@ class Form_footer extends React.Component {
 
   async loadData() {
     this.allCharityData = await axios({
-      method: 'get',
-      url: '/api/fundraisers'
+      method: "get",
+      url: "/api/fundraisers"
     })
     this.allCharityData = this.allCharityData.data
     this.setState({ allCharityData: this.allCharityData })
@@ -47,39 +46,38 @@ class Form_footer extends React.Component {
   chosenFundRaiserField() {
     if (this.props.fundraiser.donate === true) {
       this.setState({ charitySelected: true })
-      this.props.updateSelectedFundraiser(
-        {
-          buttonSelected: true,
-          donate: true
-        })
-    } else if (this.props.fundraiser.donate === false && this.props.fundraiser.buttonSelected === true) {
+      this.props.updateSelectedFundraiser({
+        buttonSelected: true,
+        donate: true
+      })
+    } else if (
+      this.props.fundraiser.donate === false &&
+      this.props.fundraiser.buttonSelected === true
+    ) {
       this.setState({ charityPicked: true })
     }
   }
 
-  selected = (e) => {
+  selected = e => {
     this.setState({ charitySelected: true, charityPicked: false })
-    this.props.updateSelectedFundraiser(
-      {
-        buttonSelected: true,
-        donate: true
-      })
-
+    this.props.updateSelectedFundraiser({
+      buttonSelected: true,
+      donate: true
+    })
   }
 
-  notSelected = (e) => {
+  notSelected = e => {
     this.setState({ charitySelected: false, charityPicked: true })
-    this.props.updateSelectedFundraiser(
-      {
-        buttonSelected: true,
-        donate: false,
-        id: '',
-      })
+    this.props.updateSelectedFundraiser({
+      buttonSelected: true,
+      donate: false,
+      id: ""
+    })
   }
 
   async getSelectedFundraiser() {
     this.selectedFundraiser = await axios({
-      method: 'get',
+      method: "get",
       url: `/api/fundraisers/id/${this.fundraiserId}`
     })
 
@@ -93,20 +91,17 @@ class Form_footer extends React.Component {
       donate: true
     }
 
-    this.props.updateSelectedFundraiser(
-      fundraiser
-    )
+    this.props.updateSelectedFundraiser(fundraiser)
 
     fundraiser = this.props.fundraiser
     this.setState({ charitySelected: true })
-
   }
 
   toggleSelectOverlay(id) {
     const isItemSelected = this.state.selectedCharity === id
     return isItemSelected
       ? "charity-checkmark charity-overlay"
-      : "placeholder-div"
+      : "placeholder-div charity-overlay-hover"
   }
 
   toggleSelectBorder(id) {
@@ -115,7 +110,6 @@ class Form_footer extends React.Component {
   }
 
   toggleSelected(id) {
-    
     if (this.state.selectedCharity === id) {
       this.setState({ selectedCharity: "" })
     } else {
@@ -123,8 +117,6 @@ class Form_footer extends React.Component {
     }
     this.fundraiserId = id
     this.getSelectedFundraiser()
-    
-    
   }
 
   renderCharity() {
@@ -164,9 +156,7 @@ class Form_footer extends React.Component {
                   type="radio"
                   checked={this.state.charitySelected}
                   readOnly
-                  onClick={
-                    this.selected
-                  }
+                  onClick={this.selected}
                 />
                 <label className="radio-label" htmlFor="radio1">
                   Ja, det vill jag
@@ -180,9 +170,7 @@ class Form_footer extends React.Component {
                   type="radio"
                   readOnly
                   checked={this.state.charityPicked}
-                  onClick={
-                    this.notSelected
-                  }
+                  onClick={this.notSelected}
                 />
                 <label className="radio-label" htmlFor="radio2">
                   Nej tack
@@ -196,10 +184,12 @@ class Form_footer extends React.Component {
             <h2 className="form-headline charity-headline text-center">
               Välj välgörenhet
             </h2>
-              {this.state.allCharityData ?
-                <div className="fundraiser-container">{this.renderCharity()}</div>
-              : <div></div>}
-              </div>
+            {this.state.allCharityData ? (
+              <div className="fundraiser-container">{this.renderCharity()}</div>
+            ) : (
+              <div />
+            )}
+          </div>
         ) : null}
         <Checkout />
       </div>
@@ -214,10 +204,10 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = dispatch => ({
-  updateSelectedFundraiser: (data) => dispatch(doUpdateFundraiser(data))
+  updateSelectedFundraiser: data => dispatch(doUpdateFundraiser(data))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(Form_footer)
-
-
-
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Form_footer)
