@@ -20,6 +20,11 @@ class SwishQR extends React.Component {
   handleChange = e => {
     const val = e.target.value
     this.props.updateSwishAmount(val)
+    if (e.target.value < 50){
+      this.setState({error: true})
+    } else {
+      this.setState({error: false})
+    }
   }
 
   render() {
@@ -30,11 +35,13 @@ class SwishQR extends React.Component {
             <Label for="amount-input">Belopp för Swish</Label>
             <Input
               type="number"
-              name="number"
+              name="swishMoney"
               onChange={this.handleChange}
-              placeholder="100"
+              defaultValue={this.props.swishMoney ? this.props.swishMoney : ''}
+              placeholder="Belopp i SEK"
               id="amount-input"
               className="input50 swish-width"
+              style={this.state.error ? {borderColor: 'red'} : {borderColor:'rgba(0,0,0,0.1)'}}
             />
           </FormGroup>
         </div>

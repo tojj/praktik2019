@@ -53,6 +53,6 @@ export default {
   },
 
   swish: {
-    swishMoney: "50"
+    swishMoney: 0
   }
 }
