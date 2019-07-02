@@ -3,7 +3,7 @@ import axios from "axios"
 import { connect } from "react-redux"
 import { doUpdateProductInfo } from "../../../../store/Birthday/BirthdayActions"
 import SwishQR from "../Form_body/SwishQR"
-import { Info, ExternalLink } from "react-feather"
+import { ExternalLink } from "react-feather"
 
 class Web_shop extends Component {
   constructor(props) {
@@ -94,12 +94,11 @@ class Web_shop extends Component {
             className={this.toggleSelectOverlay(product._id)}
             onClick={() => this.toggleSelected(product._id)}
           />
-          <label
-            className="more-info-label"
-            onClick={() => this.toggleInfo(product._id)}
-          >
-            <ExternalLink color="white" />
-          </label>
+          <a target="blank" href={product.link}>
+            <label className="more-info-label">
+              <ExternalLink color="white" />
+            </label>
+          </a>
           <div className="content-container">
             <img
               className="shop-img"
@@ -108,7 +107,9 @@ class Web_shop extends Component {
               onClick={this.toggleSelected}
             />
             <div className="shop-info">
-              <p className="shop-text">{product.name}</p>
+              <p className="shop-text">
+                {product.name} | {product.price} kr
+              </p>
             </div>
           </div>
         </div>

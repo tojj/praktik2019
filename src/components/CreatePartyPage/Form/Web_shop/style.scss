@@ -149,4 +149,21 @@
       background-color: $info;
     }
   }
+
+  .price-label {
+    z-index: 100;
+    position: absolute;
+    background-color: #b164b8dc;
+    height: 32px;
+    padding-top: 3px;
+    border-bottom-right-radius: 10px;
+    border-top-left-radius: 10px;
+    z-index: 1000000000000 !important;
+    color: white;
+    left: 0;
+    padding: 4px;
+
+    //Label for price
+    //<label className="price-label">{product.price} kr</label>
+  }
 }
