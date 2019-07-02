@@ -92,7 +92,7 @@
     font-family: $small-text;
     font-weight: bold;
     color: $dark;
-    background-color: rgba(255, 255, 255, 0.7);
+    background-color: rgba(255, 255, 255, 0.9);
     border-bottom-right-radius: 10px;
     border-bottom-left-radius: 10px;
     .shop-text {
@@ -137,7 +137,7 @@
     z-index: 100;
     position: absolute;
     left: calc(100% - 32px);
-    background-color: $info;
+    background-color: #b164b8dc;
     height: 32px;
     width: 32px;
     padding-top: 3px;
@@ -146,7 +146,7 @@
     z-index: 1000000000000 !important;
     &:hover {
       transition: all 200ms ease-in;
-      background-color: #f66e9f;
+      background-color: $info;
     }
   }
 }
