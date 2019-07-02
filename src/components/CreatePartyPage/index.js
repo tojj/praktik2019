@@ -110,6 +110,25 @@ class CreatePartyPage extends React.Component {
         })
     }
 
+    this.schemaAgreement = {
+      userAgreement: Joi.boolean()
+        .invalid(false)
+        .required()
+        .error(errors => {
+          return {
+            message: "Godkänn våra användaravtal"
+          }
+        }),
+      gdprAgreement: Joi.boolean()
+        .invalid(false)
+        .required()
+        .error(errors => {
+          return {
+            message: "Godkänn att vi hanterar dina personuppgifter"
+          }
+        })
+    }
+
     this.schemaGuestUser = {
       firstName: Joi.string()
         .min(2)
@@ -270,12 +289,16 @@ class CreatePartyPage extends React.Component {
   }
 
   validateAgreement = () => {
-    let isFundraiserSelected = this.props.fundraiser.agreementChecked
-    if (isFundraiserSelected === true) {
-    } else {
-      this.errors.push(["Vänligen godkänn våra villkor"])
-      this.setState({ errors: this.errors })
+    const result = Joi.validate(this.props.agreement, this.schemaAgreement, {
+      abortEarly: false
+    })
+    if (!result.error) return null
+    const errors = []
+    for (let item of result.error.details) {
+      errors[item.path[0]] = item.message
+      this.errors.push(item.message)
     }
+    this.setState({ errors: this.errors })
   }
 
   /**
@@ -592,7 +615,8 @@ const mapStateToProps = state => {
     fundraiser: state.birthday.fundraiser,
     present: state.birthday.present,
     swishMoney: state.swish.swishMoney,
-    guestUser: state.birthday.guestUser
+    guestUser: state.birthday.guestUser,
+    agreement: state.agreement
   }
 }
 

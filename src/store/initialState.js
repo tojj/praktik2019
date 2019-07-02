@@ -54,10 +54,5 @@ export default {
 
   swish: {
     swishMoney: "50"
-  },
-
-  agreement: {
-    userAgreement: false,
-    gdprAgreement: false
   }
 }
