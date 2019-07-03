@@ -31,16 +31,6 @@ export const aboutData = [
   }
 ]
 
-export const footerData = [
-  {
-    text: "info@tojj.se",
-    id: 1
-  },
-  {
-    text: "Humlegatan 4, 211 27 Malmö",
-    id: 2
-  }
-]
 
 export const convincerData = [
   {
@@ -84,19 +74,21 @@ export const formHeaderData = {
     className: " input100 form-control",
     defaultValue: "Kort men kul",
     text: "Vad vill du ha som rubrik?",
-    id: "title"
+    id: "title",
+    tooltip: "Detta är kommer att stå överst på din kalassida."
   },
   name: {
-    className: " input50 form-control",
+    className: " input100 form-control",
     defaultValue: "Barnets namn",
     text: "Vem är kalaset för?",
     id: "child"
   },
   age: {
-    className: "input25 form-control",
+    className: "input100 form-control",
     defaultValue: "t.ex. 3",
     text: "Hur många år fyller barnet?",
-    id: "age"
+    id: "age",
+    tooltip: "Tänk på att endast skriva siffror, inga bokstäver."
   }
 }
 
@@ -176,10 +168,12 @@ export const eventInputData = {
     type: "textarea",
     placeholder: "",
     className: "textarea-label form-input",
-    id: "description"
+    id: "description",
+    rows: '5',
+    tooltip: "Här har du möjlighet att verkligen gå in på detaljer gällande kalaset."
   },
   date: {
-    classNameFormGroup: "input50",
+    classNameFormGroup: "input75",
     name: "date",
     classNameLabel: "birthday-label",
     text: "När är kalaset?",
@@ -206,7 +200,8 @@ export const eventInputData = {
     type: "text",
     placeholder: "Gatuadress eller plats",
     className: "form-input",
-    id: "asv" //cryptic in order to avoid autofill
+    id: "asv", //cryptic in order to avoid autofill
+    tooltip: "Var kommer kalaset att äga rum?"
   },
   zip: {
     classNameFormGroup: "input25",
@@ -219,7 +214,7 @@ export const eventInputData = {
     id: "asc" //cryptic in order to avoid autofill
   },
   city: {
-    classNameFormGroup: "input50",
+    classNameFormGroup: "input75",
     name: "asd", //cryptic in order to avoid autofill
     classNameLabel: "location-label inline-input",
     text: "",
@@ -235,7 +230,7 @@ export const eventInputData = {
     text: "När vill du senast ha svar om vem som kommer?",
     type: "date",
     placeholder: "",
-    className: "form-input input50",
+    className: "form-input input75",
     id: "deadline"
   }
 }
@@ -246,16 +241,16 @@ export const guestUserData = {
     classNameFormGroup: "input50",
     id: "firstName-input",
     name: "firstName",
-    classNameLabel: "",
+    classNameLabel: "birthday-label",
     label: "Förnamn",
     type: "text",
-    className: "form-input"
+    className: "form-input",
   },
   lastName: {
     classNameFormGroup: "input50",
     id: "lastName-input",
     name: "lastName",
-    classNameLabel: "ml-lg-2",
+    classNameLabel: "ml-lg-2 birthday-label",
     label: "Efternamn",
     type: "text",
     className: "form-input ml-lg-2"
@@ -264,60 +259,66 @@ export const guestUserData = {
     classNameFormGroup: "input50",
     id: "email-input",
     name: "email",
-    classNameLabel: "",
+    classNameLabel: "birthday-label",
     label: "E-post",
     type: "email",
-    className: "form-input"
+    className: "form-input",
+    tooltip: "Ange den epostadress du vill ha bekräftelsen skickad till."
   },
   phoneNumber: {
     classNameFormGroup: "input50",
     id: "phoneNumber-input",
     name: "phoneNumber",
-    classNameLabel: "position-relative ml-lg-2",
+    classNameLabel: "ml-lg-2 birthday-label w-100",
     label: "Telefonnummer",
     type: "text",
-    className: "form-input ml-lg-2"
+    className: "form-input ml-lg-2",
+    tooltip: "Inga specialtecken eller mellanrum."
   },
   city: {
     classNameFormGroup: "input50",
     id: "city-input",
     name: "city",
-    classNameLabel: "",
+    classNameLabel: "birthday-label",
     label: "Stad",
     type: "text",
     className: "form-input "
   },
-  
+
   zipcode: {
     classNameFormGroup: "input50 ",
     id: "zipcode-input",
     name: "zipcode",
-    classNameLabel: "ml-lg-2",
+    classNameLabel: "ml-lg-2 birthday-label",
     label: "Postnummer",
     type: "text",
     className: "form-input ml-lg-2"
   },
-  
-  
+
+
   address: {
     classNameFormGroup: "input50",
     id: "address-input",
     name: "address",
-    classNameLabel: "",
+    classNameLabel: "birthday-label",
     label: "Gata",
     type: "text",
-    className: "form-input"
+    className: "form-input",
+    tooltip: "Tänk på att detta inte bör vara samma adress som ovan, så vida inte kalaset kommer att äga rum hemma."
+
   },
 
   password: {
     classNameFormGroup: "input50",
     id: "pw-input",
     name: "pw",
-    classNameLabel: "ml-lg-2",
+    classNameLabel: "ml-lg-2 birthday-label w-100",
     label: "Lösenord",
     type: "password",
     autocomplete: 'new-password',
-    className: "form-input ml-lg-2"
+    className: "form-input ml-lg-2",
+    tooltip: "Lösenordet kommer vara din åtkomst för att senare kunna bjuda in gäster."
+
   }
 }
 
@@ -429,7 +430,7 @@ export const createAccountData = [
     placeholder: "Bekräfta ditt lösenord",
     className: "form-input registration-text-positioning ml-lg-2",
     pattern: "",
-    title: "Upprepa ditt lösenord",
+    title: "Upprepa ditt lösenord"
   }
 ]
 
@@ -454,7 +455,6 @@ export const loginData = [
 
 export default {
   aboutData,
-  footerData,
   convincerData,
   productData,
   formHeaderData,

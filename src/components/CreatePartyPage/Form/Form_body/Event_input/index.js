@@ -7,6 +7,7 @@ import {
   FormGroup,
   Label
 } from 'reactstrap'
+import ToolTip from '../../../../ToolTip';
 
 class EventInput extends Component {
   constructor(props) {
@@ -36,9 +37,10 @@ class EventInput extends Component {
   renderInput = key => (
     <FormGroup key={key} className={eventInputData[key].classNameFormGroup}>
       <Label
+        style={{position: 'relative !important'}}
         htmlFor={eventInputData[key].name}
         className={eventInputData[key].classNameLabel}>
-        {eventInputData[key].text} 
+        {eventInputData[key].text} {eventInputData[key].tooltip ? <ToolTip text={eventInputData[key].tooltip} /> : '' }
         </Label>
       <InputEvent
         name={eventInputData[key].name}
@@ -49,6 +51,7 @@ class EventInput extends Component {
         className={eventInputData[key].className}
         callback={this.callback}
         id={eventInputData[key].id}
+        rows={eventInputData[key].rows ? eventInputData[key].rows : ''}
       />
     </FormGroup>
   )

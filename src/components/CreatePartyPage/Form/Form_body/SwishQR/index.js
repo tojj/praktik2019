@@ -1,10 +1,10 @@
 import React from "react"
-
 import {
   Input,
   FormGroup,
   Label
 } from "reactstrap"
+import ToolTip from '../../../../ToolTip'
 
 import { connect } from 'react-redux'
 import { updateSwish } from '../../../../../store/Swish/SwishActions'
@@ -29,10 +29,9 @@ class SwishQR extends React.Component {
 
   render() {
     return (
-      <div id="swish-container">
-        <div className="box text-left">
+      <div id="swish-container" className="swish-container">
           <FormGroup className="swish-form">
-            <Label for="amount-input">Hur mycket ska gästerna bidra med?</Label>
+            <Label for="amount-input" className="birthday-label">Swishbelopp <ToolTip text="Istället för att ta med egna presenter går gästerna ihop för att betala för den present du valt ovan." /></Label>
             <Input
               type="number"
               name="swishMoney"
@@ -40,11 +39,10 @@ class SwishQR extends React.Component {
               defaultValue={this.props.swishMoney ? this.props.swishMoney : ''}
               placeholder="Belopp i SEK per person"
               id="amount-input"
-              className="input50 swish-width"
+              className=""
               style={this.state.error ? {borderColor: 'red'} : {borderColor:'rgba(0,0,0,0.1)'}}
             />
           </FormGroup>
-        </div>
       </div>
     )
   }

@@ -5,6 +5,7 @@ import { doUpdateGuestDetails } from "../../../../../store/Birthday/BirthdayActi
 import InputEvent from "../../Form_body/Event_input/InputEvent"
 import { guestUserData } from "../../../../../staticData"
 import { doupdateUserAgreement } from "../../../../../store/Agreement/AgreementActions"
+import ToolTip from '../../../../ToolTip'
 
 class Checkout extends React.Component {
   constructor(props) {
@@ -86,7 +87,7 @@ class Checkout extends React.Component {
           htmlFor={guestUserData[key].id}
           className={guestUserData[key].classNameLabel}
         >
-          {guestUserData[key].label}
+          {guestUserData[key].label} {guestUserData[key].tooltip ? <ToolTip text={guestUserData[key].tooltip} />: ''}
         </Label>
         <InputEvent
           name={guestUserData[key].name}

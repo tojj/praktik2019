@@ -89,8 +89,8 @@ class CreatePartyPage extends React.Component {
           }
         }),
       zip: Joi.string()
-        .min(3)
-        .max(30)
+        .min(4)
+        .max(5)
         .required()
         .error(errors => {
           return {

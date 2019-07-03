@@ -8,7 +8,7 @@ import {
   FormGroup,
   Label
 } from 'reactstrap'
-
+import ToolTip from '../../../ToolTip'
 
 
 
@@ -43,7 +43,7 @@ class Form_header extends Component {
   renderInput = key => (
     <FormGroup key={key} >
       <Label className="birthday-label">
-        {formHeaderData[key].text}
+        {formHeaderData[key].text} {formHeaderData[key].tooltip ? <ToolTip text={formHeaderData[key].tooltip} /> : '' }
       </Label>
       <Input
         id={formHeaderData[key].id}

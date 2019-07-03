@@ -82,6 +82,7 @@
     .input20,
     .input25,
     .input50,
+    .input75,
     .input100 {
       width: 100%;
     }
@@ -109,7 +110,10 @@
       .input50 {
         width: 50%;
       }
-
+      .input75 {
+        width: 73%;
+        display: inline-block;
+      }
       .input100 {
         width: 100%;
       }
