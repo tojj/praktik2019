@@ -25,8 +25,7 @@ export const aboutData = [
     id: 5
   },
   {
-    text:
-      "En win-win helt enkelt!",
+    text: "En win-win helt enkelt!",
     id: 6
   }
 ]
@@ -127,7 +126,6 @@ export const carouselData = [
   }
 ]
 
-
 export const imageHandlerData = [
   {
     img: "/images/patterns/cake.jpg",
@@ -164,6 +162,54 @@ export const imageHandlerData = [
     dropdownClass: "dd-item",
     imgClass: "dd-image",
     id: 6
+  },
+  {
+    img: "/images/patterns/bee.jpg",
+    dropdownClass: "dd-item",
+    imgClass: "dd-image",
+    id: 7
+  },
+  {
+    img: "/images/patterns/fruit.jpg",
+    dropdownClass: "dd-item",
+    imgClass: "dd-image",
+    id: 8
+  },
+  {
+    img: "/images/patterns/heart2.jpg",
+    dropdownClass: "dd-item",
+    imgClass: "dd-image",
+    id: 9
+  },
+  {
+    img: "/images/patterns/icecream.jpg",
+    dropdownClass: "dd-item",
+    imgClass: "dd-image",
+    id: 10
+  },
+  {
+    img: "/images/patterns/leaves.jpg",
+    dropdownClass: "dd-item",
+    imgClass: "dd-image",
+    id: 11
+  },
+  {
+    img: "/images/patterns/moustache.jpg",
+    dropdownClass: "dd-item",
+    imgClass: "dd-image",
+    id: 12
+  },
+  {
+    img: "/images/patterns/stars.jpg",
+    dropdownClass: "dd-item",
+    imgClass: "dd-image",
+    id: 13
+  },
+  {
+    img: "/images/patterns/stars2.jpg",
+    dropdownClass: "dd-item",
+    imgClass: "dd-image",
+    id: 14
   }
 ]
 
@@ -240,7 +286,6 @@ export const eventInputData = {
   }
 }
 
-
 export const guestUserData = {
   firstName: {
     classNameFormGroup: "input50",
@@ -287,7 +332,7 @@ export const guestUserData = {
     type: "text",
     className: "form-input "
   },
-  
+
   zipcode: {
     classNameFormGroup: "input50 ",
     id: "zipcode-input",
@@ -297,8 +342,7 @@ export const guestUserData = {
     type: "text",
     className: "form-input ml-lg-2"
   },
-  
-  
+
   address: {
     classNameFormGroup: "input50",
     id: "address-input",
@@ -316,11 +360,10 @@ export const guestUserData = {
     classNameLabel: "ml-lg-2",
     label: "Lösenord",
     type: "password",
-    autocomplete: 'new-password',
+    autocomplete: "new-password",
     className: "form-input ml-lg-2"
   }
 }
-
 
 export const createAccountData = [
   {
@@ -333,7 +376,7 @@ export const createAccountData = [
     placeholder: "Förnamn",
     className: "form-input",
     pattern: "",
-    title: "",
+    title: ""
   },
   {
     classNameFormGroup: "input50",
@@ -345,7 +388,7 @@ export const createAccountData = [
     placeholder: "Efternamn",
     className: "form-input ml-lg-2",
     pattern: "",
-    title: "",
+    title: ""
   },
   {
     classNameFormGroup: "input50",
@@ -357,7 +400,7 @@ export const createAccountData = [
     placeholder: "Adress",
     className: "form-input",
     pattern: "",
-    title: "",
+    title: ""
   },
   {
     classNameFormGroup: "input20 display-inline",
@@ -369,7 +412,7 @@ export const createAccountData = [
     placeholder: "Postnr",
     className: "form-input ml-lg-2",
     pattern: "",
-    title: "",
+    title: ""
   },
   {
     classNameFormGroup: "input27",
@@ -381,7 +424,7 @@ export const createAccountData = [
     placeholder: "Stad",
     className: "form-input ml-lg-3",
     pattern: "",
-    title: "",
+    title: ""
   },
   {
     classNameFormGroup: "input50",
@@ -393,7 +436,7 @@ export const createAccountData = [
     placeholder: "Telefonnummer",
     className: "form-input",
     pattern: "",
-    title: "",
+    title: ""
   },
   {
     classNameFormGroup: "input50",
@@ -405,7 +448,7 @@ export const createAccountData = [
     placeholder: "E-post",
     className: "form-input ml-lg-2",
     pattern: "",
-    title: "",
+    title: ""
   },
   {
     classNameFormGroup: "input50",
@@ -417,7 +460,7 @@ export const createAccountData = [
     placeholder: "Lösenord",
     className: "form-input",
     pattern: "",
-    title: "Välj ett lösenord",
+    title: "Välj ett lösenord"
   },
   {
     classNameFormGroup: "input50",
@@ -429,7 +472,7 @@ export const createAccountData = [
     placeholder: "Bekräfta ditt lösenord",
     className: "form-input registration-text-positioning ml-lg-2",
     pattern: "",
-    title: "Upprepa ditt lösenord",
+    title: "Upprepa ditt lösenord"
   }
 ]
 
@@ -463,5 +506,5 @@ export default {
   eventInputData,
   guestUserData,
   createAccountData,
-  loginData,
+  loginData
 }
