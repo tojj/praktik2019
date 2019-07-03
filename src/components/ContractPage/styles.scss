@@ -1,0 +1,23 @@
+.contract-wrapper {
+  text-align: center;
+  margin: 3rem 0 0 0;
+
+  .contract-headline {
+    font-family: Montserrat,sans-serif;
+    font-weight: 800;
+    color: #4762b7;
+  }
+
+  .contract-container {
+    display: flex;
+    justify-content: center;
+
+    .contract-holder {
+      background-color: white;
+      width: 80%;
+      border-radius: 9px;
+      margin: 0 0 3rem 0;
+    }
+  }
+
+}
