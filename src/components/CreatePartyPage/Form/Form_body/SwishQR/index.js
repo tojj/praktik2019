@@ -32,13 +32,13 @@ class SwishQR extends React.Component {
       <div id="swish-container">
         <div className="box text-left">
           <FormGroup className="swish-form">
-            <Label for="amount-input">Belopp för Swish</Label>
+            <Label for="amount-input">Hur mycket ska gästerna bidra med?</Label>
             <Input
               type="number"
               name="swishMoney"
               onChange={this.handleChange}
               defaultValue={this.props.swishMoney ? this.props.swishMoney : ''}
-              placeholder="Belopp i SEK"
+              placeholder="Belopp i SEK per person"
               id="amount-input"
               className="input50 swish-width"
               style={this.state.error ? {borderColor: 'red'} : {borderColor:'rgba(0,0,0,0.1)'}}

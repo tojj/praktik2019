@@ -82,20 +82,20 @@ export const productData = [
 export const formHeaderData = {
   title: {
     className: " input100 form-control",
-    defaultValue: "Dunderkalas med hoppborg!",
+    defaultValue: "Kort men kul",
     text: "Vad vill du ha som rubrik?",
     id: "title"
   },
   name: {
     className: " input50 form-control",
-    defaultValue: "Kent",
+    defaultValue: "Barnets namn",
     text: "Vem är kalaset för?",
     id: "child"
   },
   age: {
     className: "input25 form-control",
-    defaultValue: "6",
-    text: "Hur mycket fylls?",
+    defaultValue: "t.ex. 3",
+    text: "Hur många år fyller barnet?",
     id: "age"
   }
 }
@@ -204,7 +204,7 @@ export const eventInputData = {
     classNameLabel: "birthday-label",
     text: "Plats",
     type: "text",
-    placeholder: "Gatuadress",
+    placeholder: "Gatuadress eller plats",
     className: "form-input",
     id: "asv" //cryptic in order to avoid autofill
   },
