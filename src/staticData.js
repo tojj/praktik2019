@@ -31,17 +31,6 @@ export const aboutData = [
   }
 ]
 
-export const footerData = [
-  {
-    text: "info@tojj.se",
-    id: 1
-  },
-  {
-    text: "Humlegatan 4, 211 27 Malmö",
-    id: 2
-  }
-]
-
 export const convincerData = [
   {
     header: "Present",
@@ -454,7 +443,6 @@ export const loginData = [
 
 export default {
   aboutData,
-  footerData,
   convincerData,
   productData,
   formHeaderData,
