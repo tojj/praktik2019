@@ -1,8 +1,9 @@
 import React, { Component } from "react"
-import axios from 'axios'
+import axios from "axios"
 import { connect } from "react-redux"
 import { doUpdateProductInfo } from "../../../../store/Birthday/BirthdayActions"
-import SwishQR from "../Form_body/SwishQR";
+import SwishQR from "../Form_body/SwishQR"
+import { ExternalLink } from "react-feather"
 
 class Web_shop extends Component {
   constructor(props) {
@@ -31,8 +32,8 @@ class Web_shop extends Component {
 
   async loadData() {
     this.allProductsData = await axios({
-      method: 'get',
-      url: '/api/products'
+      method: "get",
+      url: "/api/products"
     })
     this.allProductsData = this.allProductsData.data
     this.setState({ allProductsData: this.allProductsData })
@@ -42,12 +43,12 @@ class Web_shop extends Component {
     const isItemSelected = this.state.selectedItem === id
     return isItemSelected
       ? "shop-item-overlay shop-item-checkmark"
-      : "placeholder-div"
+      : "placeholder-div shop-item-overlay-hover"
   }
 
   toggleSelectBorder(id) {
     const isItemSelected = this.state.selectedItem === id
-    return isItemSelected ? "shop-item-border" : "shop-item"
+    return isItemSelected ? "shop-item" : "shop-item"
   }
 
   toggleSelected(id) {
@@ -70,7 +71,7 @@ class Web_shop extends Component {
 
   async findProductInDb() {
     let selectedProduct = await axios({
-      method: 'get',
+      method: "get",
       url: `/api/products/id/${this.productId}`
     })
     selectedProduct = selectedProduct.data
@@ -93,30 +94,24 @@ class Web_shop extends Component {
             className={this.toggleSelectOverlay(product._id)}
             onClick={() => this.toggleSelected(product._id)}
           />
-          <label
-            className="more-info-label"
-            onClick={() => this.toggleInfo(product._id)}
-          >
-            <img src="/images/infoTab.png" alt="" />
-          </label>
-
-          {this.state.showInfo === product._id 
-          ? <div className="content-container">
-              <p>{product.desc}</p>
+          <a target="blank" href={product.link}>
+            <label className="more-info-label">
+              <ExternalLink color="white" />
+            </label>
+          </a>
+          <div className="content-container">
+            <img
+              className="shop-img"
+              src={product.image}
+              alt="event"
+              onClick={this.toggleSelected}
+            />
+            <div className="shop-info">
+              <p className="shop-text">
+                {product.name} | {product.price} kr
+              </p>
             </div>
-          : <div className="content-container">
-              <img
-                className="shop-img"
-                src={product.image}
-                alt="event"
-                onClick={this.toggleSelected}
-              />
-              <div className="shop-info">
-                <p>{product.name}</p>
-                <p>Pris: {product.price}</p>
-                </div>
-                </div>
-          }
+          </div>
         </div>
       )
     })
