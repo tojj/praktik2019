@@ -447,7 +447,7 @@ class CreatePartyPage extends React.Component {
       "/bekraftelse/" +
       event.link}">här</a> för att bjuda in gästerna.</h4>
           <h4 style="font-weight: bold; margin-bottom: 50px">Lösenord för kalaset: <span style="color: #4762b7">${
-      event.password
+      this.props.guestUser.password
       }</span></h4>
 
           <a href="${window.location.origin +
