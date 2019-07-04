@@ -6,7 +6,7 @@ import { NavLink } from "react-router-dom"
 const Header = props => {
   return (
     <div className="header-wrapper" id="header">
-      <ScrollToTop style={{ zIndex: 99 }} showUnder={500}>
+      <ScrollToTop style={{ zIndex: 99, bottom: 20, right: 20 }} showUnder={500}>
         <img className="arrow-img" src="/images/general/arrow.png" alt="back to top" />
       </ScrollToTop>
       <Navbar showFull={props.startPage} />
