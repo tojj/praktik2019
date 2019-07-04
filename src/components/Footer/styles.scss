@@ -57,6 +57,35 @@
   }
 }
 
+.avtal-link {
+  color: white;
+  margin-right: 5px;
+  &:hover {
+    color: white;
+  }
+}
+
+.help-link {
+  color: white;
+  &:hover {
+    color: white;
+  }
+}
+
+.adress-link {
+  color: white;
+  &:hover {
+    color: white;
+  }
+}
+
+.mail-link {
+  color: white;
+  &:hover {
+    color: white;
+  }
+}
+
 @media (min-width:801px){  
   .footer-headliner {
     font-size: 66px;
