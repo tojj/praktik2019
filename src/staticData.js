@@ -36,21 +36,21 @@ export const convincerData = [
     header: "Present",
     text:
       "Önska en hållbar present! Alla leksaker kommer från hållbara producenter som är måna om klimatet. Leksakerna håller länge och kan dessutom inredas med.",
-    img: "/images/convincer4.jpg",
+    img: "/images/startpage/convincer-present.jpg",
     id: 1
   },
   {
     header: "Bidra",
     text:
       "Som gäst till kalaset kan man bidra till den önskade presenten. Det sparar inte bara tid utan det är också hållbart, så slipper man massa leksaker som kanske inte håller lika länge.",
-    img: "/images/convincer5.jpg",
+    img: "/images/startpage/convincer-swish.jpg",
     id: 2
   },
   {
     header: "Karma",
     text:
       "Ge till dem som behöver! Varför begränsa sig till en present? Skicka vidare budskapet och bidra till att någon annan får det lite bättre också.",
-    img: "/images/convincer3.jpg",
+    img: "/images/startpage/convincer-karma.jpg",
     id: 3
   }
 ]
@@ -202,6 +202,18 @@ export const imageHandlerData = [
     dropdownClass: "dd-item",
     imgClass: "dd-image",
     id: 14
+  },
+  {
+    img: "/images/patterns/paisley.jpg",
+    dropdownClass: "dd-item",
+    imgClass: "dd-image",
+    id: 15
+  },
+  {
+    img: "/images/patterns/blur.jpg",
+    dropdownClass: "dd-item",
+    imgClass: "dd-image",
+    id: 16
   }
 ]
 

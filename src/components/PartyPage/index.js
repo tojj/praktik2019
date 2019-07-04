@@ -193,7 +193,7 @@ class PartyPage extends React.Component {
                 <figure>
                   <img
                     style={{ width: '80%', height: 'auto' }}
-                    src="/images/card.png"
+                    src="/images/general/card.png"
                     alt="birthday-card"
                   />
                 </figure>

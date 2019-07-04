@@ -7,7 +7,7 @@ const Header = props => {
   return (
     <div className="header-wrapper" id="header">
       <ScrollToTop style={{ zIndex: 99 }} showUnder={500}>
-        <img className="arrow-img" src="/images/arrow.png" alt="back to top" />
+        <img className="arrow-img" src="/images/general/arrow.png" alt="back to top" />
       </ScrollToTop>
       <Navbar showFull={props.startPage} />
       <NavLink
