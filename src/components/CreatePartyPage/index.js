@@ -385,7 +385,6 @@ class CreatePartyPage extends React.Component {
         swish: {
           number: "0708358158",
           amount: this.props.swishMoney,
-          color: "#4762b7"
         },
         donate: this.props.fundraiser.donate,
         fundraiser: this.props.fundraiser.id,
