@@ -349,8 +349,7 @@ export const guestUserData = {
     label: "Gata",
     type: "text",
     className: "form-input",
-    tooltip: "Tänk på att detta inte bör vara samma adress som ovan, så vida inte kalaset kommer att äga rum hemma."
-
+    tooltip: "Tänk på att detta inte bör vara samma adress som ovan, såvida inte kalaset kommer att äga rum hemma."
   },
 
   password: {

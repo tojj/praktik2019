@@ -12,7 +12,6 @@
   align-items: center;
   justify-content: center;
 
-
   .image-text {
     font-size: 1rem !important;
     padding: 10px;
@@ -20,7 +19,6 @@
 
   .container-image {
     color: $primary;
-    
   }
 
   .image-dropdown {
@@ -32,7 +30,7 @@
   font-size: 1rem !important;
   font-family: "Montserrat", sans-serif !important;
   font-weight: 800 !important;
-  padding: 5vw !important; 
+  padding: 5vw !important;
   text-align: left;
 }
 
@@ -42,10 +40,13 @@
   padding: 0;
   border-radius: 10px;
   background-color: black;
-  opacity: .85;
+  opacity: 0.85;
   &:hover {
     opacity: 1;
   }
+}
+.dd-menu {
+  max-width: 410px;
 }
 .dd-item {
   display: inline-block;
@@ -63,10 +64,10 @@
   padding: 5px 5px;
   border-radius: 2px;
   margin-top: 1rem;
-  transition: all .3s;
+  transition: all 0.3s;
 }
 
-@include media-breakpoint-up(md){
+@include media-breakpoint-up(md) {
   // .image-pick-container {
   //   height: 250px;
   // }
@@ -79,12 +80,11 @@
     font-size: 2rem !important;
     font-family: "Montserrat", sans-serif !important;
     font-weight: 800 !important;
-    padding: 5vw !important; 
+    padding: 5vw !important;
     text-align: left;
   }
 
   .imagehandler-container {
     margin-top: 92px;
   }
-
 }
