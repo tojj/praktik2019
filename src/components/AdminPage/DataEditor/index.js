@@ -6,10 +6,10 @@ class DataEditor extends React.Component {
     this.entriesData = Object.entries(this.props.object)
   }
   deleteObject = () => {
-    if(window.confirm(`Är du säker på att du vill ta bort: ${this.props.object._id}`)){
+    if (window.confirm(`Är du säker på att du vill ta bort: ${this.props.object._id}`)) {
       this.props.delete(this.props.object._id, this.props.collection)
     }
-    
+
   }
   saveObject = () => {
     const newObject = this.createObject()
@@ -18,11 +18,13 @@ class DataEditor extends React.Component {
   createObject = () => {
     let object = this.props.object
     this.entriesData.map(entry => {
-      if (entry[0] === '_id' || 
-      entry[0] === 'location' || 
-      entry[0] === 'swish' || 
-      entry[0] === 'attending' ||
-      entry[0] === 'invited') {
+      console.log(entry);
+      
+      if (entry[0] === '_id' ||
+        entry[0] === 'location' ||
+        entry[0] === 'swish' ||
+        entry[0] === 'attending' ||
+        entry[0] === 'invited') {
         return null
       } else {
         return object[entry[0]] = document.getElementById(entry[0]).value
@@ -63,6 +65,7 @@ class DataEditor extends React.Component {
             && entry[0] !== 'location'
             && entry[0] !== 'swish'
             && entry[0] !== 'invited'
+            && entry[0] !== 'guestUser'
             ? <div>
               <p className="object-key">{entry[0]}</p>
               {entry[0] === 'category' && this.props.newObj
@@ -81,7 +84,7 @@ class DataEditor extends React.Component {
                   id={entry[0]} />
               }
             </div>
-            : <div className="hide-me">
+            : <div className="hide-me" style={{display:'none'}}>
               <p className="object-key">{entry[0]}</p>
               <input className="w-100" type="text" readOnly defaultValue={!this.props.newObj ? entry[1] : ''} id={entry[0]} />
             </div>}
@@ -117,7 +120,7 @@ class DataEditor extends React.Component {
           : null
         }
         <button onClick={this.saveObject} className="btn btn-success mt-3 float-right">Spara</button>
-        { !this.props.newObj ? <button onClick={this.deleteObject} className="btn btn-danger mt-3">Ta bort</button> : null}
+        {!this.props.newObj ? <button onClick={this.deleteObject} className="btn btn-danger mt-3">Ta bort</button> : null}
       </div>
     )
   }
