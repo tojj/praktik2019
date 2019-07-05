@@ -1,4 +1,6 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
+import { ChevronsRight } from 'react-feather'
 
 class GDPR extends React.Component {
   constructor(props) {
@@ -16,7 +18,7 @@ class GDPR extends React.Component {
   sessionAlreadyAccepted() {
     let x = localStorage.getItem('gdpr')
     if (x === window.localStorage.gdpr) {
-      this.setState({ acceptedGdpr: true})
+      this.setState({ acceptedGdpr: true })
     }
   }
 
@@ -44,8 +46,14 @@ class GDPR extends React.Component {
   render() {
     return (
       this.state.acceptedGdpr ? null : <div className="gdpr-modal">
-        <p className="gdpr-text">Vi sparar din data men vi godkänner alla avtal så den är mycket säker. För mer info kontakta Jepser han kan det ;)</p>
-        <button className="gdpr-button" onClick={this.sessionAccepted} >Ok</button>
+        <p className="gdpr-text">Tojj sparar viss data för att ge dig en bättre upplevelse. Genom att använda Tojj's tjänster godkänner du detta. 
+        <NavLink
+            to={"/avtal"}
+            activeStyle={{ fontWeight: "bold" }}
+            className="avtal-link gdpr-margin" >
+           <ChevronsRight /> Om cookies, avtal och personuppgifter.
+          </NavLink></p>
+        <button className="gdpr-button" onClick={this.sessionAccepted} >Jag förstår</button>
       </div>
     )
   }
