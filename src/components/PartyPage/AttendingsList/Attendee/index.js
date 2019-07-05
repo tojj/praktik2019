@@ -7,11 +7,13 @@ const even = {
   fontWeight: 'bold',
   borderRadius: '10px',
   border: '1px solid rgba(0,0,0,0.1)',
-  minWidth: '30%',
-  maxWidth: '33%',
+  minWidth: '25%',
   marginBottom: '10px',
   display: 'inline-block',
-  margin: '5px'
+  margin: '5px',
+  padding: '2px 5px',
+  textTransform: 'capitalize'
+
 }
 
 const odd = {
@@ -21,11 +23,12 @@ const odd = {
   fontWeight: 'bold',
   borderRadius: '10px',
   border: '1px solid rgba(0,0,0,0.1)',
-  minWidth: '30%',
-  maxWidth: '33%',
+  minWidth: '25%',
   marginBottom: '10px',
   display: 'inline-block',
-  margin: '5px'
+  margin: '5px',
+  padding: '2px 5px',
+  textTransform: 'capitalize'
 }
 
 const Attendee = (props) => {

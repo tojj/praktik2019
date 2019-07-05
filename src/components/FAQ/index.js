@@ -97,7 +97,7 @@ class FAQ extends React.Component {
         
     const allCategoryQna = allCategoryQnaData.data.map((qna, i) => {
       return (
-        <QuestionAndAnswer question={qna.question} answer={qna.answer} key={i} id={qna._id} count={qna.counter} clickHandler={this.pushCounts} />
+        <QuestionAndAnswer question={qna.question} answer={qna.answer} key={i} id={qna._id} count={qna.counter} clickHandler={this.increaseCountByOne} />
       )
     })
     this.setState({
