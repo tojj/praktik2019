@@ -19,7 +19,7 @@ class DataEditor extends React.Component {
     let object = this.props.object
     this.entriesData.map(entry => {
       console.log(entry);
-      
+
       if (entry[0] === '_id' ||
         entry[0] === 'location' ||
         entry[0] === 'swish' ||
@@ -68,23 +68,47 @@ class DataEditor extends React.Component {
             && entry[0] !== 'guestUser'
             ? <div>
               <p className="object-key">{entry[0]}</p>
-              {entry[0] === 'category' && this.props.newObj
+              {entry[0] === 'category'
                 ? <select
                   id="category"
-                  className="w-100">
+                  className="w-100"
+                  defaultValue={entry[1]}>
                   <option>presenter</option>
                   <option>välgörenhet</option>
                   <option>avtal</option>
                   <option>allmänt</option>
+                  {console.log(entry[1])}
                 </select>
-                : <input
-                  className="w-100"
-                  type={entry[0] === 'counter' ? "number" : "text"}
-                  defaultValue={!this.props.newObj ? entry[1] : ''}
-                  id={entry[0]} />
+                : entry[0] === 'product'
+                  ? <select
+                    id="product"
+                    className="w-100"
+                    defaultValue={entry[1]}>
+                    {this.props.products.data.map((entry, i) => {
+                      return (
+                        <option value={entry._id} key={'product_' + i}>{entry.name} - {entry.price} SEK</option>
+                      )
+                    })}
+                  </select>
+                  : entry[0] === 'fundraiser'
+                    ? <select
+                      id="fundraiser"
+                      className="w-100"
+                      defaultValue={entry[1]}>
+                      {this.props.fundraisers.data.map((entry, i) => {
+                        return (
+                          <option value={entry._id} key={'product_' + i}>{entry.name}</option>
+                        )
+                      })}
+                    </select>
+                    : <input
+                      className="w-100"
+                      type={entry[0] === 'counter' ? "number" : "text"}
+                      defaultValue={!this.props.newObj ? entry[1] : ''}
+                      id={entry[0]} />
               }
             </div>
-            : <div className="hide-me" style={{display:'none'}}>
+            : <div className="hide-me" style={{ display: 'none' }}>
               <p className="object-key">{entry[0]}</p>
               <input className="w-100" type="text" readOnly defaultValue={!this.props.newObj ? entry[1] : ''} id={entry[0]} />
             </div>}
