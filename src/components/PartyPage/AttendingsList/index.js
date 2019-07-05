@@ -58,7 +58,7 @@ class AttendingsList extends React.Component {
           <button type="button" className="btn btn-danger mt-3" onClick={this.clickHandler}>Tillbaka</button>
           <button type="button" className="btn btn-success mt-3 ml-2" onClick={this.saveAttendeeToDB}>Bekräfta</button>
         </div>
-          : <button type="button" className="btn btn-outline-primary mt-5" onClick={this.clickHandler}>Jag kommer!</button>}
+          : <button type="button" className="btn btn-outline-info mt-5" onClick={this.clickHandler}>Gå med på listan</button>}
       </div>
     )
   }

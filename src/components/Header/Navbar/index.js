@@ -86,7 +86,7 @@ class Navbar extends React.Component {
             className="burger-menu-btn"
             onClick={this.toggle}
             alt="toggle menu"
-            src="/images/burger-secondary.png"
+            src="/images/general/burger-secondary.png"
           />
         </div>
         <div

@@ -56,6 +56,18 @@ class AdminPage extends React.Component {
     this.saveObject = this.saveObject.bind(this)
   }
   componentDidMount() {
+    axios({
+      method: 'get',
+      url: '/api/fundraisers'
+    }).then(data => {
+      this.setState({allFundraisers: data})
+    })
+    axios({
+      method: 'get',
+      url: '/api/products'
+    }).then(data => {
+      this.setState({allProducts: data})
+    })
   }
   async checkIfLoggedIn() {
     const loggedInUser = await axios({
@@ -98,7 +110,7 @@ class AdminPage extends React.Component {
    */
   renderObjectToEdit = (obj, newObj = false) => {
     if (!this.state.editObject) {
-      this.setState({ editObject: <DataEditor newObj={newObj} collection={this.state.currentColl} object={obj} delete={this.deleteObject} save={this.saveObject} /> })
+      this.setState({ editObject: <DataEditor newObj={newObj} products={this.state.allProducts} fundraisers={this.state.allFundraisers} collection={this.state.currentColl} object={obj} delete={this.deleteObject} save={this.saveObject} /> })
     } else {
       this.setState({ editObject: '' })
     }

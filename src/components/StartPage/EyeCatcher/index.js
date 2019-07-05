@@ -1,7 +1,7 @@
 import React from "react"
 import { Link } from "react-router-dom"
 
-const videoURL = "/images/bg-vid2.mp4"
+const videoURL = "/images/startpage/bg-vid.mp4"
 
 const EyeCatcher = () => (
   <div className="eye-catcher" id="eye-catcher">
@@ -13,6 +13,7 @@ const EyeCatcher = () => (
         autoPlay
         muted={true}
         preload="auto"
+        poster="/images/startpage/bg-img.png"
       >
         <source src={videoURL} type="video/mp4" />
       </video>

@@ -14,23 +14,25 @@ class PasswordInput extends React.Component {
       loggedIn: false,
       link: this.props.match.params.link
     }
-    this.validateInput = this.validateInput.bind(this)
   }
-  
-  async validateInput(input) {
-    let event = await axios({
+
+  validateInput = input => {
+    axios({
       method: 'get',
-      url: `/api/events/populated/${this.state.link}`
+      url: `/api/events/populated/${this.state.link}/login?input=${input}`,
+    }).then(response => {
+      if (response.data) {
+        this.setState({ loggedIn: true })
+      } else {
+        this.setState({ error: true })
+      }
     })
-    event = event.data
-    if (input === event.password) {
-      this.setState({loggedIn: true })
-    } else {      
-      this.setState({error: true})
-    }
+      .catch(error => {
+        console.log(error.response)
+      })
   }
   componentDidMount() {
-    if(this.props.guestUser.password){
+    if (this.props.guestUser.password) {
       this.validateInput(this.props.guestUser.password)
     } else {
       return
@@ -60,7 +62,7 @@ class PasswordInput extends React.Component {
   }
   render() {
     if (this.state.loggedIn) {
-      return <ConfirmationPage history={this.props.history} eventLink={this.state.link}/>
+      return <ConfirmationPage history={this.props.history} eventLink={this.state.link} />
     } else {
       return (
         <div style={{

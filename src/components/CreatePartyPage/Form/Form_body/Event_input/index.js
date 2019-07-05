@@ -127,7 +127,7 @@ class EventInput extends Component {
       <div className="box-container">
         <div className="box">
           <h2 className="form-headline">Var, när <br /> &amp; hur?</h2>
-          <img className="box-img fg-image" src="/images/time-place.png" alt="event" />
+          <img className="box-img fg-image" src="/images/general/time-place.png" alt="event" />
         </div>
         <div className="box text-left">
           {this.renderInputs()}

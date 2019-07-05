@@ -89,7 +89,7 @@ class ImageHandler extends React.Component {
           <DropdownToggle color="primary">
             Välj bild <ArrowDownCircle />
           </DropdownToggle>
-          <DropdownMenu className="dd-menu force-top" style={{ width: '100%', padding: '5px' }}>
+          <DropdownMenu right className="dd-menu force-top" style={{ width: '100%', padding: '5px' }}>
             {staticData.imageHandlerData.map(this.renderImages)}
           </DropdownMenu>
         </Dropdown>
