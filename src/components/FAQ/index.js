@@ -3,7 +3,6 @@ import axios from "axios"
 import { Gift, Heart, Clipboard, HelpCircle } from "react-feather"
 import QuestionAndAnswer from "../FAQ/QuestionAndAnswer"
 import Categories from "./Categories"
-import ContactForm from "./ContactForm"
 
 class FAQ extends React.Component {
   constructor(props) {
