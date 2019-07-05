@@ -37,7 +37,10 @@
 .media-container {
   margin-top: 10px;
   margin-bottom: 40px;
-  margin-left: -6px;
+  margin-left: -7px;
+  @include media-breakpoint-down(sm) {
+    margin-left: -6px;
+  }
 }
 
 .footer-images {
