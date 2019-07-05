@@ -17,7 +17,7 @@ const Footer = () => (
     </div>
     <div className="footer-left">
       <div className="footer-inner">
-        <label className="footer-links">Länkar:</label>
+        <label className="footer-links">Snabblänkar:</label>
         <div className="link-container">
           <NavLink
             to={"/skapa-kalas"}
@@ -92,13 +92,6 @@ const Footer = () => (
               Hjälp
             </NavLink>
             <NavLink
-              to={"/vanliga-fragor/kontakt"}
-              activeStyle={{ fontWeight: "bold" }}
-              className="footer-link"
-            >
-              Kontakt
-            </NavLink>
-            <NavLink
               to={"/avtal"}
               activeStyle={{ fontWeight: "bold" }}
               className="footer-link"
@@ -106,6 +99,9 @@ const Footer = () => (
               {" "}
               Avtal
             </NavLink>
+            <a href="mailto:tojjinfo@gmail.com" className="footer-link">
+              Kontakta oss
+            </a>
           </div>
         </div>
       </div>
