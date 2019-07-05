@@ -8,36 +8,37 @@ class Header extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      gdpr: <ScrollToTop style={{ zIndex: 99, bottom: 120, right: 20 }} showUnder={500}>
-        <img className="arrow-img" src="/images/general/arrow.png" alt="back to top" />
-      </ScrollToTop>
+      gdpr: false,
+      scroll: 120
     }
   }
-
-  componentDidMount() {
-    const gdpr = localStorage.getItem('gdpr')
-      if (gdpr) {
-      this.setState({ gdpr: <ScrollToTop style={{ zIndex: 99, bottom: 120, right: 20 }} showUnder={500}>
-        <img className="arrow-img" src="/images/general/arrow.png" alt="back to top" />
-      </ScrollToTop> })
+  componentWillMount() {
+    const token = localStorage.getItem('gdpr')
+    if (token) {
+      this.setState({
+        gdpr: true,
+        scroll: 20
+      })
     } else {
-      return
+      this.setState({
+        gdpr: false,
+        scroll: 120
+      })
     }
   }
-
-  gdprToggle = () => {
-    if (!this.state.gdpr) {
-      this.setState({ gdpr: <ScrollToTop style={{ zIndex: 99, bottom: 120, right: 20 }} showUnder={500}>
-        <img className="arrow-img" src="/images/general/arrow.png" alt="back to top" />
-      </ScrollToTop> })
-      console.log('jesper test')
-    }
+  gdprToggle = () => { 
+    this.setState({
+      gdpr: true,
+      scroll: 20
+    })
   }
 
   render() {
     return (
       <div className="header-wrapper" id="header">
-        {this.state.gdpr}
+        <ScrollToTop style={{ zIndex: 99, bottom: this.state.scroll, right: 20 }} showUnder={500}>
+          <img className="arrow-img" src="/images/general/arrow.png" alt="back to top" />
+        </ScrollToTop>
         <GDPR toggle={this.gdprToggle} />
         <Navbar showFull={this.props.startPage} />
         <NavLink
