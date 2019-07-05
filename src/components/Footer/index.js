@@ -6,7 +6,14 @@ import { Facebook, Twitter, Linkedin } from "react-feather"
 const Footer = () => (
   <div className="footer-container" id="contact-us">
     <div className="footer-logo">
-      <h1 className="footer-headliner">Tojj</h1>
+      <NavLink
+        className="footer-headliner"
+        exact
+        to="/"
+        activeStyle={{ opacity: 1 }}
+      >
+        Tojj
+      </NavLink>
     </div>
     <div className="footer-left">
       <div className="footer-inner">

@@ -16,6 +16,13 @@
   font-family: $big-text;
   font-size: 66px;
   font-weight: 800;
+  opacity: 0.8;
+  color: white;
+  &:hover {
+    color: white;
+    text-decoration: none;
+    opacity: 1;
+  }
 }
 
 .footer-information {
@@ -59,14 +66,6 @@
 
   &:nth-child(2) {
     margin: 0 15px;
-  }
-}
-
-@media (min-width: 801px) {
-  .footer-headliner {
-    font-size: 66px;
-    font-weight: bold;
-    margin-bottom: 25px;
   }
 }
 
@@ -122,5 +121,5 @@
 
 .footer-logo {
   margin: 40px 0;
-  flex: 1.5;
+  flex: 2;
 }
