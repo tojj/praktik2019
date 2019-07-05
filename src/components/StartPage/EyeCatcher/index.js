@@ -13,7 +13,7 @@ const EyeCatcher = () => (
         autoPlay
         muted={true}
         preload="auto"
-        poster="/images/startpage/bg-img.png"
+        poster="/images/startpage/bg-img.jpg"
       >
         <source src={videoURL} type="video/mp4" />
       </video>
