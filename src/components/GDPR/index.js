@@ -43,7 +43,7 @@ class GDPR extends React.Component {
   render() {
     return (
       this.state.acceptedGdpr ? null : <div className="gdpr-modal">
-        <p className="gdpr-text">Vi sparar din data men vi godkänner alla avtal så den är säker och allt sånt shit. För mer info kontakta Jepser han kan det ;)</p>
+        <p className="gdpr-text">Vi sparar din data men vi godkänner alla avtal så den är mycket säker. För mer info kontakta Jepser han kan det ;)</p>
         <button className="gdpr-button" onClick={this.sessionAccepted} >Ok</button>
       </div>
     )
