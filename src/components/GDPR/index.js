@@ -23,6 +23,7 @@ class GDPR extends React.Component {
   sessionAccepted = () => {
     this.sessionForModal()
     this.setState({ acceptedGdpr: true })
+    this.props.toggle()
   }
 
   sessionForModal() {
