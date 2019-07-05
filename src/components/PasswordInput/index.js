@@ -35,6 +35,9 @@ class PasswordInput extends React.Component {
     if (this.props.guestUser.password) {
       this.validateInput(this.props.guestUser.password)
     } else {
+      document.title = 'Tojj - Logga in'
+      document.getElementById('pw-input').focus();
+
       return
     }
   }
