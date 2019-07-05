@@ -192,11 +192,11 @@ class CreatePartyPage extends React.Component {
         }),
       password: Joi.string()
         .min(1)
-        .max(40)
+        .max(30)
         .required()
         .error(errors => {
           return {
-            message: "Vänligen fyll i ett lösenord"
+            message: "Fyll i ett lösenord, max 30 tecken"
           }
         })
     }
