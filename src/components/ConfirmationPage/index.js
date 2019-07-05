@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Send } from 'react-feather'
 import BirthdayInvite from './BirthdayInvite/index'
 import BirthdayInviteList from './BirthdayInviteList/index'
+import AttendingList from './AttendingList'
 
 class ConfirmationPage extends React.Component {
   constructor(props) {
@@ -179,6 +180,13 @@ class ConfirmationPage extends React.Component {
           }
           {this.state.emails < 1 && !this.state.emailsSent ? <p style={{ fontStyle: 'italic', fontSize: '.8rem', color: '#555', marginTop: '10px' }}>Lägg till minst en epost för att skicka inbjudan.</p> : null}
         </div>
+        <div className="invite-container">
+          <p className="conf-info">Följande personer har meddelat att de kommer {this.state.party.attending ? `(${this.state.party.attending.length} st)`:'(0 st)'}:</p>
+        
+          <AttendingList
+            attending={this.state.party.attending}
+          />
+        </div>
         <div className="msg-container">
           <div className="msg-text">
             <p className="my-4 text-center">En bekräftelse har skickats till den mail du angett.</p>
@@ -189,7 +197,7 @@ class ConfirmationPage extends React.Component {
               <li>Undrar du något? Skriv till oss <a href="/vanliga-fragor/kontakt">här</a>!</li>
             </ul>
             <p className="mt-5 mb-3 text-center">Vi hoppas att {this.state.party.child} får en underbar dag!</p>
-            <button onClick={this.redirectToYourParty} className="party-button btn btn-info">Till kalaset!</button>
+            <a href={'/kalas/' + this.props.eventLink} type="btn" className="party-button btn btn-info">Till kalaset!</a>
           </div>
         </div>
       </div>

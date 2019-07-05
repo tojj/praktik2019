@@ -37,7 +37,7 @@
         padding: 4px;
         min-width: 70%;
         max-width: 80%;
-        @media screen and (max-width:300px){
+        @media screen and (max-width: 300px) {
           min-width: 30%;
           max-width: 50%;
         }
@@ -48,7 +48,8 @@
         border-bottom-left-radius: 0;
       }
     }
-    .email-list-wrapper {
+    .email-list-wrapper,
+    .attending-list-wrapper {
       background: #eee;
       margin: 20px auto;
       border: 1px solid rgba(0, 0, 0, 0.1) !important;
@@ -60,18 +61,28 @@
         width: calc(56% + 82.69px);
       }
       .email-item {
+        text-transform: lowercase;
+      }
+      .attendee-item {
+        text-transform: capitalize;
+        .joined-text {
+          text-transform: none;
+        }
+      }
+      .email-item,
+      .attendee-item {
         position: relative;
         min-height: 75px;
         background: white;
         border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-        text-transform: lowercase;
         transition: all 1s;
-        .email-text {
+        .email-text,
+        .attendee-text {
           position: absolute;
           top: 33%;
           left: 20px;
         }
-        .sent-button{
+        .sent-button {
           position: absolute;
           top: 33%;
           right: 20px;
@@ -106,6 +117,7 @@
       }
       .party-button {
         display: block;
+        width: 120px;
         text-align: center;
         margin: 2rem auto 1rem;
       }
