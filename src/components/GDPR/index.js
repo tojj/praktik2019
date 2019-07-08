@@ -16,8 +16,8 @@ class GDPR extends React.Component {
   }
 
   sessionAlreadyAccepted() {
-    let x = localStorage.getItem('gdpr')
-    if (x === window.localStorage.gdpr) {
+    let trace = localStorage.getItem('gdpr')
+    if (trace === window.localStorage.gdpr) {
       this.setState({ acceptedGdpr: true })
     }
   }
