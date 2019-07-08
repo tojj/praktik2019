@@ -15,6 +15,10 @@ class GDPR extends React.Component {
     this.sessionAlreadyAccepted()
   }
 
+  /**
+   * Function to check if user already accepted
+   * The terms for the website.
+   */
   sessionAlreadyAccepted() {
     let trace = localStorage.getItem('gdpr')
     if (trace === window.localStorage.gdpr) {
@@ -22,12 +26,18 @@ class GDPR extends React.Component {
     }
   }
 
+  /**
+   * Changes state if session is accepted.
+   */
   sessionAccepted = () => {
     this.sessionForModal()
     this.setState({ acceptedGdpr: true })
     this.props.toggle()
   }
 
+  /**
+   * Creating a token for the session.
+   */
   sessionForModal() {
     let token = []
     let tokenArray =

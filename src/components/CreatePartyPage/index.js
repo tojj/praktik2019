@@ -214,7 +214,11 @@ class CreatePartyPage extends React.Component {
   }
 
   /**
-   *Validating all inputs
+   * Validation functions.
+   * @param {
+   * Data- Takes the data typed from the user. And validates it using Joi. 
+   * Errors- If any errors in validation it adds it to an array [] and displays it in the modal.
+   * }
    */
 
   validateBirthdayEvent = () => {
@@ -354,10 +358,18 @@ class CreatePartyPage extends React.Component {
   componentDidMount() {
     document.title = "Tojj - Skapa kalas"
   }
+  /**
+   * Simple redirect function
+   */
   redirectTo = target => {
     this.props.history.push(target)
   }
 
+  /**
+   * Takes all the data thats written by the client.
+   * If all validation passes it creates an event. (Birthday)
+   * This using all the Redux data and sent it to the Backend and DB using Axios.
+   */
   async createEvent() {
     let link = await this.generateLink()
     let date =
@@ -421,6 +433,10 @@ class CreatePartyPage extends React.Component {
     })
     await this.setContentAndSendEmail(eventFromDb.data)
   }
+  /**
+   * Long function with a template.
+   * This to send emails to the client.
+   */
   setContentAndSendEmail = event => {
     const date = new Date(event.date).toLocaleDateString("sv-SE", {
       weekday: "short",
@@ -588,6 +604,10 @@ class CreatePartyPage extends React.Component {
     }))
   }
 
+  /**
+   * Modal that is shown if there is any errors in the array.
+   * The errors gets added from the validation.
+   */
   superModal = () => {
     const { errors } = this.state
     const allErrors = errors.map((error, i) => (

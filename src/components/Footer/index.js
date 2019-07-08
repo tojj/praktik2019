@@ -1,7 +1,11 @@
 import React from "react"
 import { NavLink } from "react-router-dom"
 
-import { Facebook, Twitter, Linkedin } from "react-feather"
+import {
+  Facebook,
+  Twitter,
+  Linkedin
+} from "react-feather"
 
 const Footer = () => (
   <div className="footer-container" id="contact-us">

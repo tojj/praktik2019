@@ -16,6 +16,10 @@ class PasswordInput extends React.Component {
     }
   }
 
+  /**
+   * If user already written password a session is saved.
+   * This is to validate this, if password was entered already get user to correct route.
+   */
   validateInput = input => {
     axios({
       method: 'get',

@@ -26,6 +26,10 @@ class PartyPage extends React.Component {
     })
   }
 
+  /**
+   * Finding correct event to display.
+   * @param {*} eventLink 
+   */
   async findEventAndMatchWithDB(eventLink) {
     const events = await axios({
       method: 'get',

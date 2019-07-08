@@ -55,41 +55,59 @@ class AdminPage extends React.Component {
     this.deleteObject = this.deleteObject.bind(this)
     this.saveObject = this.saveObject.bind(this)
   }
+  /**
+   * @param setup - {
+   *   Component for admin login.
+   *   User - There is no users yet on site the only login is for Admin.
+   * }
+   */
   componentDidMount() {
     axios({
       method: 'get',
       url: '/api/fundraisers'
     }).then(data => {
-      this.setState({allFundraisers: data})
+      this.setState({ allFundraisers: data })
     })
     axios({
       method: 'get',
       url: '/api/products'
     }).then(data => {
-      this.setState({allProducts: data})
+      this.setState({ allProducts: data })
     })
   }
+  /**
+   * Using Axios to make a get request
+   * This to check if the admin is logged in.
+   */
   async checkIfLoggedIn() {
     const loggedInUser = await axios({
       method: 'get',
       url: '/api/login'
     })
-    
-    if (!loggedInUser.data.error){      
-      this.setState({loggedIn: true})
+
+    if (!loggedInUser.data.error) {
+      this.setState({ loggedIn: true })
       return true
     } else {
       return false
     }
   }
-  async logout(){
+  /**
+   * Using Axios to make a delete request
+   * This is for the user admin to logout.
+   */
+  async logout() {
     await axios({
       method: 'delete',
       url: '/api/login/delete'
     })
-    this.setState({loggedIn: false})    
+    this.setState({ loggedIn: false })
   }
 
+  /**
+   * Renders all the categories.
+   * This if the string is correct.
+   */
   renderCategoryContent = (category) => {
     if (category === 'produkter') {
       this.renderContentFromDb('products')
@@ -106,7 +124,6 @@ class AdminPage extends React.Component {
   }
   /**
    * Renders Object to Edit.
-   * 
    */
   renderObjectToEdit = (obj, newObj = false) => {
     if (!this.state.editObject) {
@@ -115,6 +132,10 @@ class AdminPage extends React.Component {
       this.setState({ editObject: '' })
     }
   }
+  /**
+   * Edits new object. 
+   * For information about the objects watch DataEditor component.
+   */
   async editNewObject() {
     const firstInColl = await axios({
       method: 'get',
@@ -124,6 +145,9 @@ class AdminPage extends React.Component {
     const found = firstInColl.data
     this.renderObjectToEdit(found, true)
   }
+  /**
+   * Deletes an object from the collection. 
+   */
   async deleteObject(id, collection) {
     const route = `/api/${collection}/id/${id}/delete`
     await axios({
@@ -135,6 +159,9 @@ class AdminPage extends React.Component {
     this.setState({ editObject: '' })
     this.renderContentFromDb(this.state.currentColl)
   }
+  /**
+   * Saves the object.
+   */
   async saveObject(obj) {
     if (this.state.currentColl === 'qna' && !obj.counter) {
       obj.counter = 1
@@ -146,7 +173,7 @@ class AdminPage extends React.Component {
         headers: {},
         data: {
           content: obj
-        }  
+        }
       })
     } else {
       await axios({
@@ -162,6 +189,10 @@ class AdminPage extends React.Component {
     this.setState({ editObject: '' })
     this.renderContentFromDb(this.state.currentColl)
   }
+  /**
+   * Render content from the DB depending on the collection.
+   * @param {*} collection 
+   */
   async renderContentFromDb(collection) {
     const foundObjectsArr = await axios({
       method: 'get',
@@ -182,7 +213,7 @@ class AdminPage extends React.Component {
       </div>,
       currentColl: collection,
       editObject: ''
-    })    
+    })
   }
 
   render() {

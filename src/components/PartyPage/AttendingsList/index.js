@@ -16,6 +16,9 @@ class AttendingsList extends React.Component {
     this.setState({ showInput: !this.state.showInput })
   }
 
+  /**
+   * Saves attendee to DB.
+   */
   async saveAttendeeToDB() {
     const newAttendee = {
       name: document.getElementById('input-att-name').value,

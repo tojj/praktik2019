@@ -8,6 +8,10 @@ class AttendingList extends Component {
     this.attending = []
 
   }
+  /**
+   * Rendering method that displays if a user signed in the for event. 
+   * Where event is the birthday party.
+   */
   createTasks = (attendee, i) => {
     return (
       <div style={{ position: 'relative' }} className="attendee-item" key={attendee.name + 'coming'}>

@@ -5,21 +5,36 @@ class DataEditor extends React.Component {
     super(props)
     this.entriesData = Object.entries(this.props.object)
   }
+  /**
+   * Mainly built for the admin to add and remove questions in the "Hjälp" section and changing data in current events.
+   * @param setup - {
+   *  staticData - If used any data that is to be added to data as default.
+   *  object - Object value can be a question & data in event.
+   * }
+   */
+
+   /**
+    * Deletes an object.
+    */
   deleteObject = () => {
     if (window.confirm(`Är du säker på att du vill ta bort: ${this.props.object._id}`)) {
       this.props.delete(this.props.object._id, this.props.collection)
     }
 
   }
+  /**
+   * Saves an object.
+   */
   saveObject = () => {
     const newObject = this.createObject()
     this.props.save(newObject)
   }
+  /**
+   * Creates a new object.
+   */
   createObject = () => {
     let object = this.props.object
     this.entriesData.map(entry => {
-      console.log(entry);
-
       if (entry[0] === '_id' ||
         entry[0] === 'location' ||
         entry[0] === 'swish' ||
@@ -77,7 +92,6 @@ class DataEditor extends React.Component {
                   <option>välgörenhet</option>
                   <option>avtal</option>
                   <option>allmänt</option>
-                  {console.log(entry[1])}
                 </select>
                 : entry[0] === 'product'
                   ? <select

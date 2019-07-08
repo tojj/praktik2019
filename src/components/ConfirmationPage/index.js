@@ -28,6 +28,10 @@ class ConfirmationPage extends React.Component {
     document.title = "Tojj - Bekräftelse"
   }
 
+  /**
+   * Function that gets the correct event.
+   * This so the client can send invites to only his/her birthdayparty.
+   */
   async findMatchingEvent() {
     let party = await axios({
       method: "get",
@@ -41,6 +45,9 @@ class ConfirmationPage extends React.Component {
     })
     this.updateContent(party)
   }
+  /**
+   * Updates the rendered content after Axios got the data.
+   */
   updateContent = party => {
     let date = new Date(party.date).toLocaleDateString("sv-SE", {
       weekday: "short",
@@ -86,6 +93,9 @@ class ConfirmationPage extends React.Component {
     })
   }
 
+  /**
+   * Handles input for what users to send mail to.
+   */
   handleInput = e => {
     const emailText = e.target.value
     const currentEmail = { text: emailText, key: Date.now() }
@@ -94,6 +104,10 @@ class ConfirmationPage extends React.Component {
     })
   }
 
+  /**
+   * Adds mail adresses in an array where its waiting to be sent using another onClick function.
+   * Data is what the User types. 
+   */
   addEmail = e => {
     e.preventDefault()
     const newEmail = this.state.currentEmail
@@ -108,6 +122,10 @@ class ConfirmationPage extends React.Component {
     }
   }
 
+  /**
+   * Deletes mail.
+   * Function made in case of misstype or mistake.
+   */
   deleteEmail = key => {
     const filteredEmails = this.state.emails.filter(email => {
       return email.key !== key
@@ -116,14 +134,24 @@ class ConfirmationPage extends React.Component {
       emails: filteredEmails
     })
   }
-
+  /**
+   * Redirects you to your birthday template when (onClick function)
+   */
   redirectToYourParty = () => {
     this.props.history.push("/kalas/" + this.props.eventLink)
   }
+  /**
+   * Sending all emails in the array 
+   * And activating sendInvites method
+   * Changes state so client see that the emails are sent
+   */
   async clickHandler() {
     await this.sendInvites()
     this.setState({ emailsSent: true })
   }
+  /**
+   * Function for sending invites.
+   */
   async sendInvites() {
     let emailList = []
     this.state.emails.map(email => {
@@ -147,6 +175,9 @@ class ConfirmationPage extends React.Component {
     }
   }
 
+  /**
+   * Function that takes the data that is to be sent.
+   */
   sendEmail = (email, message, subject) => {
     fetch("/api/send", {
       method: "POST",

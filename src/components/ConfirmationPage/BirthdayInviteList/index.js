@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
-import { XCircle, CheckCircle } from 'react-feather'
+import {
+  XCircle,
+  CheckCircle
+} from 'react-feather'
 
 class BirthdayInviteList extends Component {
   constructor(props) {
@@ -8,9 +11,12 @@ class BirthdayInviteList extends Component {
     this.invited = []
 
   }
+  /**
+   * Rendering method that displays when the email is added, deleted, or sent.
+   */
   createTasks = email => {
     if (email instanceof Object) {
-      
+
       return (
         <div className="email-item" key={email.key}>
           <p className="email-text">{email.text} </p>
@@ -28,18 +34,18 @@ class BirthdayInviteList extends Component {
       )
     }
   }
-  
+
   componentWillReceiveProps() {
     if (this.props.invitedList) {
-      const listInvited = this.props.invitedList.map(this.createTasks)      
-      
+      const listInvited = this.props.invitedList.map(this.createTasks)
+
       this.invited = listInvited
     }
   }
   render() {
     const todoEntries = this.props.entries
     const listEmails = todoEntries.map(this.createTasks)
-  
+
 
     return (
       <div className="email-list-wrapper">
