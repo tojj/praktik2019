@@ -53,19 +53,20 @@
     position: absolute;
     top: 27%;
     padding: 0 5vw;
+    
     @include media-breakpoint-up(md) {
+      top: 30%;
+      max-width: 900px;
       padding: 10vw;
       h2 {
         font-size: 4.5rem;
       }
+
     }
     @include media-breakpoint-up(lg) {
-      max-width: 50%;
       padding: 0 10vh;
       text-align: left !important;
-      p {
-        font-size: 1.2rem !important;
-      }
+      
     }
     @include media-breakpoint-up(xl) {
       p {
