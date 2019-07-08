@@ -1,5 +1,5 @@
 .image-pick-container {
-  border: 2px solid $primary;
+  border: 2px solid $dark;
   height: 280px;
   width: 280px;
   border-radius: 50%;
@@ -18,7 +18,7 @@
   }
 
   .container-image {
-    color: $primary;
+    color: $dark;
   }
 
   .image-dropdown {
@@ -26,7 +26,7 @@
   }
 }
 .image-headline {
-  color: $primary;
+  color: $dark;
   font-size: 1rem !important;
   font-family: "Montserrat", sans-serif !important;
   font-weight: 800 !important;

@@ -11,53 +11,41 @@
       position: relative;
       width: 100%;
       justify-content: center;
-      .link-cancel {
-        background-color: red;
+      .link-cancel,
+      .link-party-page,
+      .link-preview-page {
+        border-radius: 3px;
         text-align: center;
         color: white;
         font-family: $big-text;
         font-weight: 800;
         font-size: 20px;
         padding: 5px 5px;
-        margin: 5px 5px 5px 0;
+        margin: 5px 0;
         transition: all 0.3s;
         min-width: 110px;
         &:hover {
-          color: $secondary;
-          background-color: #ff5151;
           text-decoration: none;
+        }
+      }
+      .link-cancel {
+        background-color: $danger;
+        margin: 5px 10px 5px 0;
+        &:hover {
+          background-color: rgb(219, 49, 89);
         }
       }
       .link-party-page {
-        background-color: #007e50;
-        color: white;
-        font-family: $big-text;
-        font-weight: 800;
-        font-size: 20px;
-        padding: 5px 7px;
-        margin: 5px 0 5px 5px;
-        transition: all 0.3s;
-        border: none;
+        background-color: $info;
         &:hover {
-          color: $secondary;
-          background-color: #009b62;
-          text-decoration: none;
+          background-color: rgb(190, 107, 197);
         }
       }
       .link-preview-page {
-        background-color: #007e50;
-        color: white;
-        font-family: $big-text;
-        font-weight: 800;
-        font-size: 20px;
-        padding: 5px 5px;
-        margin: 5px 0 5px 0;
-        transition: all 0.3s;
+        background-color: #3a8885;
         min-width: 230px;
-        text-align: center;
         &:hover {
-          color: $secondary;
-          background-color: #009b62;
+          background-color: rgb(78, 156, 153);
           text-decoration: none;
         }
       }
