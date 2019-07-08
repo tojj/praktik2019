@@ -1,7 +1,7 @@
 import React from "react"
 import { NavLink } from "react-router-dom"
 
-import { Facebook, Twitter, Linkedin } from "react-feather"
+import { Facebook, Twitter, Linkedin, Mail, MapPin } from "react-feather"
 
 const Footer = () => (
   <div className="footer-container" id="contact-us">
@@ -68,8 +68,9 @@ const Footer = () => (
         <div className="footer-link">
           <div>
             <p>
+              
               <a href="mailto:info@tojj.se" className="footer-link">
-                info@tojj.se
+              <Mail size="18" /> info@tojj.se
               </a>
             </p>
             <address>
@@ -79,7 +80,7 @@ const Footer = () => (
                 rel="noopener noreferrer"
                 className="footer-link"
               >
-                Humlegatan 4, 211 27 Malmö
+               <MapPin size="18" /> Humlegatan 4, 211 27 Malmö
               </a>
             </address>
           </div>
@@ -108,12 +109,13 @@ const Footer = () => (
     </div>
     <div className="footer-right">
       <div className="footer-inner">
-        <label className="footer-connect">Kontakta oss:</label>
+        <label className="footer-connect">Följ oss:</label>
         <div className="media-container">
           <Facebook className="media-icon" size={36} />
           <Twitter className="media-icon" size={36} />
           <Linkedin className="media-icon" size={36} />
         </div>
+        <p className="footer-copy">odd hill 2019</p>
       </div>
     </div>
   </div>
