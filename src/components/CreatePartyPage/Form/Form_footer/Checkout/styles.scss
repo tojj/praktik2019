@@ -190,6 +190,7 @@
     border-radius: 10px;
 
     .check-label {
+      font-weight: 400;
       margin-top: 2rem;
       padding: 4px 0 4px 64px;
       ///width: 50%;
@@ -223,6 +224,9 @@
         transform: translateY(-50%);
         cursor: pointer;
         transition: all 200ms ease-in;
+      }
+      a {
+        font-weight: bold;
       }
     }
 

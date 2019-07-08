@@ -4,11 +4,14 @@
   justify-content: center;
   text-align: center;
   flex-direction: row;
-  padding: 4vh 0 1vh 0;
+  padding: 3.5vh 0 1vh 0;
   color: $secondary;
   font-size: 18px;
   @include media-breakpoint-down(sm) {
     flex-direction: column;
+  }
+  label {
+    font-weight: bold;
   }
 }
 
@@ -41,7 +44,6 @@
 
 .media-container {
   margin-top: 10px;
-  margin-bottom: 40px;
   margin-left: -7px;
   @include media-breakpoint-down(sm) {
     margin-left: -6px;
@@ -95,6 +97,16 @@
     margin: 20px 0;
     border: none;
   }
+  .footer-copy {
+    font-family: $big-text;
+    font-style: italic;
+    font-size: 0.9rem;
+    margin-top: 28px;
+    &:before {
+      content: "© ";
+      font-style: initial;
+    }
+  }
 }
 
 .footer-link {
@@ -102,6 +114,9 @@
   margin-right: 8px;
   &:hover {
     color: white;
+  }
+  svg {
+    margin-bottom: 3px;
   }
 }
 

@@ -122,7 +122,7 @@ class Checkout extends React.Component {
                 checked={this.props.agreement.userAgreement}
               />
               <label className="check-label" htmlFor="check1">
-                Jag godkänner Tojjs användaravtal och villkor
+                Jag godkänner Tojjs <a href="/avtal" target="_blank" style={{color: '#B164B8'}} rel="noopener noreferrer">användaravtal och villkor</a>
               </label>
             </div>
             <div className="input-group-check">

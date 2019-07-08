@@ -86,7 +86,7 @@ class ImageHandler extends React.Component {
 
         </div>
         <Dropdown className="image-dropdown force-top" isOpen={this.state.dropdownOpen} toggle={this.toggle} style={{ border: 'none', padding: '0' }}>
-          <DropdownToggle color="primary">
+          <DropdownToggle color="info">
             Välj bild <ArrowDownCircle />
           </DropdownToggle>
           <DropdownMenu right className="dd-menu force-top" style={{ width: '100%', padding: '5px' }}>

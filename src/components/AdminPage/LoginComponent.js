@@ -106,7 +106,7 @@ class LoginComponent extends React.Component {
       <div className="login-container" id="login-component">
         <div className="login-content">
           {staticData.loginData.map(this.renderLoginData)}
-          <Button color="primary" type="button" className="ml-lg-2" onClick={this.handleSubmit}>Logga in</Button>
+          <Button color="info" type="button" className="ml-lg-2" onClick={this.handleSubmit}>Logga in</Button>
           {this.state.loginFailed ? <p style={{textAlign: 'center', color: 'red', fontSize: '.8rem', marginTop: '20px', fontStyle: 'italic'}}>Inloggningen misslyckades</p> : null}
         </div >
       </div>
