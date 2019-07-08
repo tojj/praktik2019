@@ -20,9 +20,9 @@
     z-index: 1;
     top: 125%;
     right: 0;
-    @include media-breakpoint-up(lg) {
-      left: 100%;
-    }
+    // @include media-breakpoint-up(lg) {
+    //   left: 100%;
+    // }
     margin-left: -107.5px;
     opacity: 0;
     transition: opacity 0.3s;

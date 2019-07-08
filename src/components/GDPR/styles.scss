@@ -5,7 +5,7 @@
   bottom: 0;
   left: 0;
   width: 100vw;
-  height: 100px;
+  min-height: 100px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -13,7 +13,7 @@
   .gdpr-text {
     color: white;
     display: inline-block;
-    max-width: 90%;
+    max-width: 80%;
     padding: 10px;
 
     .gdpr-margin {

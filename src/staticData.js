@@ -224,7 +224,7 @@ export const eventInputData = {
     classNameLabel: "birthday-label",
     text: "Skriv några ord till de inbjudna",
     type: "textarea",
-    placeholder: "",
+    placeholder: "Information om kalaset, t.ex. vad som planeras och kanske när kalaset beräknas sluta...",
     className: "textarea-label form-input",
     id: "description",
     rows: '5',

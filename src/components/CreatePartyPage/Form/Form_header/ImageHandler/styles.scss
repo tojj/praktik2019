@@ -57,7 +57,9 @@
     }
   }
 }
-
+.imagehandler-container {
+  margin-top: 2rem;
+}
 @include media-breakpoint-up(md) {
   // .image-pick-container {
   //   height: 250px;
