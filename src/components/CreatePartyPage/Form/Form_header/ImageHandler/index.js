@@ -71,7 +71,7 @@ class ImageHandler extends React.Component {
     ? <img src={this.props.birthdayImage} alt=""/>
     : (
       <div>
-        <p className="image-text">Välj bakgrundsbild</p>
+        <p className="image-text">Bakgrundsbild</p>
         <Image className="img-icon container-image" size={48} />
       </div>
     )

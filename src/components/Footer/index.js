@@ -4,7 +4,9 @@ import { NavLink } from "react-router-dom"
 import {
   Facebook,
   Twitter,
-  Linkedin
+  Linkedin,
+  Mail,
+  MapPin
 } from "react-feather"
 
 const Footer = () => (
