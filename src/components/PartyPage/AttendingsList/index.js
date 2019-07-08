@@ -8,10 +8,11 @@ class AttendingsList extends React.Component {
     this.state = {
       showInput: false,
       attendees: this.props.attendees
+
     }
     this.saveAttendeeToDB = this.saveAttendeeToDB.bind(this)
   }
-  
+
   clickHandler = () => {
     this.setState({ showInput: !this.state.showInput })
   }
@@ -19,10 +20,12 @@ class AttendingsList extends React.Component {
   /**
    * Saves attendee to DB.
    */
-  async saveAttendeeToDB() {
+  async saveAttendeeToDB(e) {
+    e.preventDefault()
     const newAttendee = {
       name: document.getElementById('input-att-name').value,
       email: document.getElementById('input-att-email').value,
+      comment: document.getElementById('input-att-comment').value,
       joined: new Date().getTime()
     }
 
@@ -48,19 +51,23 @@ class AttendingsList extends React.Component {
     return (
       <div>
         <div className="list-holder">
-          {this.state.attendees.length > 0 
-          ? this.state.attendees.map((attendee, i) => {
-            return <Attendee attendee={attendee} key={"attendee_" + i} index={i} />
-          }) 
-          : <p style={{color: '#444655', fontSize: '1.5rem'}}>Än så länge har ingen skrivit upp sig :(</p>
+          {this.state.attendees.length > 0
+            ? this.state.attendees.map((attendee, i) => {
+              return <Attendee attendee={attendee} key={"attendee_" + i} index={i} />
+            })
+            : <p style={{ color: '#444655', fontSize: '1.5rem' }}>Än så länge har ingen skrivit upp sig :(</p>
           }
         </div>
-        {this.state.showInput ? <div className="pt-2">
-          <input type="text" placeholder="namn" id="input-att-name" />
-          <input type="email" placeholder="epost" id="input-att-email" className="ml-2" /> <br />
-          <button type="button" className="btn btn-danger mt-3" onClick={this.clickHandler}>Tillbaka</button>
-          <button type="button" className="btn btn-success mt-3 ml-2" onClick={this.saveAttendeeToDB}>Bekräfta</button>
-        </div>
+        {this.state.showInput
+          ? <div className="pt-2">
+            <form style={{ width: '320px', margin: '0 auto' }} onSubmit={this.saveAttendeeToDB} >
+              <input type="text" placeholder="Namn *" required id="input-att-name" className="w-100" />
+              <input type="email" placeholder="Epost *" required id="input-att-email" className="mt-2 w-100" />
+              <input type="text" placeholder="Kommentar/allergier" id="input-att-comment" className="mt-2 w-100" /> <br />
+              <button type="button" className="btn btn-danger mt-3" onClick={this.clickHandler}>Tillbaka</button>
+              <input type="submit" className="btn btn-success mt-3 ml-2" value="Bekräfta" />
+            </form>
+          </div>
           : <button type="button" className="btn btn-outline-info mt-5" onClick={this.clickHandler}>Gå med på listan</button>}
       </div>
     )

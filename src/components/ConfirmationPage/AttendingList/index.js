@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { CheckCircle } from 'react-feather'
+import PartyAttendee from './PartyAttendee/'
 
 class AttendingList extends Component {
   constructor(props) {
@@ -8,42 +8,13 @@ class AttendingList extends Component {
     this.attending = []
 
   }
-  /**
-   * Rendering method that displays if a user signed in the for event. 
-   * Where event is the birthday party.
-   */
-  createTasks = (attendee, i) => {
-    return (
-      <div style={{ position: 'relative' }} className="attendee-item" key={attendee.name + 'coming'}>
-        <p className="attendee-text">{attendee.name}</p>
-        <CheckCircle color="green" className="sent-button" />
-        <p
-          className="joined-text"
-          style={{
-            position: 'absolute',
-            left: '20px',
-            bottom: 0,
-            color: '#888',
-            fontStyle: 'italic',
-            fontSize: '.8rem'
-          }}>
-          {i+1}. - Gick med: {new Date(attendee.joined).toLocaleDateString("sv-SE", {
-            year: "numeric",
-            month: "numeric",
-            day: "numeric",
-            hour: "numeric",
-            minute: "numeric"
-          })}
-        </p>
-      </div >
-    )
-  }
-
 
   componentWillReceiveProps() {
     if (this.props.attending) {
 
-      const listAttending = this.props.attending.map(this.createTasks)
+      const listAttending = this.props.attending.map( (attendee, i) => {
+        return <PartyAttendee attendee={attendee} key={'attending_' + i} index={i} />
+      })
 
       this.invited = listAttending
     }
