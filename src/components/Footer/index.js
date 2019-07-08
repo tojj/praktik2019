@@ -90,20 +90,29 @@ const Footer = () => (
               activeStyle={{ fontWeight: "bold" }}
               className="footer-link"
             >
-              Hjälp
-            </NavLink>
-            <NavLink
-              to={"/avtal"}
-              activeStyle={{ fontWeight: "bold" }}
-              className="footer-link"
-            >
-              {" "}
-              Avtal
-            </NavLink>
-            <a href="mailto:tojjinfo@gmail.com" className="footer-link">
-              Kontakta oss
+              Humlegatan 4, 211 27 Malmö
             </a>
-          </div>
+          </address>
+        </div>
+        <div className="link-container">
+          <NavLink
+            to={"/vanliga-fragor"}
+            activeStyle={{ fontWeight: "bold" }}
+            className="footer-link"
+          >
+            Hjälp
+          </NavLink>
+          <NavLink
+            to={"/avtal"}
+            activeStyle={{ fontWeight: "bold" }}
+            className="footer-link"
+          >
+            {" "}
+            Avtal
+          </NavLink>
+          <a href="mailto:tojjinfo@gmail.com" className="footer-link">
+            Kontakta oss
+          </a>
         </div>
       </div>
     </div>
