@@ -3,7 +3,7 @@ import axios from "axios"
 import { Send } from "react-feather"
 import BirthdayInvite from "./BirthdayInvite/index"
 import BirthdayInviteList from "./BirthdayInviteList/index"
-import AttendingList from "./AttendingList"
+import AttendingList from "./AttendingList/index"
 
 class ConfirmationPage extends React.Component {
   constructor(props) {
@@ -60,31 +60,31 @@ class ConfirmationPage extends React.Component {
 
     const emailTemplate = `<body style="margin: 0; padding: 30px 0; width: 100%; background-color: #fbf7ee; background-image: ${
       party.image
-    }">
+      }">
       <div style="padding: 30px 50px 50px; text-align: center; background: #fff; max-width: 600px; margin: 0 auto 15px; box-shadow: 0 0 5px 0px rgba(0,0,0,0.4)">
         <img src="http://i.imgur.com/0aOsg8B.png" alt="Välkommen på kalas" style="width: 80%; height: auto" />
         <h1 style="font-weight: bold; color: #4762b7; text-transform: uppercase">${
-          party.title
-        }</h1>
+      party.title
+      }</h1>
         <h2 style="font-weight: bold; text-transform: uppercase">${date[0]} ${
       date[1]
-    } ${date[2]}</h2>
+      } ${date[2]}</h2>
         <h3 style="font-weight: bold; margin-bottom: 20px; text-transform: uppercase">Kl ${
-          date[3]
-        }</h3>
+      date[3]
+      }</h3>
         <h4 style="font-weight: bold; margin-bottom: 50px"> ${
-          party.child
-        } ska ha kalas och du är bjuden! Klicka på länken nedan för att svara på om du kommer.</h4>
+      party.child
+      } ska ha kalas och du är bjuden! Klicka på länken nedan för att svara på om du kommer.</h4>
         <a href="${window.location.origin +
-          "/kalas/" +
-          party.link}" style="word-wrap: none; text-decoration: none; font-size: 16px; font-weight: bold; background: #4762b7; color: #fff; padding: 15px 30px; border-radius: 100px; opacity: 0.8; margin: 20px 0">TILL KALASET</a>
+      "/kalas/" +
+      party.link}" style="word-wrap: none; text-decoration: none; font-size: 16px; font-weight: bold; background: #4762b7; color: #fff; padding: 15px 30px; border-radius: 100px; opacity: 0.8; margin: 20px 0">TILL KALASET</a>
       </div>
       <div style="padding: 20px 50px; background: #fff; max-width: 600px; margin: 0 auto; box-shadow: 0 0 5px 0px rgba(0,0,0,0.4)">
         <h4 style="font-weight: bold">Vad är Tojj?</h4>
         <p>Ingen mer stress kopplad till kalasfirande! Hos Tojj kan man skapa en digital kalasinbjudan och låta de inbjudna gästerna bidra till en bestämd present till födelsedagsbarnet genom Swish. Enkelt för alla och som grädde på moset kan man välja att bidra till en välgörenhet.</p>
         <a href="${
-          window.location.origin
-        }" style="text-decoration: none; color: #4762b7">Läs mer ></a>
+      window.location.origin
+      }" style="text-decoration: none; color: #4762b7">Läs mer ></a>
       </div>
     </body>`
     this.setState({
@@ -192,8 +192,8 @@ class ConfirmationPage extends React.Component {
       })
     })
       .then(res => res.json())
-      .then(res => {})
-      .catch(err => {})
+      .then(res => { })
+      .catch(err => { })
   }
   render() {
     return (
@@ -223,13 +223,13 @@ class ConfirmationPage extends React.Component {
               <Send /> Skicka
             </button>
           ) : (
-            <button
-              onClick={this.clickHandler}
-              className="send-button btn btn-info"
-            >
-              <Send /> Skicka
+                <button
+                  onClick={this.clickHandler}
+                  className="send-button btn btn-info"
+                >
+                  <Send /> Skicka
             </button>
-          )}
+              )}
           {this.state.emails < 1 && !this.state.emailsSent ? (
             <p
               style={{
@@ -244,14 +244,14 @@ class ConfirmationPage extends React.Component {
           ) : null}
         </div>
         <div className="invite-container">
-          <p className="conf-info">
+          <h4 className="conf-info mt-4 mb-2">
             Följande personer har meddelat att de kommer{" "}
             {this.state.party.attending
               ? `(${this.state.party.attending.length} st)`
               : "(0 st)"}
             :
-          </p>
-
+          </h4>
+          <p>Personer med en "*" följt efter sitt namn har lämnat en kommentar</p>
           <AttendingList attending={this.state.party.attending} />
         </div>
         <div className="msg-container">
