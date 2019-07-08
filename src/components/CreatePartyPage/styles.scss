@@ -4,7 +4,19 @@
     font-weight: bold;
   }
   .buttons-container {
-    margin: 40px 0 80px 0;
+    $marginBtn: 10px;
+    width: 240px;
+    margin: 40px auto 80px;
+    display: flex;
+    flex-wrap: wrap;
+    .buttons-row1{
+      flex: 2
+    }
+    .buttons-row2 {
+      justify-content: space-around;
+      flex: 1;
+      margin-top: $marginBtn;
+    }
     .buttons-row1,
     .buttons-row2 {
       display: flex;
@@ -14,36 +26,37 @@
       .link-cancel,
       .link-party-page,
       .link-preview-page {
+        border: 0;
         border-radius: 3px;
         text-align: center;
         color: white;
         font-family: $big-text;
         font-weight: 800;
         font-size: 20px;
-        padding: 5px 5px;
-        margin: 5px 0;
+        padding: 5px;
         transition: all 0.3s;
-        min-width: 110px;
         &:hover {
           text-decoration: none;
         }
       }
       .link-cancel {
+        margin-right: $marginBtn;
+        flex: 1;
         background-color: $danger;
-        margin: 5px 10px 5px 0;
         &:hover {
           background-color: rgb(219, 49, 89);
         }
       }
       .link-party-page {
+        flex: 1;
         background-color: $info;
         &:hover {
           background-color: rgb(190, 107, 197);
         }
       }
       .link-preview-page {
+        flex: 1;
         background-color: #3a8885;
-        min-width: 230px;
         &:hover {
           background-color: rgb(78, 156, 153);
           text-decoration: none;
