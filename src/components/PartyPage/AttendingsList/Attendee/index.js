@@ -1,7 +1,7 @@
 import React from 'react'
 
 const even = {
-  background: '#4762b7',
+  background: '#6C80C5',
   color: '#fff',
   fontSize: '1rem',
   fontWeight: 'bold',

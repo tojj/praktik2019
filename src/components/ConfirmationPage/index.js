@@ -63,7 +63,7 @@ class ConfirmationPage extends React.Component {
       }">
       <div style="padding: 30px 50px 50px; text-align: center; background: #fff; max-width: 600px; margin: 0 auto 15px; box-shadow: 0 0 5px 0px rgba(0,0,0,0.4)">
         <img src="http://i.imgur.com/0aOsg8B.png" alt="Välkommen på kalas" style="width: 80%; height: auto" />
-        <h1 style="font-weight: bold; color: #4762b7; text-transform: uppercase">${
+        <h1 style="font-weight: bold; color: #6C80C5; text-transform: uppercase">${
       party.title
       }</h1>
         <h2 style="font-weight: bold; text-transform: uppercase">${date[0]} ${
@@ -77,14 +77,14 @@ class ConfirmationPage extends React.Component {
       } ska ha kalas och du är bjuden! Klicka på länken nedan för att svara på om du kommer.</h4>
         <a href="${window.location.origin +
       "/kalas/" +
-      party.link}" style="word-wrap: none; text-decoration: none; font-size: 16px; font-weight: bold; background: #4762b7; color: #fff; padding: 15px 30px; border-radius: 100px; opacity: 0.8; margin: 20px 0">TILL KALASET</a>
+      party.link}" style="word-wrap: none; text-decoration: none; font-size: 16px; font-weight: bold; background: #6C80C5; color: #fff; padding: 15px 30px; border-radius: 100px; opacity: 0.8; margin: 20px 0">TILL KALASET</a>
       </div>
       <div style="padding: 20px 50px; background: #fff; max-width: 600px; margin: 0 auto; box-shadow: 0 0 5px 0px rgba(0,0,0,0.4)">
         <h4 style="font-weight: bold">Vad är Tojj?</h4>
         <p>Ingen mer stress kopplad till kalasfirande! Hos Tojj kan man skapa en digital kalasinbjudan och låta de inbjudna gästerna bidra till en bestämd present till födelsedagsbarnet genom Swish. Enkelt för alla och som grädde på moset kan man välja att bidra till en välgörenhet.</p>
         <a href="${
       window.location.origin
-      }" style="text-decoration: none; color: #4762b7">Läs mer ></a>
+      }" style="text-decoration: none; color: #6C80C5">Läs mer ></a>
       </div>
     </body>`
     this.setState({

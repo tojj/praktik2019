@@ -74,7 +74,7 @@ export const formHeaderData = {
     defaultValue: "Kort men kul",
     text: "Vad vill du ha som rubrik?",
     id: "title",
-    tooltip: "Detta är kommer att stå överst på din kalassida."
+    tooltip: "Detta kommer att stå överst på din kalassida."
   },
   name: {
     className: " input100 form-control",
