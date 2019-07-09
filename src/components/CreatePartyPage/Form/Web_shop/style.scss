@@ -143,6 +143,7 @@
     border-bottom-left-radius: 10px;
     border-top-right-radius: 10px;
     z-index: 2 !important;
+    cursor: pointer;
     &:hover {
       transition: all 200ms ease-in;
       background-color: $info;
