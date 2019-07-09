@@ -397,7 +397,7 @@ class CreatePartyPage extends React.Component {
         swish: {
           number: "0708358158",
           amount: this.props.swishMoney,
-          color: "#4762b7"
+          color: "#6C80C5"
         },
         donate: this.props.fundraiser.donate,
         fundraiser: this.props.fundraiser.id,
@@ -455,20 +455,20 @@ class CreatePartyPage extends React.Component {
       }">
         <div style="padding: 30px 50px 50px; text-align: center; background: #fff; max-width: 600px; margin: 0 auto 15px; box-shadow: 0 0 5px 0px rgba(0,0,0,0.4)">
           <img src="http://i.imgur.com/Rkdv6ca.png" alt="Välkommen på kalas" style="width: 80%; height: auto" />
-          <h1 style="font-weight: bold; color: #4762b7; text-transform: uppercase">Hurra, ditt kalas <span style="text-transform: none;">${
+          <h1 style="font-weight: bold; color: #6C80C5; text-transform: uppercase">Hurra, ditt kalas <span style="text-transform: none;">${
       event.link
       }</span> är nu skapat!</h1>
           <h4 style="font-weight: bold;">Klicka på knappen nedan för att gå direkt till kalaset eller klicka <a href="${window
         .location.origin +
       "/bekraftelse/" +
       event.link}">här</a> för att bjuda in gästerna.</h4>
-          <h4 style="font-weight: bold; margin-bottom: 50px">Lösenord för kalaset: <span style="color: #4762b7">${
+          <h4 style="font-weight: bold; margin-bottom: 50px">Lösenord för kalaset: <span style="color: #6C80C5">${
       this.props.guestUser.password
       }</span></h4>
 
           <a href="${window.location.origin +
       "/kalas/" +
-      event.link}" style="word-wrap: none; text-decoration: none; font-size: 16px; font-weight: bold; background: #4762b7; color: #fff; padding: 15px 30px; border-radius: 100px; opacity: 0.8; margin: 20px 0">TILL KALASET</a>
+      event.link}" style="word-wrap: none; text-decoration: none; font-size: 16px; font-weight: bold; background: #6C80C5; color: #fff; padding: 15px 30px; border-radius: 100px; opacity: 0.8; margin: 20px 0">TILL KALASET</a>
         </div>
         <div style="padding: 20px 50px; background: #fff; max-width: 600px; margin: 0 auto 15px; box-shadow: 0 0 5px 0px rgba(0,0,0,0.4)">
           <h3 style="font-weight: bold; margin-bottom: 48px;">Sammanfattning</h3>
@@ -545,7 +545,7 @@ class CreatePartyPage extends React.Component {
           <p>Ingen mer stress kopplad till kalasfirande! Hos Tojj kan man skapa en digital kalasinbjudan och låta de inbjudna gästerna bidra till en bestämd present till födelsedagsbarnet. Enkelt för alla och som grädde på moset kan man välja att bidra till en välgörenhet.</p>
           <a href="${
       window.location.origin
-      }" style="text-decoration: none; color: #4762b7">Läs mer ></a>
+      }" style="text-decoration: none; color: #6C80C5">Läs mer ></a>
         </div>
       </body>`
 

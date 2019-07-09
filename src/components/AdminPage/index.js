@@ -27,7 +27,7 @@ class AdminPage extends React.Component {
         "icon": <Gift />,
         "name": 'produkter',
         "active": false,
-        "styling": { backgroundColor: '#4762b7', color: 'white' }
+        "styling": { backgroundColor: '#6C80C5', color: 'white' }
       },
       {
         "icon": <Heart />,

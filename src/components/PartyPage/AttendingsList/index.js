@@ -59,11 +59,11 @@ class AttendingsList extends React.Component {
           }
         </div>
         {this.state.showInput
-          ? <div className="pt-2">
-            <form style={{ width: '320px', margin: '0 auto' }} onSubmit={this.saveAttendeeToDB} >
-              <input type="text" placeholder="Namn *" required id="input-att-name" className="w-100" />
-              <input type="email" placeholder="Epost *" required id="input-att-email" className="mt-2 w-100" />
-              <input type="text" placeholder="Kommentar/allergier" id="input-att-comment" className="mt-2 w-100" /> <br />
+          ? <div className="attending-form">
+            <form onSubmit={this.saveAttendeeToDB} >
+              <input type="text" placeholder="Namn *" required id="input-att-name" className="attendee-input" />
+              <input type="email" placeholder="Epost *" required id="input-att-email" className="attendee-input" />
+              <input type="text" placeholder="Kommentar/allergier" id="input-att-comment" className="attendee-input" />
               <button type="button" className="btn btn-danger mt-3" onClick={this.clickHandler}>Tillbaka</button>
               <input type="submit" className="btn btn-success mt-3 ml-2" value="Bekräfta" />
             </form>
