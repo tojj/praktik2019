@@ -11,7 +11,7 @@ export const aboutData = [
   },
   {
     text:
-      "Men det är bara början på enkhelheten. Gästerna ska ju också kunna ta del av den och på TOJJ kan man bjuda in gästerna via e-post när kalasinbjudan har skapats. Med den inbjudan kan gästerna förutom att svara också bidra till den utvalda presenten till kalaset.",
+      "Men det är bara början på enkelheten. Gästerna ska ju också kunna ta del av den och på TOJJ kan man bjuda in gästerna via e-post när kalasinbjudan har skapats. Med den inbjudan kan gästerna förutom att svara också bidra till den utvalda presenten till kalaset.",
     id: 3
   },
   {
