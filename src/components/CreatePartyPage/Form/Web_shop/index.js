@@ -3,7 +3,6 @@ import axios from "axios"
 import { connect } from "react-redux"
 import { doUpdateProductInfo } from "../../../../store/Birthday/BirthdayActions"
 import SwishQR from "../Form_body/SwishQR"
-import { ExternalLink } from "react-feather"
 
 class Web_shop extends Component {
   constructor(props) {
