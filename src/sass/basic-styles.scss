@@ -18,4 +18,12 @@ html {
   p {
     margin-bottom: 0;
   }
+  ::selection {
+    background: #3a8885;
+    color: #fff;
+  }
+  ::-moz-selection {
+    background: #3a8885;
+    color: #fff;
+  }
 }
