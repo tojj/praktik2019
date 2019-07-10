@@ -21,14 +21,14 @@ class CreatePartyPage extends React.Component {
     this.validateAll = this.validateAll.bind(this)
 
     this.schemaPartyEvent = {
-      title: Joi.string()
+      aTitle: Joi.string()
         .required()
         .error(errors => {
           return {
             message: "Rubrik saknas"
           }
         }),
-      name: Joi.string()
+      bName: Joi.string()
         .min(2)
         .max(20)
         .required()
@@ -37,7 +37,7 @@ class CreatePartyPage extends React.Component {
             message: "Namn måste innehålla minst 2 tecken"
           }
         }),
-      age: Joi.number()
+      cAge: Joi.number()
         .integer()
         .max(20)
         .required()
@@ -49,7 +49,7 @@ class CreatePartyPage extends React.Component {
     }
     
     this.schemaTimeAndPlace = {
-      description: Joi.string()
+      aDescription: Joi.string()
         .min(2)
         .max(280)
         .required()
@@ -59,7 +59,7 @@ class CreatePartyPage extends React.Component {
               "Information till de inbjudna måste innehålla 2-280 tecken."
           }
         }),
-      date: Joi.date()
+      bDate: Joi.date()
         .min(Date.now() + 604800000)
         .required()
         .error(errors => {
@@ -68,12 +68,12 @@ class CreatePartyPage extends React.Component {
               "Ange datum för kalas - datumet måste vara en vecka framåt från dagens datum"
           }
         }),
-      time: Joi.required().error(errors => {
+      cTime: Joi.required().error(errors => {
         return {
           message: "Tid för kalaset saknas"
         }
       }),
-      deadline: Joi.date()
+      gDeadline: Joi.date()
         .min(Date.now())
         .max(this.getDeadlineTime())
         .required()
@@ -83,7 +83,7 @@ class CreatePartyPage extends React.Component {
               "Ange OSA - skriv när du senast vill ha svar om folk kan komma. Detta måste vara senast tre dagar innan kalaset"
           }
         }),
-      street: Joi.string()
+      dStreet: Joi.string()
         .min(3)
         .max(30)
         .required()
@@ -92,7 +92,7 @@ class CreatePartyPage extends React.Component {
             message: "Adress för kalaset saknas"
           }
         }),
-      zip: Joi.string()
+      eZip: Joi.string()
         .min(4)
         .max(5)
         .required()
@@ -101,7 +101,7 @@ class CreatePartyPage extends React.Component {
             message: "Postnumret för kalaset saknas"
           }
         }),
-      city: Joi.string()
+      fCity: Joi.string()
         .min(2)
         .max(40)
         .required()
@@ -111,8 +111,6 @@ class CreatePartyPage extends React.Component {
           }
         })
     }
-
-
 
     this.schemaAgreement = {
       userAgreement: Joi.boolean()
@@ -134,7 +132,7 @@ class CreatePartyPage extends React.Component {
     }
 
     this.schemaGuestUser = {
-      firstName: Joi.string()
+      aFirstname: Joi.string()
         .min(2)
         .max(20)
         .required()
@@ -143,7 +141,7 @@ class CreatePartyPage extends React.Component {
             message: "Ange ditt förnamn"
           }
         }),
-      lastName: Joi.string()
+      bLastname: Joi.string()
         .min(2)
         .max(20)
         .required()
@@ -152,7 +150,7 @@ class CreatePartyPage extends React.Component {
             message: "Ange ditt efternamn"
           }
         }),
-      address: Joi.string()
+      gAddress: Joi.string()
         .min(3)
         .max(30)
         .required()
@@ -161,7 +159,7 @@ class CreatePartyPage extends React.Component {
             message: "Ange din adress"
           }
         }),
-      zipcode: Joi.string()
+      fZipcode: Joi.string()
         .min(2)
         .max(20)
         .required()
@@ -170,7 +168,7 @@ class CreatePartyPage extends React.Component {
             message: "Ange ditt postnummer"
           }
         }),
-      phoneNumber: Joi.number()
+      dPhonenumber: Joi.number()
         .integer()
         .required()
         .error(errors => {
@@ -178,7 +176,7 @@ class CreatePartyPage extends React.Component {
             message: "Ange ditt telefonnummer"
           }
         }),
-      city: Joi.string()
+      eCity: Joi.string()
         .min(2)
         .max(20)
         .required()
@@ -187,7 +185,7 @@ class CreatePartyPage extends React.Component {
             message: "Ange din stad"
           }
         }),
-      email: Joi.string()
+      cEmail: Joi.string()
         .email({ minDomainSegments: 2 })
         .error(errors => {
           return {

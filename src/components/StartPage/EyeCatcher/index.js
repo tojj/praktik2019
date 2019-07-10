@@ -1,5 +1,5 @@
 import React from "react"
-import { Link } from "react-router-dom"
+import { Link } from "react-scroll"
 
 const videoURL = "/images/startpage/bg-vid.mp4"
 
@@ -18,6 +18,14 @@ const EyeCatcher = () => (
         <source src={videoURL} type="video/mp4" />
       </video>
       <div className="bg-overlay" />
+      <Link
+        spy={true}
+        smooth={true}
+        duration={500}
+        to="prodinfo-container"
+      >
+        <div className="arrow bounce" />
+      </Link>
     </div>
     <div className="box-1">
       <h2 className="main-heading" id="eye-catcher-heading">
@@ -27,9 +35,9 @@ const EyeCatcher = () => (
         Med Tojj kan alla få det kalas de förtjänar. Klicka på knappen nedan för
         att skapa ditt kalas nu!
       </p>
-      <Link to="/skapa-kalas" className="link-eye-catcher">
+      <a href="/skapa-kalas" className="link-eye-catcher">
         Skapa kalas
-      </Link>
+      </a>
     </div>
   </div>
 )

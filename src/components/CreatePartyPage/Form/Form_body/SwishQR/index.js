@@ -31,7 +31,7 @@ class SwishQR extends React.Component {
     return (
       <div id="swish-container" className="swish-container">
           <FormGroup className="swish-form">
-            <Label for="amount-input" className="birthday-label">Swishbelopp <ToolTip text="Istället för att ta med egna presenter går gästerna ihop för att betala för den present du valt ovan." /></Label>
+            <Label for="amount-input" className="birthday-label">Swishbelopp <ToolTip text="Välj en rimlig summa för varje gäst att swisha in." /></Label>
             <Input
               type="number"
               name="swishMoney"

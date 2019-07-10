@@ -5,11 +5,16 @@ import { Link } from "react-router-dom"
 
 class PreviewPage extends Component {
 
+  /**
+   * Due to safari bug with Object.keys and redux together
+   * We had to sort our map rendering methods which is 
+   * Why we chose variable names to begin with a, b, c and so on.
+   */
   render() {
     let date =
-      this.props.birthdayTimeAndPlace.date +
+      this.props.birthdayTimeAndPlace.bDate +
       " " +
-      this.props.birthdayTimeAndPlace.time
+      this.props.birthdayTimeAndPlace.cTime
     date = new Date(date).getTime()
     date = new Date(date)
       .toLocaleDateString("sv-SE", {
@@ -25,12 +30,12 @@ class PreviewPage extends Component {
      * Joining all the address information to the right format in order to send the correct props to MapsGen
      */
 
-    let address = this.props.birthdayTimeAndPlace.street.split(" ")
+    let address = this.props.birthdayTimeAndPlace.dStreet.split(" ")
     address = address.join("%20")
     address = [
       address,
-      this.props.birthdayTimeAndPlace.zip,
-      this.props.birthdayTimeAndPlace.city
+      this.props.birthdayTimeAndPlace.eZip,
+      this.props.birthdayTimeAndPlace.fCity
     ].join("%20")
 
     return (
@@ -41,17 +46,17 @@ class PreviewPage extends Component {
         <div className="party-card">
           <div className="box-container party-title">
             <div className="box">
-              <p>{this.props.birthdayEvent.title}</p>
+              <p>{this.props.birthdayEvent.aTitle}</p>
             </div>
           </div>
           <div className="box-container party-info border-top">
             <div className="box">
               <p className="party-child-age">
-                {this.props.birthdayEvent.name} fyller{" "}
-                {this.props.birthdayEvent.age} år!
+                {this.props.birthdayEvent.bName} fyller{" "}
+                {this.props.birthdayEvent.cAge} år!
               </p>
               <p className="party-description">
-                {this.props.birthdayTimeAndPlace.description}
+                {this.props.birthdayTimeAndPlace.aDescription}
               </p>
             </div>
             <div className="box date-holder">
@@ -80,7 +85,7 @@ class PreviewPage extends Component {
               <p>Present</p>
               <p>
                 Pengarna som samlas in kommer att gå till att köpa {this.props.present.name} som{" "}
-                {this.props.birthdayEvent.name} önskar sig.
+                {this.props.birthdayEvent.bName} önskar sig.
               </p>
               <a href={this.props.present.link} target="_blank" rel="noopener noreferrer">
                 Läs mer...
@@ -117,15 +122,15 @@ class PreviewPage extends Component {
             </div>
             <div className="box location-holder">
               <p className="party-street">
-                {this.props.birthdayTimeAndPlace.street}
+                {this.props.birthdayTimeAndPlace.dStreet}
               </p>
               <p className="party-zip-city">
-                {this.props.birthdayTimeAndPlace.zip} {this.props.birthdayTimeAndPlace.city}
+                {this.props.birthdayTimeAndPlace.eZip} {this.props.birthdayTimeAndPlace.fCity}
               </p>
               <p className="party-rsvp">
                 OSA senast <br />
                 {new Date(
-                  this.props.birthdayTimeAndPlace.deadline
+                  this.props.birthdayTimeAndPlace.gDeadline
                 ).toLocaleDateString("sv-SE", {
                   weekday: "long",
                   day: "numeric",

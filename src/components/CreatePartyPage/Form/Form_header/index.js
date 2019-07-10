@@ -20,7 +20,6 @@ class Form_header extends Component {
     }
   }
 
-
   /**
    * An advanced simple action
    */
@@ -35,8 +34,9 @@ class Form_header extends Component {
    * I am doing this using Object.keys and map
    */
 
-  renderInputs = () => this.props.birthdayEvent
-    ? Object.keys(this.props.birthdayEvent).map(this.renderInput)
+  renderInputs = () => 
+    this.props.birthdayEvent
+    ? Object.keys(this.props.birthdayEvent).sort().map(this.renderInput)
     : null
 
 
@@ -53,7 +53,6 @@ class Form_header extends Component {
         callback={this.callback}
         placeholder={formHeaderData[key].defaultValue}
 
-
       />
     </FormGroup>
   )
@@ -65,32 +64,33 @@ class Form_header extends Component {
 
   callback = (value, key) => {
     this.props.updateBday({ [key]: value })
-    if (value.length > 2 && key === 'title') {
+    console.log(key)
+    if (value.length > 2 && key === 'aTitle') {
       let id = key
       let element = document.getElementById(id)
       element.classList.remove("invalid")
-    } else if (value.length <= 2 && key === 'title') {
+    } else if (value.length <= 2 && key === 'aTitle') {
       let id = key
       let element = document.getElementById(id)
       element.classList.add("invalid")
     }
 
-    if (value.length > 1 && key === 'child') {
+    if (value.length > 1 && key === 'bName') {
       let id = key
       let element = document.getElementById(id)
       element.classList.remove("invalid")
-    } else if (value.length < 2 && key === 'child') {
+    } else if (value.length < 2 && key === 'bName') {
       let id = key
       let element = document.getElementById(id)
       element.classList.add("invalid")
     }
 
-    if (/^\d*$/.test(value) && (value === "" || parseInt(value) <= 20) && key === 'age') {
+    if (/^\d*$/.test(value) && (value === "" || parseInt(value) <= 20) && key === 'cAge') {
       let id = key
       let element = document.getElementById(id)
       element.classList.remove("invalid")
-    } else if (key === 'age') {
-      let id = 'age'
+    } else if (key === 'cAge') {
+      let id = 'cAge'
       let element = document.getElementById(id)
       element.classList.add("invalid")
     }
@@ -100,9 +100,9 @@ class Form_header extends Component {
   render() {
     return (
       <div className="form-header-container">
-        <div className="box-container" style={{ zIndex: '30' }}>
+        <h1 className="form-headline headline-size">Skapa Kalas</h1>
+        <div className="box-container padding-fix" style={{ zIndex: '30' }}>
           <div className="box text-left">
-            <h2 className="form-headline">Skapa Kalas</h2>
             <div>
               {this.renderInputs()}
             </div>
