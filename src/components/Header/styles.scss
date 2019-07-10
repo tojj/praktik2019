@@ -14,6 +14,9 @@ header {
       height: auto;
       border-radius: 50%;
       box-shadow: 2px 2px 5px $dark;
+      &:hover{
+        filter: brightness(1.1)
+      }
     }
     .logo-holder {
       display: block;
