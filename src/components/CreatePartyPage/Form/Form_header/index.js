@@ -100,9 +100,9 @@ class Form_header extends Component {
   render() {
     return (
       <div className="form-header-container">
-        <div className="box-container" style={{ zIndex: '30' }}>
+        <h1 className="form-headline headline-size">Skapa Kalas</h1>
+        <div className="box-container padding-fix" style={{ zIndex: '30' }}>
           <div className="box text-left">
-            <h2 className="form-headline">Skapa Kalas</h2>
             <div>
               {this.renderInputs()}
             </div>

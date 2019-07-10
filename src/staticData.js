@@ -42,14 +42,14 @@ export const convincerData = [
   {
     header: "Bidra",
     text:
-      "Som gäst till kalaset kan man bidra till den önskade presenten. Det sparar inte bara tid utan det är också hållbart, så slipper man massa leksaker som kanske inte håller lika länge.",
+      "Som gäst till kalaset bidrar du till den önskade presenten. Det sparar inte bara tid utan det är också hållbart, så slipper man massa leksaker som kanske inte håller lika länge.",
     img: "/images/startpage/convincer-swish.jpg",
     id: 2
   },
   {
     header: "Karma",
     text:
-      "Ge till dem som behöver! Varför begränsa sig till en present? Skicka vidare budskapet och bidra till att någon annan får det lite bättre också.",
+      "Ge till dem som behöver! Varför begränsa sig till en present? Skicka vidare budskapet och bidra till en välgörenhet om det blir överskott.",
     img: "/images/startpage/convincer-karma.jpg",
     id: 3
   }
@@ -71,7 +71,7 @@ export const productData = [
 export const formHeaderData = {
   title: {
     className: " input100 form-control",
-    defaultValue: "Kort men kul",
+    defaultValue: "En kort rubrik till ditt kalas",
     text: "Vad vill du ha som rubrik?",
     id: "title",
     tooltip: "Detta kommer att stå överst på din kalassida."
