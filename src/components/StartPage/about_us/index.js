@@ -5,7 +5,7 @@ import staticData from '../../../staticData'
 const About = (props) => (
   <div className="box-container about-container" id="about-container">
     <div className="box">
-      <h2 className="about-header">Om Oss</h2>
+      <h2 className="about-header">Om Tojj</h2>
       {staticData.aboutData.map(renderInformationText)}
     </div>
     <div className="color-overlay" />
