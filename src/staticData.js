@@ -69,24 +69,24 @@ export const productData = [
 ]
 
 export const formHeaderData = {
-  title: {
+  aTitle: {
     className: " input100 form-control",
     defaultValue: "En kort rubrik till ditt kalas",
     text: "Vad vill du ha som rubrik?",
-    id: "title",
+    id: "aTitle",
     tooltip: "Detta kommer att stå överst på din kalassida."
   },
-  name: {
+  bName: {
     className: " input100 form-control",
     defaultValue: "Barnets namn",
     text: "Vem är kalaset för?",
-    id: "child"
+    id: "bName"
   },
-  age: {
+  cAge: {
     className: "input100 form-control",
     defaultValue: "t.ex. 3",
     text: "Hur många år fyller barnet?",
-    id: "age",
+    id: "cAge",
     tooltip: "Tänk på att endast skriva siffror, inga bokstäver."
   }
 }
@@ -218,7 +218,7 @@ export const imageHandlerData = [
 ]
 
 export const eventInputData = {
-  description: {
+  aDescription: {
     classNameFormGroup: "input100",
     name: "description",
     classNameLabel: "birthday-label",
@@ -226,11 +226,11 @@ export const eventInputData = {
     type: "textarea",
     placeholder: "Information om kalaset, t.ex. vad som planeras och kanske när kalaset beräknas sluta...",
     className: "textarea-label form-input",
-    id: "description",
+    id: "aDescription",
     rows: '5',
     tooltip: "Här har du möjlighet att verkligen gå in på detaljer gällande kalaset."
   },
-  date: {
+  bDate: {
     classNameFormGroup: "input75",
     name: "date",
     classNameLabel: "birthday-label",
@@ -238,9 +238,9 @@ export const eventInputData = {
     type: "date",
     placeholder: "12:00",
     className: "form-input",
-    id: "date"
+    id: "bDate"
   },
-  time: {
+  cTime: {
     classNameFormGroup: "input25",
     name: "time",
     classNameLabel: "birthday-label",
@@ -248,9 +248,9 @@ export const eventInputData = {
     type: "time",
     placeholder: "12:00",
     className: "form-input mt-2 mt-lg-0 ml-lg-2",
-    id: "time"
+    id: "cTime"
   },
-  street: {
+  dStreet: {
     classNameFormGroup: "input100",
     name: "asv", //cryptic in order to avoid autofill
     classNameLabel: "birthday-label",
@@ -261,7 +261,7 @@ export const eventInputData = {
     id: "asv", //cryptic in order to avoid autofill
     tooltip: "Var kommer kalaset att äga rum?"
   },
-  zip: {
+  eZip: {
     classNameFormGroup: "input25",
     name: "asc", //cryptic in order to avoid autofill
     classNameLabel: "location-label inline-input",
@@ -271,7 +271,7 @@ export const eventInputData = {
     className: "form-input mt-2",
     id: "asc" //cryptic in order to avoid autofill
   },
-  city: {
+  fCity: {
     classNameFormGroup: "input75",
     name: "asd", //cryptic in order to avoid autofill
     classNameLabel: "location-label inline-input",
@@ -281,7 +281,7 @@ export const eventInputData = {
     className: "form-input mt-2 ml-lg-2",
     id: "asd" //cryptic in order to avoid autofill
   },
-  deadline: {
+  gDeadline: {
     classNameFormGroup: "",
     name: "deadline",
     classNameLabel: "birthday-label",
@@ -289,12 +289,12 @@ export const eventInputData = {
     type: "date",
     placeholder: "",
     className: "form-input input75",
-    id: "deadline"
+    id: "gDeadline"
   }
 }
 
 export const guestUserData = {
-  firstName: {
+  aFirstname: {
     classNameFormGroup: "input50",
     id: "firstName-input",
     name: "firstName",
@@ -303,7 +303,7 @@ export const guestUserData = {
     type: "text",
     className: "form-input",
   },
-  lastName: {
+  bLastname: {
     classNameFormGroup: "input50",
     id: "lastName-input",
     name: "lastName",
@@ -312,7 +312,7 @@ export const guestUserData = {
     type: "text",
     className: "form-input ml-lg-2"
   },
-  email: {
+  cEmail: {
     classNameFormGroup: "input50",
     id: "email-input",
     name: "email",
@@ -322,7 +322,7 @@ export const guestUserData = {
     className: "form-input",
     tooltip: "Ange den epostadress du vill ha bekräftelsen skickad till."
   },
-  phoneNumber: {
+  dPhonenumber: {
     classNameFormGroup: "input50",
     id: "phoneNumber-input",
     name: "phoneNumber",
@@ -332,7 +332,7 @@ export const guestUserData = {
     className: "form-input ml-lg-2",
     tooltip: "Inga specialtecken eller mellanrum."
   },
-  city: {
+  eCity: {
     classNameFormGroup: "input50",
     id: "city-input",
     name: "city",
@@ -342,7 +342,7 @@ export const guestUserData = {
     className: "form-input "
   },
 
-  zipcode: {
+  fZipcode: {
     classNameFormGroup: "input50 ",
     id: "zipcode-input",
     name: "zipcode",
@@ -353,7 +353,7 @@ export const guestUserData = {
   },
 
 
-  address: {
+  gAddress: {
     classNameFormGroup: "input50",
     id: "address-input",
     name: "address",

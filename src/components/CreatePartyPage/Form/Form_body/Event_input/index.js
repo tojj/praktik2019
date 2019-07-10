@@ -20,7 +20,6 @@ class EventInput extends Component {
   /**
    * Passing value from input
    */
-
   updateInfo = (event) => {
     this.props.updateTimeAndPlace(event.target.value)
   }
@@ -28,9 +27,8 @@ class EventInput extends Component {
   /**
    * Rendering input fields
    */
-
   renderInputs = () => this.props.birthdayTimeAndPlace
-    ? Object.keys(this.props.birthdayTimeAndPlace).map(this.renderInput)
+    ? Object.keys(this.props.birthdayTimeAndPlace).sort().map(this.renderInput)
     : null
 
 
@@ -66,7 +64,7 @@ class EventInput extends Component {
     let week = Date.now() + 604800000
 
 
-    if (key === "date") {
+    if (key === "bDate") {
       this.time = new Date(value)
       if (this.time.getTime() < week) {
         let id = key;
@@ -90,7 +88,7 @@ class EventInput extends Component {
       element.classList.add("invalid")
     }
 
-    if (key === "deadline" && this.time) {
+    if (key === "gDeadline" && this.time) {
       this.deadline = new Date(value)
       const osa = this.time.getTime()-172800000
       if (this.deadline.getTime() < this.time.getTime() && osa > this.deadline.getTime() && this.deadline.getTime() > Date.now()) {
@@ -106,17 +104,17 @@ class EventInput extends Component {
       }
 
     }
-    if(value.length > 1 && value.length < 280 && key === "description"){
+    if(value.length > 1 && value.length < 280 && key === "aDescription"){
       let id = key;
       let element = document.getElementById(id)
       element.classList.remove("invalid")
-    } else if(value.length > 250 && key === "description"){
+    } else if(value.length > 250 && key === "aDescription"){
       let id = key;
       let element = document.getElementById(id)
       element.classList.add("invalid")
     }
 
-    else if(value.length < 2 && key === "description"){
+    else if(value.length < 2 && key === "aDescription"){
       let id = key;
       let element = document.getElementById(id)
       element.classList.add("invalid")

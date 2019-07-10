@@ -77,7 +77,7 @@ class Checkout extends React.Component {
 
   renderInputs = () =>
     this.props.guestUser
-      ? Object.keys(this.props.guestUser).map(this.renderInput)
+      ? Object.keys(this.props.guestUser).sort().map(this.renderInput)
       : null
 
   renderInput = key => {

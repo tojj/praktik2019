@@ -20,7 +20,6 @@ class Form_header extends Component {
     }
   }
 
-
   /**
    * An advanced simple action
    */
@@ -35,8 +34,9 @@ class Form_header extends Component {
    * I am doing this using Object.keys and map
    */
 
-  renderInputs = () => this.props.birthdayEvent
-    ? Object.keys(this.props.birthdayEvent).map(this.renderInput)
+  renderInputs = () => 
+    this.props.birthdayEvent
+    ? Object.keys(this.props.birthdayEvent).sort().map(this.renderInput)
     : null
 
 
@@ -53,7 +53,6 @@ class Form_header extends Component {
         callback={this.callback}
         placeholder={formHeaderData[key].defaultValue}
 
-
       />
     </FormGroup>
   )
@@ -65,32 +64,33 @@ class Form_header extends Component {
 
   callback = (value, key) => {
     this.props.updateBday({ [key]: value })
-    if (value.length > 2 && key === 'title') {
+    console.log(key)
+    if (value.length > 2 && key === 'aTitle') {
       let id = key
       let element = document.getElementById(id)
       element.classList.remove("invalid")
-    } else if (value.length <= 2 && key === 'title') {
+    } else if (value.length <= 2 && key === 'aTitle') {
       let id = key
       let element = document.getElementById(id)
       element.classList.add("invalid")
     }
 
-    if (value.length > 1 && key === 'child') {
+    if (value.length > 1 && key === 'bName') {
       let id = key
       let element = document.getElementById(id)
       element.classList.remove("invalid")
-    } else if (value.length < 2 && key === 'child') {
+    } else if (value.length < 2 && key === 'bName') {
       let id = key
       let element = document.getElementById(id)
       element.classList.add("invalid")
     }
 
-    if (/^\d*$/.test(value) && (value === "" || parseInt(value) <= 20) && key === 'age') {
+    if (/^\d*$/.test(value) && (value === "" || parseInt(value) <= 20) && key === 'cAge') {
       let id = key
       let element = document.getElementById(id)
       element.classList.remove("invalid")
-    } else if (key === 'age') {
-      let id = 'age'
+    } else if (key === 'cAge') {
+      let id = 'cAge'
       let element = document.getElementById(id)
       element.classList.add("invalid")
     }
