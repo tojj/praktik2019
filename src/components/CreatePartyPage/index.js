@@ -39,6 +39,7 @@ class CreatePartyPage extends React.Component {
         }),
       age: Joi.number()
         .integer()
+        .max(20)
         .required()
         .error(errors => {
           return {
@@ -46,7 +47,7 @@ class CreatePartyPage extends React.Component {
           }
         })
     }
-
+    
     this.schemaTimeAndPlace = {
       description: Joi.string()
         .min(2)
@@ -59,6 +60,7 @@ class CreatePartyPage extends React.Component {
           }
         }),
       date: Joi.date()
+        .min(Date.now() + 604800000)
         .required()
         .error(errors => {
           return {
@@ -72,11 +74,13 @@ class CreatePartyPage extends React.Component {
         }
       }),
       deadline: Joi.date()
+        .min(Date.now())
+        .max(this.getDeadlineTime())
         .required()
         .error(errors => {
           return {
             message:
-              "Ange OSA - skriv när du senast vill ha svar om folk kan komma. Detta måste vara senast en dag innan kalaset"
+              "Ange OSA - skriv när du senast vill ha svar om folk kan komma. Detta måste vara senast tre dagar innan kalaset"
           }
         }),
       street: Joi.string()
@@ -214,6 +218,15 @@ class CreatePartyPage extends React.Component {
   }
 
   /**
+   * Method to get correct validation for rsvp/deadline
+   */
+  getDeadlineTime = () => {
+    let deadline = new Date(this.props.birthdayTimeAndPlace.date ? this.props.birthdayTimeAndPlace.date : 0)
+    deadline = deadline.getTime()-172800001
+    return deadline
+  }
+
+  /**
    * Validation functions.
    * @param {
    * Data- Takes the data typed from the user. And validates it using Joi. 
@@ -252,6 +265,16 @@ class CreatePartyPage extends React.Component {
   }
 
   validateTimeAndPlace = () => {
+    this.schemaTimeAndPlace.deadline = Joi.date()
+    .min(Date.now())
+    .max(this.getDeadlineTime())
+    .required()
+    .error(errors => {
+      return {
+        message:
+          "Ange OSA - skriv när du senast vill ha svar om folk kan komma. Detta måste vara senast tre dagar innan kalaset"
+      }
+    })
     const result = Joi.validate(
       this.props.birthdayTimeAndPlace,
       this.schemaTimeAndPlace,
@@ -358,6 +381,7 @@ class CreatePartyPage extends React.Component {
   componentDidMount() {
     document.title = "Tojj - Skapa kalas"
   }
+
   /**
    * Simple redirect function
    */
@@ -396,8 +420,8 @@ class CreatePartyPage extends React.Component {
         },
         swish: {
           number: "0708358158",
-          amount: this.props.swishMoney,
-          color: "#6C80C5"
+          amount: this.props.swish.swishMoney,
+          color: "#4762b7"
         },
         donate: this.props.fundraiser.donate,
         fundraiser: this.props.fundraiser.id,

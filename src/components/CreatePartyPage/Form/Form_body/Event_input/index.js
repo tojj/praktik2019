@@ -92,7 +92,8 @@ class EventInput extends Component {
 
     if (key === "deadline" && this.time) {
       this.deadline = new Date(value)
-      if (this.deadline.getTime() < this.time.getTime() && this.deadline.getTime() > Date.now()) {
+      const osa = this.time.getTime()-172800000
+      if (this.deadline.getTime() < this.time.getTime() && osa > this.deadline.getTime() && this.deadline.getTime() > Date.now()) {
         let id = key;
         let element = document.getElementById(id)
         element.classList.remove("invalid")
@@ -105,7 +106,7 @@ class EventInput extends Component {
       }
 
     }
-    if(value.length > 1 && value.length < 250 && key === "description"){
+    if(value.length > 1 && value.length < 280 && key === "description"){
       let id = key;
       let element = document.getElementById(id)
       element.classList.remove("invalid")
