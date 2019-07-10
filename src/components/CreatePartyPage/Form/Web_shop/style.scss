@@ -135,26 +135,29 @@
   .more-info-label {
     z-index: 100;
     position: absolute;
-    left: calc(100% - 32px);
-    background-color: #b164b8dc;
+    left: calc(100% - 75px);
+    background-color: $info;
     height: 32px;
-    width: 32px;
+    width: 75px;
     padding-top: 3px;
     border-bottom-left-radius: 10px;
     border-top-right-radius: 10px;
     z-index: 2 !important;
+    color: white;
     cursor: pointer;
     &:hover {
       transition: all 200ms ease-in;
       background-color: $info;
+      opacity: 1;
     }
   }
 
   .price-label {
     z-index: 100;
     position: absolute;
-    background-color: #b164b8dc;
+    background-color: $info;
     height: 32px;
+    width: 75px;
     padding-top: 3px;
     border-bottom-right-radius: 10px;
     border-top-left-radius: 10px;
@@ -162,7 +165,6 @@
     color: white;
     left: 0;
     padding: 4px;
-
     //Label for price
     //<label className="price-label">{product.price} kr</label>
   }
