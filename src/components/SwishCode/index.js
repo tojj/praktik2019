@@ -8,10 +8,13 @@ import React from 'react'
  */
 
 const SwishCode = props => {
-  const payee = props.payee ? String(props.payee) : '0708358158'
+  let payee = props.payee ? String(props.payee) : '0708358158'
+  if ( payee.slice(0,1) === '7'){
+    payee = '0' + payee
+  }
   const amount = props.amount ? String(props.amount) : '100'
   const message = props.message ? '' + props.message : 'Kalas saknas'
-  const link = `http://chart.apis.google.com/chart?cht=qr&chs=500x500&chl=C${payee + ";" + amount + ";" + message + ";0"}&chf=bg,s,65432100`
+  const link = `http://chart.apis.google.com/chart?cht=qr&chs=500x500&chl=C${ payee + ";" + amount + ";" + message };0&chf=bg,s,65432100`
   return (
     <div style={{
       background: 'linear-gradient(to top right, #4BCF6D, #10BEDC)',
