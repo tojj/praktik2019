@@ -1,9 +1,9 @@
 export default {
   birthday: {
     birthdayEvent: {
-      title: "",
-      name: "",
-      age: ""
+      aTitle: "",
+      bName: "",
+      cAge: ""
     },
     input: {
       isValid: false,
@@ -11,13 +11,13 @@ export default {
     },
 
     birthdayTimeAndPlace: {
-      description: "",
-      date: "",
-      time: "",
-      street: "",
-      zip: "",
-      city: "",
-      deadline: ""
+      aDescription: "",
+      bDate: "",
+      cTime: "",
+      dStreet: "",
+      eZip: "",
+      fCity: "",
+      gDeadline: ""
     },
 
     birthdayImage: "",
@@ -41,13 +41,13 @@ export default {
     },
 
     guestUser: {
-      firstName: "",
-      lastName: "",
-      email: "",
-      phoneNumber: "",
-      address: "",
-      zipcode: "",
-      city: "",
+      aFirstname: "",
+      bLastname: "",
+      cEmail: "",
+      dPhonenumber: "",
+      gAddress: "",
+      fZipcode: "",
+      eCity: "",
       password: ""
     }
   },
