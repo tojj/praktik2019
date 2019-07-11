@@ -2,10 +2,10 @@ html {
   body {
     font-family: $small-text;
   }
-  body > div > main {
+  body > div {
     background-color: $secondary !important;
     display: flex;
-    min-height: 80vh;
+    min-height: 100vh;
     flex-direction: column;
     margin: 0;
     main {
@@ -26,4 +26,5 @@ html {
     background: #3a8885;
     color: #fff;
   }
+  #ads {display: none;}
 }
