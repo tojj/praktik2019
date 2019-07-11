@@ -302,6 +302,7 @@ export const guestUserData = {
     label: "Förnamn",
     type: "text",
     className: "form-input",
+    placeholder: ''
   },
   bLastname: {
     classNameFormGroup: "input50",
@@ -310,7 +311,8 @@ export const guestUserData = {
     classNameLabel: "ml-lg-2 birthday-label",
     label: "Efternamn",
     type: "text",
-    className: "form-input ml-lg-2"
+    className: "form-input ml-lg-2",
+    placeholder: ''
   },
   cEmail: {
     classNameFormGroup: "input50",
@@ -320,7 +322,8 @@ export const guestUserData = {
     label: "E-post",
     type: "email",
     className: "form-input",
-    tooltip: "Ange den epostadress du vill ha bekräftelsen skickad till."
+    tooltip: "Ange den epostadress du vill ha bekräftelsen skickad till.",
+    placeholder: ''
   },
   dPhonenumber: {
     classNameFormGroup: "input50",
@@ -330,7 +333,8 @@ export const guestUserData = {
     label: "Telefonnummer",
     type: "text",
     className: "form-input ml-lg-2",
-    tooltip: "Inga specialtecken eller mellanrum."
+    tooltip: "Inga specialtecken eller mellanrum.",
+    placeholder: '07XXXXXXXX'
   },
   eCity: {
     classNameFormGroup: "input50",
@@ -339,7 +343,8 @@ export const guestUserData = {
     classNameLabel: "birthday-label",
     label: "Stad",
     type: "text",
-    className: "form-input "
+    className: "form-input ",
+    placeholder: ''
   },
 
   fZipcode: {
@@ -349,7 +354,8 @@ export const guestUserData = {
     classNameLabel: "ml-lg-2 birthday-label",
     label: "Postnummer",
     type: "text",
-    className: "form-input ml-lg-2"
+    className: "form-input ml-lg-2",
+    placeholder: 'XXX XX'
   },
 
 
@@ -361,7 +367,8 @@ export const guestUserData = {
     label: "Gata",
     type: "text",
     className: "form-input",
-    tooltip: "Tänk på att detta inte bör vara samma adress som ovan, såvida inte kalaset kommer att äga rum hemma."
+    tooltip: "Tänk på att detta inte bör vara samma adress som ovan, såvida inte kalaset kommer att äga rum hemma.",
+    placeholder: ''
   },
 
   password: {
@@ -373,7 +380,8 @@ export const guestUserData = {
     type: "password",
     autocomplete: 'new-password',
     className: "form-input ml-lg-2",
-    tooltip: "Lösenordet kommer vara din åtkomst för att senare kunna bjuda in gäster."
+    tooltip: "Lösenordet kommer vara din åtkomst för att senare kunna bjuda in gäster.",
+    placeholder: '**'
 
   }
 }
