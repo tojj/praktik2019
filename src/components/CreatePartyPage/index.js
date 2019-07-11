@@ -47,7 +47,7 @@ class CreatePartyPage extends React.Component {
           }
         })
     }
-    
+
     this.schemaTimeAndPlace = {
       aDescription: Joi.string()
         .min(2)
@@ -220,7 +220,7 @@ class CreatePartyPage extends React.Component {
    */
   getDeadlineTime = () => {
     let deadline = new Date(this.props.birthdayTimeAndPlace.date ? this.props.birthdayTimeAndPlace.date : 0)
-    deadline = deadline.getTime()-172800001
+    deadline = deadline.getTime() - 172800001
     return deadline
   }
 
@@ -264,15 +264,15 @@ class CreatePartyPage extends React.Component {
 
   validateTimeAndPlace = () => {
     this.schemaTimeAndPlace.deadline = Joi.date()
-    .min(Date.now())
-    .max(this.getDeadlineTime())
-    .required()
-    .error(errors => {
-      return {
-        message:
-          "Ange OSA - skriv när du senast vill ha svar om folk kan komma. Detta måste vara senast tre dagar innan kalaset"
-      }
-    })
+      .min(Date.now())
+      .max(this.getDeadlineTime())
+      .required()
+      .error(errors => {
+        return {
+          message:
+            "Ange OSA - skriv när du senast vill ha svar om folk kan komma. Detta måste vara senast tre dagar innan kalaset"
+        }
+      })
     const result = Joi.validate(
       this.props.birthdayTimeAndPlace,
       this.schemaTimeAndPlace,
@@ -666,6 +666,23 @@ class CreatePartyPage extends React.Component {
       <div className="createpartypage-wrapper">
         <FormContainer />
         <Buttons createEvent={this.validateAll} />
+        <div style={{ padding: '0 5vw' }}>
+          <p style={{
+            position: 'relative',
+            width: '100%',
+            maxWidth: '800px',
+            fontWeight: '600',
+            fontSize: '1.2rem',
+            color: '#444655',
+            fontFamily: 'Montserrat',
+            margin: '0 auto 80px',
+            display: 'block',
+            padding: '30px',
+            border: '5px dotted #B164B8',
+          }}>
+            Genom att klicka på "Godkänn" så ingår du i ett avtal med Tojj och pengarna som eventuellt samlas in kommer att hanteras av Tojj. Läs mer på <a href="/avtal" style={{ color: '#B164B8' }}>användaravtal och villkor</a>.
+        </p>
+        </div>
         {this.modalShow ? <Modal /> : ""}
         {this.superModal()}
       </div>
