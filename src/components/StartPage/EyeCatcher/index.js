@@ -20,13 +20,7 @@ const EyeCatcher = () => (
       </video>
 
       <div className="bg-overlay" />
-      <Link
-        spy={true}
-        smooth={true}
-        duration={500}
-        to="prodinfo-container"
-      >
-      </Link>
+
     </div>
     <div className="box-1">
       <h2 className="main-heading" id="eye-catcher-heading">
@@ -40,7 +34,14 @@ const EyeCatcher = () => (
         Skapa kalas
       </a>
     </div>
-    <div className="arrow bounce" />
+    <Link
+      spy={true}
+      smooth={true}
+      duration={500}
+      to="prodinfo-container"
+    >
+      <div className="arrow bounce" />
+    </Link>
   </div>
 )
 
