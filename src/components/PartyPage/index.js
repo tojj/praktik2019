@@ -133,7 +133,7 @@ class PartyPage extends React.Component {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Läs mer...
+                  Läs mer
                 </a>
               </div>
               <div className="box toy-holder">
@@ -153,7 +153,7 @@ class PartyPage extends React.Component {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Läs mer...
+                  Läs mer
                 </a>
               </div>
               {party.donate ? (
@@ -175,7 +175,7 @@ class PartyPage extends React.Component {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    Läs mer...
+                    Läs mer
                   </a>
                 </div>
               ) : null}
@@ -190,7 +190,7 @@ class PartyPage extends React.Component {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Läs mer...
+                  Läs mer
                 </a>
               </div>
               <div className="box">
