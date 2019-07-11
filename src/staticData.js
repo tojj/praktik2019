@@ -336,30 +336,7 @@ export const guestUserData = {
     tooltip: "Inga specialtecken eller mellanrum.",
     placeholder: '07XXXXXXXX'
   },
-  eCity: {
-    classNameFormGroup: "input50",
-    id: "city-input",
-    name: "city",
-    classNameLabel: "birthday-label",
-    label: "Stad",
-    type: "text",
-    className: "form-input ",
-    placeholder: ''
-  },
-
-  fZipcode: {
-    classNameFormGroup: "input50 ",
-    id: "zipcode-input",
-    name: "zipcode",
-    classNameLabel: "ml-lg-2 birthday-label",
-    label: "Postnummer",
-    type: "text",
-    className: "form-input ml-lg-2",
-    placeholder: 'XXXXX'
-  },
-
-
-  gAddress: {
+  eAddress: {
     classNameFormGroup: "input50",
     id: "address-input",
     name: "address",
@@ -370,7 +347,26 @@ export const guestUserData = {
     tooltip: "Tänk på att detta inte bör vara samma adress som ovan, såvida inte kalaset kommer att äga rum hemma.",
     placeholder: ''
   },
-
+  fZipcode: {
+    classNameFormGroup: "input50 ",
+    id: "zipcode-input",
+    name: "zipcode",
+    classNameLabel: "ml-lg-2 birthday-label",
+    label: "Postnummer",
+    type: "text",
+    className: "form-input ml-lg-2",
+    placeholder: 'XXXXX'
+  },
+  gCity: {
+    classNameFormGroup: "input50",
+    id: "city-input",
+    name: "city",
+    classNameLabel: "birthday-label",
+    label: "Stad",
+    type: "text",
+    className: "form-input ",
+    placeholder: ''
+  },
   password: {
     classNameFormGroup: "input50",
     id: "pw-input",

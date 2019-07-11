@@ -264,15 +264,6 @@ class CreatePartyPage extends React.Component {
 
   validateTimeAndPlace = () => {
     this.schemaTimeAndPlace.deadline = Joi.date()
-      .min(Date.now())
-      .max(this.getDeadlineTime())
-      .required()
-      .error(errors => {
-        return {
-          message:
-            "Ange OSA - skriv när du senast vill ha svar om folk kan komma. Detta måste vara senast tre dagar innan kalaset"
-        }
-      })
     const result = Joi.validate(
       this.props.birthdayTimeAndPlace,
       this.schemaTimeAndPlace,
