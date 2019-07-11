@@ -94,7 +94,7 @@ class Checkout extends React.Component {
           keyVal={key}
           value={this.props.guestUser[key]}
           type={guestUserData[key].type}
-          placeholder={guestUserData[key].label}
+          placeholder={guestUserData[key].placeholder}
           className={guestUserData[key].className}
           callback={this.callback}
           autocomplete={guestUserData[key].autocomplete}
