@@ -45,14 +45,15 @@ class SwishQR extends React.Component {
         <p style={{
           position: 'relative',
           width: '100%',
+          maxWidth: '800px',
           fontWeight: '600',
           fontSize: '1.2rem',
-          color: 'black',
+          color: '#444655',
           fontFamily: 'Montserrat',
           margin: '2rem auto',
           display: 'block',
           padding: '30px',
-          border: '5px dotted #3a8885'
+          border: '5px dotted #B164B8'
         }}>
           Istället för att ta med egna presenter, går de inbjudna gästerna ihop för att tillsammans betala för presenten du har valt ovan.
           </p>
