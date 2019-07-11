@@ -53,7 +53,7 @@ const Footer = () => (
               <Mail size="18" /> info@tojj.se
             </a>
           </p>
-          <address className="mt-2">
+          <address>
             <a
               href="https://www.google.com/maps/place/Humlegatan+4,+211+27+Malm%C3%B6/@55.6071389,13.0082618,19.09z/data=!4m5!3m4!1s0x4653a3e350cd28af:0xb22bc0e96f471b67!8m2!3d55.6071248!4d13.0087734"
               target="_blank"
