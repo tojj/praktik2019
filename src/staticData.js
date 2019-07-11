@@ -71,14 +71,14 @@ export const productData = [
 export const formHeaderData = {
   aTitle: {
     className: " input100 form-control",
-    defaultValue: "Kalas på Leos Lekland",
+    defaultValue: "Barnkalas med hoppborg och fiskdamm",
     text: "Vad vill du ha som rubrik för kalaset?",
     id: "aTitle",
     tooltip: "Sammanfatta kalaset med en kort mening. Detta kommer att stå överst på din kalassida."
   },
   bName: {
     className: " input100 form-control",
-    defaultValue: "Barnets namn",
+    defaultValue: "Barnets förnamn",
     text: "Vem är kalaset för?",
     id: "bName"
   },
@@ -236,7 +236,7 @@ export const eventInputData = {
     classNameLabel: "birthday-label",
     text: "När är kalaset?",
     type: "date",
-    placeholder: "12:00",
+    placeholder: "åååå-mm-dd",
     className: "form-input",
     id: "bDate"
   },
@@ -246,7 +246,7 @@ export const eventInputData = {
     classNameLabel: "birthday-label",
     text: "",
     type: "time",
-    placeholder: "12:00",
+    placeholder: "hh:mm",
     className: "form-input mt-2 mt-lg-0 ml-lg-2",
     id: "cTime"
   },
@@ -254,7 +254,7 @@ export const eventInputData = {
     classNameFormGroup: "input100",
     name: "asv", //cryptic in order to avoid autofill
     classNameLabel: "birthday-label",
-    text: "Plats",
+    text: "Plats för kalaset",
     type: "text",
     placeholder: "Gatuadress eller plats",
     className: "form-input",
@@ -268,7 +268,7 @@ export const eventInputData = {
     text: "",
     type: "text",
     placeholder: "Postnr",
-    className: "form-input mt-2",
+    className: "form-input",
     id: "asc" //cryptic in order to avoid autofill
   },
   fCity: {
@@ -278,7 +278,7 @@ export const eventInputData = {
     text: "",
     type: "text",
     placeholder: "Stad",
-    className: "form-input mt-2 ml-lg-2",
+    className: "form-input ml-lg-2",
     id: "asd" //cryptic in order to avoid autofill
   },
   gDeadline: {
@@ -287,7 +287,7 @@ export const eventInputData = {
     classNameLabel: "birthday-label",
     text: "När vill du senast ha svar om vem som kommer?",
     type: "date",
-    placeholder: "",
+    placeholder: "åååå-mm-dd",
     className: "form-input input75",
     id: "gDeadline"
   }
@@ -355,7 +355,7 @@ export const guestUserData = {
     label: "Postnummer",
     type: "text",
     className: "form-input ml-lg-2",
-    placeholder: 'XXX XX'
+    placeholder: 'XXXXX'
   },
 
 
@@ -381,7 +381,7 @@ export const guestUserData = {
     autocomplete: 'new-password',
     className: "form-input ml-lg-2",
     tooltip: "Lösenordet kommer vara din åtkomst för att senare kunna bjuda in gäster.",
-    placeholder: '**'
+    placeholder: ''
 
   }
 }
