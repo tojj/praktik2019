@@ -187,11 +187,31 @@ class Form_footer extends React.Component {
             {this.state.allCharityData ? (
               <div className="fundraiser-container">{this.renderCharity()}</div>
             ) : (
-              <div />
-            )}
+                <div />
+              )}
           </div>
         ) : null}
+
+        <div style={{ padding: '0 5vw' }}>
+          <p style={{
+            position: 'relative',
+            width: '100%',
+            maxWidth: '800px',
+            fontWeight: '600',
+            fontSize: '1.2rem',
+            color: '#444655',
+            fontFamily: 'Montserrat',
+            margin: '2rem auto 50px',
+            display: 'block',
+            padding: '30px',
+            border: '5px dotted #B164B8',
+          }}>
+            Här har du möjlighet att bestämma vad du vill göra med eventuellt överskott. Donera det till välgörenhet eller inte?
+          </p>
+        </div>
+
         <Checkout />
+
       </div>
     )
   }

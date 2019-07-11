@@ -72,7 +72,12 @@ class Form_header extends Component {
       let id = key
       let element = document.getElementById(id)
       element.classList.add("invalid")
-    }
+    } 
+     if (!/\s/.test(value) && value.length > 25 && key === 'aTitle') {
+      let id = key
+      let element = document.getElementById(id)
+      element.classList.add("invalid")
+   }
 
     if (value.length > 1 && key === 'bName') {
       let id = key

@@ -6,7 +6,7 @@
   .buttons-container {
     $marginBtn: 10px;
     width: 240px;
-    margin: 40px auto 80px;
+    margin: 40px auto;
     display: flex;
     flex-wrap: wrap;
     .buttons-row1{
@@ -72,11 +72,14 @@
     position: relative;
     width: 100%;
     min-height: 0 !important;
-    padding: 10vh 0;
     justify-content: center;
     align-content: center;
     align-items: center;
-    padding: 15vw 5vw 0 !important;
+    padding: 15vw 5vw 0;
+
+    &.padding-fix {
+      padding-top: 0;
+    }
 
     input,
     textarea,
@@ -90,7 +93,7 @@
     }
 
     @include media-breakpoint-up(lg) {
-      padding: 5vw 5vw 0 !important;
+      padding: 5vw 5vw 0;
       .time-label {
         display: flex;
         & input:nth-of-type(2) {
@@ -170,12 +173,13 @@
     }
 
     @include media-breakpoint-up(md) {
-      padding: 0;
       h2 {
         font-size: 3rem;
       }
     }
     @include media-breakpoint-up(lg) {
+      padding: 5vw 5vw 0;
+
       flex-direction: row;
       .box:nth-of-type(1) {
         padding-right: 10px;
