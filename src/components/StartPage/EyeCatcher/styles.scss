@@ -6,20 +6,14 @@
   text-align: center;
   width: 100%;
   height: 90vh;
-  min-height: 650px;
-
-  .bg-overlay {
-    background-color: rgba(0, 0, 0, 0.2);
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
+  @media only screen and (max-height: 600px){
+    height: calc(100vh - 60px);
   }
+  background-image: url("/images/startpage/startpage-background.jpg");
+
   .arrow {
     position: absolute;
-    bottom: 10px;
+    bottom: 0;
     left: 50%;
     margin-left: -20px;
     width: 40px;
@@ -34,7 +28,7 @@
   }
 
   .bounce {
-    animation: bounce 2s infinite;
+    animation: bounce 4s infinite;
   }
 
   @keyframes bounce {
@@ -42,25 +36,36 @@
     20%,
     50%,
     80%,
+    90%,
     100% {
       transform: translateY(0);
     }
-    40% {
-      transform: translateY(-30px);
+    85% {
+      transform: translateY(-20px);
     }
-    60% {
-      transform: translateY(-15px);
+    95% {
+      transform: translateY(-10px);
     }
   }
 
   .video-container {
     position: absolute;
     top: 0;
-    bottom: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     overflow: hidden;
+    display: none;
+
+    @media only screen and (min-width: 600px) and (min-height: 600px) {
+      display: block;
+      
+    }
+    @media only screen and (min-width: 1024px) and (orientation: landscape) {
+      display: block;
+    }
     .bg-video {
+      display: block;
       min-width: 100%;
       min-height: 100%;
       width: auto;
@@ -70,43 +75,76 @@
       left: 50%;
       transform: translate(-50%, -50%);
     }
-  }
-
-  h2 {
-    font-family: $big-text;
-    font-weight: 800;
-    font-size: 2.5rem;
-  }
-  p {
-    font-family: $small-text;
-    font-size: 1.5rem;
-    margin-bottom: 1.5rem;
-    color: white;
+    .bg-overlay {
+      background-color: rgba(0, 0, 0, 0.2);
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
   }
   .box-1 {
+    display: block;
     max-width: 100%;
-    position: absolute;
-    top: 27%;
-    padding: 0 5vw;
+    position: relative;
+    padding: 15vh 5vw;
+    color: $primary;
+    @media only screen and (min-width: 600px) and (min-height: 600px) {
+      color: #fff;
+    }
+    @media only screen and (min-width: 1024px) and (orientation: landscape) {
+      color: #fff;
+    }
+    h2 {
+      font-family: $big-text;
+      font-weight: 800;
+      font-size: 2.5rem;
+    }
+    p {
+      font-family: $small-text;
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    @include media-breakpoint-up(sm) {
+      h2 {
+        font-size: 3rem;
+      }
+      p {
+        font-size: 1.5rem;
+      }
+    }
+    @include media-breakpoint-up(lg) {
+      padding-top: 8%;
+      width: 50%;
+      max-width: 800px;
+      text-align: left;
 
-    @include media-breakpoint-up(md) {
-      top: 30%;
-      max-width: 900px;
-      padding: 10vw;
+      h2 {
+        font-size: 3.5rem;
+      }
+      p {
+        font-size: 1.75rem;
+      }
+    }
+    @include media-breakpoint-up(xl) {
       h2 {
         font-size: 4.5rem;
       }
     }
-    @include media-breakpoint-up(lg) {
-      padding: 0 10vh;
-      text-align: left !important;
-    }
-    @include media-breakpoint-up(xl) {
-      p {
-        font-size: 1.5rem !important;
-      }
-    }
-    color: white;
+
+    // @media only screen and (min-width: 600px) and (min-height: 600px) {
+    //   color: white;
+    //   @include media-breakpoint-up(lg) {
+    //     padding-top: 25vh;
+    //     width: 50%;
+    //     max-width: 800px;
+    //     text-align: left;
+    //   }
+    // }
+    // @media only screen and (min-width: 1024px) and (orientation: landscape) {
+    // }
 
     .link-eye-catcher {
       background: #b164b8;

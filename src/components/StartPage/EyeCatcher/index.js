@@ -2,6 +2,7 @@ import React from "react"
 import { Link } from "react-scroll"
 
 const videoURL = "/images/startpage/bg-vid.mp4"
+const posterImage = "/images/startpage/bg-img.jpg"
 
 const EyeCatcher = () => (
   <div className="eye-catcher" id="eye-catcher">
@@ -11,12 +12,13 @@ const EyeCatcher = () => (
         id="background-video"
         loop
         autoPlay
-        muted={true}
+        muted
         preload="auto"
-        poster="/images/startpage/bg-img.jpg"
+        poster={posterImage}
       >
         <source src={videoURL} type="video/mp4" />
       </video>
+
       <div className="bg-overlay" />
       <Link
         spy={true}
@@ -24,7 +26,6 @@ const EyeCatcher = () => (
         duration={500}
         to="prodinfo-container"
       >
-        <div className="arrow bounce" />
       </Link>
     </div>
     <div className="box-1">
@@ -39,6 +40,7 @@ const EyeCatcher = () => (
         Skapa kalas
       </a>
     </div>
+    <div className="arrow bounce" />
   </div>
 )
 
