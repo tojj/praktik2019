@@ -45,9 +45,9 @@ export default {
       bLastname: "",
       cEmail: "",
       dPhonenumber: "",
-      gAddress: "",
+      eAddress: "",
       fZipcode: "",
-      eCity: "",
+      gCity: "",
       password: ""
     }
   },
