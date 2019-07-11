@@ -150,7 +150,7 @@ class CreatePartyPage extends React.Component {
             message: "Ange ditt efternamn"
           }
         }),
-      gAddress: Joi.string()
+      eAddress: Joi.string()
         .min(3)
         .max(30)
         .required()
@@ -176,7 +176,7 @@ class CreatePartyPage extends React.Component {
             message: "Ange ditt telefonnummer"
           }
         }),
-      eCity: Joi.string()
+      gCity: Joi.string()
         .min(2)
         .max(20)
         .required()
