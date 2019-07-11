@@ -4,10 +4,9 @@ import MapsGen from "../PartyPage/MapsGen/index"
 import { Link } from "react-router-dom"
 
 class PreviewPage extends Component {
-
   /**
    * Due to safari bug with Object.keys and redux together
-   * We had to sort our map rendering methods which is 
+   * We had to sort our map rendering methods which is
    * Why we chose variable names to begin with a, b, c and so on.
    */
   render() {
@@ -69,8 +68,17 @@ class PreviewPage extends Component {
           </div>
           <div className="box-container border-top party-payment no-print">
             <div className="box swish-holder">
-              <div className="qr-code box-img" style={{background: '#6C80C5'}}>
-                <img src={"http://betalamedswish.se/API/Get/?n=0709629276&a=1337&m=FÖRHANDSVISNING&la=true&lm=true&s=500"} className="img-fluid" alt="qr-code" />
+              <div
+                className="qr-code box-img"
+                style={{ background: "#6C80C5" }}
+              >
+                <img
+                  src={
+                    "http://betalamedswish.se/API/Get/?n=0709629276&a=1337&m=FÖRHANDSVISNING&la=true&lm=true&s=500"
+                  }
+                  className="img-fluid"
+                  alt="qr-code"
+                />
               </div>
               <p>Swish</p>
               <p>
@@ -80,36 +88,51 @@ class PreviewPage extends Component {
             </div>
             <div className="box toy-holder">
               <div className="box-img">
-                <img src={this.props.present.image} className="img-fluid" alt="qr-code" />
+                <img
+                  src={this.props.present.image}
+                  className="img-fluid"
+                  alt="qr-code"
+                />
               </div>
               <p>Present</p>
               <p>
-                Pengarna som samlas in kommer att gå till att köpa {this.props.present.name} som{" "}
-                {this.props.birthdayEvent.bName} önskar sig.
+                Pengarna som samlas in kommer att gå till att köpa{" "}
+                {this.props.present.name} som {this.props.birthdayEvent.bName}{" "}
+                önskar sig.
               </p>
-              <a href={this.props.present.link} target="_blank" rel="noopener noreferrer">
-                Läs mer...
-              </a>
-            </div>
-
-            {this.props.fundraiser.donate ? <div className="box karma-holder">
-              <div className="box-img">
-                <img src={this.props.fundraiser.image} className="img-fluid" alt="fundraiser" />
-              </div>
-              <p>Överskott</p>
-              <p>
-                Eventuellt överskott har vi valt att skänka direkt till {this.props.fundraiser.name}.
-                Om du vill veta mer om organisationen kan du klicka nedan.
-                </p>
               <a
-                href={this.props.fundraiser.link}
+                href={this.props.present.link}
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Läs mer...
-                </a>
-            </div> : null }
+                Läs mer
+              </a>
+            </div>
 
+            {this.props.fundraiser.donate ? (
+              <div className="box karma-holder">
+                <div className="box-img">
+                  <img
+                    src={this.props.fundraiser.image}
+                    className="img-fluid"
+                    alt="fundraiser"
+                  />
+                </div>
+                <p>Överskott</p>
+                <p>
+                  Eventuellt överskott har vi valt att skänka direkt till{" "}
+                  {this.props.fundraiser.name}. Om du vill veta mer om
+                  organisationen kan du klicka nedan.
+                </p>
+                <a
+                  href={this.props.fundraiser.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Läs mer
+                </a>
+              </div>
+            ) : null}
           </div>
           <div className="box-container party-attending border-top no-print">
             <div className="box attending-holder">
@@ -125,7 +148,8 @@ class PreviewPage extends Component {
                 {this.props.birthdayTimeAndPlace.dStreet}
               </p>
               <p className="party-zip-city">
-                {this.props.birthdayTimeAndPlace.eZip} {this.props.birthdayTimeAndPlace.fCity}
+                {this.props.birthdayTimeAndPlace.eZip}{" "}
+                {this.props.birthdayTimeAndPlace.fCity}
               </p>
               <p className="party-rsvp">
                 OSA senast <br />
@@ -145,7 +169,7 @@ class PreviewPage extends Component {
             </Link>
           </div>
         </div>
-      </div >
+      </div>
     )
   }
 }

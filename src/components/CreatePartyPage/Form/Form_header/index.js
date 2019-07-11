@@ -64,7 +64,6 @@ class Form_header extends Component {
 
   callback = (value, key) => {
     this.props.updateBday({ [key]: value })
-    console.log(key)
     if (value.length > 2 && key === 'aTitle') {
       let id = key
       let element = document.getElementById(id)

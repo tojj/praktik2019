@@ -71,9 +71,9 @@ export const productData = [
 export const formHeaderData = {
   aTitle: {
     className: " input100 form-control",
-    defaultValue: "",
+    defaultValue: "Kalas på Leos Lekland",
     text: "Vad vill du ha som rubrik för kalaset?",
-    id: "title",
+    id: "aTitle",
     tooltip: "Sammanfatta kalaset med en kort mening. Detta kommer att stå överst på din kalassida."
   },
   bName: {
