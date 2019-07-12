@@ -183,7 +183,9 @@
   z-index: 1000;
   //border-radius: 10px;
   border-radius: 10px;
+  
   &:hover {
+    cursor: pointer;
     transition: all 200ms ease-in;
     background-color: #4761b73d;
   }
@@ -202,6 +204,8 @@
   z-index: 1000;
   background-position-x: -30%;
   background-position-y: -50%;
+  cursor: pointer;
+
   //border-color: #6C80C5;
   //border-radius: 10px;
   //border-style: solid;
