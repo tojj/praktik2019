@@ -261,7 +261,7 @@ class ConfirmationPage extends React.Component {
             </p>
             <ul>
               <li>
-                När presentens summa är uppnådd kommer ett kommer ett mail till
+                När presentens summa är uppnådd kommer ett mail till
                 dig.
               </li>
               <li>Presenten skickas så fort summan är nådd, bra va?</li>
