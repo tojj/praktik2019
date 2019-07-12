@@ -1,7 +1,8 @@
 import React, { Component } from "react"
 import { connect } from "react-redux"
-import MapsGen from "../PartyPage/MapsGen/index"
 import { Link } from "react-router-dom"
+import MapsGen from "../PartyPage/MapsGen/index"
+import SwishCode from "../SwishCode"
 
 class PreviewPage extends Component {
   /**
@@ -68,22 +69,13 @@ class PreviewPage extends Component {
           </div>
           <div className="box-container border-top party-payment no-print">
             <div className="box swish-holder">
-              <div
-                className="qr-code box-img"
-                style={{ background: "#6C80C5" }}
-              >
-                <img
-                  src={
-                    "http://betalamedswish.se/API/Get/?n=0709629276&a=1337&m=FÖRHANDSVISNING&la=true&lm=true&s=500"
-                  }
-                  className="img-fluid"
-                  alt="qr-code"
-                />
+              <div className="qr-code box-img">
+                <SwishCode payee="0708358158" amount={this.props.swish ? this.props.swish : '100'} message="Förhandsgranskning" />
               </div>
               <p>Swish</p>
               <p>
                 Skanna koden ovan med hjälp av swish-appen för att betala{" "}
-                {this.props.swishMoney} kronor av presenten
+                {this.props.swish ? this.props.swish : '<Fyll i swishbelopp>'} kronor av presenten
               </p>
             </div>
             <div className="box toy-holder">
@@ -179,6 +171,7 @@ const mapStateToProps = state => {
     birthdayEvent: state.birthday.birthdayEvent,
     birthdayImage: state.birthday.birthdayImage,
     birthdayTimeAndPlace: state.birthday.birthdayTimeAndPlace,
+    swish: state.swish.swishMoney,
     fundraiser: state.birthday.fundraiser,
     present: state.birthday.present
   }
