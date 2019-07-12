@@ -51,6 +51,7 @@
   .video-container {
     background-image: url("/images/startpage/bg-img.jpg");
     position: absolute;
+    filter: contrast(0.7);
     top: -10vh;
     left: 0;
     width: 100%;
@@ -76,7 +77,7 @@
       transform: translate(-50%, -50%);
     }
     .bg-overlay {
-      background-color: rgba(0, 0, 0, 0.2);
+      background-color: rgba(0, 0, 0, 0.3);
       position: absolute;
       top: 0;
       bottom: 0;

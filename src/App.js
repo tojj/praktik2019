@@ -19,23 +19,26 @@ import ContractPage from "./components/ContractPage/index"
 const App = props => {
   return (
     <Router>
-      <header>
-        <Switch>
-          <Route
-            exact
-            path="/"
-            render={(...routeProps) => (
+
+      <Switch>
+        <Route
+          exact
+          path="/"
+          render={(...routeProps) => (
+            <header className="header-startpage">
               <Header {...routeProps} startPage={true} />
-            )}
-          />
-          <Route
-            path="/"
-            render={(...routeProps) => (
+            </header>
+          )}
+        />
+        <Route
+          path="/"
+          render={(...routeProps) => (
+            <header>
               <Header {...routeProps} startPage={false} />
-            )}
-          />
-        </Switch>
-      </header>
+            </header>
+          )}
+        />
+      </Switch>
       <main id="main">
         <Switch>
           <Route exact path="/" component={StartPage} />
