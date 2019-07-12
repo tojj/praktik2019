@@ -14,6 +14,9 @@
     }
     border-radius: 5px;
   }
+  .conf-info {
+    margin: 20px 0;
+  }
   .conf-headline {
     font-family: $big-text;
     font-weight: 800;
@@ -102,8 +105,15 @@
   }
   .msg-container {
     .msg-text {
-      text-align: left;
-
+      max-width: 600px;
+      margin: 0 auto;
+      text-align: center;
+      ul {
+        text-align: left;
+        li {
+        margin-bottom: 1rem;
+        }
+      }
       h2 {
         margin: 1rem 0;
         font-family: $big-text;

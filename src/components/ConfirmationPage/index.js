@@ -199,9 +199,15 @@ class ConfirmationPage extends React.Component {
     return (
       <div className="conf-wrapper">
         <div className="invite-container">
-          <h1 className="conf-headline">Grattis ditt kalas är skapat!</h1>
+          <h1 className="conf-headline">Hurra ditt kalas är skapat!</h1>
           <p className="conf-info">
-            Fyll i de epostadresser du vill skicka en inbjudan till.
+              En bekräftelse har skickats till den mail du angett.
+            </p>
+          <p className="conf-info">
+            Kalaset finns nu tillgängligt för andra med länken och du når sidan via <a className="text-info" style={{textDecoration: 'none'}} href={"/kalas/" + this.props.eventLink}>{window.location.origin}/kalas/{this.props.eventLink}</a>
+          </p>
+          <p className="conf-info mt-5">
+            Om du vill bjuda in gästerna via epost kan du enkelt göra det nedan genom att fylla i de epostadresser du vill skicka en inbjudan till.
           </p>
           <BirthdayInvite
             addEmail={this.addEmail}
@@ -256,15 +262,12 @@ class ConfirmationPage extends React.Component {
         </div>
         <div className="msg-container">
           <div className="msg-text">
-            <p className="my-4 text-center">
-              En bekräftelse har skickats till den mail du angett.
-            </p>
-            <ul>
+            <ul className="my-4">
               <li>
-                När presentens summa är uppnådd kommer ett mail till
-                dig.
+                När kalasets OSA-datum har nåtts kommer ett mail skickas till dig med aktuell information.
               </li>
-              <li>Presenten skickas så fort summan är nådd, bra va?</li>
+              <li>
+                Presenten skickas så fort summan är nådd, bra va?</li>
               <li>
                 Du kan alltid skicka ut fler inbjudningar vid ett senare
                 tillfälle om du råkar glömma någon.
