@@ -71,7 +71,7 @@ class ImageHandler extends React.Component {
     ? <img src={this.props.birthdayImage} alt=""/>
     : (
       <div>
-        <p className="image-text">Välj bakgrundsbild</p>
+        <p className="image-text">Bakgrundsbild</p>
         <Image className="img-icon container-image" size={48} />
       </div>
     )
@@ -86,10 +86,10 @@ class ImageHandler extends React.Component {
 
         </div>
         <Dropdown className="image-dropdown force-top" isOpen={this.state.dropdownOpen} toggle={this.toggle} style={{ border: 'none', padding: '0' }}>
-          <DropdownToggle color="primary">
+          <DropdownToggle color="info">
             Välj bild <ArrowDownCircle />
           </DropdownToggle>
-          <DropdownMenu className="dd-menu force-top" style={{ width: '100%', padding: '5px' }}>
+          <DropdownMenu right className="dd-menu force-top" style={{ width: '100%', padding: '5px' }}>
             {staticData.imageHandlerData.map(this.renderImages)}
           </DropdownMenu>
         </Dropdown>

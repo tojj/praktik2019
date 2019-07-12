@@ -47,10 +47,10 @@
     "slick-carousel": "^1.8.1"
   },
   "scripts": {
-    "start": "node server.js",
+    "start": "node",
     "dev": "react-scripts start",
     "build": "react-scripts build",
-    "prod": "npm run build && node server.js",
+    "prod": "npm run build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

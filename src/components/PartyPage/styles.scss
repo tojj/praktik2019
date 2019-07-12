@@ -136,6 +136,21 @@
           text-align: center;
         }
       }
+      .attending-form {
+        min-width: 250px;
+        max-width: 350px;
+        width: 100%;
+        margin: 0 auto;
+        .attendee-input {
+          padding: 3px;
+          display: block;
+          width: 100%;
+          margin-top: 1rem;
+          border: 1px solid rgba(0, 0, 0, 0.1);
+          border-radius: 3px;
+
+        }
+      }
     }
     .party-location {
       @include media-breakpoint-up(md) {

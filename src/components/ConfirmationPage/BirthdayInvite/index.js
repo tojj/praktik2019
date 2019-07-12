@@ -11,13 +11,15 @@ class BirthdayInvite extends React.Component {
   submitForm = (e) => {
     e.preventDefault()
     const email = document.getElementById('email-input').value
-    const emailList = this.props.invitedList.concat() // concat prevents mutation of original array
+    const emailList = this.props.invitedList.concat() // concat prevents mutation of original array (Can also use spread operator)
     const newEmailList = emailList.push(email)
     this.setState({ invited: newEmailList })
     this.props.addEmail(e)
   }
+  /**
+   * Function so you can press enter to add email.
+   */
   onEnterPress = (e) => {
-
     if (e.key === 'Enter') {
       document.getElementById('submit-email').click();
     }

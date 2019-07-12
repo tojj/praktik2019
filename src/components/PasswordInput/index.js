@@ -1,6 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import { Eye } from 'react-feather'
+import { connect } from 'react-redux'
 import ConfirmationPage from '../ConfirmationPage/index'
 
 class PasswordInput extends React.Component {
@@ -13,27 +14,36 @@ class PasswordInput extends React.Component {
       loggedIn: false,
       link: this.props.match.params.link
     }
-    this.validateInput = this.validateInput.bind(this)
   }
-  
-  async validateInput(input) {
-    let event = await axios({
+
+  /**
+   * If user already written password a session is saved.
+   * This is to validate this, if password was entered already get user to correct route.
+   */
+  validateInput = input => {
+    axios({
       method: 'get',
-      url: `/api/events/populated/${this.state.link}`
+      url: `/api/events/populated/${this.state.link}/login?input=${input}`,
+    }).then(response => {
+      if (response.data) {
+        this.setState({ loggedIn: true })
+      } else {
+        this.setState({ error: true })
+      }
     })
-    event = event.data
-    if (input === event.password) {
-      console.log('success');
-      this.setState({loggedIn: true })
-    } else {
-      console.log('mis match');
-      
-      this.setState({error: true})
-    }
+      .catch(error => {
+        console.log(error.response)
+      })
   }
   componentDidMount() {
-    console.log(this.props);
-    
+    if (this.props.guestUser.password) {
+      this.validateInput(this.props.guestUser.password)
+    } else {
+      document.title = 'Tojj - Logga in'
+      document.getElementById('pw-input').focus();
+
+      return
+    }
   }
   onChangeHandler = (e) => {
     this.setState({
@@ -59,7 +69,7 @@ class PasswordInput extends React.Component {
   }
   render() {
     if (this.state.loggedIn) {
-      return <ConfirmationPage history={this.props.history} eventLink={this.state.link}/>
+      return <ConfirmationPage history={this.props.history} eventLink={this.state.link} />
     } else {
       return (
         <div style={{
@@ -125,4 +135,10 @@ class PasswordInput extends React.Component {
   }
 }
 
-export default PasswordInput
+const mapStateToProps = state => {
+  return {
+    guestUser: state.birthday.guestUser,
+  }
+}
+
+export default connect(mapStateToProps)(PasswordInput)

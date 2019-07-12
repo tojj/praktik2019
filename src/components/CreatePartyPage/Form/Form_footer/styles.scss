@@ -16,93 +16,45 @@
     margin: 0 8px 0 8px;
   }
 
-  .slider-div {
-    min-height: 20vh;
-    max-width: 200px;
-  }
-
-  .slider-container {
-    width: 100%;
-    height: 100%;
-    align-content: center !important;
-    justify-content: center !important;
-    text-align: center !important;
-    padding: 0 5% 0 5%;
-  }
-
-  .slider-content {
-    max-width: 80% !important;
-    margin: 0 auto 0 auto;
-  }
-
-  .slick-next:before {
-    text-align: left;
-    font-size: 40px;
-    line-height: 1;
-    opacity: 0.75;
-    color: #000;
-  }
-  .slick-prev:before {
-    text-align: center;
-    font-size: 40px;
-    line-height: 1;
-    opacity: 0.75;
-    color: #000;
-  }
-
-  .slick-prev {
-    left: -45px;
-  }
-
   .charImg {
     width: 100%;
-    height: 200px;
+    height: 100%;
     background-size: cover;
     cursor: pointer;
-    border-style: solid;
-    border-color: #4762b7;
-    border-width: 0px;
     transition: border-width 0.2s;
     border-radius: 10px;
-    &:hover {
-      border-style: solid;
-      border-width: 5px;
-      border-color: #4762b7;
-      transition: border-width 0.2s;
-    }
+    
   }
 
   .max-height {
     height: 100%;
   }
-  .slick-current .charImg {
-    border: 5px solid $primary;
-  }
+
   .text-center {
     text-align: center;
   }
 
-  .box-container {
-    display: flex;
-    flex-direction: column;
-    // flex-wrap: wrap;
-    position: relative;
+  // .box-container {
+  //   display: flex;
+  //   flex-direction: column;
+  //   // flex-wrap: wrap;
+  //   position: relative;
 
-    width: 100%;
+  //   width: 100%;
 
-    padding: 8vh 0;
+  //   padding: 8vh 0;
 
-    justify-content: center;
-    align-content: center;
-    align-items: center;
-    .box {
-      width: 100%;
-    }
+  //   justify-content: center;
+  //   align-content: center;
+  //   align-items: center;
+  //   .box {
+  //     width: 100%;
+  //   }
 
-    .box-check {
-      width: auto;
-    }
-  }
+  //   .box-check {
+  //     width: auto;
+  //   }
+  // }
 
   .inputauto {
     width: auto !important;
@@ -118,6 +70,7 @@
     margin: 10px 0;
     position: relative;
     border-radius: 10px;
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.1);
 
     .radio-label {
       padding: 8px 20px;
@@ -138,7 +91,7 @@
         height: 15px;
         border-radius: 50%;
         content: "";
-        background-color: #4762b7;
+        background-color: $primary;
         position: absolute;
         left: 50%;
         top: 50%;
@@ -209,29 +162,70 @@
     margin-top: 2rem;
   }
 }
-.slick-current {
-  .charity-overlay {
-    justify-content: center;
-    position: absolute;
-    width: 200px;
-    height: 200px;
-    background-color: #4761b73d;
-    z-index: 1000;
-    //border-radius: 10px;
-    transition: all 150ms ease-in;
-    border-radius: 10px;
-  }
+.charity-overlay {
+  justify-content: center;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #4761b73d;
+  z-index: 1000;
+  //border-radius: 10px;
+  //transition: all 150ms ease-in;
+  border-radius: 10px;
+}
 
-  .charity-checkmark {
-    background-image: url("data:image/svg+xml,%3Csvg width='264' height='264' viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5.414 11L4 12.414l5.414 5.414L20.828 6.414 19.414 5l-10 10z' fill='%23008A64' fill-rule='nonzero'/%3E%3C/svg%3E ");
-    z-index: 10 !important;
-    position: absolute;
-    width: 200px;
-    height: 200px;
-    background-repeat: no-repeat;
-    justify-content: center;
-    text-align: center;
-    transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
-    z-index: 1000;
+.charity-overlay-hover {
+  justify-content: center;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #4761b700;
+  z-index: 1000;
+  //border-radius: 10px;
+  border-radius: 10px;
+  
+  &:hover {
+    cursor: pointer;
+    transition: all 200ms ease-in;
+    background-color: #4761b73d;
   }
+}
+
+.charity-checkmark {
+  background-image: url("data:image/svg+xml,%3Csvg width='264' height='264' viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5.414 11L4 12.414l5.414 5.414L20.828 6.414 19.414 5l-10 10z' fill='%23008A64' fill-rule='nonzero'/%3E%3C/svg%3E ");
+  z-index: 10 !important;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  justify-content: center;
+  text-align: center;
+  transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1000;
+  background-position-x: -30%;
+  background-position-y: -50%;
+  cursor: pointer;
+
+  //border-color: #6C80C5;
+  //border-radius: 10px;
+  //border-style: solid;
+  //border-width: 4px;
+}
+
+.fundraiser-container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.fundraiserWidth {
+  position: relative;
+  width: 230px;
+  height: 230px;
+  margin: 15px 15px;
+  border-radius: 10px;
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.1);
 }

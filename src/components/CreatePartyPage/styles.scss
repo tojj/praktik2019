@@ -1,63 +1,65 @@
 .createpartypage-wrapper {
   label {
-    color: #4762b7;
+    color: $primary;
     font-weight: bold;
   }
   .buttons-container {
-    margin: 80px 0 80px 0;
+    $marginBtn: 10px;
+    width: 240px;
+    margin: 40px auto;
+    display: flex;
+    flex-wrap: wrap;
+    .buttons-row1{
+      flex: 2
+    }
+    .buttons-row2 {
+      justify-content: space-around;
+      flex: 1;
+      margin-top: $marginBtn;
+    }
     .buttons-row1,
     .buttons-row2 {
       display: flex;
       position: relative;
       width: 100%;
       justify-content: center;
-      .link-cancel {
-        background-color: red;
+      .link-cancel,
+      .link-party-page,
+      .link-preview-page {
+        border: 0;
+        border-radius: 3px;
         text-align: center;
         color: white;
         font-family: $big-text;
         font-weight: 800;
         font-size: 20px;
-        padding: 5px 5px;
-        margin: 5px 5px 5px 0;
+        padding: 5px;
         transition: all 0.3s;
-        min-width: 110px;
+        margin: 0 3px 0 3px;
         &:hover {
-          color: $secondary;
-          background-color: #ff5151;
           text-decoration: none;
+        }
+      }
+      .link-cancel {
+        margin-right: $marginBtn;
+        flex: 1;
+        background-color: $danger;
+        &:hover {
+          background-color: rgb(219, 49, 89);
         }
       }
       .link-party-page {
-        background-color: #007e50;
-        color: white;
-        font-family: $big-text;
-        font-weight: 800;
-        font-size: 20px;
-        padding: 5px 7px;
-        margin: 5px 0 5px 5px;
-        transition: all 0.3s;
-        border: none;
+        flex: 1;
+        background-color: $info;
         &:hover {
-          color: $secondary;
-          background-color: #009b62;
-          text-decoration: none;
+          background-color: rgb(190, 107, 197);
         }
       }
       .link-preview-page {
-        background-color: #007e50;
-        color: white;
-        font-family: $big-text;
-        font-weight: 800;
-        font-size: 20px;
-        padding: 5px 5px;
-        margin: 5px 0 5px 0;
-        transition: all 0.3s;
-        min-width: 230px;
-        text-align: center;
+        flex: 1;
+        background-color: #3a8885;
         &:hover {
-          color: $secondary;
-          background-color: #009b62;
+          background-color: rgb(78, 156, 153);
           text-decoration: none;
         }
       }
@@ -70,11 +72,14 @@
     position: relative;
     width: 100%;
     min-height: 0 !important;
-    padding: 10vh 0;
     justify-content: center;
     align-content: center;
     align-items: center;
-    padding: 15vw 5vw 0 !important;
+    padding: 15vw 5vw 0;
+
+    &.padding-fix {
+      padding-top: 0;
+    }
 
     input,
     textarea,
@@ -82,12 +87,13 @@
     .input20,
     .input25,
     .input50,
+    .input75,
     .input100 {
       width: 100%;
     }
 
     @include media-breakpoint-up(lg) {
-      padding: 5vw 5vw 0 !important;
+      padding: 5vw 5vw 0;
       .time-label {
         display: flex;
         & input:nth-of-type(2) {
@@ -109,7 +115,10 @@
       .input50 {
         width: 50%;
       }
-
+      .input75 {
+        width: 73%;
+        display: inline-block;
+      }
       .input100 {
         width: 100%;
       }
@@ -143,7 +152,7 @@
         font-weight: 800;
       }
       h2 {
-        font-size: 2.5rem;
+        font-size: 2rem;
       }
 
       @include media-breakpoint-down(sm) {
@@ -164,12 +173,13 @@
     }
 
     @include media-breakpoint-up(md) {
-      padding: 0;
       h2 {
         font-size: 3rem;
       }
     }
     @include media-breakpoint-up(lg) {
+      padding: 5vw 5vw 0;
+
       flex-direction: row;
       .box:nth-of-type(1) {
         padding-right: 10px;
@@ -213,7 +223,7 @@
 .modal-body {
   background: $secondary;
   font-family: "Open Sans", sans-serif;
-  ul {
+  li {
     border-bottom: 1px solid #4761b744;
     //padding: 0 10px 0 10px;
     margin-bottom: 15px;

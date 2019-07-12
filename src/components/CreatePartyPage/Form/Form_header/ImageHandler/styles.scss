@@ -1,8 +1,8 @@
 .image-pick-container {
-  border: 2px solid $primary;
-  height: 300px;
-  width: 300px;
-  border-radius: 50%;
+  border: 2px solid $dark;
+  height: 280px;
+  width: 280px;
+  border-radius: 300px;
   margin: 0 auto;
   background-repeat: repeat;
   background-clip: #fff;
@@ -12,47 +12,19 @@
   align-items: center;
   justify-content: center;
 
-
   .image-text {
+    font-family: $big-text !important;
     font-size: 1rem !important;
     padding: 10px;
   }
 
   .container-image {
-    color: $primary;
-    
+    color: $dark;
   }
 
-  .image-dropdown {
-    margin-top: 10px;
-  }
-}
-.image-headline {
-  color: $primary;
-  font-size: 1rem !important;
-  font-family: "Montserrat", sans-serif !important;
-  font-weight: 800 !important;
-  padding: 5vw !important; 
-  text-align: left;
+  
 }
 
-.dd-image {
-  width: 100% !important;
-  border: 1px solid $dark;
-  padding: 0;
-  border-radius: 10px;
-  background-color: black;
-  opacity: .85;
-  &:hover {
-    opacity: 1;
-  }
-}
-.dd-item {
-  display: inline-block;
-  width: 60px;
-  padding: 0;
-  margin: 5px 0 5px 5px;
-}
 .image-dropdown {
   background-color: $secondary;
   color: $primary;
@@ -63,10 +35,32 @@
   padding: 5px 5px;
   border-radius: 2px;
   margin-top: 1rem;
-  transition: all .3s;
+  transition: all 0.3s;
+  .dd-menu {
+    max-width: 410px;
+    .dd-item {
+      display: inline-block;
+      width: 60px;
+      padding: 0;
+      margin: 5px 0 5px 5px;
+      .dd-image {
+        width: 100% !important;
+        border: 1px solid $dark;
+        padding: 0;
+        border-radius: 10px;
+        background-color: black;
+        opacity: 0.85;
+        &:hover {
+          opacity: 1;
+        }
+      }
+    }
+  }
 }
-
-@include media-breakpoint-up(md){
+.imagehandler-container {
+  margin-top: 2rem;
+}
+@include media-breakpoint-up(md) {
   // .image-pick-container {
   //   height: 250px;
   // }
@@ -74,17 +68,7 @@
   //   margin-top: 40px;
   // }
 
-  .image-headline {
-    color: $primary;
-    font-size: 2rem !important;
-    font-family: "Montserrat", sans-serif !important;
-    font-weight: 800 !important;
-    padding: 5vw !important; 
-    text-align: left;
-  }
-
   .imagehandler-container {
-    margin-top: 92px;
+    margin-top: 72px;
   }
-
 }

@@ -1,18 +1,18 @@
 #swish-container {
-  margin-bottom: 100px;
+  margin-bottom: 50px;
+  padding: 0 5vw;
+  width: 100%;
 }
-
-.qr-img {
-  border-radius: 9px;
-  border: 1px solid #ced4da;
+.swish-container{
+  padding-top: 0 !important;
+  text-align: center
 }
 
 .swish-form {
-  display: flex;
-  flex-flow: column wrap;
-  align-items: center;
+  margin: 0 auto;
+  width: 100%;
+  @include media-breakpoint-up(lg) {
+    width: 30%;
+  }
 }
 
-.swish-width {
-  width: 320px;
-}

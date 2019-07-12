@@ -1,7 +1,7 @@
 {
   "fullNav": [
     {
-      "name": "Tojj",
+      "name": "Hur?",
       "route": "prodinfo-container"
     },
     {
@@ -9,7 +9,7 @@
       "route": "convincer-container"
     },
     {
-      "name": "Om oss",
+      "name": "Om Tojj",
       "route": "about-container"
     },
     {

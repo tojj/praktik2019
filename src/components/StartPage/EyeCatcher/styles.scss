@@ -1,31 +1,81 @@
 .eye-catcher {
-  background: url(/images/bg-img2.png);
   background-size: cover;
   background-position: center;
   //background-position-y: -25px;
   position: relative;
   text-align: center;
   width: 100%;
-  min-height: 90vh;
+  height: 90vh;
+  @media only screen and (max-height: 600px) {
+    height: calc(100vh - 60px);
+  }
+  background-image: url("/images/startpage/startpage-background.jpg");
+  @media only screen and (min-width: 600px) and (min-height: 600px) {
+    display: block;
+    background-image: url("/images/startpage/bg-img.jpg");
 
-  .bg-overlay {
-    background-color: rgba(0, 0, 0, 0.2);
+  }
+  @media only screen and (min-width: 1024px) and (orientation: landscape) {
+    display: block;
+    background-image: url("/images/startpage/bg-img.jpg");
+
+  }
+
+  .arrow {
     position: absolute;
-    top: 0;
     bottom: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
+    left: 50%;
+    margin-left: -20px;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    /**
+   * Dark Arrow Down
+   */
+    filter: brightness(100);
+    background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjxzdmcgaGVpZ2h0PSI1MTIiIGlkPSJzdmcyIiB2ZXJzaW9uPSIxLjEiIHdpZHRoPSI1MTIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6Y2M9Imh0dHA6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL25zIyIgeG1sbnM6ZGM9Imh0dHA6Ly9wdXJsLm9yZy9kYy9lbGVtZW50cy8xLjEvIiB4bWxuczppbmtzY2FwZT0iaHR0cDovL3d3dy5pbmtzY2FwZS5vcmcvbmFtZXNwYWNlcy9pbmtzY2FwZSIgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIiB4bWxuczpzb2RpcG9kaT0iaHR0cDovL3NvZGlwb2RpLnNvdXJjZWZvcmdlLm5ldC9EVEQvc29kaXBvZGktMC5kdGQiIHhtbG5zOnN2Zz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxkZWZzIGlkPSJkZWZzNCIvPjxnIGlkPSJsYXllcjEiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAsLTU0MC4zNjIyKSI+PHBhdGggZD0ibSAxMjcuNDA2MjUsNjU3Ljc4MTI1IGMgLTQuOTg1MywwLjA3ODQgLTkuOTEwNzcsMi4xNjMwOCAtMTMuNDM3NSw1LjY4NzUgbCAtNTUsNTUgYyAtMy42MDA1NjUsMy41OTkyNyAtNS42OTY4ODMsOC42NTg5NSAtNS42OTY4ODMsMTMuNzUgMCw1LjA5MTA1IDIuMDk2MzE4LDEwLjE1MDczIDUuNjk2ODgzLDEzLjc1IEwgMjQyLjI1LDkyOS4yNSBjIDMuNTk5MjcsMy42MDA1NiA4LjY1ODk1LDUuNjk2ODggMTMuNzUsNS42OTY4OCA1LjA5MTA1LDAgMTAuMTUwNzMsLTIuMDk2MzIgMTMuNzUsLTUuNjk2ODggTCA0NTMuMDMxMjUsNzQ1Ljk2ODc1IGMgMy42MDA1NiwtMy41OTkyNyA1LjY5Njg4LC04LjY1ODk1IDUuNjk2ODgsLTEzLjc1IDAsLTUuMDkxMDUgLTIuMDk2MzIsLTEwLjE1MDczIC01LjY5Njg4LC0xMy43NSBsIC01NSwtNTUgYyAtMy41OTgxNSwtMy41OTEyNyAtOC42NTA2OCwtNS42ODEyNyAtMTMuNzM0MzgsLTUuNjgxMjcgLTUuMDgzNjksMCAtMTAuMTM2MjIsMi4wOSAtMTMuNzM0MzcsNS42ODEyNyBMIDI1Niw3NzguMDMxMjUgMTQxLjQzNzUsNjYzLjQ2ODc1IGMgLTMuNjY2NzgsLTMuNjY0MjMgLTguODQ4MDEsLTUuNzY0NDIgLTE0LjAzMTI1LC01LjY4NzUgeiIgaWQ9InBhdGgzNzY2LTEiIHN0eWxlPSJmb250LXNpemU6bWVkaXVtO2ZvbnQtc3R5bGU6bm9ybWFsO2ZvbnQtdmFyaWFudDpub3JtYWw7Zm9udC13ZWlnaHQ6bm9ybWFsO2ZvbnQtc3RyZXRjaDpub3JtYWw7dGV4dC1pbmRlbnQ6MDt0ZXh0LWFsaWduOnN0YXJ0O3RleHQtZGVjb3JhdGlvbjpub25lO2xpbmUtaGVpZ2h0Om5vcm1hbDtsZXR0ZXItc3BhY2luZzpub3JtYWw7d29yZC1zcGFjaW5nOm5vcm1hbDt0ZXh0LXRyYW5zZm9ybTpub25lO2RpcmVjdGlvbjpsdHI7YmxvY2stcHJvZ3Jlc3Npb246dGI7d3JpdGluZy1tb2RlOmxyLXRiO3RleHQtYW5jaG9yOnN0YXJ0O2Jhc2VsaW5lLXNoaWZ0OmJhc2VsaW5lO2NvbG9yOiMwMDAwMDA7ZmlsbDojMjIyMjIyO2ZpbGwtb3BhY2l0eToxO2ZpbGwtcnVsZTpub256ZXJvO3N0cm9rZTpub25lO3N0cm9rZS13aWR0aDozOC44ODAwMDEwNzttYXJrZXI6bm9uZTt2aXNpYmlsaXR5OnZpc2libGU7ZGlzcGxheTppbmxpbmU7b3ZlcmZsb3c6dmlzaWJsZTtlbmFibGUtYmFja2dyb3VuZDphY2N1bXVsYXRlO2ZvbnQtZmFtaWx5OlNhbnM7LWlua3NjYXBlLWZvbnQtc3BlY2lmaWNhdGlvbjpTYW5zIi8+PC9nPjwvc3ZnPg==);
+    background-size: contain;
+  }
+
+  .bounce {
+    animation: bounce 4s infinite;
+  }
+
+  @keyframes bounce {
+    0%,
+    20%,
+    50%,
+    80%,
+    90%,
+    100% {
+      transform: translateY(0);
+    }
+    85% {
+      transform: translateY(-20px);
+    }
+    95% {
+      transform: translateY(-10px);
+    }
   }
 
   .video-container {
+    background-image: url("/images/startpage/bg-img.jpg");
     position: absolute;
-    top: 0;
-    bottom: 0;
+    top: -10vh;
+    left: 0;
     width: 100%;
-    height: 100%;
+    height: 100vh;
     overflow: hidden;
+    display: none;
+
+    @media only screen and (min-width: 600px) and (min-height: 600px) {
+      display: block;
+    }
+    @media only screen and (min-width: 1024px) and (orientation: landscape) {
+      display: block;
+    }
     .bg-video {
+      display: block;
       min-width: 100%;
       min-height: 100%;
       width: auto;
@@ -35,44 +85,98 @@
       left: 50%;
       transform: translate(-50%, -50%);
     }
-  }
-
-  h2 {
-    font-family: $big-text;
-    font-weight: 800;
-    font-size: 2.5rem;
-  }
-  p {
-    font-family: $small-text;
-    font-size: 1.5rem;
-    margin-bottom: 1.5rem;
-    color: white;
+    .bg-overlay {
+      background-color: rgba(0, 0, 0, 0.3);
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
   }
   .box-1 {
+    display: block;
     max-width: 100%;
     position: absolute;
-    top: 27%;
+    // padding: 15vw 5vw;
     padding: 0 5vw;
-    @include media-breakpoint-up(md) {
-      padding: 10vw;
+    top: 20%;
+    left: 0;
+    right: 0;
+    color: $primary;
+    @media only screen and (min-width: 600px) and (min-height: 600px) {
+      color: #fff;
+    }
+    @media only screen and (min-width: 1024px) and (orientation: landscape) {
+      color: #fff;
+      left: 5vw;
+    }
+    h2 {
+      font-family: $big-text;
+      font-weight: 800;
+      font-size: 2rem;
+    }
+    p {
+      font-family: $small-text;
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    @include media-breakpoint-up(sm) {
+      top: 10%;
       h2 {
-        font-size: 4.5rem;
+        font-size: 3rem;
+      }
+      p {
+        font-size: 1.5rem;
       }
     }
+    @media only screen and (min-width: 992px) {
+      left: 5vw;
+    }
+
+    @include media-breakpoint-up(md) {
+      top: 15%;
+    }
     @include media-breakpoint-up(lg) {
-      max-width: 50%;
-      padding: 0 10vh;
-      text-align: left !important;
+      padding: 0;
+      width: 50%;
+      max-width: 600px;
+      text-align: left;
+
+      h2 {
+        font-size: 3.5rem;
+      }
       p {
-        font-size: 1.2rem !important;
+        font-size: 1.75rem;
       }
     }
     @include media-breakpoint-up(xl) {
-      p {
-        font-size: 1.5rem !important;
+      h2 {
+        font-size: 4rem;
       }
     }
-    color: white;
+    @media only screen and (min-width: 1600px) {
+      top: 30%;
+      h2 {
+        font-size: 5rem;
+      }
+      p {
+        font-size: 2rem;
+      }
+    }
+
+    // @media only screen and (min-width: 600px) and (min-height: 600px) {
+    //   color: white;
+    //   @include media-breakpoint-up(lg) {
+    //     padding-top: 25vh;
+    //     width: 50%;
+    //     max-width: 800px;
+    //     text-align: left;
+    //   }
+    // }
+    // @media only screen and (min-width: 1024px) and (orientation: landscape) {
+    // }
 
     .link-eye-catcher {
       background: #b164b8;

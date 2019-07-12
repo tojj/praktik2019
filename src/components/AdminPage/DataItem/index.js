@@ -2,6 +2,9 @@ import React from 'react'
 
 class DataItem extends React.Component {
   
+  /**
+   * Takes in props for questions to show when clicked.
+   */
   clickHandler = () => {
     this.props.clickHandler(this.props.object)       
   }

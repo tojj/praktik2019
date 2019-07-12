@@ -1,15 +1,20 @@
 import React, { Component } from "react"
 import { connect } from "react-redux"
-import MapsGen from "../PartyPage/MapsGen/index"
 import { Link } from "react-router-dom"
+import MapsGen from "../PartyPage/MapsGen/index"
+import SwishCode from "../SwishCode"
 
 class PreviewPage extends Component {
-
+  /**
+   * Due to safari bug with Object.keys and redux together
+   * We had to sort our map rendering methods which is
+   * Why we chose variable names to begin with a, b, c and so on.
+   */
   render() {
     let date =
-      this.props.birthdayTimeAndPlace.date +
+      this.props.birthdayTimeAndPlace.bDate +
       " " +
-      this.props.birthdayTimeAndPlace.time
+      this.props.birthdayTimeAndPlace.cTime
     date = new Date(date).getTime()
     date = new Date(date)
       .toLocaleDateString("sv-SE", {
@@ -25,12 +30,12 @@ class PreviewPage extends Component {
      * Joining all the address information to the right format in order to send the correct props to MapsGen
      */
 
-    let address = this.props.birthdayTimeAndPlace.street.split(" ")
+    let address = this.props.birthdayTimeAndPlace.dStreet.split(" ")
     address = address.join("%20")
     address = [
       address,
-      this.props.birthdayTimeAndPlace.zip,
-      this.props.birthdayTimeAndPlace.city
+      this.props.birthdayTimeAndPlace.eZip,
+      this.props.birthdayTimeAndPlace.fCity
     ].join("%20")
 
     return (
@@ -41,17 +46,17 @@ class PreviewPage extends Component {
         <div className="party-card">
           <div className="box-container party-title">
             <div className="box">
-              <p>{this.props.birthdayEvent.title}</p>
+              <p>{this.props.birthdayEvent.aTitle}</p>
             </div>
           </div>
           <div className="box-container party-info border-top">
             <div className="box">
               <p className="party-child-age">
-                {this.props.birthdayEvent.name} fyller{" "}
-                {this.props.birthdayEvent.age} år!
+                {this.props.birthdayEvent.bName} fyller{" "}
+                {this.props.birthdayEvent.cAge} år!
               </p>
               <p className="party-description">
-                {this.props.birthdayTimeAndPlace.description}
+                {this.props.birthdayTimeAndPlace.aDescription}
               </p>
             </div>
             <div className="box date-holder">
@@ -64,47 +69,62 @@ class PreviewPage extends Component {
           </div>
           <div className="box-container border-top party-payment no-print">
             <div className="box swish-holder">
-              <div className="qr-code box-img" style={{background: '#4762b7'}}>
-                <img src={"http://betalamedswish.se/API/Get/?n=0709629276&a=1337&m=FÖRHANDSVISNING&la=true&lm=true&s=500"} className="img-fluid" alt="qr-code" />
+              <div className="qr-code box-img">
+                <SwishCode payee="0708358158" amount={this.props.swish ? this.props.swish : '100'} message="Förhandsgranskning" />
               </div>
               <p>Swish</p>
               <p>
                 Skanna koden ovan med hjälp av swish-appen för att betala{" "}
-                {this.props.swishMoney} kronor av presenten
+                {this.props.swish ? this.props.swish : '<Fyll i swishbelopp>'} kronor av presenten
               </p>
             </div>
             <div className="box toy-holder">
               <div className="box-img">
-                <img src={this.props.present.image} className="img-fluid" alt="qr-code" />
+                <img
+                  src={this.props.present.image}
+                  className="img-fluid"
+                  alt="qr-code"
+                />
               </div>
               <p>Present</p>
               <p>
-                Pengarna som samlas in kommer att gå till att köpa {this.props.present.name} som{" "}
-                {"party.child"} önskar sig.
+                Pengarna som samlas in kommer att gå till att köpa{" "}
+                {this.props.present.name} som {this.props.birthdayEvent.bName}{" "}
+                önskar sig.
               </p>
-              <a href={this.props.present.link} target="_blank" rel="noopener noreferrer">
-                Läs mer...
-              </a>
-            </div>
-
-            {this.props.fundraiser.donate ? <div className="box karma-holder">
-              <div className="box-img">
-                <img src={this.props.fundraiser.image} className="img-fluid" alt="fundraiser" />
-              </div>
-              <p>Överskott</p>
-              <p>
-                Eventuellt överskott har vi valt att skänka direkt till {this.props.fundraiser.name}.
-                Om du vill veta mer om organisationen kan du klicka nedan.
-                </p>
               <a
-                href={this.props.fundraiser.link}
+                href={this.props.present.link}
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Läs mer...
-                </a>
-            </div> : null }
+                Läs mer
+              </a>
+            </div>
 
+            {this.props.fundraiser.donate ? (
+              <div className="box karma-holder">
+                <div className="box-img">
+                  <img
+                    src={this.props.fundraiser.image}
+                    className="img-fluid"
+                    alt="fundraiser"
+                  />
+                </div>
+                <p>Överskott</p>
+                <p>
+                  Eventuellt överskott har vi valt att skänka direkt till{" "}
+                  {this.props.fundraiser.name}. Om du vill veta mer om
+                  organisationen kan du klicka nedan.
+                </p>
+                <a
+                  href={this.props.fundraiser.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Läs mer
+                </a>
+              </div>
+            ) : null}
           </div>
           <div className="box-container party-attending border-top no-print">
             <div className="box attending-holder">
@@ -117,15 +137,16 @@ class PreviewPage extends Component {
             </div>
             <div className="box location-holder">
               <p className="party-street">
-                {this.props.birthdayTimeAndPlace.street}
+                {this.props.birthdayTimeAndPlace.dStreet}
               </p>
               <p className="party-zip-city">
-                {this.props.birthdayTimeAndPlace.zip} {this.props.birthdayTimeAndPlace.city}
+                {this.props.birthdayTimeAndPlace.eZip}{" "}
+                {this.props.birthdayTimeAndPlace.fCity}
               </p>
               <p className="party-rsvp">
                 OSA senast <br />
                 {new Date(
-                  this.props.birthdayTimeAndPlace.deadline
+                  this.props.birthdayTimeAndPlace.gDeadline
                 ).toLocaleDateString("sv-SE", {
                   weekday: "long",
                   day: "numeric",
@@ -140,7 +161,7 @@ class PreviewPage extends Component {
             </Link>
           </div>
         </div>
-      </div >
+      </div>
     )
   }
 }
@@ -150,6 +171,7 @@ const mapStateToProps = state => {
     birthdayEvent: state.birthday.birthdayEvent,
     birthdayImage: state.birthday.birthdayImage,
     birthdayTimeAndPlace: state.birthday.birthdayTimeAndPlace,
+    swish: state.swish.swishMoney,
     fundraiser: state.birthday.fundraiser,
     present: state.birthday.present
   }

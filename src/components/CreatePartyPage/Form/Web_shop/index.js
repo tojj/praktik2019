@@ -1,8 +1,8 @@
 import React, { Component } from "react"
-import axios from 'axios'
+import axios from "axios"
 import { connect } from "react-redux"
 import { doUpdateProductInfo } from "../../../../store/Birthday/BirthdayActions"
-import SwishQR from "../Form_body/SwishQR";
+import SwishQR from "../Form_body/SwishQR"
 
 class Web_shop extends Component {
   constructor(props) {
@@ -17,25 +17,37 @@ class Web_shop extends Component {
     this.loadData()
   }
 
+  componentDidMount() {
+    this.isPresentPicked()
+  }
+
+  isPresentPicked() {
+    if (this.props.present.id) {
+      this.toggleSelected(this.props.present.id)
+      this.toggleSelectBorder(this.props.present.id)
+      this.toggleSelectOverlay(this.props.present.id)
+    }
+  }
+
   async loadData() {
     this.allProductsData = await axios({
-      method: 'get',
-      url: '/api/products'
+      method: "get",
+      url: "/api/products"
     })
     this.allProductsData = this.allProductsData.data
-    this.setState({ allProductsData: this.allProductsData })    
+    this.setState({ allProductsData: this.allProductsData })
   }
 
   toggleSelectOverlay(id) {
     const isItemSelected = this.state.selectedItem === id
     return isItemSelected
       ? "shop-item-overlay shop-item-checkmark"
-      : "placeholder-div"
+      : "placeholder-div shop-item-overlay-hover"
   }
 
   toggleSelectBorder(id) {
     const isItemSelected = this.state.selectedItem === id
-    return isItemSelected ? "shop-item-border" : "shop-item"
+    return isItemSelected ? "shop-item" : "shop-item"
   }
 
   toggleSelected(id) {
@@ -58,7 +70,7 @@ class Web_shop extends Component {
 
   async findProductInDb() {
     let selectedProduct = await axios({
-      method: 'get',
+      method: "get",
       url: `/api/products/id/${this.productId}`
     })
     selectedProduct = selectedProduct.data
@@ -73,39 +85,6 @@ class Web_shop extends Component {
     this.props.updateProduct(productToSave)
   }
 
-  renderShopProducts = ({ id, img, price, text, desc }) => {
-    return (
-      <div className={this.toggleSelectBorder(id)} key={id}>
-        <div
-          className={this.toggleSelectOverlay(id)}
-          onClick={() => this.toggleSelected(id)}
-        />
-        <label className="more-info-label" onClick={() => this.toggleInfo(id)}>
-          >
-        </label>
-
-        {this.state.showInfo === id ? (
-          <div className="content-container">
-            <p>{desc}</p>
-          </div>
-        ) : (
-          <div className="content-container">
-            <img
-              className="shop-img"
-              src={img}
-              alt="event"
-              onClick={this.toggleSelected}
-            />
-            <div className="shop-info">
-              <p>{text}</p>
-              <p>Pris: {price}</p>
-            </div>
-          </div>
-        )}
-      </div>
-    )
-  }
-
   renderProducts() {
     return this.allProductsData.map((product, id) => {
       return (
@@ -114,31 +93,21 @@ class Web_shop extends Component {
             className={this.toggleSelectOverlay(product._id)}
             onClick={() => this.toggleSelected(product._id)}
           />
-          <label
-            className="more-info-label"
-            onClick={() => this.toggleInfo(product._id)}
-          >
-            <img src="/images/infoTab.png" alt="" />
-          </label>
-
-          {this.state.showInfo === product._id ? (
-            <div className="content-container">
-              <p>{product.desc}</p>
+          <a target="blank" href={product.link}>
+            <label className="more-info-label">Läs mer</label>
+            <label className="price-label">{product.price} kr</label>
+          </a>
+          <div className="content-container">
+            <img
+              className="shop-img"
+              src={product.image}
+              alt="event"
+              onClick={this.toggleSelected}
+            />
+            <div className="shop-info">
+              <p className="shop-text">{product.name}</p>
             </div>
-          ) : (
-            <div className="content-container">
-              <img
-                className="shop-img"
-                src={product.image}
-                alt="event"
-                onClick={this.toggleSelected}
-              />
-              <div className="shop-info">
-                <p>{product.name}</p>
-                <p>Pris: {product.price}</p>
-              </div>
-            </div>
-          )}
+          </div>
         </div>
       )
     })

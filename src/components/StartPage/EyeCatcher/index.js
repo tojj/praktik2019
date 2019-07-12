@@ -1,7 +1,8 @@
 import React from "react"
-import { Link } from "react-router-dom"
+import { Link } from "react-scroll"
 
-const videoURL = "/images/bg-vid2.mp4"
+const videoURL = "/images/startpage/bg-vid.mp4"
+const posterImage = "/images/startpage/bg-img.jpg"
 
 const EyeCatcher = () => (
   <div className="eye-catcher" id="eye-catcher">
@@ -11,25 +12,36 @@ const EyeCatcher = () => (
         id="background-video"
         loop
         autoPlay
-        muted={true}
+        muted
         preload="auto"
+        poster={posterImage}
       >
         <source src={videoURL} type="video/mp4" />
       </video>
+
       <div className="bg-overlay" />
+
     </div>
     <div className="box-1">
       <h2 className="main-heading" id="eye-catcher-heading">
-        BÄSTA PRESENTEN
+        DIGITAL KALASINBJUDAN
       </h2>
       <p className="eye-text">
         Med Tojj kan alla få det kalas de förtjänar. Klicka på knappen nedan för
         att skapa ditt kalas nu!
       </p>
-      <Link to="/skapa-kalas" className="link-eye-catcher">
+      <a href="/skapa-kalas" className="link-eye-catcher">
         Skapa kalas
-      </Link>
+      </a>
     </div>
+    <Link
+      spy={true}
+      smooth={true}
+      duration={500}
+      to="prodinfo-container"
+    >
+      <div className="arrow bounce" />
+    </Link>
   </div>
 )
 

@@ -21,20 +21,30 @@ class LoginComponent extends React.Component {
 
   }
 
+  /**
+   * Handles value for the imported Input component.
+   */
   handleChange = ({ currentTarget: input }) => {
-
     const data = { ...this.state.data }
     data[input.name] = input.value
     this.setState({ data })
   }
 
-
+  /**
+   * onClick function that runs login method when admin try to login.
+   */
   handleSubmit = e => {
     e.preventDefault()
     this.login()
   }
 
-
+  /**
+   * Login function for Admin use only.
+   * This using Axios to get correct User (Admin)
+   * @param {
+   *  Data - Data is hardcoded at the moment, there is only one admin account.
+   * }
+   */
   async login() {
     const { data } = this.state
     let newLogin = {
@@ -56,13 +66,19 @@ class LoginComponent extends React.Component {
     }
   }
 
+  /**
+   * Makes Axios get request 
+   * This to see if admin is logged in.
+   */
   async checkIfLoggedIn() {
     this.loggedinUser = await axios({
       method: 'get',
       url: '/api/login'
     })
   }
-
+  /**
+   * If admin is logged in, render all data to admin.
+   */
   renderLoginData = ({
     id,
     type,
@@ -90,7 +106,7 @@ class LoginComponent extends React.Component {
       <div className="login-container" id="login-component">
         <div className="login-content">
           {staticData.loginData.map(this.renderLoginData)}
-          <Button color="primary" type="button" className="ml-lg-2" onClick={this.handleSubmit}>Logga in</Button>
+          <Button color="info" type="button" className="ml-lg-2" onClick={this.handleSubmit}>Logga in</Button>
           {this.state.loginFailed ? <p style={{textAlign: 'center', color: 'red', fontSize: '.8rem', marginTop: '20px', fontStyle: 'italic'}}>Inloggningen misslyckades</p> : null}
         </div >
       </div>

@@ -1,11 +1,30 @@
 header {
   &, nav, .nav-wrapper {
     z-index: 35
+  }  
+  background: $primary; 
+
+  @media only screen and (min-width: 600px) and (min-height: 600px) {
+
+    &.header-startpage{
+      background: linear-gradient(to bottom, rgba(0,0,0,0.6), transparent);
+    // .header-wrapper {
+    //   border-bottom: 3px solid $primary
+    // }
+    }
   }
-  background: #4761b7CC; // $primary with .8 opacity
+  @media only screen and (min-width: 1024px) and (orientation: landscape) {
+    &.header-startpage{
+      background: linear-gradient(to bottom, rgba(0,0,0,0.6), transparent);
+    // .header-wrapper {
+    //   border-bottom: 3px solid $primary
+    // }
+    }
+  }
   .header-wrapper {
     position: relative;
-    min-height: 10vh;
+    height: 10vh;
+    min-height: 60px;
     width: 100%;
     z-index: 35;
     .arrow-img {
@@ -13,6 +32,9 @@ header {
       height: auto;
       border-radius: 50%;
       box-shadow: 2px 2px 5px $dark;
+      &:hover{
+        filter: brightness(1.1)
+      }
     }
     .logo-holder {
       display: block;

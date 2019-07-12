@@ -1,0 +1,42 @@
+.gdpr-modal {
+
+  background-color: $info;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  min-height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .gdpr-text {
+    color: white;
+    display: inline-block;
+    max-width: 80%;
+    padding: 10px;
+
+    .gdpr-margin {
+      margin-left: 5px;
+      color: white;
+    }
+  }
+
+  .gdpr-button {
+    background: $primary;
+    color: #fbf7ee;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 800;
+    border-radius: 4px;
+    border: none;
+    color: white;
+    height: 52px;
+    width: 120px;
+    margin: 20px;
+    &:hover {
+      background-color: #4e6ac2;
+    }
+
+  }
+  
+}

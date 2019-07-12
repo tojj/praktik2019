@@ -5,24 +5,41 @@ class DataEditor extends React.Component {
     super(props)
     this.entriesData = Object.entries(this.props.object)
   }
+  /**
+   * Mainly built for the admin to add and remove questions in the "Hjälp" section and changing data in current events.
+   * @param setup - {
+   *  staticData - If used any data that is to be added to data as default.
+   *  object - Object value can be a question & data in event.
+   * }
+   */
+
+   /**
+    * Deletes an object.
+    */
   deleteObject = () => {
-    if(window.confirm(`Är du säker på att du vill ta bort: ${this.props.object._id}`)){
+    if (window.confirm(`Är du säker på att du vill ta bort: ${this.props.object._id}`)) {
       this.props.delete(this.props.object._id, this.props.collection)
     }
-    
+
   }
+  /**
+   * Saves an object.
+   */
   saveObject = () => {
     const newObject = this.createObject()
     this.props.save(newObject)
   }
+  /**
+   * Creates a new object.
+   */
   createObject = () => {
     let object = this.props.object
     this.entriesData.map(entry => {
-      if (entry[0] === '_id' || 
-      entry[0] === 'location' || 
-      entry[0] === 'swish' || 
-      entry[0] === 'attending' ||
-      entry[0] === 'invited') {
+      if (entry[0] === '_id' ||
+        entry[0] === 'location' ||
+        entry[0] === 'swish' ||
+        entry[0] === 'attending' ||
+        entry[0] === 'invited') {
         return null
       } else {
         return object[entry[0]] = document.getElementById(entry[0]).value
@@ -63,25 +80,49 @@ class DataEditor extends React.Component {
             && entry[0] !== 'location'
             && entry[0] !== 'swish'
             && entry[0] !== 'invited'
+            && entry[0] !== 'guestUser'
             ? <div>
               <p className="object-key">{entry[0]}</p>
-              {entry[0] === 'category' && this.props.newObj
+              {entry[0] === 'category'
                 ? <select
                   id="category"
-                  className="w-100">
+                  className="w-100"
+                  defaultValue={entry[1]}>
                   <option>presenter</option>
                   <option>välgörenhet</option>
                   <option>avtal</option>
                   <option>allmänt</option>
                 </select>
-                : <input
-                  className="w-100"
-                  type={entry[0] === 'counter' ? "number" : "text"}
-                  defaultValue={!this.props.newObj ? entry[1] : ''}
-                  id={entry[0]} />
+                : entry[0] === 'product'
+                  ? <select
+                    id="product"
+                    className="w-100"
+                    defaultValue={entry[1]}>
+                    {this.props.products.data.map((entry, i) => {
+                      return (
+                        <option value={entry._id} key={'product_' + i}>{entry.name} - {entry.price} SEK</option>
+                      )
+                    })}
+                  </select>
+                  : entry[0] === 'fundraiser'
+                    ? <select
+                      id="fundraiser"
+                      className="w-100"
+                      defaultValue={entry[1]}>
+                      {this.props.fundraisers.data.map((entry, i) => {
+                        return (
+                          <option value={entry._id} key={'product_' + i}>{entry.name}</option>
+                        )
+                      })}
+                    </select>
+                    : <input
+                      className="w-100"
+                      type={entry[0] === 'counter' ? "number" : "text"}
+                      defaultValue={!this.props.newObj ? entry[1] : ''}
+                      id={entry[0]} />
               }
             </div>
-            : <div className="hide-me">
+            : <div className="hide-me" style={{ display: 'none' }}>
               <p className="object-key">{entry[0]}</p>
               <input className="w-100" type="text" readOnly defaultValue={!this.props.newObj ? entry[1] : ''} id={entry[0]} />
             </div>}
@@ -117,7 +158,7 @@ class DataEditor extends React.Component {
           : null
         }
         <button onClick={this.saveObject} className="btn btn-success mt-3 float-right">Spara</button>
-        { !this.props.newObj ? <button onClick={this.deleteObject} className="btn btn-danger mt-3">Ta bort</button> : null}
+        {!this.props.newObj ? <button onClick={this.deleteObject} className="btn btn-danger mt-3">Ta bort</button> : null}
       </div>
     )
   }

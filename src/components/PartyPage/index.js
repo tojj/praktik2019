@@ -26,6 +26,10 @@ class PartyPage extends React.Component {
     })
   }
 
+  /**
+   * Finding correct event to display.
+   * @param {*} eventLink 
+   */
   async findEventAndMatchWithDB(eventLink) {
     const events = await axios({
       method: 'get',
@@ -85,7 +89,7 @@ class PartyPage extends React.Component {
       content = (
         <div style={{ background: party.image }} className="party-bg">
           <div className="party-card">
-            <p className="no-print" onClick={window.print} style={{ display: 'inline-block', margin: '5px', cursor: 'pointer' }}><Printer /> Klicka här för att skriva ut.</p>
+            <p className="no-print" onClick={window.print} style={{ display: 'inline-block', margin: '5px', cursor: 'pointer' }}><Printer /> <span className="no-print">Klicka här för att skriva ut.</span></p>
             <div className="box-container party-title">
               <div className="box">
                 <p>{party.title}</p>
@@ -106,8 +110,8 @@ class PartyPage extends React.Component {
                 <p className="party-time">kl {date[3]}</p>
               </div>
               <div className="box print-me">
-                <p>Scanna koden för att komma direkt till kalaset. Glöm inte att meddela om du kommer!</p><br />
-                <img src={"http://chart.apis.google.com/chart?cht=qr&chs=500x500&chl=" + window.location.origin + "kalas/" + party.link + "&chld=H|0"} className="party-qr" alt="qr link to party" />
+                <p>Skanna koden för att komma direkt till kalaset. Glöm inte att meddela om du kommer!</p><br />
+                <img src={"http://chart.apis.google.com/chart?cht=qr&chs=500x500&chl=" + window.location.origin + "/kalas/" + party.link + "&chld=H|0"} className="party-qr" alt="qr link to party" />
               </div>
             </div>
             <div className="print-me">
@@ -129,7 +133,7 @@ class PartyPage extends React.Component {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Läs mer...
+                  Läs mer
                 </a>
               </div>
               <div className="box toy-holder">
@@ -149,7 +153,7 @@ class PartyPage extends React.Component {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Läs mer...
+                  Läs mer
                 </a>
               </div>
               {party.donate ? (
@@ -171,7 +175,7 @@ class PartyPage extends React.Component {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    Läs mer...
+                    Läs mer
                   </a>
                 </div>
               ) : null}
@@ -186,14 +190,14 @@ class PartyPage extends React.Component {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Läs mer...
+                  Läs mer
                 </a>
               </div>
               <div className="box">
                 <figure>
                   <img
                     style={{ width: '80%', height: 'auto' }}
-                    src="/images/card.png"
+                    src="/images/general/card.png"
                     alt="birthday-card"
                   />
                 </figure>

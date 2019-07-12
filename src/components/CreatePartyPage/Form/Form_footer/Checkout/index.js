@@ -4,6 +4,8 @@ import { connect } from "react-redux"
 import { doUpdateGuestDetails } from "../../../../../store/Birthday/BirthdayActions"
 import InputEvent from "../../Form_body/Event_input/InputEvent"
 import { guestUserData } from "../../../../../staticData"
+import { doupdateUserAgreement } from "../../../../../store/Agreement/AgreementActions"
+import ToolTip from '../../../../ToolTip'
 
 class Checkout extends React.Component {
   constructor(props) {
@@ -11,7 +13,9 @@ class Checkout extends React.Component {
     this.state = {
       loginOption: false,
       noRegisterOption: false,
-      userLogin: false
+      userLogin: false,
+      agreementToggled: false,
+      gdprToggled: false
     }
   }
 
@@ -41,6 +45,20 @@ class Checkout extends React.Component {
       noRegisterOption: false
     })
   }
+
+  gdprToggle = () => {
+    this.setState({
+      gdprToggled: !this.state.gdprToggled
+    })
+    this.updateAgreement("gdpr")
+  }
+
+  agreementToggle = e => {
+    this.setState({
+      agreementToggled: !this.state.agreementToggled
+    })
+    this.updateAgreement("eula")
+  }
   /**
    * Getting input value and rendering inputs
    */
@@ -49,9 +67,17 @@ class Checkout extends React.Component {
     this.props.updateInfo(event.target.value)
   }
 
+  updateAgreement = type => {
+    if (type === "gdpr") {
+      this.props.agreement.gdprAgreement = !this.props.agreement.gdprAgreement
+    } else if (type === "eula") {
+      this.props.agreement.userAgreement = !this.props.agreement.userAgreement
+    }
+  }
+
   renderInputs = () =>
     this.props.guestUser
-      ? Object.keys(this.props.guestUser).map(this.renderInput)
+      ? Object.keys(this.props.guestUser).sort().map(this.renderInput)
       : null
 
   renderInput = key => {
@@ -61,14 +87,14 @@ class Checkout extends React.Component {
           htmlFor={guestUserData[key].id}
           className={guestUserData[key].classNameLabel}
         >
-          {guestUserData[key].label}
+          {guestUserData[key].label} {guestUserData[key].tooltip ? <ToolTip text={guestUserData[key].tooltip} />: ''}
         </Label>
         <InputEvent
           name={guestUserData[key].name}
           keyVal={key}
           value={this.props.guestUser[key]}
           type={guestUserData[key].type}
-          placeholder={guestUserData[key].label}
+          placeholder={guestUserData[key].placeholder}
           className={guestUserData[key].className}
           callback={this.callback}
           autocomplete={guestUserData[key].autocomplete}
@@ -85,6 +111,34 @@ class Checkout extends React.Component {
         <div className="box align-left">
           <h2 className="form-header form-headline">Ange personuppgifter</h2>
           {this.renderInputs()}
+          <div className="checkbox-container">
+            <div className="input-group-check">
+              <input
+                className="check-input"
+                id="check1"
+                name="checkAgreement"
+                type="checkbox"
+                onChange={this.agreementToggle}
+                checked={this.props.agreement.userAgreement}
+              />
+              <label className="check-label" htmlFor="check1">
+                Jag godkänner Tojjs <a href="/avtal" target="_blank" style={{color: '#B164B8'}} rel="noopener noreferrer">användaravtal och villkor</a>
+              </label>
+            </div>
+            <div className="input-group-check">
+              <input
+                className="check-input"
+                id="check2"
+                name="checkGDPR"
+                type="checkbox"
+                onChange={this.gdprToggle}
+                checked={this.props.agreement.gdprAgreement}
+              />
+              <label className="check-label" htmlFor="check2">
+                Jag godkänner att Tojj hanterar mina personuppgifter
+              </label>
+            </div>
+          </div>
         </div>
       </div>
     )
@@ -93,12 +147,14 @@ class Checkout extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    guestUser: state.birthday.guestUser
+    guestUser: state.birthday.guestUser,
+    agreement: state.agreement
   }
 }
 
 const mapDispatchToProps = dispatch => ({
-  updateInfo: data => dispatch(doUpdateGuestDetails(data))
+  updateInfo: data => dispatch(doUpdateGuestDetails(data)),
+  updateUserAgreement: data => dispatch(doupdateUserAgreement(data))
 })
 
 export default connect(

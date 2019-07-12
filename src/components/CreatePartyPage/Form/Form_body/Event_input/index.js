@@ -7,6 +7,7 @@ import {
   FormGroup,
   Label
 } from 'reactstrap'
+import ToolTip from '../../../../ToolTip';
 
 class EventInput extends Component {
   constructor(props) {
@@ -16,29 +17,22 @@ class EventInput extends Component {
     this.deadline = ''
 
   }
-  /**
-   * Passing value from input
-   */
-
-  updateInfo = (event) => {
-    this.props.updateTimeAndPlace(event.target.value)
-  }
 
   /**
    * Rendering input fields
    */
-
   renderInputs = () => this.props.birthdayTimeAndPlace
-    ? Object.keys(this.props.birthdayTimeAndPlace).map(this.renderInput)
+    ? Object.keys(this.props.birthdayTimeAndPlace).sort().map(this.renderInput)
     : null
 
 
   renderInput = key => (
     <FormGroup key={key} className={eventInputData[key].classNameFormGroup}>
       <Label
+        style={{position: 'relative !important'}}
         htmlFor={eventInputData[key].name}
         className={eventInputData[key].classNameLabel}>
-        {eventInputData[key].text} 
+        {eventInputData[key].text} {eventInputData[key].tooltip ? <ToolTip text={eventInputData[key].tooltip} /> : '' }
         </Label>
       <InputEvent
         name={eventInputData[key].name}
@@ -49,6 +43,7 @@ class EventInput extends Component {
         className={eventInputData[key].className}
         callback={this.callback}
         id={eventInputData[key].id}
+        rows={eventInputData[key].rows ? eventInputData[key].rows : ''}
       />
     </FormGroup>
   )
@@ -60,10 +55,18 @@ class EventInput extends Component {
   callback = (value, key) => {
     this.props.updateTimeAndPlace({ [key]: value })
 
+    /**
+     * Function that takes the value
+     * And remove the space
+     */
+    if(key === "eZip" &&  /\s/.test(value) ){
+      this.props.updateTimeAndPlace({ [key]: value.replace(/\s+/g, "")})
+    }
+
     let week = Date.now() + 604800000
 
 
-    if (key === "date") {
+    if (key === "bDate") {
       this.time = new Date(value)
       if (this.time.getTime() < week) {
         let id = key;
@@ -77,6 +80,7 @@ class EventInput extends Component {
 
     }
 
+
     if (value.length > 1 && key === "asv") {
       let id = key;
       let element = document.getElementById(id)
@@ -87,9 +91,10 @@ class EventInput extends Component {
       element.classList.add("invalid")
     }
 
-    if (key === "deadline" && this.time) {
+    if (key === "gDeadline" && this.time) {
       this.deadline = new Date(value)
-      if (this.deadline.getTime() < this.time.getTime() && this.deadline.getTime() > Date.now()) {
+      const osa = this.time.getTime()-172800000
+      if (this.deadline.getTime() < this.time.getTime() && osa > this.deadline.getTime() && this.deadline.getTime() > Date.now()) {
         let id = key;
         let element = document.getElementById(id)
         element.classList.remove("invalid")
@@ -102,17 +107,17 @@ class EventInput extends Component {
       }
 
     }
-    if(value.length > 1 && value.length < 250 && key === "description"){
+    if(value.length > 1 && value.length < 280 && key === "aDescription"){
       let id = key;
       let element = document.getElementById(id)
       element.classList.remove("invalid")
-    } else if(value.length > 250 && key === "description"){
+    } else if(value.length > 250 && key === "aDescription"){
       let id = key;
       let element = document.getElementById(id)
       element.classList.add("invalid")
     }
 
-    else if(value.length < 2 && key === "description"){
+    else if(value.length < 2 && key === "aDescription"){
       let id = key;
       let element = document.getElementById(id)
       element.classList.add("invalid")
@@ -124,7 +129,7 @@ class EventInput extends Component {
       <div className="box-container">
         <div className="box">
           <h2 className="form-headline">Var, när <br /> &amp; hur?</h2>
-          <img className="box-img fg-image" src="/images/time-place.png" alt="event" />
+          <img className="box-img fg-image" src="/images/general/time-place.png" alt="event" />
         </div>
         <div className="box text-left">
           {this.renderInputs()}
