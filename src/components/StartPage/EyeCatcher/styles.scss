@@ -6,7 +6,7 @@
   text-align: center;
   width: 100%;
   height: 90vh;
-  @media only screen and (max-height: 600px){
+  @media only screen and (max-height: 600px) {
     height: calc(100vh - 60px);
   }
   background-image: url("/images/startpage/startpage-background.jpg");
@@ -49,17 +49,17 @@
   }
 
   .video-container {
+    background-image: url("/images/startpage/bg-img.jpg");
     position: absolute;
-    top: 0;
+    top: -10vh;
     left: 0;
     width: 100%;
-    height: 100%;
+    height: 100vh;
     overflow: hidden;
     display: none;
 
     @media only screen and (min-width: 600px) and (min-height: 600px) {
       display: block;
-      
     }
     @media only screen and (min-width: 1024px) and (orientation: landscape) {
       display: block;
@@ -88,14 +88,19 @@
   .box-1 {
     display: block;
     max-width: 100%;
-    position: relative;
-    padding: 15vh 5vw;
+    position: absolute;
+    // padding: 15vw 5vw;
+    padding: 0 5vw;
+    top: 20%;
+    left: 0;
+    right: 0;
     color: $primary;
     @media only screen and (min-width: 600px) and (min-height: 600px) {
       color: #fff;
     }
     @media only screen and (min-width: 1024px) and (orientation: landscape) {
       color: #fff;
+      left: 5vw;
     }
     h2 {
       font-family: $big-text;
@@ -108,6 +113,7 @@
       margin-bottom: 1.5rem;
     }
     @include media-breakpoint-up(sm) {
+      top: 10%;
       h2 {
         font-size: 3rem;
       }
@@ -115,10 +121,17 @@
         font-size: 1.5rem;
       }
     }
+    @media only screen and (min-width: 992px) {
+      left: 5vw;
+    }
+
+    @include media-breakpoint-up(md) {
+      top: 15%;
+    }
     @include media-breakpoint-up(lg) {
-      padding-top: 8%;
+      padding: 0;
       width: 50%;
-      max-width: 800px;
+      max-width: 600px;
       text-align: left;
 
       h2 {
@@ -130,7 +143,16 @@
     }
     @include media-breakpoint-up(xl) {
       h2 {
-        font-size: 4.5rem;
+        font-size: 4rem;
+      }
+    }
+    @media only screen and (min-width: 1400px) {
+      top: 30%;
+      h2 {
+        font-size: 5rem;
+      }
+      p {
+        font-size: 2rem;
       }
     }
 

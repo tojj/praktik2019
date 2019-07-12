@@ -2,7 +2,19 @@ header {
   &, nav, .nav-wrapper {
     z-index: 35
   }
-  background: #4761b7CC; // $primary with .8 opacity
+  background: $primary; 
+  @media only screen and (min-width: 600px) and (min-height: 600px) {
+    background: linear-gradient(to bottom, rgba(0,0,0,0.6), transparent);
+    // .header-wrapper {
+    //   border-bottom: 3px solid $primary
+    // }
+  }
+  @media only screen and (min-width: 1024px) and (orientation: landscape) {
+    background: linear-gradient(to bottom, rgba(0,0,0,0.6), transparent);
+    // .header-wrapper {
+    //   border-bottom: 3px inset #fff
+    // }
+  }
   .header-wrapper {
     position: relative;
     height: 10vh;
