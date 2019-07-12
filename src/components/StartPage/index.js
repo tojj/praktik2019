@@ -6,7 +6,7 @@ import About from './about_us/index'
 
 class StartPage extends React.Component {
   componentDidMount() {
-    document.title = "Tojj - Bästa presenten"
+    document.title = "Tojj - Digital Kalasinbjudan"
   }
   render() {
     return (

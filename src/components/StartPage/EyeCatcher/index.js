@@ -24,7 +24,7 @@ const EyeCatcher = () => (
     </div>
     <div className="box-1">
       <h2 className="main-heading" id="eye-catcher-heading">
-        BÄSTA PRESENTEN
+        DIGITAL KALASINBJUDAN
       </h2>
       <p className="eye-text">
         Med Tojj kan alla få det kalas de förtjänar. Klicka på knappen nedan för

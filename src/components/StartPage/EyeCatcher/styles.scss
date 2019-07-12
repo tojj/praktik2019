@@ -10,6 +10,16 @@
     height: calc(100vh - 60px);
   }
   background-image: url("/images/startpage/startpage-background.jpg");
+  @media only screen and (min-width: 600px) and (min-height: 600px) {
+    display: block;
+    background-image: url("/images/startpage/bg-img.jpg");
+
+  }
+  @media only screen and (min-width: 1024px) and (orientation: landscape) {
+    display: block;
+    background-image: url("/images/startpage/bg-img.jpg");
+
+  }
 
   .arrow {
     position: absolute;
@@ -106,7 +116,7 @@
     h2 {
       font-family: $big-text;
       font-weight: 800;
-      font-size: 2.5rem;
+      font-size: 2rem;
     }
     p {
       font-family: $small-text;
