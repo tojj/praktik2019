@@ -17,12 +17,6 @@ class EventInput extends Component {
     this.deadline = ''
 
   }
-  /**
-   * Passing value from input
-   */
-  updateInfo = (event) => {
-    this.props.updateTimeAndPlace(event.target.value)
-  }
 
   /**
    * Rendering input fields
@@ -61,6 +55,14 @@ class EventInput extends Component {
   callback = (value, key) => {
     this.props.updateTimeAndPlace({ [key]: value })
 
+    /**
+     * Function that takes the value
+     * And remove the space
+     */
+    if(key === "eZip" &&  /\s/.test(value) ){
+      this.props.updateTimeAndPlace({ [key]: value.replace(/\s+/g, "")})
+    }
+
     let week = Date.now() + 604800000
 
 
@@ -77,6 +79,7 @@ class EventInput extends Component {
       }
 
     }
+
 
     if (value.length > 1 && key === "asv") {
       let id = key;
