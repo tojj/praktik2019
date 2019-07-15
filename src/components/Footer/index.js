@@ -71,8 +71,19 @@ const Footer = () => (
         <label className="footer-connect">Följ oss:</label>
         <div className="media-container">
           <Facebook className="media-icon" size={36} />
-          <Twitter className="media-icon" size={36} />
-          <Linkedin className="media-icon" size={36} />
+          <a
+            href="http://www.twitter.com/tojjkalas"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="twitter">
+            <Twitter className="media-icon" size={36} />
+          </a>
+          <a
+            href="http://www.linkedin.com/in/tojj-kalas-6890a718b"
+            target="_blank"
+            rel="noopener noreferrer">
+            <Linkedin className="media-icon" size={36} />
+          </a>
         </div>
         <p className="footer-copy">odd hill 2019</p>
       </div>
