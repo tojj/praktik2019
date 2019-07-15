@@ -1,12 +1,13 @@
-import React from 'react'
-import EyeCatcher from './EyeCatcher/index'
-import ProductInfo from './ProductInfo/index'
-import Convincer from './Convincer/index'
-import About from './about_us/index'
+import React from "react"
+import EyeCatcher from "./EyeCatcher/index"
+import ProductInfo from "./ProductInfo/index"
+import Convincer from "./Convincer/index"
+import About from "./about_us/index"
 
 class StartPage extends React.Component {
   componentDidMount() {
     document.title = "Tojj - Digital Kalasinbjudan"
+    window.scrollTo(0, 0)
   }
   render() {
     return (
@@ -16,9 +17,8 @@ class StartPage extends React.Component {
         <Convincer />
         <About />
       </div>
-
     )
   }
 }
 
-  export default StartPage
+export default StartPage
