@@ -248,6 +248,9 @@
       background-color: $primary;
       border-radius: 10px;
     }
+    .link-text {
+      margin-top: 15px;
+    }
   }
   .help-text {
     width: 80%;
@@ -255,6 +258,10 @@
     color: $dark;
     font-size: .7rem;
     margin: 100px auto 0;
+  }
+  .name-text {
+    margin-bottom: 25px;
+    color: $info;
   }
   .party-bg {
     -webkit-print-color-adjust: exact; 
