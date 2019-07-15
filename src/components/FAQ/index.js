@@ -1,11 +1,6 @@
 import React from "react"
 import axios from "axios"
-import { 
-  Gift, 
-  Heart, 
-  Clipboard, 
-  HelpCircle 
-} from "react-feather"
+import { Gift, Heart, Clipboard, HelpCircle } from "react-feather"
 import QuestionAndAnswer from "../FAQ/QuestionAndAnswer"
 import Categories from "./Categories"
 
@@ -18,6 +13,7 @@ class FAQ extends React.Component {
       totalAmount: "",
       categoryContent: ""
     }
+    window.scrollTo(0, 0)
     this.getQnaAmountTotal()
     this.getAllQnaAndMount()
     this.getQnaAmountTotal = this.getQnaAmountTotal.bind(this)

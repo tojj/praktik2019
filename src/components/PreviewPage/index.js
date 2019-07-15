@@ -5,6 +5,10 @@ import MapsGen from "../PartyPage/MapsGen/index"
 import SwishCode from "../SwishCode"
 
 class PreviewPage extends Component {
+  constructor(props) {
+    super(props)
+    window.scrollTo(0, 0)
+  }
   /**
    * Due to safari bug with Object.keys and redux together
    * We had to sort our map rendering methods which is
@@ -70,12 +74,17 @@ class PreviewPage extends Component {
           <div className="box-container border-top party-payment no-print">
             <div className="box swish-holder">
               <div className="qr-code box-img">
-                <SwishCode payee="0708358158" amount={this.props.swish ? this.props.swish : '100'} message="Förhandsgranskning" />
+                <SwishCode
+                  payee="0708358158"
+                  amount={this.props.swish ? this.props.swish : "100"}
+                  message="Förhandsgranskning"
+                />
               </div>
               <p>Swish</p>
               <p>
                 Skanna koden ovan med hjälp av swish-appen för att betala{" "}
-                {this.props.swish ? this.props.swish : '<Fyll i swishbelopp>'} kronor av presenten
+                {this.props.swish ? this.props.swish : "<Fyll i swishbelopp>"}{" "}
+                kronor av presenten
               </p>
             </div>
             <div className="box toy-holder">
