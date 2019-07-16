@@ -86,6 +86,11 @@ class PartyPage extends React.Component {
         })
         .split(" ")
 
+        let childName = party.child
+        if(!childName.endsWith("s")){
+          childName = childName + "s"
+        }
+
       content = (
         <div style={{ background: party.image }} className="party-bg">
           <div className="party-card">
@@ -103,7 +108,8 @@ class PartyPage extends React.Component {
                 <p className="party-description">{party.desc}</p>
               </div>
               <div className="box date-holder">
-                <p className="party-weekday">{date[0]}</p>
+                <p className="print-me name-text">{childName}</p>
+                <p className="party-weekday testy">{date[0]}</p>
                 <p className="party-date">
                   Den {date[1]} {date[2]}
                 </p>
@@ -112,6 +118,7 @@ class PartyPage extends React.Component {
               <div className="box print-me">
                 <p>Skanna koden för att komma direkt till kalaset. Glöm inte att meddela om du kommer!</p><br />
                 <img src={"http://chart.apis.google.com/chart?cht=qr&chs=500x500&chl=" + window.location.origin + "/kalas/" + party.link + "&chld=H|0"} className="party-qr" alt="qr link to party" />
+                <p className="link-text">{"http://tojj.oddnode.se/kalas/" + party.link}</p>
               </div>
             </div>
             <div className="print-me">
