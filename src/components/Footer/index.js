@@ -85,7 +85,6 @@ const Footer = () => (
             <Linkedin className="media-icon" size={36} />
           </a>
         </div>
-        <p className="footer-copy">odd hill 2019</p>
       </div>
     </div>
   </div>

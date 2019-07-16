@@ -80,11 +80,11 @@
   }
 
   .link-cancel-prepp {
-    color: red !important;
+    color: $info !important;
     font-family: $big-text;
     font-weight: 800;
     font-size: 20px;
-    border: 2px solid red;
+    border: 2px solid $info;
     padding: 5px 5px;
     border-radius: 2px;
     margin-top: 1rem;
@@ -95,7 +95,7 @@
     text-align: center;
     &:hover {
       color: #ffffff !important;
-      background-color: red !important;
+      background-color: $info !important;
       text-decoration: none;
     }
   }
