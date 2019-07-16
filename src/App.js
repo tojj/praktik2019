@@ -15,6 +15,7 @@ import Footer from './components/Footer/index'
 import MissingPage from "./components/MissingPage/index"
 import PasswordInput from "./components/PasswordInput/index"
 import ContractPage from "./components/ContractPage/index"
+import ThanksPage from "./components/ThanksPage"
 
 const App = props => {
   return (
@@ -50,6 +51,7 @@ const App = props => {
           <Route exact path="/vanliga-fragor/:link" component={Faq} />
           <Route exact path="/admin" component={AdminPage} />
           <Route exact path="/avtal" component={ContractPage} />
+          <Route exact path="/tack-for-visat-intresse" component={ThanksPage} />
           <Route component={MissingPage} />
         </Switch>
       </main>

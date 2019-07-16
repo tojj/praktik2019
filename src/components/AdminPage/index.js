@@ -8,6 +8,7 @@ import {
   Plus
 } from 'react-feather'
 import { Link } from 'react-router-dom'
+import Toggle from 'react-toggle'
 import Categories from '../FAQ/Categories'
 import DataItem from './DataItem/index'
 import DataEditor from './DataEditor/index'
@@ -18,6 +19,7 @@ class AdminPage extends React.Component {
     super(props)
     this.state = {
       loggedIn: false,
+      siteActive: true,
       currentColl: '',
       editObject: '',
       content: <p style={{ minHeight: '30vh' }}>Välj en av kategorierna ovan för att redigera objekt.</p>
@@ -74,6 +76,29 @@ class AdminPage extends React.Component {
     }).then(data => {
       this.setState({ allProducts: data })
     })
+    axios({
+      method: 'get',
+      url: '/api/settings'
+    }).then(data => {
+      if (data.data.active){
+        this.setState({siteActive: true})
+      } else {
+        this.setState({siteActive: false})
+      }
+    })
+  }
+
+
+  toggleSite = (e) => {
+    
+    axios({
+      method: 'put',
+      url: '/api/settings/',
+      data: {
+        active: !this.state.siteActive
+      }
+    }).then(this.setState({siteActive: !this.state.siteActive}))
+    
   }
   /**
    * Using Axios to make a get request
@@ -224,6 +249,7 @@ class AdminPage extends React.Component {
         <div className="admin-wrapper">
           <h2>Admin - Hantering</h2>
           <button className="btn btn-info" onClick={this.logout}>Logga ut</button>
+          <div className="toggle-button"><Toggle checked={this.state.siteActive} onChange={this.toggleSite} /> <span className="site-toggle">Sidan är: {this.state.siteActive ? 'aktiv' : 'inaktiv'}</span></div>
           <Categories categories={this.categories} name={this.props.match.params.link} clickHandler={this.renderCategoryContent} />
           <div className="data-editor">
             {this.state.editObject}

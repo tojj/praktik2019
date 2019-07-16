@@ -48,12 +48,17 @@
 
 // ADMINPAGE
 @import "../components/AdminPage/styles";
+@import "../components/AdminPage/ToggleButton/styles";
 
 // CONFIRMATION PAGE 
 @import "../components/ConfirmationPage/styles";
 
 // CONTRACT PAGE
 @import "../components/ContractPage/styles";
+
+// THANKS PAGE 
+@import "../components/ThanksPage/styles";
+
 
 // GRPR
 @import "../components/GDPR/styles";
