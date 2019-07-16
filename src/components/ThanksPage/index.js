@@ -24,12 +24,11 @@ class ThanksPage extends React.Component {
 
   }
   changeHandler = (e) => {
-    this.setState({ email: e.target.value })
-  }
-  enterHandler = (e) => {
-    if (e.key === 'Enter') {
-      document.getElementById('subscribe-button').click();
-    }
+    this.setState({
+      email: e.target.value,
+      sending: false,
+      confirmed: false
+    })
   }
   componentDidMount() {
     document.title = "Tojj - Tack!"
@@ -41,7 +40,7 @@ class ThanksPage extends React.Component {
         <p className="thank-you-text">Tojj är under en testperiod fram till hösten 2019. Tack för att du visat intresse och kollat runt på siten. Vi kommer att utvärdera sidan fram tills dess och den bör vara uppe då.</p>
         <p className="thank-you-text">Skriv upp dig på maillistan om du önskar att vi meddelar dig så snart vi är tillbaka:</p>
         <form onSubmit={this.clickHandler}>
-          <input required type="email" onKeyPress={this.enterHandler} onChange={this.changeHandler} className="email-input" />
+          <input required type="email" onChange={this.changeHandler} className="email-input" />
           <div>
             {this.state.sending
 
